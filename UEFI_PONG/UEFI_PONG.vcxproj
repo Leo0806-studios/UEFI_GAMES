@@ -186,13 +186,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GAME\SOURCE\INPUT\INPUT.c" />
     <ClCompile Include="GAME\SOURCE\RENDER\RENDER.c" />
     <ClCompile Include="SOURCE\HEAP\HEAP.c" />
     <ClCompile Include="SOURCE\main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME\HEADER\DATATYPES\VEC2\VEC2.h" />
+    <ClInclude Include="GAME\HEADER\INPUT\INPUT.h" />
     <ClInclude Include="GAME\HEADER\OBJECTS\BALL.h" />
+    <ClInclude Include="GAME\HEADER\OBJECTS\PLAYER.h" />
     <ClInclude Include="GAME\HEADER\RENDER\RENDER.h" />
     <ClInclude Include="HEADER\GLOBALS.h" />
     <ClInclude Include="HEADER\HEAP\HEAP.h" />

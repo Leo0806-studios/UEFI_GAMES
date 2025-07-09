@@ -10,7 +10,8 @@
 #include <GLOBALS.h>
 #include "HEAP/HEAP.h"
 #include <../GAME/HEADER/RENDER/RENDER.h>
-#include 
+#include <../GAME/HEADER/OBJECTS/BALL.h>
+
 typedef  _Bool BOOL;
 #if defined(_M_X64) || defined(__x86_64__)
 static CHAR16* ArchName = L"x86 64-bit";
@@ -109,9 +110,7 @@ static EFI_STATUS PrintSystemInfo(VOID)
 	return EFI_SUCCESS;
 }
 
-enum Key {
-	a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, zero, one, two, three, four, five, six, seven, eight, nine, space, enter, backspace, escape, left, right, up, down
-};
+
 BOOL WasKeyPressed() {
 	EFI_INPUT_KEY key;
 	EFI_STATUS status;
@@ -131,24 +130,24 @@ BOOL WasKeyPressed() {
 
 }
 
-EFI_INPUT_KEY GetKey() {
-	EFI_STATUS status;
-	EFI_INPUT_KEY key;
-	memset(&key, 0, sizeof(key));
-	status = ST->ConIn->ReadKeyStroke(ST->ConIn, &key);
-	if (status == EFI_SUCCESS) {
-		Print(key.ScanCode);
-		Print(L"(%d)", key.UnicodeChar);
-		return key; // A key was pressed
-	}
-	else if (status == EFI_NOT_READY) {
-		return key; // No key pressed, still waiting
-	}
-	else {
-		Print(L"Error reading key: %r\n", status);
-		return key; // An error occurred
-	}
-}
+//EFI_INPUT_KEY GetKey() {
+//	EFI_STATUS status;
+//	EFI_INPUT_KEY key;
+//	memset(&key, 0, sizeof(key));
+//	status = ST->ConIn->ReadKeyStroke(ST->ConIn, &key);
+//	if (status == EFI_SUCCESS) {
+//		Print(key.ScanCode);
+//		Print(L"(%d)", key.UnicodeChar);
+//		return key; // A key was pressed
+//	}
+//	else if (status == EFI_NOT_READY) {
+//		return key; // No key pressed, still waiting
+//	}
+//	else {
+//		Print(L"Error reading key: %r\n", status);
+//		return key; // An error occurred
+//	}
+//}
 // Application entrypoint (must be set to 'efi_main' for gnu-efi crt0 compatibility)
 EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
@@ -183,10 +182,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		&Event            // Store the allocated address in Event
 	);
 	CreatHeap(MiB(10));
-	int* i = Alloc(sizeof(int));
-	*i = 1234567;
-	Print(L"allocated int: %d\n", *i);
-	DeAlloc(i); // Deallocate the int
+
 	//CreateHeap(0b1000000000000000000000000000000000000000000000000000000000000000ULL, GiB(1));//crete heap at half high (addres have highest bit set) with 10 mb
 	PrintSystemInfo();
 
@@ -198,10 +194,30 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	int incr = 0;
 	unsigned short counter = 0;
 	counter++;
+	//ClearScreen();
 
+	Ball* ball = CreateBall(100, 100, 30, 10, 10);
+	if (!ball) {
+		Print(L"Ball Creation faliled");
+	}
+	Print(L" Ball position x %f, y %f \n", ball->position.x, ball->position.y);
 
-	DrawRectangle(a, 100, 100, 0x00ff00);
-	DrawCircle(a, 50, 0x0000ff);
+	char countr = 1;
+	while (counter) {
+
+		//EFI_INPUT_KEY KEY={ 0 };
+		//GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &KEY);
+			//Print(L" %s has scancode %d       ", KEY.UnicodeChar, KEY.ScanCode);
+			//GlobalST->BootServices->Stall(50000);
+		ClearScreen();
+		//if (BallCollidesWithScreenBounds(ball)) Print(L"ball on edge");
+		UpdateBall(ball,0.1 );
+		DrawBall(ball);
+		GlobalST->BootServices->Stall(100);
+		counter++;
+	}
+
+	DestroyBall(ball);
 	Print(L"\n%EPress any key to exit.%N\n");
 	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
 	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);

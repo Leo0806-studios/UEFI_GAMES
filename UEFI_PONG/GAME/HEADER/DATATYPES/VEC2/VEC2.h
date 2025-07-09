@@ -49,6 +49,9 @@ inline float DotProductVector2(Vector2 a, Vector2 b) {
 inline bool EqualsVector2(Vector2 a, Vector2 b) {
 	return a.x == b.x && a.y == b.y;
 }
-
-
+inline Vector2 InvertVector2(Vector2 a) {
+	return ScaleVector2(a, -1.0f);
+}
+static Vector2 X_axis = { 1,0 };
+static Vector2 Y_axis = { 0,1 };
 
