@@ -7,6 +7,10 @@
 #include <gnu-efi/inc/efilib.h>
 #include <gnu-efi/inc/libsmbios.h>
 #include <string.h>
+#include <GLOBALS.h>
+#include "HEAP/HEAP.h"
+#include <../GAME/HEADER/RENDER/RENDER.h>
+#include 
 typedef  _Bool BOOL;
 #if defined(_M_X64) || defined(__x86_64__)
 static CHAR16* ArchName = L"x86 64-bit";
@@ -44,9 +48,9 @@ EFI_SYSTEM_TABLE* GlobalSystemTable = NULL;
 static EFI_STATUS PrintSystemInfo(VOID)
 {
 	EFI_STATUS Status;
-	SMBIOS_STRUCTURE_POINTER Smbios;
-	SMBIOS_STRUCTURE_TABLE* SmbiosTable;
-	SMBIOS3_STRUCTURE_TABLE* Smbios3Table;
+	SMBIOS_STRUCTURE_POINTER Smbios = { 0 };
+	SMBIOS_STRUCTURE_TABLE* SmbiosTable = { 0 };
+	SMBIOS3_STRUCTURE_TABLE* Smbios3Table= { 0 };
 	UINT8 Found = 0, * Raw, * SecureBoot, * SetupMode;
 	UINTN MaximumSize, ProcessedSize = 0;
 
@@ -148,7 +152,7 @@ EFI_INPUT_KEY GetKey() {
 // Application entrypoint (must be set to 'efi_main' for gnu-efi crt0 compatibility)
 EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
-	GlobalSystemTable = SystemTable;
+	GlobalST = SystemTable;
 	UINTN Event;
 
 #if defined(_GNU_EFI)
@@ -158,7 +162,12 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	// The platform logo may still be displayed → remove it
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	EFI_STATUS Status;
+	InitRender();
+	Vector2 a = { 100, 50 };
+	DrawPixel(a, 0xff0000);
 
+	Vector2 b = { 500, 1000 };
+	DrawLine(a, b, 0xff0000);
 	/*
 	 * In addition to the standard %-based flags, Print() supports the following:
 	 *   %N       Set output attribute to normal
@@ -167,26 +176,20 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	 *   %r       Human readable version of a status code
 	 */
 	Print(L"\n%H*** (%s) ***%N\n\n", ArchName);
+	SystemTable->BootServices->AllocatePages(
+		AllocateAnyPages, // Allocate any pages
+		EfiLoaderData,    // Allocate as loader data
+		1,                // Allocate 1 page (4 KiB)
+		&Event            // Store the allocated address in Event
+	);
+	CreatHeap(MiB(10));
+	int* i = Alloc(sizeof(int));
+	*i = 1234567;
+	Print(L"allocated int: %d\n", *i);
+	DeAlloc(i); // Deallocate the int
 	//CreateHeap(0b1000000000000000000000000000000000000000000000000000000000000000ULL, GiB(1));//crete heap at half high (addres have highest bit set) with 10 mb
 	PrintSystemInfo();
-	EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
-	// Locate the Graphics Output Protocol
-	Status = uefi_call_wrapper(
-		SystemTable->BootServices->LocateProtocol,
-		3,
-		&gEfiGraphicsOutputProtocolGuid,
-		NULL,
-		(void**)&GraphicsOutput
-	);
-	if (EFI_ERROR(Status)) {
-		Print(L"Failed to locate GOP: %r\n", Status);
-		return Status;
-	}
-	UINT32 Width = GraphicsOutput->Mode->Info->HorizontalResolution;
-	UINT32 Height = GraphicsOutput->Mode->Info->VerticalResolution;
-	UINT32 PixelsPerScanLine = GraphicsOutput->Mode->Info->PixelsPerScanLine;
 
-	UINT32* FrameBuffer = (UINT32*)GraphicsOutput->Mode->FrameBufferBase;
 
 	// Draw a white pixel at (100, 50)
 	UINTN x = 100;
@@ -195,29 +198,10 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	int incr = 0;
 	unsigned short counter = 0;
 	counter++;
-	while (1) {
-		if (GetKey().ScanCode) break;;
-		incr++;
-		counter++;
-		if (incr == 100) {
-			// Reset the colour every 100 iterations
-			incr = 0;
 
 
-		}
-		colour++;
-		for (UINTN collumn = 0; collumn < x; collumn++) {
-			for (UINTN row = 0; row < y; row++) {
-				// Fill the screen with a blue color
-				//FrameBuffer[row * PixelsPerScanLine + collumn] = colour;
-			}
-		}
-	}
-	for (int i = 0; i < 50; i++) {
-		Print(L"mem at (%d) is (%d)\n", i, *(char*)i);
-	}
-
-	FrameBuffer[y * PixelsPerScanLine + x] = 0x00FFFFFF;
+	DrawRectangle(a, 100, 100, 0x00ff00);
+	DrawCircle(a, 50, 0x0000ff);
 	Print(L"\n%EPress any key to exit.%N\n");
 	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
 	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
@@ -228,3 +212,6 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	return EFI_SUCCESS;
 }
+// Global variables
+EFI_SYSTEM_TABLE* GlobalST = NULL;
+Framebuffer GlobalFramebuffer = { 0, 0, 0, NULLPTR };

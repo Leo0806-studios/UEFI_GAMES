@@ -18,5 +18,28 @@
     <ClCompile Include="SOURCE\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\HEAP\HEAP.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME\SOURCE\RENDER\RENDER.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HEADER\HEAP\HEAP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\GLOBALS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME\HEADER\RENDER\RENDER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME\HEADER\DATATYPES\VEC2\VEC2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME\HEADER\OBJECTS\BALL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

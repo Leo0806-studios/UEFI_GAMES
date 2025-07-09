@@ -131,13 +131,14 @@
       </SDLCheck>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_PONG\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>false</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>
       <DisableSpecificWarnings>4091</DisableSpecificWarnings>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -185,7 +186,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GAME\SOURCE\RENDER\RENDER.c" />
+    <ClCompile Include="SOURCE\HEAP\HEAP.c" />
     <ClCompile Include="SOURCE\main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GAME\HEADER\DATATYPES\VEC2\VEC2.h" />
+    <ClInclude Include="GAME\HEADER\OBJECTS\BALL.h" />
+    <ClInclude Include="GAME\HEADER\RENDER\RENDER.h" />
+    <ClInclude Include="HEADER\GLOBALS.h" />
+    <ClInclude Include="HEADER\HEAP\HEAP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
