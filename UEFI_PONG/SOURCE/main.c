@@ -164,6 +164,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	CreatHeap(MiB(10));
 
 	PrintSystemInfo();
+	Print(L"Screen Might Flicker a lot. Be warned\n");
 	Print(L"Pres up and down to moeve the right player.\n");
 	Print(L"press F1 and F2 to move the Left player\n");
 	Print(L"Spam Esc to exit (couldnt find a better way for now\n");
