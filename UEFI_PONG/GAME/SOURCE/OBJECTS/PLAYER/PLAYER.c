@@ -1,7 +1,9 @@
 #include "../../../HEADER/OBJECTS/PLAYER.h"
 #include "../../../../HEADER/HEAP/HEAP.h"
 #include "../../../HEADER/RENDER/RENDER.h"
+#pragma warning (push,0)
 #include <gnu-efi/inc/efilib.h>
+#pragma warning(pop)
 #include "../../../HEADER/INPUT/INPUT.h"
 Player* Players[2] = { 0 };
 
@@ -56,7 +58,6 @@ void UpdatePlayers()
 		return;
 	}
 	//update both players.
-//forn now il just update player1
 	EFI_INPUT_KEY Key;
 	GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key);
 	switch (Key.ScanCode) {
@@ -75,6 +76,23 @@ void UpdatePlayers()
 	}
 	}
 
+	EFI_INPUT_KEY Key2;
+	GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key2);
+	switch (Key.ScanCode) {
+	case SCAN_F1: {
+		Players[1]->position.y += 20;
+
+		break;
+	}
+	case SCAN_F2: {
+		Players[1]->position.y -= 20;
+
+		break;
+	}
+	default: {
+		break;
+	}
+	}
 }
 
 void DrawPlayers()

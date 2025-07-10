@@ -1,5 +1,7 @@
+#pragma warning (push,0)
 #include <gnu-efi/inc/efi.h>
 #include <gnu-efi/inc/efilib.h>
+#pragma warning(pop)
 #include <../GAME/HEADER/PHYSICS/PHYSICS.h>
 #include <../HEADER/HEAP/HEAP.h>
 #include "../../HEADER/RENDER/RENDER.h"

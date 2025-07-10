@@ -1,5 +1,7 @@
 #pragma once
+#pragma warning (push,0)
 #include <stddef.h>
+#pragma warning(pop)
 struct HeapNode;
 typedef struct {
 	void* next; 

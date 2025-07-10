@@ -1,5 +1,7 @@
 #include "../../../HEADER/OBJECTS/BALL.h"
+#pragma warning(push,0)
 #include <gnu-efi/inc/efilib.h>
+#pragma warning(pop)
 #include "../../../../HEADER/HEAP/HEAP.h"
 #include "../../../HEADER/PHYSICS/PHYSICS.h"
 

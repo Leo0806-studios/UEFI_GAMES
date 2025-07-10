@@ -1,7 +1,12 @@
 #pragma once
 #include <../GAME/HEADER/RENDER/RENDER.h>
+#pragma warning(push,0)
 #include <gnu-efi/inc/efilib.h>
+#pragma warning(pop)
+#include "../../../HEADER/HEAP/HEAP.h"
 static EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
+static UINT32* DoubleBuffer = NULLPTR;
+
 void InitRender()
 {
 	Print(L"initializing Render...\n");
@@ -22,6 +27,8 @@ void InitRender()
 	GlobalFramebuffer. Width = GraphicsOutput->Mode->Info->HorizontalResolution;
 	GlobalFramebuffer. Height = GraphicsOutput->Mode->Info->VerticalResolution;
 	GlobalFramebuffer. PixelsPerScanLine = GraphicsOutput->Mode->Info->PixelsPerScanLine;
+	//creating double buffer;
+	DoubleBuffer = Alloc(sizeof(UINT32) * GlobalFramebuffer.PixelsPerScanLine * GlobalFramebuffer.Height);
 	Print(L"Render Initialized\n");
 }
 
@@ -101,4 +108,8 @@ void DrawText(Vector2 start, const char* text, uint32_t color)
 
 void RefreshScreen()
 {
+	for (size_t i = 0;i  < GlobalFramebuffer.Height*GlobalFramebuffer.PixelsPerScanLine; i++) {
+		GlobalFramebuffer.FrameBuffer[i] = DoubleBuffer[i];
+
+	}
 }

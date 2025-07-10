@@ -3,10 +3,13 @@
  * Copyright ©️ 2014-2023 Pete Batard <pete@akeo.ie> - Public Domain
  * See COPYING for the full licensing terms.
  */
+#pragma warning(push,0)
 #include <gnu-efi/inc/efi.h>
 #include <gnu-efi/inc/efilib.h>
 #include <gnu-efi/inc/libsmbios.h>
 #include <string.h>
+#pragma warning(pop)
+
 #include <GLOBALS.h>
 #include "HEAP/HEAP.h"
 #include <../GAME/HEADER/RENDER/RENDER.h>
@@ -172,7 +175,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	GlobalST->BootServices->Stall(1000000);
 	PrintHeap();
 
-	Ball* ball = CreateBall(100, 100, 30, 10, 10);
+	Ball* ball = CreateBall(200, 100, 30, 10, 10);
 	PrintHeap();
 
 	if (!ball) {
@@ -193,7 +196,8 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		UpdatePhysics();
 		DrawBall(ball);
 		DrawPlayers();
-		GlobalST->BootServices->Stall(100);
+		//RefreshScreen();
+	//	GlobalST->BootServices->Stall(100);
 	}
 
 	DestroyBall(ball);

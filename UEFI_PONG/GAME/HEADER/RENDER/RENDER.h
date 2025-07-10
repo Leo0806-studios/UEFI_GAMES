@@ -47,4 +47,7 @@
 	/// <param name="text"></param>
 	/// <param name="color"></param>
 	void DrawText(Vector2 start, const char* text, uint32_t color);
+	/// <summary>
+	/// this flushes the seond buffer to the drawbuffer
+	/// </summary>
 	void RefreshScreen();

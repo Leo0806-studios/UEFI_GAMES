@@ -1,7 +1,8 @@
 #pragma once
+#pragma warning(push, 0)
 #include <gnu-efi/inc/efi.h>
 #include <stdbool.h>
-#include <setjmp.h>
+#pragma warning(pop)
 extern EFI_SYSTEM_TABLE* GlobalST;
 #define NULLPTR ((void*)0)
 #define nullptr NULLPTR

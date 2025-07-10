@@ -1,6 +1,8 @@
 #pragma once
+#pragma warning(push,0)
 #include <math.h>
 #include <intrin.h>
+#pragma warning(pop)
 typedef struct  {
 	float x; 
 	float y; 
