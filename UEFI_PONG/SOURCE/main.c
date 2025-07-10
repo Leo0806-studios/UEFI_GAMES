@@ -164,7 +164,9 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	CreatHeap(MiB(10));
 
 	PrintSystemInfo();
-
+	Print(L"Pres up and down to moeve the right player.\n");
+	Print(L"press F1 and F2 to move the Left player\n");
+	Print(L"Spam Esc to exit (couldnt find a better way for now\n");
 
 	Print(L" press any Key To Start Game");
 	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
