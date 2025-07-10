@@ -12,6 +12,7 @@
 
 #include <GLOBALS.h>
 #include "HEAP/HEAP.h"
+#include <intrin.h>
 #include <../GAME/HEADER/RENDER/RENDER.h>
 #include <../GAME/HEADER/OBJECTS/BALL.h>
 #include <../GAME/HEADER/OBJECTS/PLAYER.h>
@@ -106,7 +107,12 @@ static EFI_STATUS PrintSystemInfo(VOID)
 	return EFI_SUCCESS;
 }
 
-
+bool cpu_supports_avx() {
+	int info[4];
+	__cpuid(info, 1);
+	// ECX bit 28 indicates AVX support
+	return (info[2] & (1 << 28)) != 0;
+}
 BOOL WasKeyPressed() {
 	EFI_INPUT_KEY key;
 	EFI_STATUS status;
@@ -140,6 +146,8 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	// The platform logo may still be displayed → remove it
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	EFI_STATUS Status = { 0 };
+	CreatHeap(MiB(10));
+
 	InitRender();
 	InitPhysics();
 	Vector2 a = { 100, 50 };
@@ -161,8 +169,8 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		1,                // Allocate 1 page (4 KiB)
 		&Event            // Store the allocated address in Event
 	);
-	CreatHeap(MiB(10));
-
+	Print(L"Does the CPU support AVX? %s\n", cpu_supports_avx() ? L"Yes" : L"No");
+	AVXEnabled = cpu_supports_avx();
 	PrintSystemInfo();
 	Print(L"Screen Might Flicker a lot. Be warned\n");
 	Print(L"Pres up and down to moeve the right player.\n");
@@ -194,16 +202,17 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	while (dontExit) {
 		if (GetKey(SCAN_ESC, 1)) { dontExit = false; }
 		ClearScreen();
-		UpdateBall(ball,0.1F );
+		UpdateBall(ball,0.1f);
 	UpdatePlayers();
 		UpdatePhysics();
 		DrawBall(ball);
 		DrawPlayers();
-		//RefreshScreen();
+		RefreshScreen();
 	//	GlobalST->BootServices->Stall(100);
 	}
 
 	DestroyBall(ball);
+	PrintScores();
 	Print(L"\n%EPress any key to exit.%N\n");
 	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
 	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
@@ -217,3 +226,4 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 // Global variables
 EFI_SYSTEM_TABLE* GlobalST = NULL;
 Framebuffer GlobalFramebuffer = { 0, 0, 0, NULLPTR };
+bool AVXEnabled = false;

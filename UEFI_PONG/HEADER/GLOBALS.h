@@ -13,3 +13,4 @@ typedef struct {
 	UINT32* FrameBuffer;
 } Framebuffer ;
 extern Framebuffer GlobalFramebuffer ;
+extern bool AVXEnabled;

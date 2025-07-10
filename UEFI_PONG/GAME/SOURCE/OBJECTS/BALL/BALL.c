@@ -4,7 +4,7 @@
 #pragma warning(pop)
 #include "../../../../HEADER/HEAP/HEAP.h"
 #include "../../../HEADER/PHYSICS/PHYSICS.h"
-
+#include "../../../HEADER/OBJECTS/PLAYER.h"
 void BallColliderCallBack(void* self, void* other) {
 	Print(L" collision betwen self %d and other %d \n", self, other);
 	Ball* ball = ((Ball*)((Collider*)self)->object);
@@ -103,6 +103,8 @@ bool BallCollidesWithScreenBounds(Ball* ball) {
 
 			Vector2 set = { 0,1 };
 			ReflectBall(ball, set);
+			IncrementScore(false);
+			SetBallPosition(ball, (Vector2) { 200, 100 });
 			break;
 		}
 		case left: {
@@ -110,6 +112,8 @@ bool BallCollidesWithScreenBounds(Ball* ball) {
 
 			Vector2 set = { 0,-1 };
 			ReflectBall(ball, set);
+			IncrementScore(true);
+			SetBallPosition(ball, (Vector2) { 200, 100 });
 			break;
 		}
 		case top: {
@@ -142,3 +146,8 @@ bool BallCollidesWithScreenBounds(Ball* ball) {
 	ball->velocity.x = vx;
 	ball->velocity.y = vy;
 }
+
+ void SetBallPosition(Ball* ball,Vector2 pos)
+ {
+	 ball->position = pos;
+ }

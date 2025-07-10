@@ -70,3 +70,8 @@ void UpdateBall(Ball* ball, float deltaTime);
 /// <param name="vx"></param>
 /// <param name="vy"></param>
 void SetBallVelocity(Ball* ball, int vx, int vy);
+/// <summary>
+/// Sets the position of the ball.
+/// </summary>
+/// <param name="pos">The new position of the ball as a 2D vector.</param>
+void SetBallPosition(Ball* ball,Vector2 pos);

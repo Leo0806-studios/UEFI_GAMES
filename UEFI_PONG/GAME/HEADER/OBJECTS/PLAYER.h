@@ -8,6 +8,7 @@ typedef struct {
 	Vector2 extends;
 	__OWNING(Collider*)collider;
 	bool player1;
+	size_t Score;
 }Player;
 /// <summary>
 /// Creates player entities with the specified size.
@@ -28,3 +29,14 @@ void UpdatePlayers();
 /// Draws both players to the screen.  
 /// </summary>
 void DrawPlayers();
+/// <summary>
+/// incrementsd the score of a player.
+/// if true increments of player1
+/// </summary>
+///  <param name="Player1"></param>
+void IncrementScore(bool Player1);
+/// <summary>
+/// prints the score of both players to the console
+///  </summary>
+/// <param name=""></param>
+void PrintScores(void);

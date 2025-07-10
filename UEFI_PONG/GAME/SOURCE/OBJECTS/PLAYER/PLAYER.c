@@ -21,6 +21,7 @@ static  __OWNING(Player*)CreatePlayer1(Vector2 size, Vector2 position,int player
 	__OWNING(Player * player) = Alloc(sizeof(Player));
 	player->position = position;
 	player->extends = size;
+	player->Score = 0;
 	player->collider = Alloc(sizeof(Collider));
 	player->collider->ObjPosition = &player->position;
 	player->collider->extends = size;
@@ -50,7 +51,7 @@ void DestroyPlayers(void)
 
 void UpdatePlayers()
 {
-	Print(L"\n Updating Players\n");
+	//Print(L"\n Updating Players\n");
 	//check if both exist
 	if (Players[0] == NULLPTR || Players[1] == NULLPTR) {
 		Print(L"A Playyer is null. 0: %d , 0: %d", Players[0], Players[1]);
@@ -62,12 +63,20 @@ void UpdatePlayers()
 	GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key);
 	switch (Key.ScanCode) {
 	case SCAN_UP: {
-		Players[0]->position.y += 20;
+		if ((Players[0]->position.y - 20) <= 0) {
+			Players[0]->position.y =1;
+			break;
+		}
+		Players[0]->position.y -= 20;
 
 		break;
 	}
 	case SCAN_DOWN: {
-		Players[0]->position.y -= 20;
+		if ((Players[0]->position.y+Players[0]->extends.y + 20) >= GlobalFramebuffer.Height) {
+			Players[0]->position.y = GlobalFramebuffer.Height- Players[0]->extends.y-20;
+			break;
+		}
+		Players[0]->position.y += 20;
 
 		break;
 	}
@@ -80,12 +89,20 @@ void UpdatePlayers()
 	GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key2);
 	switch (Key.ScanCode) {
 	case SCAN_F1: {
-		Players[1]->position.y += 20;
+		if ((Players[1]->position.y - 20) <= 0) {
+			Players[1]->position.y = 1;
+			break;
+		}
+		Players[1]->position.y -= 20;
 
 		break;
 	}
 	case SCAN_F2: {
-		Players[1]->position.y -= 20;
+		if ((Players[1]->position.y + Players[1]->extends.y +20) >= GlobalFramebuffer.Height) {
+			Players[1]->position.y = GlobalFramebuffer.Height - Players[1]->extends.y - 20;
+			break;
+		}
+		Players[1]->position.y += 20;
 
 		break;
 	}
@@ -99,10 +116,30 @@ void DrawPlayers()
 {
 	if (Players[0] != NULLPTR)
 	{
+		DrawCircle(Players[0]->position, 5, 0xFF0000FF);
 		DrawRectangle(Players[0]->position, Players[0]->extends.x,Players[0]->extends.y, 0xFF0000FF);
 	}
 	if (Players[1] != NULLPTR)
 	{
+		DrawCircle(Players[1]->position, 5, 0x0000FFFF);
+
 		DrawRectangle(Players[1]->position, Players[1]->extends.x, Players[1]->extends.y, 0x0000FFFF);
 	}
+}
+
+void IncrementScore(bool Player1)
+{
+	if (Player1) {
+		Players[0]->Score++;
+	}
+	else {
+		Players[1]->Score++;
+	}
+}
+
+void PrintScores(void)
+{
+	Print(L"***** UEFI_PONG SCORES *****\n");
+	Print(L"Player 1 %d\n", Players[0]->Score);
+	Print(L"Player 2 %d\n", Players[1]->Score);
 }

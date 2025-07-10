@@ -1,12 +1,15 @@
 #pragma once
 #include <../GAME/HEADER/RENDER/RENDER.h>
 #pragma warning(push,0)
+#include <string.h>
 #include <gnu-efi/inc/efilib.h>
 #pragma warning(pop)
 #include "../../../HEADER/HEAP/HEAP.h"
+#include <intrin.h>
 static EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
-static UINT32* DoubleBuffer = NULLPTR;
-
+static  UINT32* DoubleBuffer = NULLPTR;
+size_t screen_mod_16;
+size_t screen_mod_32;
 void InitRender()
 {
 	Print(L"initializing Render...\n");
@@ -29,6 +32,12 @@ void InitRender()
 	GlobalFramebuffer. PixelsPerScanLine = GraphicsOutput->Mode->Info->PixelsPerScanLine;
 	//creating double buffer;
 	DoubleBuffer = Alloc(sizeof(UINT32) * GlobalFramebuffer.PixelsPerScanLine * GlobalFramebuffer.Height);
+	Print(L"allocated double buffer of size %d\n", sizeof(UINT32) * GlobalFramebuffer.PixelsPerScanLine * GlobalFramebuffer.Height);
+	screen_mod_16 = (GlobalFramebuffer.PixelsPerScanLine * GlobalFramebuffer.Height * sizeof(UINT32)) % 16;
+	screen_mod_32 = (GlobalFramebuffer.PixelsPerScanLine * GlobalFramebuffer.Height * sizeof(UINT32)) % 32;
+	Print(L"screen_mod_16: %d\n", screen_mod_16);
+	Print(L"screen_mod_32: %d\n", (GlobalFramebuffer.PixelsPerScanLine * GlobalFramebuffer.Height * sizeof(UINT32)) % 32);
+	PrintHeap();
 	Print(L"Render Initialized\n");
 }
 
@@ -40,8 +49,10 @@ void ClearScreen()
 
 void DrawPixel(Vector2 point, uint32_t color)
 {
-	int a =point.y* GlobalFramebuffer.PixelsPerScanLine + point.x;
-	GlobalFramebuffer.FrameBuffer[a] = color;
+	size_t h = GlobalFramebuffer.Height;
+	size_t w = GlobalFramebuffer.PixelsPerScanLine;
+	size_t a =point.y* w + point.x;
+	DoubleBuffer[a] = color;
 }
 
 void DrawLine(Vector2 a, Vector2 b, uint32_t color)
@@ -102,14 +113,51 @@ void DrawCircle(Vector2 center, int radius, uint32_t color)
 	}
 }
 
-void DrawText(Vector2 start, const char* text, uint32_t color)
+void DrawText(Vector2 start, const char* text, uint32_t color) 
 {
 }
 
 void RefreshScreen()
 {
-	for (size_t i = 0;i  < GlobalFramebuffer.Height*GlobalFramebuffer.PixelsPerScanLine; i++) {
-		GlobalFramebuffer.FrameBuffer[i] = DoubleBuffer[i];
 
+	size_t pixels = GlobalFramebuffer.Height * GlobalFramebuffer.PixelsPerScanLine;
+	size_t i = 0;
+	//something aint right about this code so ill just disable it
+	//TODO: fix this code
+	if (false) {
+		// Copy 8 pixels = 32 bytes per iteratio
+		for (; i + 8 <= pixels; i += 8) {
+			__m256i data = _mm256_loadu_si256((__m256i*) & DoubleBuffer[i]);
+			_mm256_storeu_si256((__m256i*) & GlobalFramebuffer.FrameBuffer[i], data);
+
+			// Zero out backbuffer (optional if not drawing full frame)
+			_mm256_storeu_si256((__m256i*) & DoubleBuffer[i], _mm256_setzero_si256());
+		}
 	}
+
+		// Copy 4 pixels (16 bytes) at a time
+		for (; i + 4 <= pixels; i += 4) {
+			__m128i data = _mm_loadu_si128((__m128i*) & DoubleBuffer[i]);
+			_mm_storeu_si128((__m128i*) & GlobalFramebuffer.FrameBuffer[i], data);
+			_mm_storeu_si128((__m128i*) & DoubleBuffer[i], _mm_setzero_si128()); // Clear the double buffer
+		}
+
+		// Copy remaining pixels (1 by 1)
+		for (; i < pixels; i++) {
+			GlobalFramebuffer.FrameBuffer[i] = DoubleBuffer[i];
+			DoubleBuffer[i] = 0; // Clear the double buffer
+		}
+	
+
+//	size_t h = GlobalFramebuffer.Height;
+//	size_t w = GlobalFramebuffer.PixelsPerScanLine;
+//	if (screen_mod_16 == 0) {
+//		//do copying with intriniscsics
+//		for(size_t i = 0; i < h*w*sizeof(UINT32); i+=16) {
+//			_mm_storeu_si128((__m128i*) & GlobalFramebuffer.FrameBuffer[i], _mm_loadu_si128((__m128i*) & DoubleBuffer[i]));
+//			_mm_storeu_si128(&DoubleBuffer[i], _mm_setzero_si128());
+//		}
+//	}
+	//memcpy(GlobalFramebuffer.FrameBuffer, DoubleBuffer, w * h*sizeof(UINT32));
+	//memset(DoubleBuffer, 0, w * h*sizeof(UINT32));
 }
