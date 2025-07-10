@@ -187,6 +187,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GAME\SOURCE\INPUT\INPUT.c" />
+    <ClCompile Include="GAME\SOURCE\PHYSICS\PHYSICS.c" />
     <ClCompile Include="GAME\SOURCE\RENDER\RENDER.c" />
     <ClCompile Include="SOURCE\HEAP\HEAP.c" />
     <ClCompile Include="SOURCE\main.c" />
@@ -196,7 +197,9 @@
     <ClInclude Include="GAME\HEADER\INPUT\INPUT.h" />
     <ClInclude Include="GAME\HEADER\OBJECTS\BALL.h" />
     <ClInclude Include="GAME\HEADER\OBJECTS\PLAYER.h" />
+    <ClInclude Include="GAME\HEADER\PHYSICS\PHYSICS.h" />
     <ClInclude Include="GAME\HEADER\RENDER\RENDER.h" />
+    <ClInclude Include="HEADER\ANNOTATIONS.h" />
     <ClInclude Include="HEADER\GLOBALS.h" />
     <ClInclude Include="HEADER\HEAP\HEAP.h" />
   </ItemGroup>

@@ -24,6 +24,12 @@
     <ClCompile Include="GAME\SOURCE\RENDER\RENDER.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GAME\SOURCE\INPUT\INPUT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME\SOURCE\PHYSICS\PHYSICS.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\HEAP\HEAP.h">
@@ -39,6 +45,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GAME\HEADER\OBJECTS\BALL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME\HEADER\INPUT\INPUT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME\HEADER\OBJECTS\PLAYER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME\HEADER\PHYSICS\PHYSICS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\ANNOTATIONS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

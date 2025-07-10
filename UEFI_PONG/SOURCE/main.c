@@ -29,16 +29,7 @@ static CHAR16* ArchName = L"RISC-V 64-bit";
 #define MiB(x) ((UINT64)(x) << 20)
 #define GiB(x) ((UINT64)(x) << 30)
 
-unsigned __int64 intPow(unsigned __int64 base, unsigned __int64 exp) {
-	if (!exp)return 1;
-	unsigned __int64 result = base;
-	exp--;
-	while (exp) {
-		result *= base;
-		exp--;
-	}
-	return result;
-}
+
 // Tri-state status for Secure Boot: -1 = Setup, 0 = Disabled, 1 = Enabled
 INTN SecureBootStatus = 0;
 EFI_SYSTEM_TABLE* GlobalSystemTable = NULL;
@@ -130,24 +121,7 @@ BOOL WasKeyPressed() {
 
 }
 
-//EFI_INPUT_KEY GetKey() {
-//	EFI_STATUS status;
-//	EFI_INPUT_KEY key;
-//	memset(&key, 0, sizeof(key));
-//	status = ST->ConIn->ReadKeyStroke(ST->ConIn, &key);
-//	if (status == EFI_SUCCESS) {
-//		Print(key.ScanCode);
-//		Print(L"(%d)", key.UnicodeChar);
-//		return key; // A key was pressed
-//	}
-//	else if (status == EFI_NOT_READY) {
-//		return key; // No key pressed, still waiting
-//	}
-//	else {
-//		Print(L"Error reading key: %r\n", status);
-//		return key; // An error occurred
-//	}
-//}
+
 // Application entrypoint (must be set to 'efi_main' for gnu-efi crt0 compatibility)
 EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
@@ -160,7 +134,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	// The platform logo may still be displayed → remove it
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
-	EFI_STATUS Status;
+	EFI_STATUS Status = { 0 };
 	InitRender();
 	Vector2 a = { 100, 50 };
 	DrawPixel(a, 0xff0000);
@@ -183,7 +157,6 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	);
 	CreatHeap(MiB(10));
 
-	//CreateHeap(0b1000000000000000000000000000000000000000000000000000000000000000ULL, GiB(1));//crete heap at half high (addres have highest bit set) with 10 mb
 	PrintSystemInfo();
 
 
@@ -203,15 +176,10 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	Print(L" Ball position x %f, y %f \n", ball->position.x, ball->position.y);
 
 	char countr = 1;
-	while (counter) {
+	while (!WasKeyPressed()) {
 
-		//EFI_INPUT_KEY KEY={ 0 };
-		//GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &KEY);
-			//Print(L" %s has scancode %d       ", KEY.UnicodeChar, KEY.ScanCode);
-			//GlobalST->BootServices->Stall(50000);
 		ClearScreen();
-		//if (BallCollidesWithScreenBounds(ball)) Print(L"ball on edge");
-		UpdateBall(ball,0.1 );
+		UpdateBall(ball,0.1F );
 		DrawBall(ball);
 		GlobalST->BootServices->Stall(100);
 		counter++;
