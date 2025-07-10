@@ -187,6 +187,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GAME\SOURCE\INPUT\INPUT.c" />
+    <ClCompile Include="GAME\SOURCE\OBJECTS\BALL\BALL.c" />
     <ClCompile Include="GAME\SOURCE\PHYSICS\PHYSICS.c" />
     <ClCompile Include="GAME\SOURCE\RENDER\RENDER.c" />
     <ClCompile Include="SOURCE\HEAP\HEAP.c" />
@@ -202,6 +203,9 @@
     <ClInclude Include="HEADER\ANNOTATIONS.h" />
     <ClInclude Include="HEADER\GLOBALS.h" />
     <ClInclude Include="HEADER\HEAP\HEAP.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

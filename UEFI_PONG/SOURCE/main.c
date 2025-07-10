@@ -11,6 +11,7 @@
 #include "HEAP/HEAP.h"
 #include <../GAME/HEADER/RENDER/RENDER.h>
 #include <../GAME/HEADER/OBJECTS/BALL.h>
+#include <../GAME/HEADER/OBJECTS/PLAYER.h>
 
 typedef  _Bool BOOL;
 #if defined(_M_X64) || defined(__x86_64__)
@@ -136,6 +137,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	EFI_STATUS Status = { 0 };
 	InitRender();
+	InitPhysics();
 	Vector2 a = { 100, 50 };
 	DrawPixel(a, 0xff0000);
 
@@ -160,29 +162,28 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	PrintSystemInfo();
 
 
-	// Draw a white pixel at (100, 50)
-	UINTN x = 100;
-	UINTN y = 50;
-	int colour = 0;
-	int incr = 0;
-	unsigned short counter = 0;
-	counter++;
-	//ClearScreen();
+	Print(L" press any Key To Start Game");
+	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+
+	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+
+	GlobalST->BootServices->Stall(1000000);
 
 	Ball* ball = CreateBall(100, 100, 30, 10, 10);
 	if (!ball) {
 		Print(L"Ball Creation faliled");
+		return -1;
 	}
 	Print(L" Ball position x %f, y %f \n", ball->position.x, ball->position.y);
 
-	char countr = 1;
 	while (!WasKeyPressed()) {
 
 		ClearScreen();
 		UpdateBall(ball,0.1F );
+		UpdatePhysics();
 		DrawBall(ball);
 		GlobalST->BootServices->Stall(100);
-		counter++;
 	}
 
 	DestroyBall(ball);

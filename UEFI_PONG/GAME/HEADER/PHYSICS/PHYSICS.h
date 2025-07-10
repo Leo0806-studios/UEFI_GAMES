@@ -21,11 +21,11 @@ typedef void(*TrigerCallBack)(void* self, void*other);
 /// is sphere is special as it has its objPosition in the center instead of one corner.
 /// </summary>
 typedef struct {
-	Vector2 origin;
 	Vector2 extends;
 	bool isShphere;//spherer is a specia lcollider as it has its objPosition in the center instead of one corner
 	Vector2* ObjPosition;
 	TrigerCallBack TriggerCallBack;
+	bool DebugDrawCollider;
 }Collider;
 
 /// <summary>
@@ -33,14 +33,14 @@ typedef struct {
 /// will perform heap allocation.
 /// </summary>
 /// <param name="initCapacity"></param>
-void InitPhysics(size_t initCapacity);
+void InitPhysics();
 /// <summary>
 /// checks for aabb collision between the two colliders.
 /// </summary>
 /// <param name="a">non owning pointer to a</param>
 /// <param name="b">non owning pointer to b</param>
 /// <returns></returns>
-bool AABBCheck(NON_OWNING(Collider* a), NON_OWNING(Collider* b));
+bool AABBCheck(__NON_OWNING(Collider* a), __NON_OWNING(Collider* b));
 /// <summary>
 /// updates the physics engine, this will check for collisions and call the trigger callbacks if needed.
 /// </summary>
@@ -50,12 +50,11 @@ void UpdatePhysics(void);
 /// adds the collider to the physics engine, this will perform a heap allocation to store a pointer to the collider.
 /// </summary>
 /// <param name="collider"></param>
-void AddtoPhysics(NON_OWNING(Collider* collider));
+void AddtoPhysics(__NON_OWNING(Collider* collider),int slot);
 /// <summary>
 /// removes the collider from the physics engine, this will free the memory allocated for the pointer.
 /// </summary>
-/// <param name="NON_OWNING"></param>
-void RemoveFromPhysics(NON_OWNING(Collider* collider));
+void RemoveFromPhysics(int slot);
 /// <summary>
 /// shuts down the physics engine, this will free all memory allocated for the collider pointers and the physics engine itself.
 /// </summary>

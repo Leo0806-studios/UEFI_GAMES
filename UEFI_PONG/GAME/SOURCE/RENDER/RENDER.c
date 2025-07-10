@@ -4,6 +4,7 @@
 static EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
 void InitRender()
 {
+	Print(L"initializing Render...\n");
 	EFI_STATUS Status;
 	// Locate the Graphics Output Protocol
 	Status = uefi_call_wrapper(
@@ -21,6 +22,7 @@ void InitRender()
 	GlobalFramebuffer. Width = GraphicsOutput->Mode->Info->HorizontalResolution;
 	GlobalFramebuffer. Height = GraphicsOutput->Mode->Info->VerticalResolution;
 	GlobalFramebuffer. PixelsPerScanLine = GraphicsOutput->Mode->Info->PixelsPerScanLine;
+	Print(L"Render Initialized\n");
 }
 
 void ClearScreen()
