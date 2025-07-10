@@ -2,23 +2,23 @@
 #include <GLOBALS.h>
 #include <../GAME/HEADER/DATATYPES/VEC2/VEC2.h>
 #include <ANNOTATIONS.h>
+#include "../PHYSICS/PHYSICS.h"
 typedef struct {
 	Vector2 position;
 	Vector2 extends;
+	__OWNING(Collider*)collider;
 	bool player1;
 }Player;
 /// <summary>
-/// creates either player 1 or player 2 based on the boolean.
-/// returns a non owning pointer to the created player. the actual object is stored internaly
+/// Creates player entities with the specified size.
 /// </summary>
-/// <param name="Player1"></param>
-/// <returns></returns>
-__NON_OWNING(Player*)CreatePlayer(bool Player1);
+/// <param name="Size">The size to assign to each player, represented as a Vector2.</param>
+void CreatePlayers(Vector2 Size);
 /// <summary>
-/// destroys eithter player 1 or player 2 based on the boolean
+/// Destroys both players.
 /// </summary>
-/// <param name="player1"></param>
-void DestroyPlayer(bool player1);
+/// <param name=""></param>
+void DestroyPlayers(void);
 /// <summary>
 /// opdates both players.
 /// polls input, updates location etc

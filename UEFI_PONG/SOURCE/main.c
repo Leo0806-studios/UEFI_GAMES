@@ -176,15 +176,21 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		return -1;
 	}
 	Print(L" Ball position x %f, y %f \n", ball->position.x, ball->position.y);
+	CreatePlayers((Vector2) { 100, 30 });
+	Print(L"Players Created\n");
 
-	while (!WasKeyPressed()) {
 
-		ClearScreen();
-		UpdateBall(ball,0.1F );
-		UpdatePhysics();
-		DrawBall(ball);
-		GlobalST->BootServices->Stall(100);
-	}
+	PrintHeap();
+//	while (!WasKeyPressed()) {
+//
+//		ClearScreen();
+//		UpdateBall(ball,0.1F );
+//		UpdatePlayers();
+//		UpdatePhysics();
+//		DrawBall(ball);
+//		DrawPlayers();
+//		GlobalST->BootServices->Stall(100);
+//	}
 
 	DestroyBall(ball);
 	Print(L"\n%EPress any key to exit.%N\n");

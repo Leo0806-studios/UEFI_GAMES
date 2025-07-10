@@ -40,13 +40,14 @@ static HeapNode* SplittHeapNode(HeapNode* Node, size_t size) {
 		HeapNode* NewNodeSecond = ((char*)Node) + size + (sizeof(HeapNode));// + sizeof(HeapNode) to account for the size of the HeapNode itself
 		memset(NewNodeSecond, 0, sizeof(HeapNode));
 		HeapNode* NewNodeFirst = Node;
+		size_t OldSize = Node->size;
 		NewNodeFirst->size = size;
 		NewNodeFirst->next = NewNodeSecond;
 		NewNodeFirst->isFree = TRUE;// actual setting will be done in alloc
 		NewNodeFirst->data = NULLPTR;
 
 
-		NewNodeSecond->size = Node->size - size - sizeof(HeapNode);
+		NewNodeSecond->size = OldSize - size - sizeof(HeapNode);
 		NewNodeSecond->next = NULLPTR;//in this special cas this will allways be the last node
 		NewNodeSecond->prev = NewNodeFirst;
 		NewNodeSecond->isFree = TRUE;
@@ -165,5 +166,38 @@ void DeAlloc(void* ptr)
 		node = MergeNodes(node, node->next);
 	}
 
+
+}
+static void PrintHeapNode(HeapNode* node)
+{
+	if (node == NULLPTR) {
+		Print(L"NULLPTR\n");
+		return;
+	}
+	Print(L"Node at %p: size=%d, isFree=%d, data=%p, next=%p, prev=%p\n", node, node->size, node->isFree, node->data, node->next, node->prev);
+}
+static void PrintHeapNodes(HeapNode* node)
+{
+	if (node == NULLPTR) {
+		Print(L"NULLPTR\n");
+		return;
+	}
+	while (node != NULLPTR) {
+		PrintHeapNode(node);
+		node = node->next;
+	}
+}
+void PrintHeap(void)
+{
+	
+	Print(L"================================================================\n");
+	Print(L"|| HEAP DEBUG PRINT                                           ||\n");
+	Print(L" Currently Allocated Size: %d bytes\n", heap.usedSize);
+	Print(L" Total Heap Size: %d bytes\n", heap.totalSize);
+	Print(L" Head Node: %p\n", heap.head);
+	Print(L" Tail Node: %p\n", heap.tail);
+	Print(L"================================================================\n");
+	PrintHeapNodes(heap.head);
+	Print(L"================================================================\n");
 
 }

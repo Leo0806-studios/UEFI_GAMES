@@ -30,6 +30,12 @@
     <ClCompile Include="GAME\SOURCE\PHYSICS\PHYSICS.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GAME\SOURCE\OBJECTS\BALL\BALL.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME\SOURCE\OBJECTS\PLAYER\PLAYER.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\HEAP\HEAP.h">
@@ -59,5 +65,8 @@
     <ClInclude Include="HEADER\ANNOTATIONS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

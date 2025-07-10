@@ -188,6 +188,7 @@
   <ItemGroup>
     <ClCompile Include="GAME\SOURCE\INPUT\INPUT.c" />
     <ClCompile Include="GAME\SOURCE\OBJECTS\BALL\BALL.c" />
+    <ClCompile Include="GAME\SOURCE\OBJECTS\PLAYER\PLAYER.c" />
     <ClCompile Include="GAME\SOURCE\PHYSICS\PHYSICS.c" />
     <ClCompile Include="GAME\SOURCE\RENDER\RENDER.c" />
     <ClCompile Include="SOURCE\HEAP\HEAP.c" />
