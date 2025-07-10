@@ -7,6 +7,7 @@ void BallColliderCallBack(void* self, void* other) {
 }
 Ball* CreateBall(float x, float y, int radius, int vx, int vy) {
 	Ball* ball = (Ball*)Alloc(sizeof(Ball));
+	//PrintHeap();
 	if (ball == NULL) {
 		return NULL; // Handle memory allocation failure
 	}

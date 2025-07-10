@@ -25,6 +25,8 @@ void* CreatHeap(size_t size)
 	heap.totalSize = size;
 	heap.usedSize = 0;
 	Print(L"Heap created at %p with size %d\n", BaseNode, size);
+	PrintHeap();
+
 	return BaseNode;
 }
 /// <summary>
@@ -59,11 +61,12 @@ static HeapNode* SplittHeapNode(HeapNode* Node, size_t size) {
 	}
 
 	HeapNode* NewNodeFirst = Node;
-	NewNodeFirst->size = size;
+	size_t oldSize = NewNodeFirst->size;
 
+	NewNodeFirst->size = size;
 	//get the split point and asign it to the new node
 	HeapNode* NewNodeSecond = ((char*)Node) + size + sizeof(HeapNode);// + sizeof(HeapNode) to account for the size of the HeapNode itself
-	NewNodeSecond->size = Node->size - size - sizeof(HeapNode);
+	NewNodeSecond->size = oldSize - size - sizeof(HeapNode);
 	NewNodeSecond->prev = NewNodeFirst;
 	if (NewNodeFirst->next == NULLPTR) {
 		// this is the last node in the heap
@@ -74,6 +77,8 @@ static HeapNode* SplittHeapNode(HeapNode* Node, size_t size) {
 		NewNodeSecond->next = NewNodeFirst->next;
 	}
 	NewNodeFirst->next = NewNodeSecond;
+	NewNodeSecond->isFree = TRUE;
+
 	return NewNodeFirst;
 }
 
@@ -95,6 +100,7 @@ static HeapNode* MergeNodes(HeapNode* Node1, HeapNode* Node2) {
 }
 void* Alloc(size_t size)
 {
+
 	HeapNode* HeapBase = heap.head;
 	if (HeapBase == NULLPTR) {
 		Print(L"Heap not initialized\n");
@@ -119,6 +125,7 @@ void* Alloc(size_t size)
 				current->isFree = FALSE;
 				current->data = ((char*)current) + sizeof(HeapNode); // point to the data area
 				heap.usedSize += size + sizeof(HeapNode);
+				
 				return current->data;
 			}
 			else {
@@ -127,6 +134,7 @@ void* Alloc(size_t size)
 				NewNode->isFree = FALSE;
 				NewNode->data = ((char*)NewNode) + sizeof(HeapNode); // point to the data area
 				heap.usedSize += size + sizeof(HeapNode);
+				
 				return NewNode->data;
 
 			}
@@ -139,6 +147,7 @@ void* Alloc(size_t size)
 		}
 		current = current->next;
 	}
+	
 }
 
 void DeAlloc(void* ptr)
@@ -166,6 +175,7 @@ void DeAlloc(void* ptr)
 		node = MergeNodes(node, node->next);
 	}
 
+	PrintHeap();
 
 }
 static void PrintHeapNode(HeapNode* node)

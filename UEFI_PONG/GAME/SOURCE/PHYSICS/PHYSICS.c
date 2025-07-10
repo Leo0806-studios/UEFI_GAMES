@@ -67,24 +67,21 @@ void UpdatePhysics(void)
         Print(L" at least on of the elements in physics slots is null 0: %d 1: %d 2: %d", Colliders[0], Colliders[1], Colliders[2]);
         return;
     }
-
     //assume that 1 and 2 are the padels. they will never interact. so i will only need to ckeck if 1&3 collide and 2&3
 
 
     //1&3 check
-
     if (AABBCheck(Colliders[0], Colliders[2])) {
         Colliders[0]->TriggerCallBack(Colliders[0], Colliders[2]);
         Colliders[2]->TriggerCallBack(Colliders[2], Colliders[0]);
     }
 
-
     //2&3 check
-
     if (AABBCheck(Colliders[1], Colliders[2])) {
         Colliders[1]->TriggerCallBack(Colliders[1], Colliders[2]);
         Colliders[2]->TriggerCallBack(Colliders[2], Colliders[1]);
     }
+
 }
 
 void AddtoPhysics(Collider* collider,int slot)

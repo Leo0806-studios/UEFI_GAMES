@@ -169,28 +169,31 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
 
 	GlobalST->BootServices->Stall(1000000);
+	PrintHeap();
 
 	Ball* ball = CreateBall(100, 100, 30, 10, 10);
+	PrintHeap();
+
 	if (!ball) {
 		Print(L"Ball Creation faliled");
 		return -1;
 	}
 	Print(L" Ball position x %f, y %f \n", ball->position.x, ball->position.y);
-	CreatePlayers((Vector2) { 100, 30 });
+	CreatePlayers((Vector2) { 30, 400 });
 	Print(L"Players Created\n");
 
 
-	PrintHeap();
-//	while (!WasKeyPressed()) {
-//
-//		ClearScreen();
-//		UpdateBall(ball,0.1F );
-//		UpdatePlayers();
-//		UpdatePhysics();
-//		DrawBall(ball);
-//		DrawPlayers();
-//		GlobalST->BootServices->Stall(100);
-//	}
+	//PrintHeap();
+	while (!WasKeyPressed()) {
+
+		ClearScreen();
+		UpdateBall(ball,0.1F );
+	//	UpdatePlayers();
+		UpdatePhysics();
+		DrawBall(ball);
+		DrawPlayers();
+		GlobalST->BootServices->Stall(100);
+	}
 
 	DestroyBall(ball);
 	Print(L"\n%EPress any key to exit.%N\n");

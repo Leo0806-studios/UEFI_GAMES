@@ -3,6 +3,10 @@
 #include "../../../HEADER/RENDER/RENDER.h"
 #include <gnu-efi/inc/efilib.h>
 Player* Players[2] = { 0 };
+
+static void PlayerCallback(void* this, void* other) {
+
+}
 /// <summary>
 /// Creates and initializes a new Player object with the specified size and position.
 /// </summary>
@@ -17,6 +21,7 @@ static  __OWNING(Player*)CreatePlayer1(Vector2 size, Vector2 position,int player
 	player->collider = Alloc(sizeof(Collider));
 	player->collider->ObjPosition = &player->position;
 	player->collider->extends = size;
+	player->collider->TriggerCallBack = PlayerCallback;
 	AddtoPhysics(player->collider, playerslot);
 	return player;
 }
@@ -24,8 +29,8 @@ void  CreatePlayers(Vector2 size)
 {
 	if(Players[0]==nullptr && Players[1] == nullptr)
 	{
-		Players[0] = CreatePlayer1(size, (Vector2){ 100, 100 },0);
-		Players[1] = CreatePlayer1(size, (Vector2){ 200, 100 },1);
+		Players[0] = CreatePlayer1(size, (Vector2){ GlobalFramebuffer.Width-100, 100 },1);
+		Players[1] = CreatePlayer1(size, (Vector2){ 100, 100 },2);
 	}
 	else
 	{
