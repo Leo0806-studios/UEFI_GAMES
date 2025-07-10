@@ -2,6 +2,7 @@
 #include <gnu-efi/inc/efilib.h>
 #include <../GAME/HEADER/PHYSICS/PHYSICS.h>
 #include <../HEADER/HEAP/HEAP.h>
+#include "../../HEADER/RENDER/RENDER.h"
 static Collider* Colliders[3] = { 0 };
 //handles special sphere case where we first need to calculate te corner from the obj position
 // as the extends are not half extends we can just use the obj position as min
@@ -58,7 +59,26 @@ bool AABBCheck(Collider* a, Collider* b)
     return x_overlap && y_overlap;
 }
 
+void DrawDebugColliders() {
+    if (Colliders[0]->DebugDrawCollider) {
+        DrawRectangle(*Colliders[0]->ObjPosition, Colliders[0]->extends.x-1, Colliders[0]->extends.y-1, 0xff0000);
+    }
+    if (Colliders[1]->DebugDrawCollider) {
+        DrawRectangle(*Colliders[1]->ObjPosition, Colliders[1]->extends.x-1, Colliders[1]->extends.y-1, 0xff0000);
 
+
+    }
+    if (Colliders[2]->DebugDrawCollider) {
+
+        Vector2 ActualPos = AddVector2(
+            *Colliders[2]->ObjPosition,
+            ScaleVector2(Colliders[2]->extends, -0.5)
+        );
+        DrawRectangle(ActualPos, Colliders[2]->extends.x, Colliders[2]->extends.y, 0xff0000);
+
+
+    }
+}
 void UpdatePhysics(void)
 {
     if ((Colliders[0] == NULLPTR) ||
@@ -67,7 +87,12 @@ void UpdatePhysics(void)
         Print(L" at least on of the elements in physics slots is null 0: %d 1: %d 2: %d", Colliders[0], Colliders[1], Colliders[2]);
         return;
     }
+
+
+    //draws debug colliders on objects that have it enabled
+    DrawDebugColliders();
     //assume that 1 and 2 are the padels. they will never interact. so i will only need to ckeck if 1&3 collide and 2&3
+
 
 
     //1&3 check

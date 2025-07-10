@@ -12,6 +12,7 @@
 #include <../GAME/HEADER/RENDER/RENDER.h>
 #include <../GAME/HEADER/OBJECTS/BALL.h>
 #include <../GAME/HEADER/OBJECTS/PLAYER.h>
+#include "../GAME/HEADER/INPUT/INPUT.h"
 
 typedef  _Bool BOOL;
 #if defined(_M_X64) || defined(__x86_64__)
@@ -182,13 +183,13 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	CreatePlayers((Vector2) { 30, 400 });
 	Print(L"Players Created\n");
 
-
+	bool dontExit = true;
 	//PrintHeap();
-	while (!WasKeyPressed()) {
-
+	while (dontExit) {
+		if (GetKey(SCAN_ESC, 1)) { dontExit = false; }
 		ClearScreen();
 		UpdateBall(ball,0.1F );
-	//	UpdatePlayers();
+	UpdatePlayers();
 		UpdatePhysics();
 		DrawBall(ball);
 		DrawPlayers();

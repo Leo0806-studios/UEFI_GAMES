@@ -26,6 +26,7 @@ typedef struct {
 	Vector2* ObjPosition;
 	TrigerCallBack TriggerCallBack;
 	bool DebugDrawCollider;
+	void* object;
 }Collider;
 
 /// <summary>

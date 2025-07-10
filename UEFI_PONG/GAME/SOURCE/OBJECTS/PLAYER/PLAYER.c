@@ -2,6 +2,7 @@
 #include "../../../../HEADER/HEAP/HEAP.h"
 #include "../../../HEADER/RENDER/RENDER.h"
 #include <gnu-efi/inc/efilib.h>
+#include "../../../HEADER/INPUT/INPUT.h"
 Player* Players[2] = { 0 };
 
 static void PlayerCallback(void* this, void* other) {
@@ -22,6 +23,8 @@ static  __OWNING(Player*)CreatePlayer1(Vector2 size, Vector2 position,int player
 	player->collider->ObjPosition = &player->position;
 	player->collider->extends = size;
 	player->collider->TriggerCallBack = PlayerCallback;
+	player->collider->DebugDrawCollider = true;
+	player->collider->object = player;
 	AddtoPhysics(player->collider, playerslot);
 	return player;
 }
@@ -45,6 +48,33 @@ void DestroyPlayers(void)
 
 void UpdatePlayers()
 {
+	Print(L"\n Updating Players\n");
+	//check if both exist
+	if (Players[0] == NULLPTR || Players[1] == NULLPTR) {
+		Print(L"A Playyer is null. 0: %d , 0: %d", Players[0], Players[1]);
+
+		return;
+	}
+	//update both players.
+//forn now il just update player1
+	EFI_INPUT_KEY Key;
+	GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key);
+	switch (Key.ScanCode) {
+	case SCAN_UP: {
+		Players[0]->position.y += 20;
+
+		break;
+	}
+	case SCAN_DOWN: {
+		Players[0]->position.y -= 20;
+
+		break;
+	}
+	default: {
+		break;
+	}
+	}
+
 }
 
 void DrawPlayers()

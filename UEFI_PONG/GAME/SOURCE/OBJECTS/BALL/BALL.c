@@ -2,8 +2,23 @@
 #include <gnu-efi/inc/efilib.h>
 #include "../../../../HEADER/HEAP/HEAP.h"
 #include "../../../HEADER/PHYSICS/PHYSICS.h"
+
 void BallColliderCallBack(void* self, void* other) {
 	Print(L" collision betwen self %d and other %d \n", self, other);
+	Ball* ball = ((Ball*)((Collider*)self)->object);
+	Collider* othercol = (Collider*)other;
+	Vector2 Normal = { 0 };
+	if (othercol->ObjPosition->x > (GlobalFramebuffer.Width / 2)) {
+		Normal.x = 1;
+		Normal.y = 0;
+
+	}
+	else {
+		Normal.x = -1;
+		Normal.y = 0;
+	}
+	ReflectBall(ball, Normal);
+
 }
 Ball* CreateBall(float x, float y, int radius, int vx, int vy) {
 	Ball* ball = (Ball*)Alloc(sizeof(Ball));
@@ -23,6 +38,7 @@ Ball* CreateBall(float x, float y, int radius, int vx, int vy) {
 	Vector2 extends = { 2 * radius,2 * radius };
 	ball->collider->extends = extends;
 	ball->collider->TriggerCallBack = BallColliderCallBack;
+	ball->collider->object = ball;
 	AddtoPhysics(ball->collider, 3);
 	Print(L"Created Ball at x: %f, Y: %f, with size: %d and vvelocity vx: %f, vy: %f \n", ball->position.x, ball->position.y, ball->radius, ball->velocity.x, ball->velocity.y);
 
