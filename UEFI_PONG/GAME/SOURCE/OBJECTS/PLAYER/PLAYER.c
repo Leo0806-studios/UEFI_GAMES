@@ -62,7 +62,7 @@ void UpdatePlayers()
 	EFI_INPUT_KEY Key;
 	GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key);
 	switch (Key.ScanCode) {
-	case SCAN_UP: {
+	case SCAN_LEFT: {
 		if ((Players[0]->position.y - 20) <= 0) {
 			Players[0]->position.y =1;
 			break;

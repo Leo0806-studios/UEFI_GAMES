@@ -17,6 +17,7 @@
 #include <../GAME/HEADER/OBJECTS/BALL.h>
 #include <../GAME/HEADER/OBJECTS/PLAYER.h>
 #include "../GAME/HEADER/INPUT/INPUT.h"
+#include "../HEADER/RNG/RNG.h"
 
 typedef  _Bool BOOL;
 #if defined(_M_X64) || defined(__x86_64__)
@@ -150,6 +151,15 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	InitRender();
 	InitPhysics();
+	InitRNG(80085);
+	//test RNG
+	Print(L"RNG Test uint64: %d\n" ,GetRandomUint());
+	Print(L"RNG Test int: %d\n", GetRandomInt());
+	Print(L"RNG Test float: %f\n", GetRandomFloat());
+	Print(L"RNG Test double: %f\n", GetRandomDouble());
+	Print(L"RNG Test int range: %d\n", GetRandomIntRange(10, 100));
+	Print(L"RNG Test float range: %f\n", GetRandomFloatRange(10.0f, 100.0f));
+	Print(L"RNG Test double range: %f\n", GetRandomDoubleRange(10.0, 100.0));
 	Vector2 a = { 100, 50 };
 	DrawPixel(a, 0xff0000);
 

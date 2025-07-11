@@ -5,6 +5,7 @@
 #include "../../../../HEADER/HEAP/HEAP.h"
 #include "../../../HEADER/PHYSICS/PHYSICS.h"
 #include "../../../HEADER/OBJECTS/PLAYER.h"
+#include "../../../../HEADER/RNG/RNG.h"
 void BallColliderCallBack(void* self, void* other) {
 	Print(L" collision betwen self %d and other %d \n", self, other);
 	Ball* ball = ((Ball*)((Collider*)self)->object);
@@ -83,10 +84,16 @@ bool BallCollidesWithScreenBounds(Ball* ball) {
 	if (ball == NULL) {
 		return; // Handle null pointer
 	}
+	//add rng to the reflected angle 
+	
+
+
 	// Reflect the ball's velocity based on the normal vector
 	float dotProduct = ball->velocity.x * normal.x + ball->velocity.y * normal.y;
 	ball->velocity.x -= 2 * dotProduct * normal.x;
 	ball->velocity.y -= 2 * dotProduct * normal.y;
+	///scales ball velocity to be higher after each bounce
+
 }
 
  void UpdateBall(Ball* ball, float deltaTime) {

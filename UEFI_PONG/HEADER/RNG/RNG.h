@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-void InitializeRNG();
+void InitRNG(UINT32 seed);
 void ShutdownRNG();
 size_t GetRandomUint();
 size_t GetRandomUintRange(size_t min, size_t max);
