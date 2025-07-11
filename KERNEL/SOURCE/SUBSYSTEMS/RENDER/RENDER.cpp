@@ -1,0 +1,557 @@
+#include "../../../HEADER/SUBSYSTEMS/RENDER/RENDER.h"
+namespace SYSTEM::SUBSYSTEMS::RENDER {
+	namespace SIMPLE {
+		unsigned int* FramebufferBase = nullptr;
+		unsigned int FramebufferWidth = 0;
+		unsigned int FramebufferHeight = 0;
+		unsigned int PixelsPerScanline = 0; // Number of bytes per row in the framebuffer
+
+		SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR SimpleFont[255] = {
+			{
+				 0, // Null character
+				0, // No width
+				8, // Height of the character
+				 0xFFFFFFFF, // White color
+				 {0}
+
+
+			},
+			{
+				 'A', // Character 'A'
+				 8, // Width of the character
+				 8, // Height of the character
+				 0xFFFFFFFF, // White color
+			{
+				0b00000000,
+				0b00011000, // 0x18
+				0b00100100, // 0x24
+				0b00111100, // 0x3C
+				0b01000010, // 0x42
+				0b01000010, // 0x42
+				0b01000010, // 0x42
+				0b00000000, // 0x00
+				}
+			},
+			{
+				'B',
+				8,
+				8,
+				0xFFFFFFFF,
+				{
+				0b00000000, // 0x00
+				0b01111100, // 
+				0b01000010, // 0x42
+				0b01000010, // 0x42
+				0b01111110, // 
+				0b01000010, // 0x42
+				0b01111100, // 0x3C
+				0b00000000 // 0x00
+				}
+
+			},
+			{
+				.c = 'C',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b00111100, // 0x3C
+				0b01000010, // 0x42
+				0b01000000, // 0x40
+				0b01000000, // 0x40
+				0b01000010, // 0x42
+				0b00111100, // 0x3C
+				0b00000000 // 0x00
+				}
+			},
+			{
+				.c ='D',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b01111000, // 0x78
+				0b01000100, // 0x44
+				0b01000010, // 0x42
+				0b01000010, // 0x42
+				0b01000100, // 0x44
+				0b01111000, // 0x78
+				0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'E',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b01111110, // 0x7E
+				0b01000000, // 0x40
+				0b01000000, // 0x40
+				0b01111100, // 0x3C
+				0b01000000, // 0x40
+				0b01111110, // 0x7E
+				0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'F',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b01111110, // 0x7E
+				0b01000000, // 0x40
+				0b01000000, // 0x40
+				0b01111100, // 0x3C
+				0b01000000, // 0x40
+				0b01000000, // 0x40
+				0b00000000 // 0x00
+				}
+},
+{
+	.c = 'G',
+	.width = 8,
+		.height = 8,
+		.Color = 0xFFFFFFFF,
+		.BMP = {
+			0b00000000, // 0x00
+			0b00111100, // 0x3C
+			0b01000010, // 0x42
+			0b01000000, // 0x40
+			0b01001110, // 0x4E
+			0b01000010, // 0x42
+			0b00111100, // 0x3C
+			0b00000000 // 0x00
+}
+},
+			{
+				.c = 'H',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b01000010, // 0x42
+				0b01000010, // 0x42
+				0b01111110, // 0x7E
+				0b01000010, // 0x42
+				0b01000010, // 0x42
+				0b00000000, // 0x00
+				0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'I',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b00111100, // 0x3C
+				0b00011000, // 0x18
+				0b00011000, // 0x18
+				0b00011000, // 0x3C
+				0b00011000, // 0x18
+				0b00111100, // 0x3C
+				0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'J',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b00001110, // 0x0E
+				0b00000100, // 0x04
+				0b00000100, // 0x04
+				0b01000100, // 0x44
+				0b01000100, // 0x44
+				0b00111000, // 0x38
+				0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'K',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+				0b00000000, // 0x00
+				0b01000010, // 0x42
+				0b01000100, // 0x44
+				0b01011000, // 0x58
+				0b01110000, // 0x70
+				0b01000100, // 0x44
+				0b01000010, // 0x42
+				0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'L',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01000000, // 0x40
+					0b01000000, // 0x40
+					0b01000000, // 0x40
+					0b01000000, // 0x40
+					0b01000000, // 0x40
+					0b01111110, // 0x7E
+					0b00000000 // 0x00
+					}
+			},
+			{
+				.c = 'M',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01000010, // 0x42
+					0b01100110, // 0x66
+					0b01011010, // 0x5A
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b00000000, // 0x00
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'N',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01000010, // 0x42
+					0b01100010, // 0x66
+					0b01011010, // 0x5A
+					0b01000110, // 0x44
+					0b01000010, // 0x42
+					0b00000000, // 0x00
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'O',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b00111100, // 0x3C
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01000010, // 0x3C
+					0b00111100, // 0x00
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'P',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01111100, // 0x3C
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01111100, // 0x3C
+					0b01000000, // 0x40
+					0b01000000, // 0x40
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'Q',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b00111100, // 0x3C
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01011010, // 0x4E
+					0b01001110, // 0x42
+					0b00111111, // 0x3C
+					0b00000001 // 0x00
+				}
+			},
+			{
+				.c = 'R',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01111100, // 0x3C
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01111100, // 0x3C
+					0b01000100, // 0x44
+					0b01000010, // 0x42
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'S',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b00111100, // 0x3C
+					0b01000010, // 0x42
+					0b00111100, // 0x3C
+					0b00001110, // 0x1E
+					0b01000010, // 0x42
+					0b00111100, // 0x3C
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'T',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01111110, // 0x7E
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00000000 // 0x00
+					 }
+			},
+			{
+				.c = 'U',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b00111100, // 0x3C
+					0b00000000 // 0x00
+					}
+			},
+			{
+.c = 'V',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b00100100, // 0x24
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'W',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000,
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01000010, // 0x42
+					0b01011010, // 0x5A
+					0b01100110, // 0x66
+					0b00000000, // 0x00
+					0b00000000 // 0x00
+				}
+			},
+			{
+				.c = 'X',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01000010, // 0x42
+					0b00100100, // 0x24
+					0b00011000, // 0x18
+					0b00100100, // 0x24
+					0b01000010, // 0x42
+					0b00000000, // 0x00
+					0b00000000 // 0x00
+					}
+			},
+			{
+				.c = 'Y',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01000010, // 0x42
+					0b00100100, // 0x24
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00011000, // 0x18
+					0b00000000 // 0x00
+					}
+			},
+			{
+				.c = 'Z',
+				.width = 8,
+				.height = 8,
+				.Color = 0xFFFFFFFF,
+				.BMP = {
+					0b00000000, // 0x00
+					0b01111110, // 0x7E
+					0b00000100, // 0x04
+					0b00001000, // 0x08
+					0b00010000, // 0x10
+					0b00100000, // 0x20
+					0b01111110, // 0x7E
+					0b00000000 // 0x00
+				}
+			}
+
+
+		};
+
+
+		int TranslationTable[256] = { 
+			0,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			-1,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23,
+			24,
+			25,
+			26
+		};
+		void SimpleDrawChar(unsigned int x, unsigned int y, char c)
+		{
+			//find char in translation table
+			int index = TranslationTable[(unsigned char)c];
+			if (index < 0 || index >= 255) return; // Invalid character index
+			const SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR& character = SimpleFont[index];
+			// Draw the character bitmap to the framebuffer
+			for (unsigned int row = 0; row < character.height; ++row) {
+				for (unsigned int col = 0; col < character.width; ++col) {
+					if (character.BMP[row] & (1 << (character.width - 1 - col))) { // Check if the bit is set
+						unsigned int pixelX = x + col;
+						unsigned int pixelY = y + row;
+						if (pixelX < FramebufferWidth && pixelY < FramebufferHeight) { // Ensure within bounds
+							FramebufferBase[pixelY * PixelsPerScanline + pixelX] = character.Color; // Set pixel color
+						}
+					}
+				}
+			}
+
+		}
+	}
+}
+
+

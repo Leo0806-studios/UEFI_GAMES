@@ -121,6 +121,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <DisableSpecificWarnings>5045;4464;4820</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -152,6 +153,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <DisableSpecificWarnings>5045;4464;4820</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -170,6 +172,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MAIN.cpp" />
+    <ClCompile Include="SOURCE\DRIVERS\PCI\PCI.cpp" />
+    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h" />
+    <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -18,5 +18,19 @@
     <ClCompile Include="MAIN.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\DRIVERS\PCI\PCI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
