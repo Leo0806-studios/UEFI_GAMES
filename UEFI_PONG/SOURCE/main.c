@@ -188,7 +188,6 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	Ball* ball = CreateBall(200, 100, 30, 10, 10);
 	PrintHeap();
-
 	if (!ball) {
 		Print(L"Ball Creation faliled");
 		return -1;
@@ -196,13 +195,12 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	Print(L" Ball position x %f, y %f \n", ball->position.x, ball->position.y);
 	CreatePlayers((Vector2) { 30, 400 });
 	Print(L"Players Created\n");
-
 	bool dontExit = true;
 	//PrintHeap();
 	while (dontExit) {
 		if (GetKey(SCAN_ESC, 1)) { dontExit = false; }
 		ClearScreen();
-		UpdateBall(ball,0.1f);
+		UpdateBall(ball,0.5f);
 	UpdatePlayers();
 		UpdatePhysics();
 		DrawBall(ball);
