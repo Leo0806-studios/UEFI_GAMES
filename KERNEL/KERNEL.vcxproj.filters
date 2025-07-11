@@ -32,5 +32,8 @@
     <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADER\STARTUP\GDT\GDT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

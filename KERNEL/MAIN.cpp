@@ -4,6 +4,25 @@ extern"C" {
 #include <gnu-efi/inc/efilib.h>
 }
 #include "HEADER/SUBSYSTEMS/RENDER/RENDER.h"
+#include <intrin.h>
+uint32_t get_cpu_base_freq_mhz() {
+	int cpuInfo[4];
+	__cpuid(cpuInfo, 0x16);
+
+	if (cpuInfo[0] == 0) {
+		return 0; // Unsupported
+	}
+
+	return static_cast<unsigned int>(cpuInfo[0]);  // EAX = Base frequency in MHz
+}
+void stall_us(uint64_t microseconds, uint64_t cpu_mhz) {
+	uint64_t start = __rdtsc();
+	uint64_t ticks = microseconds * cpu_mhz;
+
+	while ((__rdtsc() - start) < ticks) {
+		_mm_pause(); // hint to CPU: spin-wait loop
+	}
+}
 extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
@@ -74,11 +93,17 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(170,100, 'O');
 	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(180,100, 'R');
 	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(190,100, 'L');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(200,100 , 'D');
-	
-	while (true) {
+	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(200,100 ,'D');
 
+
+	size_t freq = 0;
+	freq = get_cpu_base_freq_mhz();
+	if (freq == 0) {
+		//set to fallback 3,6ghz
+		freq = 3600;
 	}
+	stall_us(10000000, freq);
+
 
 	SystemTable->RuntimeServices->ResetSystem(EfiResetShutdown, EFI_SUCCESS, 0, NULL);
 	return EFI_SUCCESS;
