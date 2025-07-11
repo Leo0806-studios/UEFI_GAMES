@@ -264,9 +264,38 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 	}
 	Print(L"Kernel Image Handle: %p\n", KernelImage);
-	Print(L"transferring control to KERNEL.exe\n");
-	status = uefi_call_wrapper(BS->StartImage, 3, KernelImage, NULL, NULL);
+	GlobalST->BootServices->Stall(1000000);
+	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+
+	Print(L"Do you want to play pong or boot the os? f1 for pong, f2 for os\n");
+	EFI_INPUT_KEY Key;
+	while (true) {
+		GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key);
+		if (Key.ScanCode == SCAN_F1) {
+			Print(L"Starting Pong\n");
+			goto Pong;
+			break;
+		}
+		else if (Key.ScanCode == SCAN_F2) {
+			Print(L"Starting OS\n");
+			Print(L"transferring control to KERNEL.exe\n");
+
+
+			goto OS;
+		}
+		else {
+			//Print(L"Invalid key, press F1 for pong or F2 for os\n");
+		}
+	}
+	if (false) {
+		OS:
+		status = uefi_call_wrapper(BS->StartImage, 3, KernelImage, NULL, NULL);
+
+	}
+
 	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	
+	Pong:
 
 	//EFI_FILE_IO_INTERFACE* FileSystem;
 	//EFI_FILE_HANDLE RootFS, KernelFile;
