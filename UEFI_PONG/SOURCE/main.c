@@ -147,6 +147,171 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	// The platform logo may still be displayed → remove it
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	EFI_STATUS Status = { 0 };
+
+
+
+
+
+
+
+
+//	EFI_HANDLE* fsHandles;
+//	UINTN fsHandleCount;
+//	EFI_FILE_IO_INTERFACE* FileSystem;
+//	EFI_FILE_HANDLE RootDir;
+//
+//	EFI_STATUS status = uefi_call_wrapper(BS->LocateHandleBuffer, 5,
+//		ByProtocol,
+//		&gEfiSimpleFileSystemProtocolGuid,
+//		NULL,
+//		&fsHandleCount,
+//		&fsHandles);
+//
+//	if (EFI_ERROR(status)) {
+//		Print(L"Unable to find any file system handles.\n");
+//		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+//		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+//	}
+//
+//	// Just pick the first one for now (or loop if needed)
+//	status = uefi_call_wrapper(BS->HandleProtocol, 3,
+//		fsHandles[0],
+//		&gEfiSimpleFileSystemProtocolGuid,
+//		(void**)&FileSystem);
+//
+//	if (EFI_ERROR(status)) {
+//		Print(L"HandleProtocol failed\n");
+//		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+//		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+//	}
+//
+//	status = uefi_call_wrapper(FileSystem->OpenVolume, 2, FileSystem, &RootDir);
+//
+//	if (EFI_ERROR(status)) {
+//		Print(L"Failed to open volume.\n");
+//		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+//		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+//	}
+
+
+
+	EFI_LOADED_IMAGE* LoadedImage;
+
+	EFI_STATUS status = uefi_call_wrapper(BS->HandleProtocol, 3,
+		ImageHandle,
+		&gEfiLoadedImageProtocolGuid,
+		(void**)&LoadedImage);
+
+	if (EFI_ERROR(status)) {
+		Print(L"Failed to get LoadedImageProtocol\n");
+		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	}
+	Print(L"Loaded Image Protocol: %p\n", LoadedImage);
+
+	EFI_FILE_IO_INTERFACE* FileSystem;
+
+	status = uefi_call_wrapper(BS->HandleProtocol, 3,
+		LoadedImage->DeviceHandle,
+		&gEfiSimpleFileSystemProtocolGuid,
+		(void**)&FileSystem);
+
+	if (EFI_ERROR(status)) {
+		Print(L"Failed to get FileSystem from boot device\n");
+		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	}
+	Print(L"FileSystem Protocol: %p\n", FileSystem);
+
+	EFI_FILE_HANDLE Root, CurrentDir;
+
+	// Open volume
+	status = uefi_call_wrapper(FileSystem->OpenVolume, 2, FileSystem, &Root);
+	if (EFI_ERROR(status)) {
+		Print(L"Failed to open volume\n");
+		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	}
+	Print(L"Root Directory: %p\n", Root);
+	EFI_FILE_HANDLE KernelFile;
+
+	status = uefi_call_wrapper(Root->Open, 5, Root, &CurrentDir,
+		L"efi\\boot", EFI_FILE_MODE_READ, 0);
+	if (EFI_ERROR(status)) {
+		Print(L"Failed to open EFI\\BOOT\n");
+		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	}
+	Print(L"Current Directory: %p\n", CurrentDir);
+	status = uefi_call_wrapper(CurrentDir->Open, 5, CurrentDir, &KernelFile,
+		L"KERNEL.exe", EFI_FILE_MODE_READ, 0);
+	if (EFI_ERROR(status)) {
+		Print(L"KERNEL.exe not found\n");
+		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	}
+	Print(L"Kernel File: %p\n", KernelFile);
+	EFI_DEVICE_PATH* KernelPath;
+	KernelPath = FileDevicePath(LoadedImage->DeviceHandle, L"EFI\\BOOT\\KERNEL.exe");
+
+	EFI_HANDLE KernelImage;
+	status = uefi_call_wrapper(BS->LoadImage, 6, FALSE, ImageHandle,
+		KernelPath, NULL, 0, &KernelImage);
+
+	if (EFI_ERROR(status)) {
+		Print(L"Failed to load KERNEL.exe\n");
+		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	}
+	Print(L"Kernel Image Handle: %p\n", KernelImage);
+	Print(L"transferring control to KERNEL.exe\n");
+	status = uefi_call_wrapper(BS->StartImage, 3, KernelImage, NULL, NULL);
+	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+
+	//EFI_FILE_IO_INTERFACE* FileSystem;
+	//EFI_FILE_HANDLE RootFS, KernelFile;
+
+	// Get file system protocol
+	//Status =uefi_call_wrapper(BS->HandleProtocol, 3,
+	//	ImageHandle,
+	//	&gEfiSimpleFileSystemProtocolGuid,
+	//	(void**)&FileSystem);
+	//if (EFI_ERROR(Status)) {
+	//	Print(L"%EError: Could not get file system protocol: %r%N\n", Status);
+	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	//}
+	//Status = uefi_call_wrapper(FileSystem->OpenVolume, 2, FileSystem, &RootFS);
+	//if (EFI_ERROR(Status)) {
+	//	Print(L"%EError: Could not open root file system: %r%N\n", Status);
+	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	//}
+	//Status = uefi_call_wrapper(RootFS->Open, 5, RootFS, &KernelFile,
+	//	L"KERNEL.exe", EFI_FILE_MODE_READ, 0);
+	//if( EFI_ERROR(Status)) {
+	//	Print(L"%EError: Could not open kernel file: %r%N\n", Status);
+	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	//}
+	//EFI_HANDLE KernelImageHandle;
+	////EFI_STATUS status;
+	//
+	//status = uefi_call_wrapper(BS->LoadImage, 6,
+	//	FALSE,
+	//	ImageHandle,
+	//	NULL,         // optional device path
+	//	NULL, 0,      // no buffer; we're loading from file
+	//	&KernelImageHandle
+	//);
+	//if (EFI_ERROR(status)) {
+	//	Print(L"%EError: Could not load kernel image: %r%N\n", status);
+	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
+	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);;
+	//}
+	//status = uefi_call_wrapper(BS->StartImage, 3,
+	//	KernelImageHandle, NULL, NULL);
+	//
 	CreatHeap(MiB(10));
 
 	InitRender();
