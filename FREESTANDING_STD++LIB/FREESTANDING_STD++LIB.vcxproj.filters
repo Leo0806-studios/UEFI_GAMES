@@ -15,43 +15,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MAIN.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SOURCE\DRIVERS\PCI\PCI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SOURCE\STARTUP\PAGE_MAP\PAGE_MAP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SOURCE\SYSTEM_INFO\SYSTEM_INFO.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="HEADER\CONCEPTS\CONCEPTS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\UTILLITY\UTILLITY.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\TYPE_TRAITS\TYPE_TRAITS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\ÁRRAY\ARRAY.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\STRING\STRING_.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADER\STARTUP\GDT\GDT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADER\STARTUP\PAGE_MAP\PAGE_MAP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADER\SYTEM_INFO\SYSTEM_INFO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADER\SUBSYSTEMS\CONSOLE\CONSOLE.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

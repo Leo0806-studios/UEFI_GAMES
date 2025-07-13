@@ -4,6 +4,8 @@ extern"C" {
 #include <gnu-efi/inc/efilib.h>
 }
 #include "HEADER/SUBSYSTEMS/RENDER/RENDER.h"
+#include "HEADER/STARTUP/PAGE_MAP/PAGE_MAP.h"
+#include "HEADER/SUBSYSTEMS/CONSOLE/CONSOLE.h"
 #include <intrin.h>
 uint32_t get_cpu_base_freq_mhz() {
 	int cpuInfo[4];
@@ -23,6 +25,7 @@ void stall_us(uint64_t microseconds, uint64_t cpu_mhz) {
 		_mm_pause(); // hint to CPU: spin-wait loop
 	}
 }
+using Console = SYSTEM::SUBSYSTEMS::CONSOLE::Console;
 extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
@@ -61,6 +64,7 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		}
 		a = !a;
 	}
+	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_ = reinterpret_cast<void*>(MemoryMap);
 	// get graphics protocol
 	EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
 	Status = SystemTable->BootServices->LocateProtocol(&gEfiGraphicsOutputProtocolGuid, NULL, (void**)&GraphicsOutput);
@@ -71,8 +75,7 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	Print(L"Graphics Output Protocol located.\n");
 	auto b = GraphicsOutput->Mode->Info->VerticalResolution;
 	Print(L"Resolution: %d x %d\n", a, b);
-	
-	//dont return but shutdown instead
+	///=======================================EXIT_BOOT_SERVICES===============================================///
 	Status = SystemTable->BootServices->ExitBootServices(ImageHandle, MapKey);
 	//fill framebuffer with red color
 	UINT32* FrameBuffer = (UINT32*)GraphicsOutput->Mode->FrameBufferBase;
@@ -82,20 +85,26 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::PixelsPerScanline = GraphicsOutput->Mode->Info->PixelsPerScanLine;
 	UINTN FrameBufferSize = GraphicsOutput->Mode->Info->HorizontalResolution * GraphicsOutput->Mode->Info->VerticalResolution;
 	for (UINTN i = 0; i < FrameBufferSize; i++) {
-		FrameBuffer[i] = 0xFF0000; // Red color in ARGB format
+	//	FrameBuffer[i] = 0xafa5ff; // Red color in ARGB format
+		FrameBuffer[i] = 0xa000ff; // Red color in ARGB format
 	}
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(100,100, 'H');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(110,100, 'E');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(120,100, 'L');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(130,100, 'L');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(140,100, 'O');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(160,100, 'W');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(170,100, 'O');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(180,100, 'R');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(190,100, 'L');
-	SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar(200,100 ,'D');
+	Console::InitConsole(40, 40, 16, 8);
 
+	Console::WriteLine("CONSOLE STARTED");
+	Console::WriteLine("CONSOLE TEST");
+	Console::WriteLine("ABCDEFGHIJKLMNOPQRSTUVW");
+	Console::WriteLine("abcdefghijklmnopqrstuvw");
+	Console::WriteLine("1234567890");
+	Console::WriteLine("!§$%&/()=?,.-#+*<>");
+	Console::WriteLine("KERNEL LOADING COMPLETE");
+	Console::WriteLine("SETTING UP GDT...");
+	//TODO insert call to setup of the GDT;
+	Console::WriteLine("GDT SETUP COMPLETE");
 
+	Console::WriteLine("SETTING UP IDT...");
+	//TODO insert call to setup of the IDT
+
+	Console::WriteLine("IDT SETUP COMPLETE");
 	size_t freq = 0;
 	freq = get_cpu_base_freq_mhz();
 	if (freq == 0) {

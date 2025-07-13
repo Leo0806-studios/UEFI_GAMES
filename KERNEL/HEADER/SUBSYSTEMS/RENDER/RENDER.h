@@ -5,7 +5,9 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		extern unsigned int FramebufferWidth;
 		extern unsigned int FramebufferHeight;
 		extern unsigned int PixelsPerScanline;
-
+		/// <summary>
+		/// represents a 16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel
+		/// </summary>
 		struct CHAR {
 			char c; // the char itself
 			/// <summary>
@@ -23,12 +25,13 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 			/// </summary>
 			unsigned int Color;
 			/// <summary>
-			/// bitmap of the char. max cvhar size is 8X8
+			/// bitmap of the char. max char  size is 16X8
 			/// </summary>
-			unsigned char BMP[8];
+			unsigned char BMP[16];
  		};
 		extern CHAR SimpleFont[255];
-		extern void SimpleDrawChar(unsigned int x, unsigned int y, char c);
+		void SimpleDrawChar(unsigned int x, unsigned int y, char c);
+		 void SimpleDrawString(const char* str, unsigned int x, unsigned int y);
 
 	}
 	class RenderState {

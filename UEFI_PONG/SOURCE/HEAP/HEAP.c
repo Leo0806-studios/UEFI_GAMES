@@ -106,7 +106,7 @@ void* Alloc(size_t size)
 		Print(L"Heap not initialized\n");
 		return NULLPTR;
 	}
-	if( size == 0) {
+	if(size == 0) {
 		Print(L"Cannot allocate 0 bytes\n");
 		return NULLPTR;
 	}
