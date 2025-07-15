@@ -1,5 +1,8 @@
 #pragma once
 namespace SYSTEM::SUBSYSTEMS::RENDER {
+	namespace COLOURS {
+		constexpr unsigned int White = 0xffffffff;
+	}
 	namespace SIMPLE {
 		extern unsigned int* FramebufferBase;
 		extern unsigned int FramebufferWidth;

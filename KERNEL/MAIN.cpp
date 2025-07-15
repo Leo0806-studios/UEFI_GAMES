@@ -92,8 +92,8 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	Console::WriteLine("CONSOLE STARTED");
 	Console::WriteLine("CONSOLE TEST");
-	Console::WriteLine("ABCDEFGHIJKLMNOPQRSTUVW");
-	Console::WriteLine("abcdefghijklmnopqrstuvw");
+	Console::WriteLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	Console::WriteLine("abcdefghijklmnopqrstuvwxyz");
 	Console::WriteLine("1234567890");
 	Console::WriteLine("!§$%&/()=?,.-#+*<>");
 	Console::WriteLine("KERNEL LOADING COMPLETE");
