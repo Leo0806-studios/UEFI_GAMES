@@ -761,6 +761,15 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 					0b00111110,
 					0b00000000
 }
+			},
+			{
+				.c='f',
+				.width=8,
+				.height=16,
+				.Color=COLOURS::White,
+				.BMP = {
+
+}
 			}
 
 

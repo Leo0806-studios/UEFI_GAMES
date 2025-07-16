@@ -6,6 +6,8 @@ extern"C" {
 #include "HEADER/SUBSYSTEMS/RENDER/RENDER.h"
 #include "HEADER/STARTUP/PAGE_MAP/PAGE_MAP.h"
 #include "HEADER/SUBSYSTEMS/CONSOLE/CONSOLE.h"
+#include "HEADER/STARTUP/PAGE_MAP/PAGE_MAP.h"
+#include "HEADER/SYTEM_INFO/SYSTEM_INFO.h"
 #include <intrin.h>
 uint32_t get_cpu_base_freq_mhz() {
 	int cpuInfo[4];
@@ -39,6 +41,8 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	UINTN MapKey = 0;
 	UINTN DescriptorSize = 0;
 	UINT32 DescriptorVersion = 0;
+
+	//
 	EFI_STATUS Status = SystemTable->BootServices->GetMemoryMap(&MemoryMapSize, MemoryMap, &MapKey, &DescriptorSize, &DescriptorVersion);
 	if (Status == EFI_BUFFER_TOO_SMALL) {
 		MemoryMapSize += DescriptorSize * 100; // Allocate more space than needed
@@ -53,18 +57,41 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 			return Status;
 		}
 	}
+	//saving the memory map to the uefi leftover in the page map
+	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_ = MemoryMap;
+	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE = MemoryMapSize;
+	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE = DescriptorSize;
 	Print(L"memory map Aquired");
 	//print mamp
 	bool a = false;
 	for (UINTN i = 0; i < MemoryMapSize / DescriptorSize; i++) {
 		EFI_MEMORY_DESCRIPTOR* Descriptor = (EFI_MEMORY_DESCRIPTOR*)((UINT8*)MemoryMap + i * DescriptorSize);
 		Print(L"Type: %d, PhysicalStart: %lx, NumberOfPages: %lx  " , Descriptor->Type, Descriptor->PhysicalStart, Descriptor->NumberOfPages);
+		SystemTable->BootServices->Stall(100000); // Stall for 0.1 second to allow reading the output
 		if (a) {
 			Print(L"\n");
 		}
 		a = !a;
 	}
+
+	size_t conventionlaRAM = 0;
+	for (UINTN i = 0; i < MemoryMapSize / DescriptorSize; i++) {
+		EFI_MEMORY_DESCRIPTOR* Descriptor = (EFI_MEMORY_DESCRIPTOR*)((UINT8*)MemoryMap + i * DescriptorSize);
+		if (Descriptor->Type == EfiConventionalMemory) {
+			conventionlaRAM += Descriptor->NumberOfPages * EFI_PAGE_SIZE;
+		}
+		//Print(L"Type: %d, PhysicalStart: %lx, NumberOfPages: %lx  ", Descriptor->Type, Descriptor->PhysicalStart, Descriptor->NumberOfPages);
+		//SystemTable->BootServices->Stall(1000000); // Stall for 1 second to allow reading the output
+	}
+	Print(L"Total Conventional Memory: %d bytes\n", conventionlaRAM);
+	//print installed RAM size
 	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_ = reinterpret_cast<void*>(MemoryMap);
+	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE = MemoryMapSize;
+	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE = DescriptorSize;
+	SYSTEM::SYSTEM_INFO::SystemInfo::InitSystemInfo();
+	Print(L"Installed RAM: %d bytes\n", SYSTEM::SYSTEM_INFO::SystemInfo::GetInstance().installedRam);
+	SystemTable->BootServices->Stall(10000000); // Stall for 10 second to allow reading the output
+
 	// get graphics protocol
 	EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
 	Status = SystemTable->BootServices->LocateProtocol(&gEfiGraphicsOutputProtocolGuid, NULL, (void**)&GraphicsOutput);
@@ -97,6 +124,10 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	Console::WriteLine("1234567890");
 	Console::WriteLine("!§$%&/()=?,.-#+*<>");
 	Console::WriteLine("KERNEL LOADING COMPLETE");
+	Console::WriteLine("SETTING UP GLOBAL PAGE TABLE...");
+	SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePAgeMap();
+
+
 	Console::WriteLine("SETTING UP GDT...");
 	//TODO insert call to setup of the GDT;
 	Console::WriteLine("GDT SETUP COMPLETE");

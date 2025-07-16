@@ -2,7 +2,9 @@
 #include <UTILLITY.h>
 namespace SYSTEM {
 	namespace SYSTEM_INFO {
+		extern size_t QueryCPUFrequency();
 		SYSTEM::STARTUP::PAGING::GlobalPageMap GlobalPageMap = {};
+		SystemInfo SystemInfo::GLobalInst = SystemInfo();
 		SystemInfo::SystemInfo(SystemInfo&& other) {
 			this->cpuCores = STD::move(other.cpuCores);
 			this->installedRam = STD::move(other.installedRam);
@@ -13,5 +15,26 @@ namespace SYSTEM {
 			this->installedRam = STD::move(other.installedRam);
 			return *this;
 		}
+		 void SystemInfo::InitSystemInfo()
+		{
+			GLobalInst = SystemInfo();
+			GLobalInst.installedRam = SYSTEM::STARTUP::PAGING::QueryInstalledRam();
+
+		}
+
+		  const SystemInfo& SystemInfo::GetInstance() {
+			 return GLobalInst;
+		 }
+
+
+	
+	
+
+		  size_t QueryCPUFrequency()
+		  {
+
+			  return size_t();
+		  }
+
 	}
 }

@@ -28,6 +28,34 @@ namespace SYSTEM {
 				static __CONSOLE__STRUCTURE str;
 				return str;
 			}
+
+			/// <summary>
+			/// hadles the control char chr (ascii control char)
+			/// will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary
+			/// </summary>
+			/// <param name="chr"></param>
+			void HandleContolChar(char chr) {
+				__CONSOLE__STRUCTURE& console = ConsoleStructure();
+
+				switch (chr) {
+				case '\n': {
+					console.cursorPosCollums = 0;
+					console.cursorPosRows++;
+					break;
+				}
+				case '\t': {
+					console.cursorPosCollums += 4;///tabs are 4 tabs in this os by default
+					break;
+				}
+				case ' ': {
+					//ill treat the space as a special char
+					console.cursorPosCollums++;
+				}
+				}
+			}
+			bool isControlChar(char chr) {
+				return chr == '\n' || chr == '\t' || chr == ' ';
+			}
 			bool Console::InitConsole(size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)
 			{
 				__CONSOLE__STRUCTURE& console = ConsoleStructure();
@@ -51,6 +79,21 @@ namespace SYSTEM {
 			}
 			void Console::Write(const char* str)
 			{
+				__CONSOLE__STRUCTURE& console = ConsoleStructure();
+			
+				size_t len = STD::strlen(str);
+				for (size_t i = 0; i < len + 1; i++) {
+					size_t x = console.pixxelsPerCollum * console.cursorPosCollums;
+					size_t y = console.pixelsPerRow * console.cursorPosRows;
+					if (isControlChar(str[i])) {
+						HandleContolChar(str[i]);
+					}
+					else {
+						console.cursorPosCollums++;
+					}
+					RENDER::SIMPLE::SimpleDrawChar((unsigned int)x, (unsigned int)y, str[i]);
+
+				}
 			}
 			ConsoleInfo QueryConsoleInfo()
 			{
