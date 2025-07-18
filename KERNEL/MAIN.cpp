@@ -116,25 +116,25 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	}
 	Console::InitConsole(40, 40, 16, 8);
 
-	Console::WriteLine("CONSOLE STARTED");
-	Console::WriteLine("CONSOLE TEST");
-	Console::WriteLine("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-	Console::WriteLine("abcdefghijklmnopqrstuvwxyz");
-	Console::WriteLine("1234567890");
-	Console::WriteLine("!§$%&/()=?,.-#+*<>");
-	Console::WriteLine("KERNEL LOADING COMPLETE");
-	Console::WriteLine("SETTING UP GLOBAL PAGE TABLE...");
+	Console::WriteLine(L"CONSOLE STARTED");
+	Console::WriteLine(L"CONSOLE TEST");
+	Console::WriteLine(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	Console::WriteLine(L"abcdefghijklmnopqrstuvwxyz");
+	Console::WriteLine(L"1234567890");
+	Console::WriteLine(L"!§$%&/()=?,.-#+*<>");
+	Console::WriteLine(L"KERNEL LOADING COMPLETE");
+	Console::WriteLine(L"SETTING UP GLOBAL PAGE TABLE...");
 	SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePAgeMap();
 
 
-	Console::WriteLine("SETTING UP GDT...");
+	Console::WriteLine(L"SETTING UP GDT...");
 	//TODO insert call to setup of the GDT;
-	Console::WriteLine("GDT SETUP COMPLETE");
+	Console::WriteLine(L"GDT SETUP COMPLETE");
 
-	Console::WriteLine("SETTING UP IDT...");
+	Console::WriteLine(L"SETTING UP IDT...");
 	//TODO insert call to setup of the IDT
 
-	Console::WriteLine("IDT SETUP COMPLETE");
+	Console::WriteLine(L"IDT SETUP COMPLETE");
 	size_t freq = 0;
 	freq = get_cpu_base_freq_mhz();
 	if (freq == 0) {

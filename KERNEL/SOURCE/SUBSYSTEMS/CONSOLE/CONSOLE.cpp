@@ -34,7 +34,7 @@ namespace SYSTEM {
 			/// will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary
 			/// </summary>
 			/// <param name="chr"></param>
-			void HandleContolChar(char chr) {
+			void HandleContolChar(wchar_t chr) {
 				__CONSOLE__STRUCTURE& console = ConsoleStructure();
 
 				switch (chr) {
@@ -53,7 +53,7 @@ namespace SYSTEM {
 				}
 				}
 			}
-			bool isControlChar(char chr) {
+			bool isControlChar(wchar_t chr) {
 				return chr == '\n' || chr == '\t' || chr == ' ';
 			}
 			bool Console::InitConsole(size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)
@@ -65,7 +65,7 @@ namespace SYSTEM {
 				console.rows = rows;
 				return true;
 			}
-			void Console::WriteLine(const char* str)
+			void Console::WriteLine(const wchar_t* str)
 			{
 				__CONSOLE__STRUCTURE& console = ConsoleStructure();
 				size_t x = console.pixxelsPerCollum * console.cursorPosCollums;
@@ -77,7 +77,7 @@ namespace SYSTEM {
 			void Console::WriteF(size_t args,const char* format, ...)
 			{
 			}
-			void Console::Write(const char* str)
+			void Console::Write(const wchar_t* str)
 			{
 				__CONSOLE__STRUCTURE& console = ConsoleStructure();
 			

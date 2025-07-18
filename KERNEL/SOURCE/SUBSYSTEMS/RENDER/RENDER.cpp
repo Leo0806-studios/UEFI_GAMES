@@ -1122,7 +1122,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 			40,			//n
 			41
 		};
-		void SimpleDrawChar(unsigned int x, unsigned int y, char c)
+		void SimpleDrawChar(unsigned int x, unsigned int y, wchar_t c)
 		{
 			//find char in translation table
 			int index = TranslationTable[(unsigned char)c];
@@ -1142,7 +1142,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 			}
 
 		}
-		void SimpleDrawString(const char* str, unsigned int x, unsigned int y)
+		void SimpleDrawString(const wchar_t* str, unsigned int x, unsigned int y)
 		{
 			size_t len = STD::strlen(str);
 			unsigned int xpos = x;

@@ -35,7 +35,7 @@ namespace SYSTEM {
 			/// writes a line to the console out
 			/// </summary>
 			/// <param name="str"></param>
-			static void WriteLine(const char* str);
+			static void WriteLine(const wchar_t* str);
 			/// <summary>
 			/// analog to printf. takes a format string and avariable amount of input
 			/// additinaly it takse the amount of extra args as a parameter to increase safety
@@ -47,7 +47,7 @@ namespace SYSTEM {
 			/// writes an unformated string to the console.
 			/// </summary>
 			/// <param name="str"></param>
-			static void Write(const char* str);
+			static void Write(const wchar_t* str);
 			/// <summary>
 			/// returns a instance of ConsoleInfo containing information about the console
 			/// </summary>

@@ -49,7 +49,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		/// <param name="x"></param>
 		/// <param name="y"></param>
 		/// <param name="c"></param>
-		void SimpleDrawChar(unsigned int x, unsigned int y, char c);
+		void SimpleDrawChar(unsigned int x, unsigned int y, wchar_t c);
 
 		 /// <summary>
 		 /// draws a string to the framebuffer at the specified position.
@@ -60,7 +60,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		 /// <param name="str"></param>
 		 /// <param name="x"></param>
 		 /// <param name="y"></param>
-		 void SimpleDrawString(const char* str, unsigned int x, unsigned int y);
+		 void SimpleDrawString(const wchar_t* str, unsigned int x, unsigned int y);
 
 	}
 	/// <summary>

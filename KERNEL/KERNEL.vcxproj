@@ -121,7 +121,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <DisableSpecificWarnings>5045;4464;4820;4711;4100</DisableSpecificWarnings>
+      <DisableSpecificWarnings>5045;4464;4820;4711;4100;4505</DisableSpecificWarnings>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -154,7 +154,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <DisableSpecificWarnings>5045;4464;4820;4711;4100</DisableSpecificWarnings>
+      <DisableSpecificWarnings>5045;4464;4820;4711;4100;4505</DisableSpecificWarnings>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
