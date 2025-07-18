@@ -33,6 +33,9 @@
     <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\SUBSYSTEMS\ALLOCATION\ALLOCATION.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h">
@@ -51,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HEADER\SUBSYSTEMS\CONSOLE\CONSOLE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SUBSYSTEMS\ALLOCATION\ALLOCATION.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\NAMESPACE_DOCS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

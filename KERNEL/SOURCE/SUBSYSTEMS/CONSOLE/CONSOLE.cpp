@@ -74,7 +74,7 @@ namespace SYSTEM {
 				console.cursorPosRows++;
 
 			}
-			void Console::WriteF(const char* format, ...)
+			void Console::WriteF(size_t args,const char* format, ...)
 			{
 			}
 			void Console::Write(const char* str)
@@ -105,8 +105,9 @@ namespace SYSTEM {
 			void Console::Flush()
 			{
 			}
-			void Console::ToggleANSICodes()
+			bool Console::ToggleANSICodes()
 			{
+				return false;
 			}
 		}
 	}

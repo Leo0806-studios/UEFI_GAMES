@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e" xml:lang="en-US">
+<title>SYSTEM::SUBSYSTEMS::CONSOLE Namespace Reference</title>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary></indexterm>
+<para>
+
+<para>the console subsystem </para>
+ 
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_____c_o_n_s_o_l_e_____s_t_r_u_c_t_u_r_e">__CONSOLE__STRUCTURE</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console">Console</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link></para>
+
+<para>contains information about the console </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a9cc20ba0d5c58786673f8b47fdc7b6bc">HandleContolChar</link> (char chr)</para>
+
+<para>hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary </para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1afbb4c2d6023c0ebf4c868d0ea699046c">isControlChar</link> (char chr)</para>
+</listitem>
+            <listitem><para><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a538794b2f0fa1d06ebf0f5cd9baf85fa">QueryConsoleInfo</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>the console subsystem </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a9cc20ba0d5c58786673f8b47fdc7b6bc"/><section>
+    <title>HandleContolChar()</title>
+<indexterm><primary>HandleContolChar</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>HandleContolChar</secondary></indexterm>
+<para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::HandleContolChar (char chr)</computeroutput></para><para>
+
+<para>hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>chr</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+
+<para>tabs are 4 tabs in this os by default</para>
+<para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00037">37</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1afbb4c2d6023c0ebf4c868d0ea699046c"/><section>
+    <title>isControlChar()</title>
+<indexterm><primary>isControlChar</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>isControlChar</secondary></indexterm>
+<para><computeroutput>bool SYSTEM::SUBSYSTEMS::CONSOLE::isControlChar (char chr)</computeroutput></para><para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00056">56</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a538794b2f0fa1d06ebf0f5cd9baf85fa"/><section>
+    <title>QueryConsoleInfo()</title>
+<indexterm><primary>QueryConsoleInfo</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>QueryConsoleInfo</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> SYSTEM::SUBSYSTEMS::CONSOLE::QueryConsoleInfo ( )</computeroutput></para><para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00098">98</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+</section>
+</section>
+</section>

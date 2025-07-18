@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source" xml:lang="en-US">
+<title>ALLOCATION.h</title>
+<indexterm><primary>HEADER/SUBSYSTEMS/ALLOCATION/ALLOCATION.h</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00002"/>00002 <emphasis role="keyword">namespace&#32;</emphasis>SYSTEM&#32;{
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00003"/>00003 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>SUBSYSTEMS&#32;{
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00007"/><link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n">00007</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n">ALLOCATION</link>{
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00012"/><link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator">00012</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator">PhysicalAllocator</link>&#32;{
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[[nodiscard(<emphasis role="stringliteral">&quot;discarding&#32;the&#32;adress&#32;of&#32;the&#32;allocated&#32;page&#32;will&#32;lead&#32;to&#32;a&#32;memory&#32;leak&#32;as&#32;it&#32;cant&#32;be&#32;freed&#32;anymore&quot;</emphasis>)]]&#32;
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00022"/><link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a1053ed21d2988a2cc7fded090c27e91e">00022</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a1053ed21d2988a2cc7fded090c27e91e">AllocatePAge</link>();
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[[nodiscard(<emphasis role="stringliteral">&quot;discarding&#32;the&#32;retun&#32;of&#32;this&#32;function&#32;can&#32;lead&#32;to&#32;leaks&#32;or&#32;undetected&#32;memory&#32;coruption&quot;</emphasis>)]]
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00030"/><link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1ad78aa200acc4a62616824d708736a244">00030</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1ad78aa200acc4a62616824d708736a244">FreePage</link>(<emphasis role="keywordtype">void</emphasis>*&#32;ptr);
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00033"/>00033 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00034"/>00034 }
+</programlisting></section>

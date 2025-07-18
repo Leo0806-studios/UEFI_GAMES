@@ -113,7 +113,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <ExceptionHandling>false</ExceptionHandling>
@@ -122,6 +122,7 @@
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>5045;4464;4820;4711;4100</DisableSpecificWarnings>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -147,13 +148,14 @@
       <PreprocessorDefinitions>;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>5045;4464;4820;4711;4100</DisableSpecificWarnings>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -174,14 +176,17 @@
     <ClCompile Include="MAIN.cpp" />
     <ClCompile Include="SOURCE\DRIVERS\PCI\PCI.cpp" />
     <ClCompile Include="SOURCE\STARTUP\PAGE_MAP\PAGE_MAP.cpp" />
+    <ClCompile Include="SOURCE\SUBSYSTEMS\ALLOCATION\ALLOCATION.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp" />
     <ClCompile Include="SOURCE\SYSTEM_INFO\SYSTEM_INFO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h" />
+    <ClInclude Include="HEADER\NAMESPACE_DOCS.h" />
     <ClInclude Include="HEADER\STARTUP\GDT\GDT.h" />
     <ClInclude Include="HEADER\STARTUP\PAGE_MAP\PAGE_MAP.h" />
+    <ClInclude Include="HEADER\SUBSYSTEMS\ALLOCATION\ALLOCATION.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\CONSOLE\CONSOLE.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h" />
     <ClInclude Include="HEADER\SYTEM_INFO\SYSTEM_INFO.h" />

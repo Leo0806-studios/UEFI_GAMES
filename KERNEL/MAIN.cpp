@@ -67,7 +67,6 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	for (UINTN i = 0; i < MemoryMapSize / DescriptorSize; i++) {
 		EFI_MEMORY_DESCRIPTOR* Descriptor = (EFI_MEMORY_DESCRIPTOR*)((UINT8*)MemoryMap + i * DescriptorSize);
 		Print(L"Type: %d, PhysicalStart: %lx, NumberOfPages: %lx  " , Descriptor->Type, Descriptor->PhysicalStart, Descriptor->NumberOfPages);
-		SystemTable->BootServices->Stall(100000); // Stall for 0.1 second to allow reading the output
 		if (a) {
 			Print(L"\n");
 		}
@@ -90,7 +89,7 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE = DescriptorSize;
 	SYSTEM::SYSTEM_INFO::SystemInfo::InitSystemInfo();
 	Print(L"Installed RAM: %d bytes\n", SYSTEM::SYSTEM_INFO::SystemInfo::GetInstance().installedRam);
-	SystemTable->BootServices->Stall(10000000); // Stall for 10 second to allow reading the output
+	SystemTable->BootServices->Stall(5000000); // Stall for 5 second to allow reading the output
 
 	// get graphics protocol
 	EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
@@ -102,7 +101,7 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	Print(L"Graphics Output Protocol located.\n");
 	auto b = GraphicsOutput->Mode->Info->VerticalResolution;
 	Print(L"Resolution: %d x %d\n", a, b);
-	///=======================================EXIT_BOOT_SERVICES===============================================///
+	//=======================================EXIT_BOOT_SERVICES===============================================///
 	Status = SystemTable->BootServices->ExitBootServices(ImageHandle, MapKey);
 	//fill framebuffer with red color
 	UINT32* FrameBuffer = (UINT32*)GraphicsOutput->Mode->FrameBufferBase;

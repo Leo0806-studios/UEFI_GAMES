@@ -1,0 +1,88 @@
+\doxysection{SYSTEM\+::STARTUP\+::PAGING Namespace Reference}
+\hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g}{}\label{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g}\index{SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}}
+
+
+contains everything related to paging. also contains definition for the global page map  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map}{Global\+Page\+Map}}
+\begin{DoxyCompactList}\small\item\em structure of the global page map. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_page_map_entry}{Page\+Map\+Entry}}
+\begin{DoxyCompactList}\small\item\em Represents an entry in a page map, containing information about a physical memory region. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_u_e_f_i___l_e_f_t_o_w_e_r}{UEFI\+\_\+\+LEFTOWER}}
+\begin{DoxyCompactList}\small\item\em uefi leftovers are all contained in there. thismainly includes infomation about the memory map \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084}{Page\+Type}} \{ {\bfseries Free} = 0
+, \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a3a3f5443a338a6ef9b608e29498aea89}{MMIO}} = 1
+, \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a030218254584bb915dbaa23473bf1be7}{Allocated}} = 2
+, \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a0b8e028f19938bf9ae47616e4a0e6229}{EFI\+\_\+\+Reserved}} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em types of pages in the global page table. everything above the specified types is reserved. dont depend on the order of the types as they may change in the future. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_aae9224eb116bcf39e38230218e15a4f8}{Query\+Installed\+Ram}} ()
+\begin{DoxyCompactList}\small\item\em queries the installed ram. first runn is slower than subsequent runs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+contains everything related to paging. also contains definition for the global page map 
+
+\label{doc-enum-members}
+\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084}\index{SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}!PageType@{PageType}}
+\index{PageType@{PageType}!SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}}
+\doxysubsubsection{\texorpdfstring{PageType}{PageType}}
+{\footnotesize\ttfamily \label{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084} 
+enum class \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084}{SYSTEM\+::\+STARTUP\+::\+PAGING\+::\+Page\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+types of pages in the global page table. everything above the specified types is reserved. dont depend on the order of the types as they may change in the future. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MMIO@{MMIO}!SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}}\index{SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}!MMIO@{MMIO}}}\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a3a3f5443a338a6ef9b608e29498aea89}\label{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a3a3f5443a338a6ef9b608e29498aea89} 
+MMIO&memory mapped io. this includes efi\+\_\+memorymaped\+IO\+\_\+port and port\+\_\+space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Allocated@{Allocated}!SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}}\index{SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}!Allocated@{Allocated}}}\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a030218254584bb915dbaa23473bf1be7}\label{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a030218254584bb915dbaa23473bf1be7} 
+Allocated&simple allocated memory. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EFI\_Reserved@{EFI\_Reserved}!SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}}\index{SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}!EFI\_Reserved@{EFI\_Reserved}}}\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a0b8e028f19938bf9ae47616e4a0e6229}\label{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084a0b8e028f19938bf9ae47616e4a0e6229} 
+EFI\+\_\+\+Reserved&this is for naow a catch all for every reserved tpye in the uefi memory map translated into the global page table \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_p_a_g_e___m_a_p_8h_source_l00041}{41}} of file \mbox{\hyperlink{_p_a_g_e___m_a_p_8h_source}{PAGE\+\_\+\+MAP.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_aae9224eb116bcf39e38230218e15a4f8}\index{SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}!QueryInstalledRam@{QueryInstalledRam}}
+\index{QueryInstalledRam@{QueryInstalledRam}!SYSTEM::STARTUP::PAGING@{SYSTEM::STARTUP::PAGING}}
+\doxysubsubsection{\texorpdfstring{QueryInstalledRam()}{QueryInstalledRam()}}
+{\footnotesize\ttfamily \label{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_aae9224eb116bcf39e38230218e15a4f8} 
+size\+\_\+t SYSTEM\+::\+STARTUP\+::\+PAGING\+::\+Query\+Installed\+Ram (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+queries the installed ram. first runn is slower than subsequent runs. 
+
+\begin{DoxyReturn}{Returns}
+amount of installed ram in bytes
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source}{PAGE\+\_\+\+MAP.\+cpp}}.
+

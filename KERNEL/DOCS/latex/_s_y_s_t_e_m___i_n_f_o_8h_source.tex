@@ -1,0 +1,31 @@
+\doxysection{SYSTEM\+\_\+\+INFO.\+h}
+\hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source}{}\label{_s_y_s_t_e_m___i_n_f_o_8h_source}\index{HEADER/SYTEM\_INFO/SYSTEM\_INFO.h@{HEADER/SYTEM\_INFO/SYSTEM\_INFO.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}../STARTUP/PAGE\_MAP/PAGE\_MAP.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../STARTUP/GDT/GDT.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00004}00004\ \textcolor{keyword}{namespace\ }SYSTEM\ \{}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00008}\mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o}{00008}}\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o}{SYSTEM\_INFO}}\ \{}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map}{SYSTEM::STARTUP::PAGING::GlobalPageMap}}\ \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_a517ce22a50264cb5253a64fdd1330e95}{GlobalPageMap}};}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00017}\mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info}{00017}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }SystemInfo\ \{}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ installedRam\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ cpuCores\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ SystemInfo(\textcolor{keyword}{const}\ SystemInfo\&\ other)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ SystemInfo\&\ operator=(\textcolor{keyword}{const}\ SystemInfo\&\ other)=\textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ SystemInfo(SystemInfo\&\&\ other);}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ SystemInfo\&\ operator=(SystemInfo\&\&\ other);}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ SystemInfo()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ SystemInfo\ GLobalInst;}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_a0525bba8b47aa2bb9322f2f3556cf2e8}{InitSystemInfo}}();}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ SystemInfo\&\ \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_a16b451ad8ba566f232d78ae4e5d35614}{GetInstance}}();}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_s_y_s_t_e_m___i_n_f_o_8h_source_l00042}00042\ \}}
+
+\end{DoxyCode}

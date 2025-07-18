@@ -2,8 +2,18 @@
 #include "../STARTUP/PAGE_MAP/PAGE_MAP.h"
 #include "../STARTUP/GDT/GDT.h"
 namespace SYSTEM {
+	/// <summary>
+	/// this namespace contains system information that is collected during the boot process.
+	/// </summary>
 	namespace SYSTEM_INFO {
+		/// <summary>
+		/// the global page map. this contains information about the usage of physical pages
+		/// </summary>
 		extern SYSTEM::STARTUP::PAGING::GlobalPageMap GlobalPageMap;
+
+		/// <summary>
+		/// system info is a global singleton that contains information about the system
+		/// </summary>
 		class SystemInfo {
 		public:
 			size_t installedRam = 0;
@@ -16,7 +26,15 @@ namespace SYSTEM {
 			SystemInfo() = default;
 			static SystemInfo GLobalInst;
 		public:
+			/// <summary>
+			/// inits the system info. it is imutable after this point.
+			/// dont call any of the functions in this class before this function is called.
+			/// </summary>
 			static void InitSystemInfo();
+			/// <summary>
+			/// returns the global instance of the system info
+			/// </summary>
+			/// <returns></returns>
 			static const SystemInfo& GetInstance();
 
 		};

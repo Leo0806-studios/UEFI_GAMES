@@ -41,7 +41,7 @@ namespace SYSTEM {
 				constexpr size_t pageSize = EFI_PAGE_SIZE;
 				size_t pageCount = Ram / pageSize;
 				size_t pageMapSize = pageCount * sizeof(PageMapEntry);
-				///find a region in the uefi memory map large enough to fit the page map
+				//find a region in the uefi memory map large enough to fit the page map
 				size_t DescriptorSize = UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE;
 				//size_t memorymapSize = UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE;
 				size_t PhysicalStartOfMap = 0;
@@ -62,7 +62,8 @@ namespace SYSTEM {
 				}
 				//now that we have a location for the map we can start recording the physical pages into it
 				//this involves treating the found region as an array of PageMapEntry 
-				///to make these entrys usefull well enumerate the map again and record allready used regions into the map and recording their type.
+				//to make these entrys usefull well enumerate the map again and record allready used regions into the map and recording their type.
+
 				SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys = reinterpret_cast<PageMapEntry*>(PhysicalStartOfMap);
 				SYSTEM::SYSTEM_INFO::GlobalPageMap.sizeBytes = pageMapSize;
 				SYSTEM::SYSTEM_INFO::GlobalPageMap.size_pages = PagesUsedByMap;
@@ -83,7 +84,7 @@ namespace SYSTEM {
 					size_t numPages = Descriptor->NumberOfPages;
 					size_t FirstPage = reinterpret_cast<uintptr_t>(PhysicalBaase) / pageSize;
 					switch (DescriptorType) {
-						///first all the Reserved Memory stuuf. theyll all falltrough to the same thing to make it easier
+						//first all the Reserved Memory stuuf. theyll all falltrough to the same thing to make it easier
 
 					case EfiReservedMemoryType: { __fallthrough; }
 					case EfiRuntimeServicesCode: { __fallthrough; }
@@ -105,7 +106,7 @@ namespace SYSTEM {
 					
 						break;
 					}
-											///now il handle the maped io stuff
+											//now il handle the maped io stuff
 					case EfiMemoryMappedIO: { __fallthrough; }
 					case EfiMemoryMappedIOPortSpace: {
 						for (size_t page = FirstPage; page < FirstPage + numPages; page++) {

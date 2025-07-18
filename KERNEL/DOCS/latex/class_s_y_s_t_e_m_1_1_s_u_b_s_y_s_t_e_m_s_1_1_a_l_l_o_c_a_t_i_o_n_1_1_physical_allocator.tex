@@ -1,0 +1,63 @@
+\doxysection{SYSTEM\+::SUBSYSTEMS\+::ALLOCATION\+::Physical\+Allocator Class Reference}
+\hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator}{}\label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+
+
+handles allocation of physical pages. for now relatively epthy. its just in a class for later if i want to add specific state  
+
+
+
+
+{\ttfamily \#include $<$ALLOCATION.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a1053ed21d2988a2cc7fded090c27e91e}{Allocate\+PAge}} ()
+\begin{DoxyCompactList}\small\item\em allocates a single page faster thann Allocate\+Pages for a single page as it does not have to do size checking returns a pointer to the first valid adress inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. dont rely on it \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_ad78aa200acc4a62616824d708736a244}{Free\+Page}} (void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em frees asingle page. faster than Free\+Pages as it doesnt have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that coresponnds to the sizeof the header and some other checks). if the poiner is invalid it will return false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+handles allocation of physical pages. for now relatively epthy. its just in a class for later if i want to add specific state 
+
+Definition at line \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8h_source_l00012}{12}} of file \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8h_source}{ALLOCATION.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a1053ed21d2988a2cc7fded090c27e91e}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}!AllocatePAge@{AllocatePAge}}
+\index{AllocatePAge@{AllocatePAge}!SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+\doxysubsubsection{\texorpdfstring{AllocatePAge()}{AllocatePAge()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a1053ed21d2988a2cc7fded090c27e91e} 
+void \texorpdfstring{$\ast$}{*} SYSTEM\+::\+SUBSYSTEMS\+::\+ALLOCATION\+::\+Physical\+Allocator\+::\+Allocate\+PAge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+allocates a single page faster thann Allocate\+Pages for a single page as it does not have to do size checking returns a pointer to the first valid adress inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. dont rely on it 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_ad78aa200acc4a62616824d708736a244}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}!FreePage@{FreePage}}
+\index{FreePage@{FreePage}!SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+\doxysubsubsection{\texorpdfstring{FreePage()}{FreePage()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_ad78aa200acc4a62616824d708736a244} 
+bool SYSTEM\+::\+SUBSYSTEMS\+::\+ALLOCATION\+::\+Physical\+Allocator\+::\+Free\+Page (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+frees asingle page. faster than Free\+Pages as it doesnt have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that coresponnds to the sizeof the header and some other checks). if the poiner is invalid it will return false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+HEADER/\+SUBSYSTEMS/\+ALLOCATION/ALLOCATION.\+h\end{DoxyCompactItemize}

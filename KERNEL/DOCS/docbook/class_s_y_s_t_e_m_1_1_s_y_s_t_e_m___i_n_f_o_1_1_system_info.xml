@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info" xml:lang="en-US">
+<title>SYSTEM::SYSTEM_INFO::SystemInfo Class Reference</title>
+<indexterm><primary>SYSTEM::SYSTEM_INFO::SystemInfo</primary></indexterm>
+<para>
+
+<para>system info is a global singleton that contains information about the system </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;SYSTEM_INFO.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a0525bba8b47aa2bb9322f2f3556cf2e8">InitSystemInfo</link> ()</para>
+
+<para>inits the system info. it is imutable after this point. dont call any of the functions in this class before this function is called. </para>
+</listitem>
+            <listitem><para>static const <link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info">SystemInfo</link> &amp; <link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a16b451ad8ba566f232d78ae4e5d35614">GetInstance</link> ()</para>
+
+<para>returns the global instance of the system info </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>size_t <link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a1013b1382ecbb5b634bcf37adbbf75d2">installedRam</link> = 0</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a32c5e75536418cf43664857f6356c0f4">cpuCores</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>system info is a global singleton that contains information about the system </para>
+<para>
+Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8h_source_1l00017">17</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8h_source">SYSTEM_INFO.h</link>.</para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a16b451ad8ba566f232d78ae4e5d35614"/><section>
+    <title>GetInstance()</title>
+<indexterm><primary>GetInstance</primary><secondary>SYSTEM::SYSTEM_INFO::SystemInfo</secondary></indexterm>
+<indexterm><primary>SYSTEM::SYSTEM_INFO::SystemInfo</primary><secondary>GetInstance</secondary></indexterm>
+<para><computeroutput>const <link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info">SystemInfo</link> &amp; SYSTEM::SYSTEM_INFO::SystemInfo::GetInstance ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>returns the global instance of the system info </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00025">25</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source">SYSTEM_INFO.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a0525bba8b47aa2bb9322f2f3556cf2e8"/><section>
+    <title>InitSystemInfo()</title>
+<indexterm><primary>InitSystemInfo</primary><secondary>SYSTEM::SYSTEM_INFO::SystemInfo</secondary></indexterm>
+<indexterm><primary>SYSTEM::SYSTEM_INFO::SystemInfo</primary><secondary>InitSystemInfo</secondary></indexterm>
+<para><computeroutput>void SYSTEM::SYSTEM_INFO::SystemInfo::InitSystemInfo ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>inits the system info. it is imutable after this point. dont call any of the functions in this class before this function is called. </para>
+</para>
+<para>
+Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00018">18</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source">SYSTEM_INFO.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a32c5e75536418cf43664857f6356c0f4"/><section>
+    <title>cpuCores</title>
+<indexterm><primary>cpuCores</primary><secondary>SYSTEM::SYSTEM_INFO::SystemInfo</secondary></indexterm>
+<indexterm><primary>SYSTEM::SYSTEM_INFO::SystemInfo</primary><secondary>cpuCores</secondary></indexterm>
+<para><computeroutput>size_t SYSTEM::SYSTEM_INFO::SystemInfo::cpuCores = 0</computeroutput></para><para>
+Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8h_source_1l00020">20</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8h_source">SYSTEM_INFO.h</link>.</para>
+</section>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a1013b1382ecbb5b634bcf37adbbf75d2"/><section>
+    <title>installedRam</title>
+<indexterm><primary>installedRam</primary><secondary>SYSTEM::SYSTEM_INFO::SystemInfo</secondary></indexterm>
+<indexterm><primary>SYSTEM::SYSTEM_INFO::SystemInfo</primary><secondary>installedRam</secondary></indexterm>
+<para><computeroutput>size_t SYSTEM::SYSTEM_INFO::SystemInfo::installedRam = 0</computeroutput></para><para>
+Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8h_source_1l00019">19</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8h_source">SYSTEM_INFO.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+HEADER/SYTEM_INFO/SYSTEM_INFO.hSOURCE/SYSTEM_INFO/SYSTEM_INFO.cpp</section>
+</section>

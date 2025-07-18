@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e" xml:lang="en-US">
+<title>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE Namespace Reference</title>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary></indexterm>
+<para>
+
+<para>simple render interface to be used in pre driver mode. all draw functions in this namespace are used to draw to the framebuffer directly. </para>
+ 
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r">CHAR</link></para>
+
+<para>represents a 16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac1b60beaeecc0766b251a9fcf78ad84e">SimpleDrawChar</link> (unsigned int x, unsigned int y, char c)</para>
+
+<para>draws a char to the framebuffer at the specified position. will pint a A if the char is not in the font. draws directly to the framebuffer. </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac545f7ab23508188a3c404a268ed3f77">SimpleDrawString</link> (const char *str, unsigned int x, unsigned int y)</para>
+
+<para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>unsigned int * <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a59b90652f2c3973d23cbb0a2ca5179b4">FramebufferBase</link> = nullptr</para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a68b0119e5b0e715283096003a67efbaf">FramebufferWidth</link> = 0</para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ad1282cee88bc2488d4ab607b34105ced">FramebufferHeight</link> = 0</para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ad943a45b9db25aa1ff307ca7767a2fc1">PixelsPerScanline</link> = 0</para>
+</listitem>
+            <listitem><para><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r">CHAR</link> <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a1adf42179ffff6b40bbf237041dfc817">SimpleFont</link> [255]</para>
+
+<para>a hardcoded external font for now only contains the ASCII upercase latin letters </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a8aaf43af0eca6ba5d4c7fe2ac7289a21">TranslationTable</link> [256]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>simple render interface to be used in pre driver mode. all draw functions in this namespace are used to draw to the framebuffer directly. </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac1b60beaeecc0766b251a9fcf78ad84e"/><section>
+    <title>SimpleDrawChar()</title>
+<indexterm><primary>SimpleDrawChar</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>SimpleDrawChar</secondary></indexterm>
+<para><computeroutput>void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar (unsigned int x, unsigned int y, char c)</computeroutput></para><para>
+
+<para>draws a char to the framebuffer at the specified position. will pint a A if the char is not in the font. draws directly to the framebuffer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry></entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry></entry>
+                            </row>
+                            <row>
+<entry>c</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00883">883</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac545f7ab23508188a3c404a268ed3f77"/><section>
+    <title>SimpleDrawString()</title>
+<indexterm><primary>SimpleDrawString</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>SimpleDrawString</secondary></indexterm>
+<para><computeroutput>void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawString (const char * str, unsigned int x, unsigned int y)</computeroutput></para><para>
+
+<para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry></entry>
+                            </row>
+                            <row>
+<entry>x</entry><entry></entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00903">903</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a59b90652f2c3973d23cbb0a2ca5179b4"/><section>
+    <title>FramebufferBase</title>
+<indexterm><primary>FramebufferBase</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>FramebufferBase</secondary></indexterm>
+<para><computeroutput>unsigned int * SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferBase = nullptr</computeroutput></para><para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00006">6</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ad1282cee88bc2488d4ab607b34105ced"/><section>
+    <title>FramebufferHeight</title>
+<indexterm><primary>FramebufferHeight</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>FramebufferHeight</secondary></indexterm>
+<para><computeroutput>unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferHeight = 0</computeroutput></para><para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00008">8</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a68b0119e5b0e715283096003a67efbaf"/><section>
+    <title>FramebufferWidth</title>
+<indexterm><primary>FramebufferWidth</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>FramebufferWidth</secondary></indexterm>
+<para><computeroutput>unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferWidth = 0</computeroutput></para><para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00007">7</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ad943a45b9db25aa1ff307ca7767a2fc1"/><section>
+    <title>PixelsPerScanline</title>
+<indexterm><primary>PixelsPerScanline</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>PixelsPerScanline</secondary></indexterm>
+<para><computeroutput>unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::PixelsPerScanline = 0</computeroutput></para><para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00009">9</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a1adf42179ffff6b40bbf237041dfc817"/><section>
+    <title>SimpleFont</title>
+<indexterm><primary>SimpleFont</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>SimpleFont</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r">SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</link> SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleFont</computeroutput></para><para>
+
+<para>a hardcoded external font for now only contains the ASCII upercase latin letters </para>
+</para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00011">11</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a8aaf43af0eca6ba5d4c7fe2ac7289a21"/><section>
+    <title>TranslationTable</title>
+<indexterm><primary>TranslationTable</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>TranslationTable</secondary></indexterm>
+<para><computeroutput>int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::TranslationTable[256]</computeroutput></para><para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00779">779</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t" xml:lang="en-US">
+<title>SYSTEM::STARTUP::GDT Namespace Reference</title>
+<indexterm><primary>SYSTEM::STARTUP::GDT</primary></indexterm>
+<para>
+
+<para>everything gdt related is contained in this namespace. this include the gdt entries and functions like creating it and loading it. the gdt itself is stored in the N <link linkend="_namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o">SYSTEM_INFO</link> namespace. </para>
+ 
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y">GDT_ENTRY</link></para>
+
+<para>entry inside the gdt. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>everything gdt related is contained in this namespace. this include the gdt entries and functions like creating it and loading it. the gdt itself is stored in the N <link linkend="_namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o">SYSTEM_INFO</link> namespace. </para>
+</section>
+</section>
