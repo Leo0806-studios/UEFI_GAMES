@@ -1,5 +1,5 @@
 #include "../../../HEADER/SUBSYSTEMS/RENDER/RENDER.h"
-#include "../../../../FREESTANDING_STD++LIB/HEADER/STRING/STRING_.h"
+#include "../../../../FREESTANDING_STD++LIB/HEADER/STRING/STRING_F.h"
 namespace SYSTEM::SUBSYSTEMS::RENDER {
 	namespace SIMPLE {
 

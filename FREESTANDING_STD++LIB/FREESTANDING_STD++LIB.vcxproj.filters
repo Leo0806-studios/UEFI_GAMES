@@ -15,19 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\CONCEPTS\CONCEPTS.h">
+    <ClInclude Include="HEADER\CONCEPTS\CONCEPTS_f.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\UTILLITY\UTILLITY.h">
+    <ClInclude Include="HEADER\UTILLITY\UTILLITY_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\TYPE_TRAITS\TYPE_TRAITS.h">
+    <ClInclude Include="HEADER\TYPE_TRAITS\TYPE_TRAITS_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\ÁRRAY\ARRAY.h">
+    <ClInclude Include="HEADER\ÁRRAY\ARRAY_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\STRING\STRING_.h">
+    <ClInclude Include="HEADER\STRING\STRING_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

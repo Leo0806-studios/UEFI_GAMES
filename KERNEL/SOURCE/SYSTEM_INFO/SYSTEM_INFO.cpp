@@ -1,5 +1,5 @@
 #include "../../HEADER/SYTEM_INFO/SYSTEM_INFO.h"
-#include <UTILLITY.h>
+#include <UTILLITY_F.h>
 namespace SYSTEM {
 	namespace SYSTEM_INFO {
 		extern size_t QueryCPUFrequency();

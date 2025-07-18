@@ -1,6 +1,6 @@
 #include "../../../HEADER/SUBSYSTEMS/CONSOLE/CONSOLE.h"
 #include "../../../HEADER/SUBSYSTEMS/RENDER/RENDER.h"
-#include <STRING_.h>
+#include <STRING_F.h>
 namespace SYSTEM {
 	namespace SUBSYSTEMS {
 		namespace CONSOLE {

@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\CONCEPTS\CONCEPTS.h" />
-    <ClInclude Include="HEADER\STRING\STRING_.h" />
-    <ClInclude Include="HEADER\TYPE_TRAITS\TYPE_TRAITS.h" />
-    <ClInclude Include="HEADER\UTILLITY\UTILLITY.h" />
-    <ClInclude Include="HEADER\ÁRRAY\ARRAY.h" />
+    <ClInclude Include="HEADER\CONCEPTS\CONCEPTS_f.h" />
+    <ClInclude Include="HEADER\STRING\STRING_F.h" />
+    <ClInclude Include="HEADER\TYPE_TRAITS\TYPE_TRAITS_F.h" />
+    <ClInclude Include="HEADER\UTILLITY\UTILLITY_F.h" />
+    <ClInclude Include="HEADER\ÁRRAY\ARRAY_F.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp" />
