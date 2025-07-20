@@ -1,0 +1,66 @@
+.TH "SYSTEM::SUBSYSTEMS::CONSOLE" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::CONSOLE \- the console subsystem  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fB__CONSOLE__STRUCTURE\fP"
+.br
+.ti -1c
+.RI "class \fBConsole\fP"
+.br
+.ti -1c
+.RI "struct \fBConsoleInfo\fP"
+.br
+.RI "contains information about the console "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBHandleContolChar\fP (wchar_t chr)"
+.br
+.RI "hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary "
+.ti -1c
+.RI "bool \fBisControlChar\fP (wchar_t chr)"
+.br
+.ti -1c
+.RI "\fBConsoleInfo\fP \fBQueryConsoleInfo\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+the console subsystem 
+.SH "Function Documentation"
+.PP 
+.SS "void SYSTEM::SUBSYSTEMS::CONSOLE::HandleContolChar (wchar_t chr)"
+
+.PP
+hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary 
+.PP
+\fBParameters\fP
+.RS 4
+\fIchr\fP 
+.RE
+.PP
+tabs are 4 tabs in this os by default
+.PP
+Definition at line \fB37\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "bool SYSTEM::SUBSYSTEMS::CONSOLE::isControlChar (wchar_t chr)"
+
+.PP
+Definition at line \fB56\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "\fBConsoleInfo\fP SYSTEM::SUBSYSTEMS::CONSOLE::QueryConsoleInfo ()"
+
+.PP
+Definition at line \fB98\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

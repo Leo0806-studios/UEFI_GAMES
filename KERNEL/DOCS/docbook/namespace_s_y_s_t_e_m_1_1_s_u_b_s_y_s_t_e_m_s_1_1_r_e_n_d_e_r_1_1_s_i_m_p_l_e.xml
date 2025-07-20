@@ -19,11 +19,11 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac1b60beaeecc0766b251a9fcf78ad84e">SimpleDrawChar</link> (unsigned int x, unsigned int y, char c)</para>
+            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a2f1c7443345df32db9f0f0c992a05a09">SimpleDrawChar</link> (unsigned int x, unsigned int y, wchar_t c)</para>
 
 <para>draws a char to the framebuffer at the specified position. will pint a A if the char is not in the font. draws directly to the framebuffer. </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac545f7ab23508188a3c404a268ed3f77">SimpleDrawString</link> (const char *str, unsigned int x, unsigned int y)</para>
+            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1acd5586a738dc5f09cf6c39ed19bda4aa">SimpleDrawString</link> (const wchar_t *str, unsigned int x, unsigned int y)</para>
 
 <para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping </para>
 </listitem>
@@ -55,11 +55,11 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac1b60beaeecc0766b251a9fcf78ad84e"/><section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a2f1c7443345df32db9f0f0c992a05a09"/><section>
     <title>SimpleDrawChar()</title>
 <indexterm><primary>SimpleDrawChar</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>SimpleDrawChar</secondary></indexterm>
-<para><computeroutput>void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar (unsigned int x, unsigned int y, char c)</computeroutput></para><para>
+<para><computeroutput>void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar (unsigned int x, unsigned int y, wchar_t c)</computeroutput></para><para>
 
 <para>draws a char to the framebuffer at the specified position. will pint a A if the char is not in the font. draws directly to the framebuffer. </para>
 </para>
@@ -90,13 +90,13 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00883">883</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01125">1125</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
-<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ac545f7ab23508188a3c404a268ed3f77"/><section>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1acd5586a738dc5f09cf6c39ed19bda4aa"/><section>
     <title>SimpleDrawString()</title>
 <indexterm><primary>SimpleDrawString</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>SimpleDrawString</secondary></indexterm>
-<para><computeroutput>void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawString (const char * str, unsigned int x, unsigned int y)</computeroutput></para><para>
+<para><computeroutput>void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawString (const wchar_t * str, unsigned int x, unsigned int y)</computeroutput></para><para>
 
 <para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping </para>
 </para>
@@ -127,7 +127,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00903">903</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01145">1145</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 </section>
 <section>
@@ -176,7 +176,7 @@ Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00011">11</link> o
 <indexterm><primary>TranslationTable</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>TranslationTable</secondary></indexterm>
 <para><computeroutput>int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::TranslationTable[256]</computeroutput></para><para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00779">779</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01011">1011</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 </section>
 </section>

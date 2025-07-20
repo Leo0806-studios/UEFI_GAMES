@@ -1,0 +1,82 @@
+.TH "SYSTEM::STARTUP::PAGING" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::STARTUP::PAGING \- contains everything related to paging\&. also contains definition for the global page map  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBGlobalPageMap\fP"
+.br
+.RI "structure of the global page map\&. "
+.ti -1c
+.RI "class \fBPageMapEntry\fP"
+.br
+.RI "Represents an entry in a page map, containing information about a physical memory region\&. "
+.ti -1c
+.RI "class \fBUEFI_LEFTOWER\fP"
+.br
+.RI "uefi leftovers are all contained in there\&. thismainly includes infomation about the memory map "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBPageType\fP { \fBFree\fP = 0, \fBMMIO\fP = 1, \fBAllocated\fP = 2, \fBEFI_Reserved\fP = 3 }"
+.br
+.RI "types of pages in the global page table\&. everything above the specified types is reserved\&. dont depend on the order of the types as they may change in the future\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBQueryInstalledRam\fP ()"
+.br
+.RI "queries the installed ram\&. first runn is slower than subsequent runs\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+contains everything related to paging\&. also contains definition for the global page map 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum class \fBSYSTEM::STARTUP::PAGING::PageType\fP\fR [strong]\fP"
+
+.PP
+types of pages in the global page table\&. everything above the specified types is reserved\&. dont depend on the order of the types as they may change in the future\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\f(BIMMIO \fP
+memory mapped io\&. this includes efi_memorymapedIO_port and port_space 
+.TP
+\f(BIAllocated \fP
+simple allocated memory\&. 
+.TP
+\f(BIEFI_Reserved \fP
+this is for naow a catch all for every reserved tpye in the uefi memory map translated into the global page table 
+.PP
+Definition at line \fB43\fP of file \fBPAGE_MAP\&.h\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "size_t SYSTEM::STARTUP::PAGING::QueryInstalledRam ()\fR [extern]\fP"
+
+.PP
+queries the installed ram\&. first runn is slower than subsequent runs\&. 
+.PP
+\fBReturns\fP
+.RS 4
+amount of installed ram in bytes
+.RE
+.PP
+
+.PP
+Definition at line \fB14\fP of file \fBPAGE_MAP\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

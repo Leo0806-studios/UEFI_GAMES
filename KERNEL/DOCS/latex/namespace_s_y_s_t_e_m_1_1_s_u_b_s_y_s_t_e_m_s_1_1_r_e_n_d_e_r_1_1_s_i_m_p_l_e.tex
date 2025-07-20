@@ -13,9 +13,9 @@ struct \mbox{\hyperlink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ac1b60beaeecc0766b251a9fcf78ad84e}{Simple\+Draw\+Char}} (unsigned int x, unsigned int y, char c)
+void \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a2f1c7443345df32db9f0f0c992a05a09}{Simple\+Draw\+Char}} (unsigned int x, unsigned int y, wchar\+\_\+t c)
 \begin{DoxyCompactList}\small\item\em draws a char to the framebuffer at the specified position. will pint a A if the char is not in the font. draws directly to the framebuffer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ac545f7ab23508188a3c404a268ed3f77}{Simple\+Draw\+String}} (const char \texorpdfstring{$\ast$}{*}str, unsigned int x, unsigned int y)
+void \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_acd5586a738dc5f09cf6c39ed19bda4aa}{Simple\+Draw\+String}} (const wchar\+\_\+t \texorpdfstring{$\ast$}{*}str, unsigned int x, unsigned int y)
 \begin{DoxyCompactList}\small\item\em draws a string to the framebuffer at the specified position. calls Simple\+Draw\+Char for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -40,11 +40,11 @@ simple render interface to be used in pre driver mode. all draw functions in thi
 \label{doc-func-members}
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ac1b60beaeecc0766b251a9fcf78ad84e}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!SimpleDrawChar@{SimpleDrawChar}}
+\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a2f1c7443345df32db9f0f0c992a05a09}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!SimpleDrawChar@{SimpleDrawChar}}
 \index{SimpleDrawChar@{SimpleDrawChar}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
 \doxysubsubsection{\texorpdfstring{SimpleDrawChar()}{SimpleDrawChar()}}
-{\footnotesize\ttfamily \label{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ac1b60beaeecc0766b251a9fcf78ad84e} 
-void SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Simple\+Draw\+Char (\begin{DoxyParamCaption}\item[{unsigned int}]{x}{, }\item[{unsigned int}]{y}{, }\item[{char}]{c}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a2f1c7443345df32db9f0f0c992a05a09} 
+void SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Simple\+Draw\+Char (\begin{DoxyParamCaption}\item[{unsigned int}]{x}{, }\item[{unsigned int}]{y}{, }\item[{wchar\+\_\+t}]{c}{}\end{DoxyParamCaption})}
 
 
 
@@ -61,13 +61,13 @@ draws a char to the framebuffer at the specified position. will pint a A if the 
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00883}{883}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01125}{1125}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
-\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ac545f7ab23508188a3c404a268ed3f77}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!SimpleDrawString@{SimpleDrawString}}
+\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_acd5586a738dc5f09cf6c39ed19bda4aa}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!SimpleDrawString@{SimpleDrawString}}
 \index{SimpleDrawString@{SimpleDrawString}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
 \doxysubsubsection{\texorpdfstring{SimpleDrawString()}{SimpleDrawString()}}
-{\footnotesize\ttfamily \label{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ac545f7ab23508188a3c404a268ed3f77} 
-void SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Simple\+Draw\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{unsigned int}]{x}{, }\item[{unsigned int}]{y}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_acd5586a738dc5f09cf6c39ed19bda4aa} 
+void SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Simple\+Draw\+String (\begin{DoxyParamCaption}\item[{const wchar\+\_\+t \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{unsigned int}]{x}{, }\item[{unsigned int}]{y}{}\end{DoxyParamCaption})}
 
 
 
@@ -84,7 +84,7 @@ draws a string to the framebuffer at the specified position. calls Simple\+Draw\
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00903}{903}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01145}{1145}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 
 
@@ -153,5 +153,5 @@ int SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Translation\+Table\mbox{
 
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00779}{779}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01011}{1011}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 

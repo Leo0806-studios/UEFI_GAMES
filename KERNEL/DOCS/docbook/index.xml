@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
     <info>
-    <title>MY_KERNEL</title>
+    <title>OSDEV</title>
     </info>
 <chapter>
     <title>Namespace Documentation</title>
@@ -21,6 +21,7 @@
     <xi:include href="struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_page_header.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_page_map_entry.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_render_state.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -40,6 +41,7 @@
     <xi:include href="_m_a_i_n_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_p_c_i_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_p_a_g_e___m_a_p_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_a_l_l_o_c_a_t_i_o_n_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_c_o_n_s_o_l_e_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_r_e_n_d_e_r_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_s_y_s_t_e_m___i_n_f_o_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

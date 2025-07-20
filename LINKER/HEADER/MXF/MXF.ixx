@@ -10,6 +10,14 @@ export namespace MXF_LINKER {
 	// iwill copy everything to a vector of bytes and write it to a file anyways
 	struct MXF
 	{
+	private:
+		/// <summary>
+		/// Adds a header of specified size to a data structure or buffer.
+		/// </summary>
+		/// <param name="header">Pointer to the header data to be added.</param>
+		/// <param name="size">The size, in bytes, of the header.</param>
+		void AddHeaderHelper(void* header, size_t size);
+	public:
 		unsigned int FileType = 0;
 		unsigned __int64 FullHeaderSize = 0; // this is the size of all headers. if used as an offset from the beginning of the file it will point to the first non header byte
 		static constexpr inline char Magic[8] = {'M', 'X', 'F','E','X','E','C', 0}; // this is the magic number of the file. it is used to identify the file as a MXF file.
@@ -28,5 +36,17 @@ export namespace MXF_LINKER {
 		std::bitset<64> HeaderBitmap = 0; // this is a bitmap of the headers that are present in the file. each bit represents a header. if the bit is set then the header is present.
 		std::vector<unsigned __int8> Headers; // this is a vector of bytes that contains all the headers in the file. the headers are packed in the order they are defined in the header bitmap.
 		std::vector<unsigned __int8> Sections; // this is a vector of bytes that contains all the sections in the file. the sections are packed in the order they are defined in the section pointer header.
+
+
+		/// <summary>
+		/// Adds a header to the collection.
+		/// </summary>
+		/// <typeparam name="Header">The type of the header to add.</typeparam>
+		/// <param name="header">The header to add.</param>
+		template<typename Header>
+		requires requires { typename Header::HeaderId; }
+		void AddHeader(const Header& header){
+
+		}
 	};
 }

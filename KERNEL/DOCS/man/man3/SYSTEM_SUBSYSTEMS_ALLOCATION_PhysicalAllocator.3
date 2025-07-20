@@ -1,0 +1,60 @@
+.TH "SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator \- handles allocation of physical pages\&. for now relatively epthy\&. its just in a class for later if i want to add specific state  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ALLOCATION\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void * \fBAllocatePAge\fP ()"
+.br
+.RI "allocates a single page faster thann AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid adress inside the page\&. the offset from the beginning of the page is not stable and might change based on the format and size of the header information\&. dont rely on it "
+.ti -1c
+.RI "bool \fBFreePage\fP (void *ptr)"
+.br
+.RI "frees asingle page\&. faster than FreePages as it doesnt have to do bounds checking\&. performs a check if the pointer is a valid page pinter\&. (at a offset that coresponnds to the sizeof the header and some other checks)\&. if the poiner is invalid it will return false\&. nullptr is also invalid "
+.in -1c
+.SH "Detailed Description"
+.PP 
+handles allocation of physical pages\&. for now relatively epthy\&. its just in a class for later if i want to add specific state 
+.PP
+Definition at line \fB27\fP of file \fBALLOCATION\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void * SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePAge ()\fR [nodiscard]\fP"
+
+.PP
+allocates a single page faster thann AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid adress inside the page\&. the offset from the beginning of the page is not stable and might change based on the format and size of the header information\&. dont rely on it 
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line \fB9\fP of file \fBALLOCATION\&.cpp\fP\&.
+.SS "bool SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::FreePage (void * ptr)\fR [nodiscard]\fP"
+
+.PP
+frees asingle page\&. faster than FreePages as it doesnt have to do bounds checking\&. performs a check if the pointer is a valid page pinter\&. (at a offset that coresponnds to the sizeof the header and some other checks)\&. if the poiner is invalid it will return false\&. nullptr is also invalid 
+.PP
+\fBParameters\fP
+.RS 4
+\fIptr\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB32\fP of file \fBALLOCATION\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

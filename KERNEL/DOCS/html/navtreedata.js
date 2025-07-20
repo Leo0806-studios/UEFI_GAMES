@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "MY_KERNEL", "index.html", [
+  [ "OSDEV", "index.html", [
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -52,7 +52,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_a_l_l_o_c_a_t_i_o_n_8h_source.html"
+"_a_l_l_o_c_a_t_i_o_n_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

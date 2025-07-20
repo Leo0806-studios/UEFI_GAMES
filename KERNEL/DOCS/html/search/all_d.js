@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['simpledrawchar_0',['SimpleDrawChar',['../namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e.html#ac1b60beaeecc0766b251a9fcf78ad84e',1,'SYSTEM::SUBSYSTEMS::RENDER::SIMPLE']]],
-  ['simpledrawstring_1',['SimpleDrawString',['../namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e.html#ac545f7ab23508188a3c404a268ed3f77',1,'SYSTEM::SUBSYSTEMS::RENDER::SIMPLE']]],
+  ['simpledrawchar_0',['SimpleDrawChar',['../namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e.html#a2f1c7443345df32db9f0f0c992a05a09',1,'SYSTEM::SUBSYSTEMS::RENDER::SIMPLE']]],
+  ['simpledrawstring_1',['SimpleDrawString',['../namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e.html#acd5586a738dc5f09cf6c39ed19bda4aa',1,'SYSTEM::SUBSYSTEMS::RENDER::SIMPLE']]],
   ['simplefont_2',['SimpleFont',['../namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e.html#a1adf42179ffff6b40bbf237041dfc817',1,'SYSTEM::SUBSYSTEMS::RENDER::SIMPLE']]],
   ['system_3a_3adrivers_3a_3apci_3',['PCI',['../namespace_s_y_s_t_e_m_1_1_d_r_i_v_e_r_s_1_1_p_c_i.html',1,'SYSTEM::DRIVERS']]],
   ['system_3a_3astartup_3a_3agdt_4',['GDT',['../namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t.html',1,'SYSTEM::STARTUP']]],

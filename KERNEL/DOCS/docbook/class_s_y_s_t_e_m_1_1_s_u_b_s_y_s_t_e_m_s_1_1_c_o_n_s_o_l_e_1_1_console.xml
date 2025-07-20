@@ -9,7 +9,7 @@
 
 <para>inits the console. must be called before any other console function can safely be used. </para>
 </listitem>
-            <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1aa1bf531ddb0eff043e6e6468461736ee">WriteLine</link> (const char *str)</para>
+            <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">WriteLine</link> (const wchar_t *str)</para>
 
 <para>writes a line to the console out </para>
 </listitem>
@@ -17,7 +17,7 @@
 
 <para>analog to printf. takes a format string and avariable amount of input additinaly it takse the amount of extra args as a parameter to increase safety </para>
 </listitem>
-            <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1aac58dd2e1ba787d9762e495bf3480f21">Write</link> (const char *str)</para>
+            <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a7785f77c03ae536f44b29d3282297e53">Write</link> (const wchar_t *str)</para>
 
 <para>writes an unformated string to the console. </para>
 </listitem>
@@ -146,11 +146,11 @@ Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00059">59</link>
 <para>
 Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00108">108</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
-<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1aac58dd2e1ba787d9762e495bf3480f21"/><section>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a7785f77c03ae536f44b29d3282297e53"/><section>
     <title>Write()</title>
 <indexterm><primary>Write</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</primary><secondary>Write</secondary></indexterm>
-<para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Write (const char * str)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Write (const wchar_t * str)<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
 <para>writes an unformated string to the console. </para>
 </para>
@@ -208,11 +208,11 @@ Parameters</title>
 <para>
 Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00077">77</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
-<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1aa1bf531ddb0eff043e6e6468461736ee"/><section>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38"/><section>
     <title>WriteLine()</title>
 <indexterm><primary>WriteLine</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</primary><secondary>WriteLine</secondary></indexterm>
-<para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::Console::WriteLine (const char * str)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::Console::WriteLine (const wchar_t * str)<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
 <para>writes a line to the console out </para>
 </para>

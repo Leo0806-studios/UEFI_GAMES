@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MY_KERNEL: SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator Class Reference</title>
+<title>OSDEV: SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,9 +26,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">MY_KERNEL<span id="projectnumber">&#160;0.0.01</span>
+   <div id="projectname">OSDEV<span id="projectnumber">&#160;0.0.01</span>
    </div>
-   <div id="projectbrief">kernel for my os</div>
   </td>
  </tr>
  </tbody>
@@ -103,12 +102,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1053ed21d2988a2cc7fded090c27e91e" id="r_a1053ed21d2988a2cc7fded090c27e91e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1053ed21d2988a2cc7fded090c27e91e">AllocatePAge</a> ()</td></tr>
 <tr class="memdesc:a1053ed21d2988a2cc7fded090c27e91e"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocates a single page faster thann AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid adress inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. dont rely on it  <br /></td></tr>
 <tr class="memitem:ad78aa200acc4a62616824d708736a244" id="r_ad78aa200acc4a62616824d708736a244"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78aa200acc4a62616824d708736a244">FreePage</a> (void *ptr)</td></tr>
-<tr class="memdesc:ad78aa200acc4a62616824d708736a244"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees asingle page. faster than FreePages as it doesnt have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that coresponnds to the sizeof the header and some other checks). if the poiner is invalid it will return false.  <br /></td></tr>
+<tr class="memdesc:ad78aa200acc4a62616824d708736a244"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees asingle page. faster than FreePages as it doesnt have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that coresponnds to the sizeof the header and some other checks). if the poiner is invalid it will return false. nullptr is also invalid  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>handles allocation of physical pages. for now relatively epthy. its just in a class for later if i want to add specific state </p>
 
-<p class="definition">Definition at line <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html#l00012">12</a> of file <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html">ALLOCATION.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html#l00027">27</a> of file <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html">ALLOCATION.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a1053ed21d2988a2cc7fded090c27e91e" name="a1053ed21d2988a2cc7fded090c27e91e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1053ed21d2988a2cc7fded090c27e91e">&#9670;&#160;</a></span>AllocatePAge()</h2>
@@ -136,6 +135,8 @@ Public Member Functions</h2></td></tr>
 <p>allocates a single page faster thann AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid adress inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. dont rely on it </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8cpp_source.html#l00009">9</a> of file <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8cpp_source.html">ALLOCATION.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ad78aa200acc4a62616824d708736a244" name="ad78aa200acc4a62616824d708736a244"></a>
@@ -161,7 +162,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>frees asingle page. faster than FreePages as it doesnt have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that coresponnds to the sizeof the header and some other checks). if the poiner is invalid it will return false. </p>
+<p>frees asingle page. faster than FreePages as it doesnt have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that coresponnds to the sizeof the header and some other checks). if the poiner is invalid it will return false. nullptr is also invalid </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr</td><td></td></tr>
@@ -169,10 +170,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8cpp_source.html#l00032">32</a> of file <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8cpp_source.html">ALLOCATION.cpp</a>.</p>
+
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>HEADER/SUBSYSTEMS/ALLOCATION/<a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html">ALLOCATION.h</a></li>
+<li>SOURCE/SUBSYSTEMS/ALLOCATION/<a class="el" href="_a_l_l_o_c_a_t_i_o_n_8cpp_source.html">ALLOCATION.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

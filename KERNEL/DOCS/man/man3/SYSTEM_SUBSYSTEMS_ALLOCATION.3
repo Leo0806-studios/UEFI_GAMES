@@ -1,0 +1,40 @@
+.TH "SYSTEM::SUBSYSTEMS::ALLOCATION" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::ALLOCATION \- everything related to memory allocation is inside this namespace  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBPageHeader\fP"
+.br
+.RI "header inserted onto a allocation allocated with the physical allocator\&. is in the beginning of the first page of the allocation\&. do not rely on its internal layout (for byte wise accses) "
+.ti -1c
+.RI "class \fBPhysicalAllocator\fP"
+.br
+.RI "handles allocation of physical pages\&. for now relatively epthy\&. its just in a class for later if i want to add specific state "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "using \fBPageType\fP = \fBSYSTEM::STARTUP::PAGING::PageType\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+everything related to memory allocation is inside this namespace 
+.SH "Typedef Documentation"
+.PP 
+.SS "using \fBSYSTEM::SUBSYSTEMS::ALLOCATION::PageType\fP = \fBSYSTEM::STARTUP::PAGING::PageType\fP"
+
+.PP
+Definition at line \fB8\fP of file \fBALLOCATION\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

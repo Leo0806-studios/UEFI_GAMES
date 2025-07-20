@@ -1,0 +1,73 @@
+.TH "SYSTEM::SYSTEM_INFO::SystemInfo" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SYSTEM_INFO::SystemInfo \- system info is a global singleton that contains information about the system  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <SYSTEM_INFO\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBInitSystemInfo\fP ()"
+.br
+.RI "inits the system info\&. it is imutable after this point\&. dont call any of the functions in this class before this function is called\&. "
+.ti -1c
+.RI "static const \fBSystemInfo\fP & \fBGetInstance\fP ()"
+.br
+.RI "returns the global instance of the system info "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBinstalledRam\fP = 0"
+.br
+.ti -1c
+.RI "size_t \fBcpuCores\fP = 0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+system info is a global singleton that contains information about the system 
+.PP
+Definition at line \fB17\fP of file \fBSYSTEM_INFO\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBSystemInfo\fP & SYSTEM::SYSTEM_INFO::SystemInfo::GetInstance ()\fR [static]\fP"
+
+.PP
+returns the global instance of the system info 
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line \fB25\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
+.SS "void SYSTEM::SYSTEM_INFO::SystemInfo::InitSystemInfo ()\fR [static]\fP"
+
+.PP
+inits the system info\&. it is imutable after this point\&. dont call any of the functions in this class before this function is called\&. 
+.PP
+Definition at line \fB18\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "size_t SYSTEM::SYSTEM_INFO::SystemInfo::cpuCores = 0"
+
+.PP
+Definition at line \fB20\fP of file \fBSYSTEM_INFO\&.h\fP\&.
+.SS "size_t SYSTEM::SYSTEM_INFO::SystemInfo::installedRam = 0"
+
+.PP
+Definition at line \fB19\fP of file \fBSYSTEM_INFO\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

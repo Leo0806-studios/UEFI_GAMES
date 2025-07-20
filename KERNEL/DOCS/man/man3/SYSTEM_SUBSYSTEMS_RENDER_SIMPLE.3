@@ -1,0 +1,122 @@
+.TH "SYSTEM::SUBSYSTEMS::RENDER::SIMPLE" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::RENDER::SIMPLE \- simple render interface to be used in pre driver mode\&. all draw functions in this namespace are used to draw to the framebuffer directly\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCHAR\fP"
+.br
+.RI "represents a 16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSimpleDrawChar\fP (unsigned int x, unsigned int y, wchar_t c)"
+.br
+.RI "draws a char to the framebuffer at the specified position\&. will pint a A if the char is not in the font\&. draws directly to the framebuffer\&. "
+.ti -1c
+.RI "void \fBSimpleDrawString\fP (const wchar_t *str, unsigned int x, unsigned int y)"
+.br
+.RI "draws a string to the framebuffer at the specified position\&. calls SimpleDrawChar for each char in the string\&. cant handle any controll characters\&. treats every char as 10 pixels wide\&. does not handle wrapping "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned int * \fBFramebufferBase\fP = nullptr"
+.br
+.ti -1c
+.RI "unsigned int \fBFramebufferWidth\fP = 0"
+.br
+.ti -1c
+.RI "unsigned int \fBFramebufferHeight\fP = 0"
+.br
+.ti -1c
+.RI "unsigned int \fBPixelsPerScanline\fP = 0"
+.br
+.ti -1c
+.RI "\fBCHAR\fP \fBSimpleFont\fP [255]"
+.br
+.RI "a hardcoded external font for now only contains the ASCII upercase latin letters "
+.ti -1c
+.RI "int \fBTranslationTable\fP [256]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+simple render interface to be used in pre driver mode\&. all draw functions in this namespace are used to draw to the framebuffer directly\&. 
+.SH "Function Documentation"
+.PP 
+.SS "void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawChar (unsigned int x, unsigned int y, wchar_t c)"
+
+.PP
+draws a char to the framebuffer at the specified position\&. will pint a A if the char is not in the font\&. draws directly to the framebuffer\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIc\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB1125\fP of file \fBRENDER\&.cpp\fP\&.
+.SS "void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawString (const wchar_t * str, unsigned int x, unsigned int y)"
+
+.PP
+draws a string to the framebuffer at the specified position\&. calls SimpleDrawChar for each char in the string\&. cant handle any controll characters\&. treats every char as 10 pixels wide\&. does not handle wrapping 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP 
+.br
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB1145\fP of file \fBRENDER\&.cpp\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "unsigned int * SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferBase = nullptr"
+
+.PP
+Definition at line \fB6\fP of file \fBRENDER\&.cpp\fP\&.
+.SS "unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferHeight = 0"
+
+.PP
+Definition at line \fB8\fP of file \fBRENDER\&.cpp\fP\&.
+.SS "unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferWidth = 0"
+
+.PP
+Definition at line \fB7\fP of file \fBRENDER\&.cpp\fP\&.
+.SS "unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::PixelsPerScanline = 0"
+
+.PP
+Definition at line \fB9\fP of file \fBRENDER\&.cpp\fP\&.
+.SS "\fBSYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR\fP SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleFont"
+
+.PP
+a hardcoded external font for now only contains the ASCII upercase latin letters 
+.PP
+Definition at line \fB11\fP of file \fBRENDER\&.cpp\fP\&.
+.SS "int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::TranslationTable[256]"
+
+.PP
+Definition at line \fB1011\fP of file \fBRENDER\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

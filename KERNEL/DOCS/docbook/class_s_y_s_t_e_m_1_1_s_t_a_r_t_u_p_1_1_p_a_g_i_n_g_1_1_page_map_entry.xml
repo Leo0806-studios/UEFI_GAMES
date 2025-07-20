@@ -24,7 +24,7 @@
 
 <para>Represents an entry in a page map, containing information about a physical memory region. </para>
 <para>
-Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00061">61</link> of file <link linkend="__p_a_g_e___m_a_p_8h_source">PAGE_MAP.h</link>.</para>
+Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00063">63</link> of file <link linkend="__p_a_g_e___m_a_p_8h_source">PAGE_MAP.h</link>.</para>
 </section>
 <section>
 <title>Friends And Related Symbol Documentation</title>
@@ -37,7 +37,7 @@ Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00061">61</link>
 <para>the global page map. this contains information about the usage of physical pages </para>
 </para>
 <para>
-Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00062">62</link> of file <link linkend="__p_a_g_e___m_a_p_8h_source">PAGE_MAP.h</link>.</para>
+Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00064">64</link> of file <link linkend="__p_a_g_e___m_a_p_8h_source">PAGE_MAP.h</link>.</para>
 </section>
 <para>
 The documentation for this class was generated from the following file:</para>
