@@ -81,7 +81,6 @@ namespace MXF_LINKER {
 
 			// Find the address of the entry point in the .text section
 			if (namesection == ".text") {
-				std::cout << "found .text\n";
 				// Compute the file offset of the entry point within the .text section
 				DWORD entryPointRVA = OptionalHeader.AddressOfEntryPoint;
 				DWORD sectionVA = section.VirtualAddress;
@@ -119,11 +118,20 @@ namespace MXF_LINKER {
 
 			if (entryPointRVA >= sectionVA && entryPointRVA < sectionVA + sectionSize_) {
 				this->offsetofentry = entryPointRVA - sectionVA;
+				//get the name of the section the entry point is in
+				for (auto& sec : this->sectionMap) {
 
+						if (entryPointRVA >= sec.second.start && entryPointRVA < sec.second.start + sec.second.length) {
+							entrySectionName = sec.first;
+							break;
+						}
+					
+				}
 				// Optional: Print debugging info
 				std::cout << "[PE::Parse] Entry Point RVA: 0x" << std::hex << entryPointRVA
 					<< " found in section starting at VA: 0x" << sectionVA
-					<< ", offset into section: 0x" << offsetofentry << std::endl;
+					<< ", offset into section: 0x" << offsetofentry 
+					<< ", Section name : "<< entrySectionName<< std::endl;
 
 				break;
 			}

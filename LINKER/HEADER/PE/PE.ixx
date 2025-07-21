@@ -13,6 +13,7 @@ export namespace MXF_LINKER {
 		IMAGE_OPTIONAL_HEADER64 OptionalHeader;
 		std::vector<IMAGE_SECTION_HEADER> SectionHeaders;
 		size_t offsetofentry = 0;// this is the ofsett of the entry point in the .text section
+		std::string entrySectionName = "";
 		bool is64Bit = true;
 		struct Section {
 			std::string Name; // Name of the section, can be used for debugging or identification
