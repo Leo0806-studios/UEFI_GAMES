@@ -75,7 +75,7 @@ namespace MXF_LINKER {
 
 			}
 
-			this->sectionMap[namesection] = { .start = sectionOffset,.length = section.SizeOfRawData };
+			this->sectionMap[namesection] = { .start = sectionOffset,.length = section.SizeOfRawData,.index=i };
 
 			//now that we found the .text we can compute the offset of the entry point in it.
 

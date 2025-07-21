@@ -63,8 +63,15 @@ import HEADERS;
 		/// <param name="Pe"></param>
 		explicit MXF(const PE& Pe);
 
-		void Build();
 
+		/// <summary>
+		/// build the MXF and stores in an internal buffer
+		/// </summary>
+		void Build();
+		/// <summary>
+		/// writes the mxf to the file specified in out path
+		/// </summary>
+		/// <param name="OutPath"></param>
 		void Write(const std::string_view OutPath);
 	};
 

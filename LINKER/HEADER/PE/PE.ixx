@@ -21,6 +21,7 @@ export namespace MXF_LINKER {
 		struct Pair {
 			size_t start=0;
 			size_t length=0;
+			size_t index = 0;
 		};
 		std::unordered_map<std::string, Pair> sectionMap;
 		std::vector<Section> Sections;

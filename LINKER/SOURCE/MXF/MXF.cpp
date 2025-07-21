@@ -16,9 +16,10 @@ namespace MXF_LINKER {
 #pragma warning(disable:4820)
 	struct PeRelocBlock {
 		struct PeRelocEntry {
-			std::bitset<4> type=0;
+			std::bitset<4> type = 0;
 			std::bitset<12> offset = 0;
-
+			std::string section = ""; //contains the sction name
+			unsigned int AdjustedRVA = 0;//this is the adjusted adress. it is relative to the beginning of the section it is in
 		};
 		unsigned int pageRVA = 0;
 		std::vector<PeRelocEntry> entries;
@@ -70,7 +71,7 @@ namespace MXF_LINKER {
 		std::vector<RelocationHeaderEntry> relocations;
 		//implement Relocation parsing here
 		PE::Section relocationSection = {};
-		for(const auto& section : Pe.Sections) {
+		for (const auto& section : Pe.Sections) {
 			if (section.Name == ".reloc") {
 				relocationSection = section;
 				std::cout << "[MXF::MXF] Found relocation section." << std::endl;
@@ -87,7 +88,7 @@ namespace MXF_LINKER {
 		size_t relocDataSize = relocationSection.Data.size();
 		size_t offset = 0; // Current offset in the relocation data
 		while (offset < relocDataSize) {
-			PeRelocBlock PeBlock= {};
+			PeRelocBlock PeBlock = {};
 			if (relocDataSize - offset < sizeof(IMAGE_BASE_RELOCATION)) {
 				std::cerr << "[MXF::MXF] Incomplete relocation entry at offset " << std::hex << offset << std::endl;
 				break; // Not enough data for a complete relocation entry
@@ -95,7 +96,7 @@ namespace MXF_LINKER {
 			const IMAGE_BASE_RELOCATION* relocEntry = reinterpret_cast<const IMAGE_BASE_RELOCATION*>(relocData + offset);
 			size_t relocSize = relocEntry->SizeOfBlock;
 			if (relocSize < sizeof(IMAGE_BASE_RELOCATION)) {
-				if(relocSize == 0) {
+				if (relocSize == 0) {
 					std::cout << "[MXF::MXF] Reached end of relocation entries at offset " << std::hex << offset << std::endl;
 					break; // End of relocation entries
 				}
@@ -117,14 +118,41 @@ namespace MXF_LINKER {
 				relocationHeader.Relocations.push_back(entry);
 				++relocationCount;
 				relocationHeader.numEntries++;
-				PeRelocBlock::PeRelocEntry Entry = {
-					.type = relocType,
-					.offset = relocOffset
-				};
+				PeRelocBlock::PeRelocEntry Entry = [&]() {
+					PeRelocBlock::PeRelocEntry entr = {};
+					entr.type = relocType;
+					entr.offset = relocOffset;
+					auto& sectionMap = Pe.sectionMap;
+					auto& SectionVector = Pe.Sections;
+					auto& RawPE = Pe.RawData;
+					//now itterate all the sections to find in wich this entry is
+					//im an idiot. i store the pe file in a vector of bytes. i dont need to itterate over it repeatedly and can just index it
+
+
+					// ill get the element at the index RVA+offset
+					size_t index = relocEntry->VirtualAddress + relocOffset;
+
+					const unsigned int& RVA = RawPE[index];
+					//ill itterate over the section map and check if the current entry is in the current section
+
+					for (auto& section : sectionMap) {
+						if (index >= section.second.start && index < section.second.start + section.second.length) {
+							entr.section = section.first;
+							entr.AdjustedRVA = index - section.second.start;
+							break;
+						}
+					}
+						return entr;
+					}();
+
+				//{
+				//	.type = relocType,
+				//	.offset = relocOffset
+				//};
 				PeBlock.entries.push_back(std::move(Entry));
 				std::cout << "[MXF::MXF] Relocation entry: Address = 0x" << std::hex << entry.Address
 					<< ", Size = " << std::dec << entry.Size
-					<<", ImageBaseOffsetofBlock = 0x"<<std::hex<<relocEntry->VirtualAddress<<std::dec
+					<< ", ImageBaseOffsetofBlock = 0x" << std::hex << relocEntry->VirtualAddress << std::dec
 					<< ", Type = " << relocType << std::endl;
 			}
 			offset += relocSize; // Move to the next relocation block
@@ -139,6 +167,28 @@ namespace MXF_LINKER {
 		//.text
 		//.data
 		//.rdata
-		
+		std::cout << "[MXF::MXF] started appending sections...\n";
+		const PE::Section& text = Pe.Sections[Pe.sectionMap.at(".text").index];
+		this->Sections.append_range(text.Data);
+		const PE::Section& data = Pe.Sections[Pe.sectionMap.at(".data").index];
+		this->Sections.append_range(data.Data);
+		const PE::Section& rdata = Pe.Sections[Pe.sectionMap.at(".rdata").index];
+		this->Sections.append_range(rdata.Data);
+
+		//no need to add the .reloc section as the data is stored inside a header
+
+
+		//we should have the size of all headers by now
+
+		totalHeaderSize;
+		this->FullHeaderSize = totalHeaderSize;
+
+	}
+	void MXF::Build()
+	{
+	}
+	void MXF::Write(const std::string_view OutPath)
+	{
+		(void)OutPath;
 	}
 }

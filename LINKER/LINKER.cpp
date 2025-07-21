@@ -39,8 +39,8 @@ import MXF;
 #endif
 int main()
 {
- //  std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\KERNEL.exe";//for now ill hardcode a path to a test file.
-    std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\LINKER.exe";//for now ill hardcode a path to a test file.
+   std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\KERNEL.exe";//for now ill hardcode a path to a test file.
+   // std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\LINKER.exe";//for now ill hardcode a path to a test file.
 	MXF_LINKER::PE pe(path);
     pe.Parse();
     MXF_LINKER::MXF mxf(pe);
