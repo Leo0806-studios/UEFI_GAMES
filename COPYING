@@ -1,3 +1,9 @@
+idk what licence to use.
+
+
+i use pat of gnu-efi.
+i used the project from github.com/pbatard/uefi-simple to compile the gnu-efi library.
+
 1. The library code used by this project (the gnu-efi library part), is covered by
 the following agreement:
 
@@ -24,7 +30,23 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE. THE EFI SPECIFICATION AND ALL OTHER INFORMATION
 ON THIS WEB SITE ARE PROVIDED "AS IS" WITH NO WARRANTIES, AND ARE SUBJECT
-TO CHANGE WITHOUT NOTICE.
+TO CHANGE WITHOUT NOTICE.
 
-2. The rest of the code, including the project files and makefiles, is set to
-public domain.
+i also used the .vbs file from the uefi-simple repo.
+
+the rest of the code is free to use, distribiute, modify or whatever.
+
+i do not laim that the software is functional or wroks on every system.
+by using the software you agree that you are aware of the risks that runing code from the internet brngs with it and accept it.
+if you modify the software i have no responsibility for any outcomes of running that software.
+
+(i am not good at writing stuff like that. pls have mercy. )
+i will improve/clarify this text in the future but the general meaning will be the same.
+the software will allways stay
+-open source
+-free to use
+-free to distribute
+-free to modify
+-free to sell
+
+just include a refference to this repo 
