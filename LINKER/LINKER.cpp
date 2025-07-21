@@ -31,11 +31,23 @@ it is the main kernel and loads all of the drivers (except the most basic ones)
 */
 import <string>;
 import PE;
+#ifdef __INTELLISENSE__
+#include "MXF/MXF.h"
+#else
+import MXF;
+
+#endif
 int main()
 {
-    std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\KERNEL.exe";//for now ill hardcode a path to a test file.
+ //  std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\KERNEL.exe";//for now ill hardcode a path to a test file.
+    std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\LINKER.exe";//for now ill hardcode a path to a test file.
 	MXF_LINKER::PE pe(path);
     pe.Parse();
+    MXF_LINKER::MXF mxf(pe);
+    mxf.Build();
+    mxf.Write("outPath.MXF");
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -1,5 +1,5 @@
 export module HEADERS;
-
+import std;
 export {
-#include "MAIN_HEADER.h"
+#include "HEADERS.h"
 }

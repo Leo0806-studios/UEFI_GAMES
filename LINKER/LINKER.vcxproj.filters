@@ -33,5 +33,22 @@
     <ClCompile Include="HEADER\MXF\HEADERS\MAIN_HEADER.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\MXF\MXF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HEADER\MXF\MXF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\MXF\HEADERS\SECTION_POINTER_HEADER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\MXF\HEADERS\HEADERS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\MXF\HEADERS\RELOCATION_HEADER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

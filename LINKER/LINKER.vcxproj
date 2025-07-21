@@ -146,7 +146,14 @@
     <ClCompile Include="HEADER\MXF\MXF.ixx" />
     <ClCompile Include="HEADER\PE\PE.ixx" />
     <ClCompile Include="LINKER.cpp" />
+    <ClCompile Include="SOURCE\MXF\MXF.cpp" />
     <ClCompile Include="SOURCE\PE\PE.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HEADER\MXF\HEADERS\HEADERS.h" />
+    <ClInclude Include="HEADER\MXF\HEADERS\RELOCATION_HEADER.h" />
+    <ClInclude Include="HEADER\MXF\HEADERS\SECTION_POINTER_HEADER.h" />
+    <ClInclude Include="HEADER\MXF\MXF.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

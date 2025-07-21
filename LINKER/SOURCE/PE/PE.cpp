@@ -34,7 +34,7 @@ namespace MXF_LINKER {
 		if (RawData.size() < DosHeader.e_lfanew + sizeof(IMAGE_FILE_HEADER) + sizeof(IMAGE_OPTIONAL_HEADER)) {
 			throw std::runtime_error("File is too small to contain NT headers.");
 		}
-		auto ntHeadersOffset = DosHeader.e_lfanew+4;
+		auto ntHeadersOffset = DosHeader.e_lfanew + 4;
 		std::cout << "[PE::Parse] NT Headers Offset: 0x" << std::hex << ntHeadersOffset << std::endl;
 		std::memcpy(&FileHeader, RawData.data() + ntHeadersOffset, sizeof(IMAGE_FILE_HEADER));
 		std::cout << "[PE::Parse] FileHeader.Machine: 0x" << std::hex << FileHeader.Machine << std::endl;
@@ -49,7 +49,8 @@ namespace MXF_LINKER {
 			if (OptionalHeader.Magic != IMAGE_NT_OPTIONAL_HDR64_MAGIC) {
 				throw std::runtime_error("Invalid optional header magic for 64-bit PE.");
 			}
-		} else {
+		}
+		else {
 			if (OptionalHeader.Magic != IMAGE_NT_OPTIONAL_HDR32_MAGIC) {
 				throw std::runtime_error("Invalid optional header magic for 32-bit PE.");
 			}
@@ -66,9 +67,35 @@ namespace MXF_LINKER {
 			IMAGE_SECTION_HEADER section = {};
 			std::memcpy(&section, RawData.data() + sectionOffset, sectionSize);
 			std::cout << "[PE::Parse] Section " << i << " Name: ";
+			std::string namesection = "";
 			for (int j = 0; j < IMAGE_SIZEOF_SHORT_NAME; ++j) {
 				if (section.Name[j] == 0) break;
 				std::cout << static_cast<char>(section.Name[j]);
+				namesection += static_cast<char>(section.Name[j]);
+
+			}
+
+			this->sectionMap[namesection] = { .start = sectionOffset,.length = section.SizeOfRawData };
+
+			//now that we found the .text we can compute the offset of the entry point in it.
+
+			// Find the address of the entry point in the .text section
+			if (namesection == ".text") {
+				std::cout << "found .text\n";
+				// Compute the file offset of the entry point within the .text section
+				DWORD entryPointRVA = OptionalHeader.AddressOfEntryPoint;
+				DWORD sectionVA = section.VirtualAddress;
+				//DWORD sectionRawPtr = section.PointerToRawData;
+				DWORD sectionSize_ = section.Misc.VirtualSize;
+
+				if (entryPointRVA >= sectionVA && entryPointRVA < sectionVA + sectionSize_) {
+					size_t entryPointOffsetInSection = entryPointRVA - sectionVA;
+					//size_t entryPointFileOffset = sectionRawPtr + entryPointOffsetInSection;
+					std::cout << "[PE::Parse] Entry point file offset in .text: 0x" << std::hex << entryPointOffsetInSection << std::endl;
+					// Store or use entryPointFileOffset as needed
+				}
+
+
 			}
 			std::cout << ", SizeOfRawData: 0x" << std::hex << section.SizeOfRawData << ", PointerToRawData: 0x" << section.PointerToRawData << std::endl;
 			SectionHeaders.push_back(section);
@@ -80,9 +107,28 @@ namespace MXF_LINKER {
 			else {
 				throw std::runtime_error("Section data exceeds file size.");
 			}
-			Sections.push_back(sec);
+			sec.Name = namesection;
+				Sections.push_back(sec);
 
+		}
+		DWORD entryPointRVA = OptionalHeader.AddressOfEntryPoint;
+
+		for (const auto& section : SectionHeaders) {
+			DWORD sectionVA = section.VirtualAddress;
+			DWORD sectionSize_ = section.Misc.VirtualSize;
+
+			if (entryPointRVA >= sectionVA && entryPointRVA < sectionVA + sectionSize_) {
+				this->offsetofentry = entryPointRVA - sectionVA;
+
+				// Optional: Print debugging info
+				std::cout << "[PE::Parse] Entry Point RVA: 0x" << std::hex << entryPointRVA
+					<< " found in section starting at VA: 0x" << sectionVA
+					<< ", offset into section: 0x" << offsetofentry << std::endl;
+
+				break;
+			}
 		}
 		// Additional parsing can be done here, such as reading imports, exports, etc.
 	}
+
 } // namespace MXF_LINKER
