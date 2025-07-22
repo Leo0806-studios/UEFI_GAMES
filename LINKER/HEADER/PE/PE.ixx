@@ -16,15 +16,17 @@ export namespace MXF_LINKER {
 		std::string entrySectionName = "";
 		bool is64Bit = true;
 		struct Section {
+			size_t setionStart = 0;//this is the offset in the pe file.
+			size_t length = 0;//this is the size of the section
 			std::string Name; // Name of the section, can be used for debugging or identification
 			std::vector<UINT8> Data;
 		};
-		struct Pair {
-			size_t start=0;
-			size_t length=0;
-			size_t index = 0;
-		};
-		std::unordered_map<std::string, Pair> sectionMap;
+		//struct Pair {
+		//	size_t start=0;
+		//	size_t length=0;
+		//	size_t index = 0;
+		//};
+		//std::unordered_map<std::string, Pair> sectionMap;// ill remove this for now bc i assuem this is bugy
 		std::vector<Section> Sections;
 		std::vector<UINT8> RawData;//this contains the ful binary data of the PE file.
 

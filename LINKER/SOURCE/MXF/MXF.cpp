@@ -122,23 +122,23 @@ namespace MXF_LINKER {
 					PeRelocBlock::PeRelocEntry entr = {};
 					entr.type = relocType;
 					entr.offset = relocOffset;
-					auto& sectionMap = Pe.sectionMap;
+					//auto& sectionMap = Pe.sectionMap;
 					//now itterate all the sections to find in wich this entry is
 					//im an idiot. i store the pe file in a vector of bytes. i dont need to itterate over it repeatedly and can just index it
 
 
 					// ill get the element at the index RVA+offset
-					size_t index = relocEntry->VirtualAddress + relocOffset;
+					//size_t index = relocEntry->VirtualAddress + relocOffset;
 
 					//ill itterate over the section map and check if the current entry is in the current section
 
-					for (auto& section : sectionMap) {
-						if (index >= section.second.start && index < section.second.start + section.second.length) {
-							entr.section = section.first;
-							entr.AdjustedRVA = index - section.second.start;
-							break;
-						}
-					}
+					//for (auto& section : sectionMap) {
+					//	if (index >= section.second.start && index < section.second.start + section.second.length) {
+					//		entr.section = section.first;
+					//		entr.AdjustedRVA = index - section.second.start;
+					//		break;
+					//	}
+					//}
 						return entr;
 					}();
 
@@ -165,15 +165,15 @@ namespace MXF_LINKER {
 		//.data
 		//.rdata
 		std::cout << "[MXF::MXF] started appending sections...\n";
-		const PE::Section& text = Pe.Sections[Pe.sectionMap.at(".text").index];
-		size_t startOfText = 0;
-		this->Sections.append_range(text.Data);
-		const PE::Section& data = Pe.Sections[Pe.sectionMap.at(".data").index];
-		size_t startOfData = this->Sections.size();
-		this->Sections.append_range(data.Data);
-		const PE::Section& rdata = Pe.Sections[Pe.sectionMap.at(".rdata").index];
-		size_t startOfrData = this->Sections.size();
-		this->Sections.append_range(rdata.Data);
+		//const PE::Section& text = Pe.Sections[Pe.sectionMap.at(".text").index];
+		//size_t startOfText = 0;
+		//this->Sections.append_range(text.Data);
+		//const PE::Section& data = Pe.Sections[Pe.sectionMap.at(".data").index];
+		//size_t startOfData = this->Sections.size();
+		//this->Sections.append_range(data.Data);
+		//const PE::Section& rdata = Pe.Sections[Pe.sectionMap.at(".rdata").index];
+		//size_t startOfrData = this->Sections.size();
+		//this->Sections.append_range(rdata.Data);
 
 		//no need to add the .reloc section as the data is stored inside a header
 
@@ -182,9 +182,9 @@ namespace MXF_LINKER {
 
 		this->FullHeaderSize = totalHeaderSize;
 		//adjust the startOf* vars to include the totalHeaderSize;
-		startOfData += totalHeaderSize;
-		startOfrData += totalHeaderSize;
-		startOfText += totalHeaderSize;
+		//startOfData += totalHeaderSize;
+		//startOfrData += totalHeaderSize;
+		//startOfText += totalHeaderSize;
 		//now i get the section the entry point is in// not neccesary as this is allready done in the pe parsing
 		
 

@@ -74,31 +74,29 @@ namespace MXF_LINKER {
 				namesection += static_cast<char>(section.Name[j]);
 
 			}
+			
 
-			this->sectionMap[namesection] = { .start = sectionOffset,.length = section.SizeOfRawData,.index=i };
-
-			//now that we found the .text we can compute the offset of the entry point in it.
-
-			// Find the address of the entry point in the .text section
-			if (namesection == ".text") {
-				// Compute the file offset of the entry point within the .text section
 				DWORD entryPointRVA = OptionalHeader.AddressOfEntryPoint;
 				DWORD sectionVA = section.VirtualAddress;
-				//DWORD sectionRawPtr = section.PointerToRawData;
 				DWORD sectionSize_ = section.Misc.VirtualSize;
 
 				if (entryPointRVA >= sectionVA && entryPointRVA < sectionVA + sectionSize_) {
 					size_t entryPointOffsetInSection = entryPointRVA - sectionVA;
 					//size_t entryPointFileOffset = sectionRawPtr + entryPointOffsetInSection;
-					std::cout << "[PE::Parse] Entry point file offset in .text: 0x" << std::hex << entryPointOffsetInSection << std::endl;
+					std::cout <<std::dec<< "[PE::Parse] section start: " << std::hex << sectionVA
+						<< " section length: " << sectionSize_ <<std::dec<< '\n';
+					std::cout << "[PE::Parse] Entry point file offset in "<< namesection<<": 0x" << std::hex << entryPointOffsetInSection << std::endl;
 					// Store or use entryPointFileOffset as needed
 				}
 
 
-			}
+			//}
 			std::cout << ", SizeOfRawData: 0x" << std::hex << section.SizeOfRawData << ", PointerToRawData: 0x" << section.PointerToRawData << std::endl;
 			SectionHeaders.push_back(section);
 			Section sec;
+			sec.length = section.SizeOfRawData;
+			sec.setionStart = section.PointerToRawData;
+			sec.Name = namesection;
 			sec.Data.resize(section.SizeOfRawData);
 			if (section.PointerToRawData + section.SizeOfRawData <= RawData.size()) {
 				std::memcpy(sec.Data.data(), RawData.data() + section.PointerToRawData, section.SizeOfRawData);
@@ -111,32 +109,51 @@ namespace MXF_LINKER {
 
 		}
 		DWORD entryPointRVA = OptionalHeader.AddressOfEntryPoint;
+		//itterate ove the section vector  to check if the entry point is in it
 
-		for (const auto& section : SectionHeaders) {
-			DWORD sectionVA = section.VirtualAddress;
-			DWORD sectionSize_ = section.Misc.VirtualSize;
+		for (auto& sect : this->Sections) {
+			if (entryPointRVA >= sect.setionStart && entryPointRVA < sect.setionStart + sect.length) {
+				//we found the section. now get the offset within the section
+				this->offsetofentry = entryPointRVA - sect.setionStart;
+				std::cout << "[PE::Parse] section start: " << std::hex << sect.setionStart
+					<< " section length: " << sect.length << '\n';
+				this->entrySectionName = sect.Name;
 
-			if (entryPointRVA >= sectionVA && entryPointRVA < sectionVA + sectionSize_) {
-				this->offsetofentry = entryPointRVA - sectionVA;
-				//get the name of the section the entry point is in
-				for (auto& sec : this->sectionMap) {
-
-						if (entryPointRVA >= sec.second.start && entryPointRVA < sec.second.start + sec.second.length) {
-							entrySectionName = sec.first;
-							break;
-						}
-					
-				}
-				// Optional: Print debugging info
-				std::cout << "[PE::Parse] Entry Point RVA: 0x" << std::hex << entryPointRVA
-					<< " found in section starting at VA: 0x" << sectionVA
-					<< ", offset into section: 0x" << offsetofentry 
-					<< ", Section name : "<< entrySectionName<< std::endl;
-
-				break;
+				std::cout << "[PE::Parse] found entry point in section " << sect.Name 
+					<< " offset into section i 0x"<<std::hex<<offsetofentry << '\n';
 			}
 		}
+
+		//as the section map has been removed this will be move to the MEX::MEX constructor
+		//for (const auto& section : SectionHeaders) {
+		//	DWORD sectionVA = section.VirtualAddress;
+		//	DWORD sectionSize_ = section.Misc.VirtualSize;
+
+		//	if (entryPointRVA >= sectionVA && entryPointRVA < sectionVA + sectionSize_) {
+		//		this->offsetofentry = entryPointRVA - sectionVA;
+		//		//get the name of the section the entry point is in
+		//		for (auto& sec : this->sectionMap) {
+
+		//				if (entryPointRVA >= sec.second.start && entryPointRVA < sec.second.start + sec.second.length) {
+		//					entrySectionName = sec.first;
+		//					break;
+		//				}
+		//			
+		//		}
+		//		// Optional: Print debugging info
+		//		std::cout << "[PE::Parse] Entry Point RVA: 0x" << std::hex << entryPointRVA
+		//			<< " found in section starting at VA: 0x" << sectionVA
+		//			<< ", offset into section: 0x" << offsetofentry 
+		//			<< ", Section name : "<< entrySectionName<< std::endl;
+
+		//		break;
+		//	}
+		//}
 		// Additional parsing can be done here, such as reading imports, exports, etc.
+
+		//print sectionMapt to be sure //section map has been removed
+
+
 	}
 
 } // namespace MXF_LINKER
