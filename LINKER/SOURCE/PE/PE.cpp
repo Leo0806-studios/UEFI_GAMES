@@ -80,10 +80,10 @@ namespace MXF_LINKER {
 				DWORD sectionVA = section.VirtualAddress;
 				DWORD sectionSize_ = section.Misc.VirtualSize;
 
-				if (entryPointRVA >= sectionVA && entryPointRVA < sectionVA + sectionSize_) {
-					size_t entryPointOffsetInSection = entryPointRVA - sectionVA;
+				if (entryPointRVA >= section.PointerToRawData && entryPointRVA < section.PointerToRawData + section.SizeOfRawData) {
+					size_t entryPointOffsetInSection = entryPointRVA - section.PointerToRawData;
 					//size_t entryPointFileOffset = sectionRawPtr + entryPointOffsetInSection;
-					std::cout <<std::dec<< "[PE::Parse] section start: " << std::hex << sectionVA
+					std::cout <<std::dec<< "\n[PE::Parse] section start: " << std::hex << sectionVA
 						<< " section length: " << sectionSize_ <<std::dec<< '\n';
 					std::cout << "[PE::Parse] Entry point file offset in "<< namesection<<": 0x" << std::hex << entryPointOffsetInSection << std::endl;
 					// Store or use entryPointFileOffset as needed
