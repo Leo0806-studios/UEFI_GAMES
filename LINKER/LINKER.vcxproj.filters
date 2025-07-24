@@ -27,9 +27,6 @@
     <ClCompile Include="HEADER\MXF\MXF.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HEADER\MXF\HEADERS\HEADERS.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HEADER\MXF\HEADERS\MAIN_HEADER.h">
       <Filter>Source Files</Filter>
     </ClCompile>

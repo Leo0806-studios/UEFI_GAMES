@@ -12,6 +12,12 @@ first arg: mode
         -EXEC executable. userspace executable. produces .OBJ (Object)
 
 second arg : input PE file.
+optional third arg: -BA
+    instead of outputing a binary it will create a .txt file that contains a C-Style unsigned char array wich contains the binary data as hex.
+    additionaly the file contains a pointer called <filename>_ptr and is of the type const unsigned char*. a size_t <filename>_size contains the size.
+    both the pointer and the size are only valid after the included function <filename>_SETUP() is called
+    the inclusion of the size_t and the pointer is so you can define a extern var to put in a header
+    this file can then be just #include ed inside any c or c++ file to use. the char array signature is unsigned char <filename>[count]; 
 
 third arg: output file name. will be created in the same dir as the input file.
 
@@ -38,16 +44,24 @@ import PE;
 import MXF;
 
 #endif
-int main()
+int main(int argc, char** argv)
 {
+    (void)argc;
+    (void)argv;
     std::ios::sync_with_stdio(false);
-
   // std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\KERNEL.exe";//for now ill hardcode a path to a test file.
     std::string path = "C:\\Users\\leo08\\source\\repos\\UEFI_GAMES\\x64\\Debug\\LINKER.exe";//for now ill hardcode a path to a test file.
+    if (argc < 3 && path == "") {
+        std::cout << "[MAIN] to few args. restart with the correct args\n";
+        
+        return -1;
+    }
 	MXF_LINKER::PE pe(path);
     pe.Parse();
     MXF_LINKER::MXF mxf(pe);
     mxf.Build();
+    std::filesystem::path outpath = path;
+    outpath = outpath.parent_path();
     mxf.Write("outPath.MXF");
 
 

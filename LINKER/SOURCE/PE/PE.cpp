@@ -4,6 +4,7 @@ import <string>;
 import <Windows.h>;
 namespace MXF_LINKER {
 	PE::PE(const std::string_view filePath) {
+		std::cout << "[PE::PE] Loading file " << filePath << '\n';
 		std::ifstream file(filePath.data(), std::ios::binary | std::ios::ate);
 		if (!file.is_open()) {
 			throw std::runtime_error("Failed to open file: " + std::string(filePath));
@@ -26,7 +27,7 @@ namespace MXF_LINKER {
 		}
 		// Read DOS header
 		std::memcpy(&DosHeader, RawData.data(), sizeof(IMAGE_DOS_HEADER));
-		std::cout << "[PE::Parse] DOS Header e_magic: 0x" << std::hex << DosHeader.e_magic << ", e_lfanew: 0x" << DosHeader.e_lfanew << std::endl;
+		std::cout << "[PE::Parse] DOS Header e_magic: 0x" << std::hex << DosHeader.e_magic << ", e_lfanew: 0x" << DosHeader.e_lfanew << '\n';
 		if (DosHeader.e_magic != IMAGE_DOS_SIGNATURE) {
 			throw std::runtime_error("Invalid DOS signature.");
 		}
@@ -35,15 +36,15 @@ namespace MXF_LINKER {
 			throw std::runtime_error("File is too small to contain NT headers.");
 		}
 		auto ntHeadersOffset = DosHeader.e_lfanew + 4;
-		std::cout << "[PE::Parse] NT Headers Offset: 0x" << std::hex << ntHeadersOffset << std::endl;
+		std::cout << "[PE::Parse] NT Headers Offset: 0x" << std::hex << ntHeadersOffset << '\n';
 		std::memcpy(&FileHeader, RawData.data() + ntHeadersOffset, sizeof(IMAGE_FILE_HEADER));
-		std::cout << "[PE::Parse] FileHeader.Machine: 0x" << std::hex << FileHeader.Machine << std::endl;
+		std::cout << "[PE::Parse] FileHeader.Machine: 0x" << std::hex << FileHeader.Machine << '\n';
 		if (FileHeader.Machine != IMAGE_FILE_MACHINE_AMD64 && FileHeader.Machine != IMAGE_FILE_MACHINE_I386) {
 			throw std::runtime_error("Unsupported machine type.");
 		}
 		is64Bit = (FileHeader.Machine == IMAGE_FILE_MACHINE_AMD64);
 		std::memcpy(&OptionalHeader, RawData.data() + ntHeadersOffset + sizeof(IMAGE_FILE_HEADER), sizeof(IMAGE_OPTIONAL_HEADER));
-		std::cout << "[PE::Parse] OptionalHeader.Magic: 0x" << std::hex << OptionalHeader.Magic << std::endl;
+		std::cout << "[PE::Parse] OptionalHeader.Magic: 0x" << std::hex << OptionalHeader.Magic << '\n';
 
 		if (is64Bit) {
 			if (OptionalHeader.Magic != IMAGE_NT_OPTIONAL_HDR64_MAGIC) {
@@ -57,7 +58,7 @@ namespace MXF_LINKER {
 		}
 		size_t sectionCount = FileHeader.NumberOfSections;
 		size_t sectionSize = sizeof(IMAGE_SECTION_HEADER);
-		std::cout << "[PE::Parse] NumberOfSections: " << std::dec << sectionCount << ", SectionHeaderSize: " << sectionSize << std::endl;
+		std::cout << "[PE::Parse] NumberOfSections: " << std::dec << sectionCount << ", SectionHeaderSize: " << sectionSize << '\n';
 
 		if (RawData.size() < ntHeadersOffset + sizeof(IMAGE_FILE_HEADER) + sizeof(IMAGE_OPTIONAL_HEADER) + sectionCount * sectionSize) {
 			throw std::runtime_error("File is too small to contain section headers.");
@@ -85,13 +86,13 @@ namespace MXF_LINKER {
 					//size_t entryPointFileOffset = sectionRawPtr + entryPointOffsetInSection;
 					std::cout <<std::dec<< "\n[PE::Parse] section start: " << std::hex << sectionVA
 						<< " section length: " << sectionSize_ <<std::dec<< '\n';
-					std::cout << "[PE::Parse] Entry point file offset in "<< namesection<<": 0x" << std::hex << entryPointOffsetInSection << std::endl;
+					std::cout << "[PE::Parse] Entry point file offset in "<< namesection<<": 0x" << std::hex << entryPointOffsetInSection << '\n';
 					// Store or use entryPointFileOffset as needed
 				}
 
 
 			//}
-			std::cout << ", SizeOfRawData: 0x" << std::hex << section.SizeOfRawData << ", PointerToRawData: 0x" << section.PointerToRawData << std::endl;
+			std::cout << ", SizeOfRawData: 0x" << std::hex << section.SizeOfRawData << ", PointerToRawData: 0x" << section.PointerToRawData << '\n';
 			SectionHeaders.push_back(section);
 			Section sec;
 			sec.length = section.SizeOfRawData;
@@ -144,7 +145,7 @@ namespace MXF_LINKER {
 		//		std::cout << "[PE::Parse] Entry Point RVA: 0x" << std::hex << entryPointRVA
 		//			<< " found in section starting at VA: 0x" << sectionVA
 		//			<< ", offset into section: 0x" << offsetofentry 
-		//			<< ", Section name : "<< entrySectionName<< std::endl;
+		//			<< ", Section name : "<< entrySectionName<< '\n';
 
 		//		break;
 		//	}

@@ -1,10 +1,8 @@
 #pragma once
-#ifdef __INTELLISENSE__
 import std;
-#endif // __INTELLISENSE__
+constexpr int MakeFourCC(char a, char b, char c, char d);
 
 namespace MXF_LINKER {
-		constexpr inline char RelocationHeaderId[4] = { 'R', 'H', 'D', 0 }; // 'RHD' in ASCII, this is the identifier for the Relocation Header
 #pragma pack(push)
 #pragma pack(1)
 	struct RelocationHeaderEntry {
@@ -16,7 +14,7 @@ namespace MXF_LINKER {
 #pragma warning(push)
 #pragma warning (disable: 4820) // Disable padding warning for this struct
 	struct RelocationHeader {
-		const int HeaderId = *reinterpret_cast<const int*>(&RelocationHeaderId); // 'RHD' in ASCII, this is the identifier for the Relocation Header
+		const int HeaderId = MakeFourCC( 'R', 'H', 'D', 0 ); // 'RHD' in ASCII, this is the identifier for the Relocation Header
 		size_t numEntries = 0;//i know this is redundant eith the vector but it makes parsing easier and makes it harder to forgett storing the isze
 		std::vector<RelocationHeaderEntry> Relocations; // this is a vector of relocations. each relocation contains the address, size and type of the relocation.
 

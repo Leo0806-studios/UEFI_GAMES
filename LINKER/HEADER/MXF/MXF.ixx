@@ -1,5 +1,5 @@
 export module MXF;
-import HEADERS;
+#include "HEADERS/HEADERS.h"
 import std;
 import PE;
 export {

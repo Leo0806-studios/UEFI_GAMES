@@ -141,7 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HEADER\MXF\HEADERS\HEADERS.ixx" />
     <ClCompile Include="HEADER\MXF\HEADERS\MAIN_HEADER.h" />
     <ClCompile Include="HEADER\MXF\MXF.ixx" />
     <ClCompile Include="HEADER\PE\PE.ixx" />
