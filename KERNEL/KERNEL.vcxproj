@@ -75,10 +75,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
     <CustomBuildAfterTargets>TlogCleanup</CustomBuildAfterTargets>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <CustomBuildAfterTargets>TlogCleanup</CustomBuildAfterTargets>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -113,7 +117,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <ExceptionHandling>false</ExceptionHandling>
@@ -123,6 +127,7 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>5045;4464;4820;4711;4100;4505</DisableSpecificWarnings>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -148,7 +153,7 @@
       <PreprocessorDefinitions>;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -156,6 +161,7 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>5045;4464;4820;4711;4100;4505</DisableSpecificWarnings>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -184,6 +190,7 @@
   <ItemGroup>
     <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h" />
     <ClInclude Include="HEADER\NAMESPACE_DOCS.h" />
+    <ClInclude Include="HEADER\SAL\SAL.h" />
     <ClInclude Include="HEADER\STARTUP\GDT\GDT.h" />
     <ClInclude Include="HEADER\STARTUP\PAGE_MAP\PAGE_MAP.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\ALLOCATION\ALLOCATION.h" />
@@ -195,6 +202,10 @@
     <ProjectReference Include="..\FREESTANDING_STD++LIB\FREESTANDING_STD++LIB.vcxproj">
       <Project>{bee9a4c9-bc28-4a6c-a32f-6d238a748ee1}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="KERNEL.suppress" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,19 +2,19 @@
 //
 
 /*
-ussage
+usage
 first arg: mode
         -D driver. kernel level. produces .SL (sharedLibrary)
         -K kernel. kernel level produces .KRN (kernel)
         -KS kernel level shared lib. produces .SL
-        -KEXEC kernel level executable. producces .KOBJ (kernelObject)
+        -KEXEC kernel level executable. produces .KOBJ (kernelObject)
         -S Shared lib. Userspace Shared library. produces .SL
         -EXEC executable. userspace executable. produces .OBJ (Object)
 
 second arg : input PE file.
 optional third arg: -BA
-    instead of outputing a binary it will create a .txt file that contains a C-Style unsigned char array wich contains the binary data as hex.
-    additionaly the file contains a pointer called <filename>_ptr and is of the type const unsigned char*. a size_t <filename>_size contains the size.
+    instead of outputting a binary it will create a .txt file that contains a C-Style unsigned char array which contains the binary data as hex.
+    additionally the file contains a pointer called <filename>_ptr and is of the type const unsigned char*. a size_t <filename>_size contains the size.
     both the pointer and the size are only valid after the included function <filename>_SETUP() is called
     the inclusion of the size_t and the pointer is so you can define a extern var to put in a header
     this file can then be just #include ed inside any c or c++ file to use. the char array signature is unsigned char <filename>[count]; 
@@ -24,11 +24,11 @@ third arg: output file name. will be created in the same dir as the input file.
 
 about .KOBJ.
 it will only run in ring0 if started by the kernel itself and with special parameters.
-starting such an appliction from userspace will result in process termination.
+starting such an application from userspace will result in process termination.
 
 about .KRN. 
-this is the format my 3rd stage of the kenel will be in.
-it is the first stage not stored in a pe executable.
+this is the format my 3rd stage of the Kernel will be in.
+it is the first stage not stored in a PE executable.
 it is the main kernel and loads all of the drivers (except the most basic ones)
 
 

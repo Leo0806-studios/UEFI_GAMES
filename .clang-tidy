@@ -1,0 +1,4 @@
+Checks: >
+  -Wreserved-identifier,
+  -clang-diagnostic-c++98-compat
+

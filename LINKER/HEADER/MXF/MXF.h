@@ -2,7 +2,7 @@
 #ifdef __INTELLISENSE__
 import std;
 import PE;
-import HEADERS;
+#include "HEADERS/HEADERS.h"
 #endif // __INTELLISENSE__
 
 #pragma warning(push)
@@ -13,16 +13,10 @@ import HEADERS;
 
 
 	//this struct does not need to be packed as it is the easy to work with representation.
-	// iwill copy everything to a vector of bytes and write it to a file anyways
+	// i will copy everything to a vector of bytes and write it to a file anyways
 	class MXF
 	{
 	private:
-		/// <summary>
-		/// Adds a header of specified size to a data structure or buffer.
-		/// </summary>
-		/// <param name="header">Pointer to the header data to be added.</param>
-		/// <param name="size">The size, in bytes, of the header.</param>
-		void AddHeaderHelper(const void* header, size_t size);
 		unsigned int FileType = 0;
 		unsigned __int64 FullHeaderSize = 0; // this is the size of all headers. if used as an offset from the beginning of the file it will point to the first non header byte
 		static constexpr inline char Magic[8] = { 'M', 'X', 'F','E','X','E','C', 0 }; // this is the magic number of the file. it is used to identify the file as a MXF file.
@@ -31,7 +25,7 @@ import HEADERS;
 		/*
 		HEADER BITMAP
 		first bit is the main header.
-		second bit is the Secton Poiter header.each entry in this header is a pinte to the beginning of the section, its length and the section name.
+		second bit is the Section Pointer header.each entry in this header is a pointer to the beginning of the section, its length and the section name.
 		third is relocation header. this header contains the relocation information for the file.
 		4th is the symbol table header. this header contains the symbol table for the file.
 		5th is a export table.
@@ -41,18 +35,8 @@ import HEADERS;
 		std::bitset<64> HeaderBitmap = 0; // this is a bitmap of the headers that are present in the file. each bit represents a header. if the bit is set then the header is present.
 		std::vector<unsigned __int8> Headers; // this is a vector of bytes that contains all the headers in the file. the headers are packed in the order they are defined in the header bitmap.
 		std::vector<unsigned __int8> Sections; // this is a vector of bytes that contains all the sections in the file. the sections are packed in the order they are defined in the section pointer header.
-		std::vector<unsigned __int8> RawData;//the finished mxf file gets stored in here before writing ot disk
-		/// <summary>
-/// Adds a header to the collection.
-/// 		the headers must be packed 
-/// </summary>
-/// <typeparam name="Header">The type of the header to add.</typeparam>
-/// <param name="header">The header to add.</param>
-		template<typename Header>
-			requires requires { typename Header::HeaderId; Header::ToByteArray(); }
-		void AddHeader(const Header& header) {
-			AddHeaderHelper(&header, sizeof(Header));
-		}
+		std::vector<unsigned __int8> RawData;//the finished MXF file gets stored in here before writing to disk
+
 
 
 	public:
@@ -69,7 +53,7 @@ import HEADERS;
 		/// </summary>
 		void Build();
 		/// <summary>
-		/// writes the mxf to the file specified in out path
+		/// writes the MXF to the file specified in out path
 		/// </summary>
 		/// <param name="OutPath"></param>
 		void Write(const std::string_view OutPath);

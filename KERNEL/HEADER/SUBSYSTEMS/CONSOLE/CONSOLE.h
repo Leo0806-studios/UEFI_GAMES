@@ -5,6 +5,7 @@ namespace SYSTEM {
 		/// the console subsystem
 		/// </summary>
 		namespace CONSOLE {
+			constexpr inline size_t tabSize = 4; //the size of a tab in the console. this is used to calculate the cursor position when a tab is encountered
 			/// <summary>
 			/// contains information about the console
 			/// 
@@ -23,13 +24,13 @@ namespace SYSTEM {
 			class Console {
 			public:
 			/// <summary>
-			/// inits the console. must be called before any other console function can safely be used.
+			/// Initializes the console. must be called before any other console function can safely be used.
 			/// </summary>
-			/// <param name="collums">amount of collums to use. does nothing rn</param>
-			/// <param name="rows">amount of rows. does nothing rn</param>
-			/// <param name="pixelsperRow">influences vertial spacing should larger than the max size of a character or clipping might occur.</param>
-			/// <param name="pixelsperCollum">influences horizontal spacing. should be larger than the widht o a character or clipping might occur</param>
-			/// <returns>succses is true</returns>
+			/// <param name="collums">amount of columns to use. does nothing currently</param>
+			/// <param name="rows">amount of rows. does nothing currently</param>
+			/// <param name="pixelsperRow">influences vertical spacing should larger than the max size of a character or clipping might occur.</param>
+			/// <param name="pixelsperCollum">influences horizontal spacing. should be larger than the width o a character or clipping might occur</param>
+			/// <returns>success is true</returns>
 			static bool InitConsole( size_t collums, size_t rows, size_t pixelsperRow,size_t pixelsperCollum);
 			/// <summary>
 			/// writes a line to the console out
@@ -37,14 +38,14 @@ namespace SYSTEM {
 			/// <param name="str"></param>
 			static void WriteLine(const wchar_t* str);
 			/// <summary>
-			/// analog to printf. takes a format string and avariable amount of input
-			/// additinaly it takse the amount of extra args as a parameter to increase safety
+			/// analog to printf. takes a format string and a variable amount of input
+			/// additionally it takes the amount of extra args as a parameter to increase safety
 			/// </summary>
 			/// <param name="format"></param>
 			/// <param name=""></param>
 			static void WriteF(size_t args ,const char* format, ...);
 			/// <summary>
-			/// writes an unformated string to the console.
+			/// writes an unformatted string to the console.
 			/// </summary>
 			/// <param name="str"></param>
 			static void Write(const wchar_t* str);
@@ -59,7 +60,7 @@ namespace SYSTEM {
 			static void ClearConsole();
 			/// <summary>
 			/// flushes the console buffer to the screen
-			/// does nothing in early init while redering draws directly to the framebuffer
+			/// does nothing in early stages while rendering draws directly to the framebuffer
 			/// </summary>
 			static void Flush();
 			/// <summary>

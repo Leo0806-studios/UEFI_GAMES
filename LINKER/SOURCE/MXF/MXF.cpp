@@ -262,6 +262,9 @@ namespace MXF_LINKER {
 		std::vector<unsigned __int8> sectionPointerHeaderBytes = sectionPointerHeader.ToByteArray();
 		this->Headers.append_range(sectionPointerHeaderBytes);
 		std::cout << "[MXF::MXF] Added SectionPointerHeader\n";
+
+		(void)relocationHeader;
+		//TODO implement Rellocation 
 	}
 	void MXF::Build()
 	{

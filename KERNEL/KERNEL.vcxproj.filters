@@ -62,5 +62,12 @@
     <ClInclude Include="HEADER\NAMESPACE_DOCS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADER\SAL\SAL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="KERNEL.suppress" />
   </ItemGroup>
 </Project>

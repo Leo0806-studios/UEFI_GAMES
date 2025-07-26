@@ -1,0 +1,884 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SuppressVersion">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CurrentVersion" type="xs:int" minOccurs="0" />
+                <xs:element name="IsPrimary" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="KERNEL" msdata:CaseSensitive="False">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FileName" type="xs:string" default="" />
+                <xs:element name="ErrorCode" type="xs:string" default="" />
+                <xs:element name="Message" type="xs:string" default="" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" default="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//KERNEL" />
+        <xs:field xpath="FileName" />
+        <xs:field xpath="ErrorCode" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="CodePrev" />
+        <xs:field xpath="CodeCurrent" />
+        <xs:field xpath="CodeNext" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <SuppressVersion>
+    <CurrentVersion>3</CurrentVersion>
+    <IsPrimary>false</IsPrimary>
+  </SuppressVersion>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V2563</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>933598060</CodePrev>
+    <CodeCurrent>418400062</CodeCurrent>
+    <CodeNext>13439893</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V2563</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>1313998447</CodePrev>
+    <CodeCurrent>2180521570</CodeCurrent>
+    <CodeNext>704262142</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V2563</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>92137925</CodePrev>
+    <CodeCurrent>2294845535</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V3539</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>933598060</CodePrev>
+    <CodeCurrent>418400062</CodeCurrent>
+    <CodeNext>13439893</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V3539</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>1579143470</CodePrev>
+    <CodeCurrent>1673600641</CodeCurrent>
+    <CodeNext>3903678814</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V3539</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>1313998447</CodePrev>
+    <CodeCurrent>2180521570</CodeCurrent>
+    <CodeNext>704262142</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V3539</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>92137925</CodePrev>
+    <CodeCurrent>2294845535</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V3539</ErrorCode>
+    <Message>Array indexing should be the only form of pointer arithmetic and it should be applied only to objects defined as an array type.</Message>
+    <CodePrev>2257095257</CodePrev>
+    <CodeCurrent>3294586244</CodeCurrent>
+    <CodeNext>9954381</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V3546</ErrorCode>
+    <Message>Pointer to void should not be converted to a pointer to object.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3663895260</CodeCurrent>
+    <CodeNext>2314590697</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>ALLOCATION.cpp</FileName>
+    <ErrorCode>V3546</ErrorCode>
+    <Message>Pointer to void should not be converted to a pointer to object.</Message>
+    <CodePrev>4096276922</CodePrev>
+    <CodeCurrent>3663895260</CodeCurrent>
+    <CodeNext>2314590697</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2523</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>52750496</CodePrev>
+    <CodeCurrent>45389267</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2523</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>1545137077</CodePrev>
+    <CodeCurrent>363100915</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2523</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>3993188948</CodePrev>
+    <CodeCurrent>1514539856</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2523</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>3902097514</CodePrev>
+    <CodeCurrent>2144947414</CodeCurrent>
+    <CodeNext>1666902877</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>2989</CodePrev>
+    <CodeCurrent>497937</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3967859011</CodePrev>
+    <CodeCurrent>52750496</CodeCurrent>
+    <CodeNext>45389267</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>105483379</CodeCurrent>
+    <CodeNext>3759744582</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>587084002</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>985134591</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>1811142925</CodePrev>
+    <CodeCurrent>1147277746</CodeCurrent>
+    <CodeNext>2989</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3576123662</CodePrev>
+    <CodeCurrent>1341998007</CodeCurrent>
+    <CodeNext>3030790459</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3576123662</CodePrev>
+    <CodeCurrent>1341998007</CodeCurrent>
+    <CodeNext>1622815030</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>949058883</CodePrev>
+    <CodeCurrent>1545137077</CodeCurrent>
+    <CodeNext>363100915</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>1962916088</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2040417649</CodeCurrent>
+    <CodeNext>3567538457</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3759744582</CodePrev>
+    <CodeCurrent>2174590184</CodeCurrent>
+    <CodeNext>497341082</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>4206313578</CodePrev>
+    <CodeCurrent>3452430354</CodeCurrent>
+    <CodeNext>897763591</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>3929112538</CodeCurrent>
+    <CodeNext>194514397</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3894510261</CodePrev>
+    <CodeCurrent>3993188948</CodeCurrent>
+    <CodeNext>1514539856</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>2989</CodePrev>
+    <CodeCurrent>497937</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3967859011</CodePrev>
+    <CodeCurrent>52750496</CodeCurrent>
+    <CodeNext>45389267</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>105483379</CodeCurrent>
+    <CodeNext>3759744582</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>587084002</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1123293067</CodePrev>
+    <CodeCurrent>736903931</CodeCurrent>
+    <CodeNext>4140708036</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>985134591</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3171674248</CodePrev>
+    <CodeCurrent>1123293067</CodeCurrent>
+    <CodeNext>736903931</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1811142925</CodePrev>
+    <CodeCurrent>1147277746</CodeCurrent>
+    <CodeNext>2989</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>4140708036</CodePrev>
+    <CodeCurrent>1268171382</CodeCurrent>
+    <CodeNext>2793442848</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3576123662</CodePrev>
+    <CodeCurrent>1341998007</CodeCurrent>
+    <CodeNext>3030790459</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3576123662</CodePrev>
+    <CodeCurrent>1341998007</CodeCurrent>
+    <CodeNext>1622815030</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3198034611</CodePrev>
+    <CodeCurrent>1473497029</CodeCurrent>
+    <CodeNext>3171674248</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>949058883</CodePrev>
+    <CodeCurrent>1545137077</CodeCurrent>
+    <CodeNext>363100915</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>1962916088</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2040417649</CodeCurrent>
+    <CodeNext>3567538457</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2098881524</CodeCurrent>
+    <CodeNext>3150130682</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2098884084</CodeCurrent>
+    <CodeNext>3722548952</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3759744582</CodePrev>
+    <CodeCurrent>2174590184</CodeCurrent>
+    <CodeNext>497341082</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1268171382</CodePrev>
+    <CodeCurrent>2793442848</CodeCurrent>
+    <CodeNext>4027638143</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1268171382</CodePrev>
+    <CodeCurrent>2793442848</CodeCurrent>
+    <CodeNext>3894510261</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1473497029</CodePrev>
+    <CodeCurrent>3171674248</CodeCurrent>
+    <CodeNext>1123293067</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3198034611</CodeCurrent>
+    <CodeNext>1473497029</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>4206313578</CodePrev>
+    <CodeCurrent>3452430354</CodeCurrent>
+    <CodeNext>897763591</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>3929112538</CodeCurrent>
+    <CodeNext>194514397</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3894510261</CodePrev>
+    <CodeCurrent>3993188948</CodeCurrent>
+    <CodeNext>1514539856</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>736903931</CodePrev>
+    <CodeCurrent>4140708036</CodeCurrent>
+    <CodeNext>1268171382</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>4200352163</CodeCurrent>
+    <CodeNext>339383</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3150130682</CodePrev>
+    <CodeCurrent>4200876451</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3515</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>52750496</CodePrev>
+    <CodeCurrent>45389267</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3515</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>1545137077</CodePrev>
+    <CodeCurrent>363100915</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3515</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>3993188948</CodePrev>
+    <CodeCurrent>1514539856</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3515</ErrorCode>
+    <Message>All integer constants of unsigned type should have 'U' suffix.</Message>
+    <CodePrev>3902097514</CodePrev>
+    <CodeCurrent>2144947414</CodeCurrent>
+    <CodeNext>1666902877</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>2989</CodePrev>
+    <CodeCurrent>497937</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3967859011</CodePrev>
+    <CodeCurrent>52750496</CodeCurrent>
+    <CodeNext>45389267</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>105483379</CodeCurrent>
+    <CodeNext>3759744582</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>587084002</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>985134591</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>1811142925</CodePrev>
+    <CodeCurrent>1147277746</CodeCurrent>
+    <CodeNext>2989</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3576123662</CodePrev>
+    <CodeCurrent>1341998007</CodeCurrent>
+    <CodeNext>1622815030</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>949058883</CodePrev>
+    <CodeCurrent>1545137077</CodeCurrent>
+    <CodeNext>363100915</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>1962916088</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2040417649</CodeCurrent>
+    <CodeNext>3567538457</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3759744582</CodePrev>
+    <CodeCurrent>2174590184</CodeCurrent>
+    <CodeNext>497341082</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>4206313578</CodePrev>
+    <CodeCurrent>3452430354</CodeCurrent>
+    <CodeNext>897763591</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>3929112538</CodeCurrent>
+    <CodeNext>194514397</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3527</ErrorCode>
+    <Message>The return value of non-void function 'Print' should be used.</Message>
+    <CodePrev>3894510261</CodePrev>
+    <CodeCurrent>3993188948</CodeCurrent>
+    <CodeNext>1514539856</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>2989</CodePrev>
+    <CodeCurrent>497937</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3967859011</CodePrev>
+    <CodeCurrent>52750496</CodeCurrent>
+    <CodeNext>45389267</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>105483379</CodeCurrent>
+    <CodeNext>3759744582</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>587084002</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1123293067</CodePrev>
+    <CodeCurrent>736903931</CodeCurrent>
+    <CodeNext>4140708036</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>985134591</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3171674248</CodePrev>
+    <CodeCurrent>1123293067</CodeCurrent>
+    <CodeNext>736903931</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1811142925</CodePrev>
+    <CodeCurrent>1147277746</CodeCurrent>
+    <CodeNext>2989</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>4140708036</CodePrev>
+    <CodeCurrent>1268171382</CodeCurrent>
+    <CodeNext>2793442848</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3576123662</CodePrev>
+    <CodeCurrent>1341998007</CodeCurrent>
+    <CodeNext>1622815030</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3198034611</CodePrev>
+    <CodeCurrent>1473497029</CodeCurrent>
+    <CodeNext>3171674248</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>949058883</CodePrev>
+    <CodeCurrent>1545137077</CodeCurrent>
+    <CodeNext>363100915</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>199474053</CodePrev>
+    <CodeCurrent>1962916088</CodeCurrent>
+    <CodeNext>354809</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2040417649</CodeCurrent>
+    <CodeNext>3567538457</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2098881524</CodeCurrent>
+    <CodeNext>3150130682</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2098884084</CodeCurrent>
+    <CodeNext>3722548952</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3759744582</CodePrev>
+    <CodeCurrent>2174590184</CodeCurrent>
+    <CodeNext>497341082</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1268171382</CodePrev>
+    <CodeCurrent>2793442848</CodeCurrent>
+    <CodeNext>3894510261</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>1473497029</CodePrev>
+    <CodeCurrent>3171674248</CodeCurrent>
+    <CodeNext>1123293067</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3198034611</CodeCurrent>
+    <CodeNext>1473497029</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>4206313578</CodePrev>
+    <CodeCurrent>3452430354</CodeCurrent>
+    <CodeNext>897763591</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>3929112538</CodeCurrent>
+    <CodeNext>194514397</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3894510261</CodePrev>
+    <CodeCurrent>3993188948</CodeCurrent>
+    <CodeNext>1514539856</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>736903931</CodePrev>
+    <CodeCurrent>4140708036</CodeCurrent>
+    <CodeNext>1268171382</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>4200352163</CodeCurrent>
+    <CodeNext>339383</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>MAIN.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>3150130682</CodePrev>
+    <CodeCurrent>4200876451</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>RENDER.cpp</FileName>
+    <ErrorCode>V2517</ErrorCode>
+    <Message>Literal suffix 'ui_' should not contain lowercase characters.</Message>
+    <CodePrev>287828757</CodePrev>
+    <CodeCurrent>46288241</CodeCurrent>
+    <CodeNext>1975643211</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>RENDER.cpp</FileName>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>46288241</CodePrev>
+    <CodeCurrent>1975643211</CodeCurrent>
+    <CodeNext>5607</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>RENDER.cpp</FileName>
+    <ErrorCode>V3512</ErrorCode>
+    <Message>Literal suffix 'ui_' should not contain lowercase characters.</Message>
+    <CodePrev>287828757</CodePrev>
+    <CodeCurrent>46288241</CodeCurrent>
+    <CodeNext>1975643211</CodeNext>
+  </KERNEL>
+  <KERNEL>
+    <FileName>RENDER.cpp</FileName>
+    <ErrorCode>V3551</ErrorCode>
+    <Message>The string literal should not decay to a pointer to wchar_t. Consider inspecting the first function argument.</Message>
+    <CodePrev>46288241</CodePrev>
+    <CodeCurrent>1975643211</CodeCurrent>
+    <CodeNext>5607</CodeNext>
+  </KERNEL>
+</NewDataSet>

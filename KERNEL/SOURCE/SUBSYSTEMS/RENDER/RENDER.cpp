@@ -1,5 +1,10 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "../../../HEADER/SUBSYSTEMS/RENDER/RENDER.h"
 #include "../../../../FREESTANDING_STD++LIB/HEADER/STRING/STRING_F.h"
+#include <stdint.h>
 namespace SYSTEM::SUBSYSTEMS::RENDER {
 	namespace SIMPLE {
 
@@ -7,13 +12,13 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		unsigned int FramebufferWidth = 0;
 		unsigned int FramebufferHeight = 0;
 		unsigned int PixelsPerScanline = 0; // Number of bytes per row in the framebuffer
-		//i might chage the 8X8 bmp to be 16H and 8W
+		//i might change the 8X8 BMP to be 16H and 8W //i did change it
 		SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR SimpleFont[255] = {
 			{
 				 0, // Null character
 				0, // No width
 				8, // Height of the character
-				 0xFFFFFFFF, // White color
+				 COLOURS::White, // White color
 				 {0}
 
 
@@ -22,7 +27,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				 'A', // Character 'A'
 				 8, // Width of the character
 				 16, // Height of the character
-				 0xFFFFFFFF, // White color
+				 COLOURS::White, // White color
 			{
 				0b01111110,
 				0b01000010,
@@ -46,7 +51,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				'B',
 				8,
 				16,
-				0xFFFFFFFF,
+				COLOURS::White,
 				{
 				0b00000000, // 0x00
 				0b01111100, // 0x00
@@ -71,7 +76,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'C',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b01111110, // 0x00
@@ -95,7 +100,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c ='D',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b01111100, // 0x78
@@ -119,7 +124,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'E',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b01111110, // 0x7E
@@ -143,7 +148,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'F',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b01111110, // 0x00
@@ -167,7 +172,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 	.c = 'G',
 	.width = 8,
 		.height = 16,
-		.Color = 0xFFFFFFFF,
+		.Color = COLOURS::White,
 		.BMP = {
 			0b00000000, // 0x00
 			0b01111110, // 0x00
@@ -191,7 +196,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'H',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b01000010, // 0x00
@@ -215,7 +220,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'I',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b00111000, // 0x00
@@ -239,7 +244,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'J',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b00000010, // 0x00
@@ -263,7 +268,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'K',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 				0b00000000, // 0x00
 				0b01000010, // 0x00
@@ -287,7 +292,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'L',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01000000, // 0x00
@@ -311,7 +316,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'M',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01000010, // 0x42
@@ -335,7 +340,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'N',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01000010, // 0x42
@@ -359,7 +364,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'O',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01111110, // 0x00
@@ -383,7 +388,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'P',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01111100, // 0x00
@@ -407,7 +412,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'Q',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000,  // 0x00
 					0b01111110,  // 0x00
@@ -431,7 +436,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'R',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01111100, // 0x00
@@ -455,7 +460,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'S',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b00111100, // 0x3C
@@ -479,7 +484,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'T',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01111110, // 0x7E
@@ -503,7 +508,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'U',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01000010, // 0x42
@@ -527,7 +532,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 .c = 'V',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b00000000, // 0x00
@@ -551,7 +556,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'W',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000,
 					0b01000010, // 0x42
@@ -575,7 +580,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'X',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b01000010, // 0x42
@@ -598,7 +603,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'Y',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b00000000, // 0x00
@@ -622,7 +627,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'Z',
 				.width = 8,
 				.height = 16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000, // 0x00
 					0b00000000, // 0x00
@@ -646,7 +651,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c = 'a',
 				.width =8,
 				.height=16,
-				.Color = 0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000,
 					0b0,
@@ -670,7 +675,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				.c='b',
 				.width = 8,
 				.height=16,
-				.Color =0xFFFFFFFF,
+				.Color = COLOURS::White,
 				.BMP = {
 					0b00000000,
 					0b01000000,
@@ -1125,8 +1130,11 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		void SimpleDrawChar(unsigned int x, unsigned int y, wchar_t c)
 		{
 			//find char in translation table
-			int index = TranslationTable[(unsigned char)c];
-			if (index < 0 || index >= 255) return SimpleDrawChar(x,y,'A'); // Invalid character index
+			const int index = TranslationTable[static_cast<unsigned char>(c)];
+			if (index < 0 || index >= 255) 
+			{
+				return SimpleDrawChar(x, y, 'A'); // Invalid character index
+			}
 			const SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR& character = SimpleFont[index];
 			// Draw the character bitmap to the framebuffer
 			for (unsigned int row = 0; row < character.height; ++row) {
@@ -1135,7 +1143,8 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 						unsigned int pixelX = x + col;
 						unsigned int pixelY = y + row;
 						if (pixelX < FramebufferWidth && pixelY < FramebufferHeight) { // Ensure within bounds
-							FramebufferBase[pixelY * PixelsPerScanline + pixelX] = character.Color; // Set pixel color
+							__assume(FramebufferBase != nullptr);
+							FramebufferBase[pixelY * PixelsPerScanline + pixelX] = character.Color; // Set pixel color //-V108 //-V3539
 						}
 					}
 				}
@@ -1144,18 +1153,24 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		}
 		void SimpleDrawString(const wchar_t* str, unsigned int x, unsigned int y)
 		{
-			size_t len = STD::strlen(str);
+			if (str == nullptr) { return; }
+			const size_t len = STD::strlen(str);
 			unsigned int xpos = x;
-			unsigned int ypos = y;
+			const unsigned int ypos = y;
+			if (len >= UINT32_MAX) {
+				SimpleDrawString(L"String too long", x, y);
+				return;
+			}
+			//we check beforehand if the string is too long
 			for (size_t i = 0; i < len; i++) {
-				if(str[i]==' '){
-					xpos += 10;
+				if(str[i]==' '){ //-V3539
+					xpos += 10; //-V127
 
 
 					continue;
 				}
-				SimpleDrawChar(xpos,ypos,str[i]);
-				xpos += 10;
+				SimpleDrawChar(xpos,ypos,str[i]); //-V3539
+				xpos += 10; //-V127
 
 			}
 		}

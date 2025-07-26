@@ -1,3 +1,7 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 extern"C" {
 #include <gnu-efi/inc/efi.h>
 #include <gnu-efi/inc/efilib.h>
@@ -14,12 +18,12 @@ namespace SYSTEM {
 			size_t QueryInstalledRam() {
 				static size_t ram = 0;
 				if (ram == 0) {
-					EFI_MEMORY_DESCRIPTOR* memoryMap = reinterpret_cast<EFI_MEMORY_DESCRIPTOR*>(UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_);
-					ram = memoryMap->NumberOfPages * EFI_PAGE_SIZE;
-					size_t descriptorSize = UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE;
+				const 	EFI_MEMORY_DESCRIPTOR* memoryMap = static_cast<EFI_MEMORY_DESCRIPTOR*>(UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_); //-V3546
+					//ram = memoryMap->NumberOfPages * EFI_PAGE_SIZE;
+					const size_t descriptorSize = UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE;
 					size_t conventionlaRAM = 0;
 					for (UINTN i = 0; i < UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE / descriptorSize; i++) {
-						EFI_MEMORY_DESCRIPTOR* Descriptor = (EFI_MEMORY_DESCRIPTOR*)((UINT8*)memoryMap + i * descriptorSize);
+						const EFI_MEMORY_DESCRIPTOR* Descriptor = reinterpret_cast<const EFI_MEMORY_DESCRIPTOR*>(reinterpret_cast<const UINT8*>(memoryMap) + i * descriptorSize); //-V3539
 						if (Descriptor->Type == EfiConventionalMemory) {
 							//Print(L"Conventional Memory found ");
 							conventionlaRAM += Descriptor->NumberOfPages * EFI_PAGE_SIZE;
@@ -32,25 +36,25 @@ namespace SYSTEM {
 				}
 				return ram;
 			}
-			bool GlobalPageMap::AllocatePAgeMap()
+			bool GlobalPageMap::AllocatePageMap()
 			{
-				size_t Ram = SYSTEM::SYSTEM_INFO::SystemInfo::GetInstance().installedRam;
+			const	size_t Ram = SYSTEM::SYSTEM_INFO::SystemInfo::GetInstance().installedRam;
 				if (Ram == 0) {
 					return false; // RAM not initialized
 				}
 				constexpr size_t pageSize = EFI_PAGE_SIZE;
-				size_t pageCount = Ram / pageSize;
-				size_t pageMapSize = pageCount * sizeof(PageMapEntry);
-				//find a region in the uefi memory map large enough to fit the page map
-				size_t DescriptorSize = UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE;
+				const size_t pageCount = Ram / pageSize;
+				const size_t pageMapSize = pageCount * sizeof(PageMapEntry);
+				//find a region in the UEFI memory map large enough to fit the page map
+				const size_t DescriptorSize = UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE;
 				//size_t memorymapSize = UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE;
 				size_t PhysicalStartOfMap = 0;
 				size_t PagesUsedByMap = 0;
 
-				EFI_MEMORY_DESCRIPTOR* memoryMap = reinterpret_cast<EFI_MEMORY_DESCRIPTOR*>(UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_);
+				const EFI_MEMORY_DESCRIPTOR* memoryMap = static_cast<EFI_MEMORY_DESCRIPTOR*>(UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_);//necessary here as we deal with physical memory //-V3546
 				//enumerate the map
 				for (UINTN i = 0; i < UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE / DescriptorSize; i++) {
-					EFI_MEMORY_DESCRIPTOR* Descriptor = (EFI_MEMORY_DESCRIPTOR*)((UINT8*)memoryMap + i * DescriptorSize);
+					const EFI_MEMORY_DESCRIPTOR* Descriptor = reinterpret_cast<const EFI_MEMORY_DESCRIPTOR*>(reinterpret_cast<const UINT8*>(memoryMap) + i * DescriptorSize); //-V3539
 					if (Descriptor->Type == EfiConventionalMemory && Descriptor->NumberOfPages * EFI_PAGE_SIZE >= pageMapSize) {
 						PhysicalStartOfMap = Descriptor->PhysicalStart;
 						PagesUsedByMap = pageMapSize / pageSize;
@@ -62,29 +66,29 @@ namespace SYSTEM {
 				}
 				//now that we have a location for the map we can start recording the physical pages into it
 				//this involves treating the found region as an array of PageMapEntry 
-				//to make these entrys usefull well enumerate the map again and record allready used regions into the map and recording their type.
+				//to make these entries useful well enumerate the map again and record already used regions into the map and recording their type.
 
-				SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys = reinterpret_cast<PageMapEntry*>(PhysicalStartOfMap);
+				SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys = reinterpret_cast<PageMapEntry*>(PhysicalStartOfMap); //-V3546
 				SYSTEM::SYSTEM_INFO::GlobalPageMap.sizeBytes = pageMapSize;
 				SYSTEM::SYSTEM_INFO::GlobalPageMap.size_pages = PagesUsedByMap;
 				SYSTEM::SYSTEM_INFO::GlobalPageMap.etries = pageCount;
 				for (size_t i = 0; i < pageCount; i++) {
-					SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys[i].physicalStart = PhysicalStartOfMap + i * pageSize;
-					SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys[i].Type = PageType::Free; // Initialize as free
-					SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys[i].isFree = true;
+					SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys[i].physicalStart = PhysicalStartOfMap + i * pageSize; //-V3539
+					SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys[i].Type = PageType::Free; // Initialize as free //-V3539
+					SYSTEM::SYSTEM_INFO::GlobalPageMap.Entrys[i].isFree = true; //-V3539
 				}
-				//now we will enumerate the map again and record allready used regions into the map and recording their type.
+				//now we will enumerate the map again and record already used regions into the map and recording their type.
 				for (UINTN i = 0; i < UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE / DescriptorSize; i++) {
-					EFI_MEMORY_DESCRIPTOR* Descriptor = (EFI_MEMORY_DESCRIPTOR*)((UINT8*)memoryMap + i * DescriptorSize);
-					//base stuff necesary for all memory types
+					const EFI_MEMORY_DESCRIPTOR* Descriptor = reinterpret_cast<const EFI_MEMORY_DESCRIPTOR*>(reinterpret_cast<const UINT8*>(memoryMap) + i * DescriptorSize);  //-V3539
+					//base stuff necessary for all memory types
 
-					UINT32 DescriptorType = Descriptor->Type;
+					const UINT32 DescriptorType = Descriptor->Type;
 
 					void* PhysicalBaase = reinterpret_cast<void*>(Descriptor->PhysicalStart);
-					size_t numPages = Descriptor->NumberOfPages;
-					size_t FirstPage = reinterpret_cast<uintptr_t>(PhysicalBaase) / pageSize;
-					switch (DescriptorType) {
-						//first all the Reserved Memory stuuf. theyll all falltrough to the same thing to make it easier
+					const size_t numPages = Descriptor->NumberOfPages;
+					const size_t FirstPage = reinterpret_cast<uintptr_t>(PhysicalBaase) / pageSize;
+					switch (DescriptorType) { //-V2520 for now i falltrough all the reserved memory types to the same case
+						//first all the Reserved Memory stuff. they'll all falltrough to the same thing to make it easier
 
 					case EfiReservedMemoryType: { __fallthrough; }
 					case EfiRuntimeServicesCode: { __fallthrough; }
@@ -95,24 +99,24 @@ namespace SYSTEM {
 					case EfiPalCode: { __fallthrough; }
 								   //all of the reserved memory descriptors falltrough to this
 					case EfiPersistentMemory: {
-						//ill itterato trough all the pages and set thepaesin the oage table to be reserved
+						//ill iterate trough all the pages and set the pages in the page table to be reserved
 						for (size_t page = FirstPage; page < FirstPage + numPages; page++) {
-							PageMapEntry& curr = SYSTEM_INFO::GlobalPageMap.Entrys[page];
+							PageMapEntry& curr = SYSTEM_INFO::GlobalPageMap.Entrys[page]; //-V3539
 							curr.isFree = false;
-							//curr.physicalStart=PhysicalBaase //not neceary to reassign the physical base as this is done in the step before
-							curr.Type = PageType::EFI_Reserved;// for now i dont differenciate between reserved memory types
+							//curr.physicalStart=PhysicalBaase //not necessary to reassign the physical base as this is done in the step before
+							curr.Type = PageType::EFI_Reserved;// for now i don't differentiate between reserved memory types
 						}
 
-					
+
 						break;
 					}
-											//now il handle the maped io stuff
+											//now il handle the mapped IO stuff
 					case EfiMemoryMappedIO: { __fallthrough; }
 					case EfiMemoryMappedIOPortSpace: {
 						for (size_t page = FirstPage; page < FirstPage + numPages; page++) {
 
-							PageMapEntry& curr = SYSTEM_INFO::GlobalPageMap.Entrys[page];
-							curr.isFree = false;//obviously mmio isnt free
+							PageMapEntry& curr = SYSTEM_INFO::GlobalPageMap.Entrys[page]; //-V3539
+							curr.isFree = false;//obviously MMIO isn't free
 							curr.Type = PageType::MMIO;
 						}
 						break;
@@ -121,11 +125,22 @@ namespace SYSTEM {
 					case EfiConventionalMemory: {
 						for (size_t page = FirstPage; page < FirstPage + numPages; page++) {
 
-							PageMapEntry& curr = SYSTEM_INFO::GlobalPageMap.Entrys[page];
+							PageMapEntry& curr = SYSTEM_INFO::GlobalPageMap.Entrys[page]; //-V3539
 							curr.isFree = true; //this is free space
-							curr.Type = PageType::Free;//and its frre
+							curr.Type = PageType::Free;//and its free
 						}
 						break;
+					}
+					default: {
+						//if the type is not one of the above i will just set it to reserved
+						//this is a catch all for every other type of memory that i don't care about
+						for (size_t page = FirstPage; page < FirstPage + numPages; page++) {
+							PageMapEntry& curr = SYSTEM_INFO::GlobalPageMap.Entrys[page]; //-V3539
+							if (curr.isFree) { //only set the type if the page is free
+								curr.isFree = false;
+								curr.Type = PageType::EFI_Reserved; //for now i don't differentiate between reserved memory types
+							}
+						}
 					}
 					}
 				}

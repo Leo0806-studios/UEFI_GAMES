@@ -26,9 +26,10 @@ namespace SYSTEM {
 			SystemInfo() = default;
 			static SystemInfo GLobalInst;
 		public:
+			~SystemInfo() = default;
 			/// <summary>
-			/// inits the system info. it is imutable after this point.
-			/// dont call any of the functions in this class before this function is called.
+			/// Initializes the system info. it is immutable after this point.
+			/// don't call any of the functions in this class before this function is called.
 			/// </summary>
 			static void InitSystemInfo();
 			/// <summary>

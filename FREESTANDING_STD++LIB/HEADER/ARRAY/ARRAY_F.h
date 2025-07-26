@@ -15,14 +15,14 @@ namespace STD {
 					return this->_Data[index];
 				}
 				else {
-					// for now as there are no exceptions ill return a refference to ErrorReturn.
+					// for now as there are no exceptions ill return a reference to ErrorReturn.
 					return *(DataType)&ErrorReturn;
 				}
 
 			}
 			template <size_t index>
 			constexpr Type Get() {
-				static_assert(!(index < Size), "index is not within bounds for array accses");
+				static_assert(!(index < Size), "index is not within bounds for array access");
 				return _Data[index];
 			}
 

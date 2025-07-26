@@ -3,7 +3,7 @@ namespace SYSTEM {
 	namespace DRIVERS
 	{
 		/// <summary>
-		/// all pci driver are in this namespace
+		/// all PCI driver are in this namespace
 		/// </summary>
 		namespace PCI
 		{

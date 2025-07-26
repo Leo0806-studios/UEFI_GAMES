@@ -24,10 +24,19 @@
     <ClInclude Include="HEADER\TYPE_TRAITS\TYPE_TRAITS_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\ÁRRAY\ARRAY_F.h">
+    <ClInclude Include="HEADER\ARRAY\ARRAY_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HEADER\STRING\STRING_F.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SHARED_POINTERS\CONTROL_BLOCKS\CONTROL_BASE\CONTROL_BASE_F.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\ATOMICS\ATOMIC_F.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SAL\SAL_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,5 +44,9 @@
     <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.clang-tidy" />
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

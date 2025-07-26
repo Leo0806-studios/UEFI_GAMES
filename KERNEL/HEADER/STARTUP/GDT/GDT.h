@@ -2,13 +2,13 @@
 namespace SYSTEM {
 	namespace STARTUP {
 		/// <summary>
-		/// everything gdt related is contained in this namespace.
-		/// this include the gdt entries and functions like creating it and loading it.
-		/// the gdt itself is stored in the N SYSTEM_INFO namespace.
+		/// everything GDT related is contained in this namespace.
+		/// this include the GDT entries and functions like creating it and loading it.
+		/// the GDT itself is stored in the N SYSTEM_INFO namespace.
 		/// </summary>
 		namespace GDT {
 			/// <summary>
-			/// entry inside the gdt.
+			/// entry inside the GDT.
 			/// 
 			/// </summary>
 			struct GDT_ENTRY {
