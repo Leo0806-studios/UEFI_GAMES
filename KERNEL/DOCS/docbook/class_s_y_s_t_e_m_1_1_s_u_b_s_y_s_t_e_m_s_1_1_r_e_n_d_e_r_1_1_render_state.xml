@@ -4,7 +4,7 @@
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::RenderState</primary></indexterm>
 <para>
 
-<para>redner state class. a global singeton that holds the current render state. </para>
+<para>render state class. a global singleton that holds the current render state. </para>
  
 </para>
 <para>
@@ -13,7 +13,7 @@
 <section>
 <title>Detailed Description</title>
 
-<para>redner state class. a global singeton that holds the current render state. </para>
+<para>render state class. a global singleton that holds the current render state. </para>
 <para>
 Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00070">70</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
 <para>

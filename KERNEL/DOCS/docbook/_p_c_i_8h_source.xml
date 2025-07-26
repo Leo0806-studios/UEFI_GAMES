@@ -6,7 +6,7 @@
 <anchor xml:id="__p_c_i_8h_source_1l00002"/>00002 <emphasis role="keyword">namespace&#32;</emphasis>SYSTEM&#32;{
 <anchor xml:id="__p_c_i_8h_source_1l00003"/>00003 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>DRIVERS
 <anchor xml:id="__p_c_i_8h_source_1l00004"/>00004 &#32;&#32;&#32;&#32;{
-<anchor xml:id="__p_c_i_8h_source_1l00008"/><link linkend="_namespace_s_y_s_t_e_m_1_1_d_r_i_v_e_r_s_1_1_p_c_i">00008</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_s_y_s_t_e_m_1_1_d_r_i_v_e_r_s_1_1_p_c_i">PCI</link>
+<anchor xml:id="__p_c_i_8h_source_1l00008"/><link linkend="_namespace_s_y_s_t_e_m_1_1_d_r_i_v_e_r_s_1_1_p_c_i">00008</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>PCI
 <anchor xml:id="__p_c_i_8h_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
 <anchor xml:id="__p_c_i_8h_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
 <anchor xml:id="__p_c_i_8h_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}

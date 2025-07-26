@@ -2,44 +2,48 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source" xml:lang="en-US">
 <title>SYSTEM_INFO.cpp</title>
 <indexterm><primary>SOURCE/SYSTEM_INFO/SYSTEM_INFO.cpp</primary></indexterm>
-<programlisting linenumbering="unnumbered"><anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;../../HEADER/SYTEM_INFO/SYSTEM_INFO.h&quot;</emphasis>
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;UTILLITY_F.h&gt;</emphasis>
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis>SYSTEM&#32;{
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00004"/>00004 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o">SYSTEM_INFO</link>&#32;{
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00005"/>00005 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;QueryCPUFrequency();
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00006"/><link linkend="_namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1a517ce22a50264cb5253a64fdd1330e95">00006</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map">SYSTEM::STARTUP::PAGING::GlobalPageMap</link>&#32;<link linkend="_namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1a517ce22a50264cb5253a64fdd1330e95">GlobalPageMap</link>&#32;=&#32;{};
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00007"/>00007 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SystemInfo&#32;SystemInfo::GLobalInst&#32;=&#32;SystemInfo();
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00008"/>00008 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SystemInfo::SystemInfo(SystemInfo&amp;&amp;&#32;other)&#32;{
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;cpuCores&#32;=&#32;STD::move(other.cpuCores);
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;installedRam&#32;=&#32;STD::move(other.installedRam);
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SystemInfo&amp;&#32;SystemInfo::operator=(SystemInfo&amp;&amp;&#32;other)&#32;
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;cpuCores&#32;=&#32;STD::move(other.cpuCores);
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;installedRam&#32;=&#32;STD::move(other.installedRam);
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00018"/><link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a0525bba8b47aa2bb9322f2f3556cf2e8">00018</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a0525bba8b47aa2bb9322f2f3556cf2e8">SystemInfo::InitSystemInfo</link>()
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GLobalInst&#32;=&#32;SystemInfo();
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GLobalInst.installedRam&#32;=&#32;<link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1aae9224eb116bcf39e38230218e15a4f8">SYSTEM::STARTUP::PAGING::QueryInstalledRam</link>();
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00022"/>00022 
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00024"/>00024 
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00025"/><link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a16b451ad8ba566f232d78ae4e5d35614">00025</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;SystemInfo&amp;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a16b451ad8ba566f232d78ae4e5d35614">SystemInfo::GetInstance</link>()&#32;{
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;GLobalInst;
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<programlisting linenumbering="unnumbered"><anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00001"/>00001 <emphasis role="comment">//&#32;This&#32;is&#32;a&#32;personal&#32;academic&#32;project.&#32;Dear&#32;PVS-Studio,&#32;please&#32;check&#32;it.</emphasis>
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00002"/>00002 
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;PVS-Studio&#32;Static&#32;Code&#32;Analyzer&#32;for&#32;C,&#32;C++,&#32;C#,&#32;and&#32;Java:&#32;https://pvs-studio.com</emphasis>
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00004"/>00004 
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;../../HEADER/SYTEM_INFO/SYSTEM_INFO.h&quot;</emphasis>
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;HEADER/UTILLITY/UTILLITY_F.h&gt;</emphasis>
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00007"/>00007 <emphasis role="keyword">namespace&#32;</emphasis>SYSTEM&#32;{
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>SYSTEM_INFO&#32;{
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;QueryCPUFrequency();
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00010"/><link linkend="_namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1a517ce22a50264cb5253a64fdd1330e95">00010</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map">SYSTEM::STARTUP::PAGING::GlobalPageMap</link>&#32;<link linkend="_namespace_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1a517ce22a50264cb5253a64fdd1330e95">GlobalPageMap</link>&#32;=&#32;{};
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SystemInfo&#32;SystemInfo::GLobalInst&#32;=&#32;SystemInfo();
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SystemInfo::SystemInfo(SystemInfo&amp;&amp;&#32;other)&#32;&#32;{
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;cpuCores&#32;=&#32;STD::move(other.cpuCores);
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;installedRam&#32;=&#32;STD::move(other.installedRam);
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SystemInfo&amp;&#32;SystemInfo::operator=(SystemInfo&amp;&amp;&#32;other)
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;cpuCores&#32;=&#32;STD::move(other.cpuCores);
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;installedRam&#32;=&#32;STD::move(other.installedRam);
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00022"/><link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a0525bba8b47aa2bb9322f2f3556cf2e8">00022</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a0525bba8b47aa2bb9322f2f3556cf2e8">SystemInfo::InitSystemInfo</link>()
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GLobalInst&#32;=&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info">SystemInfo</link>();
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GLobalInst.installedRam&#32;=&#32;<link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1aae9224eb116bcf39e38230218e15a4f8">SYSTEM::STARTUP::PAGING::QueryInstalledRam</link>();
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00026"/>00026 
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00028"/>00028 
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00029"/>00029 
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00029"/><link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a16b451ad8ba566f232d78ae4e5d35614">00029</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info">SystemInfo</link>&amp;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a16b451ad8ba566f232d78ae4e5d35614">SystemInfo::GetInstance</link>()&#32;{
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;GLobalInst;
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00032"/>00032 
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;QueryCPUFrequency()
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00035"/>00035 
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;size_t();
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00038"/>00038 
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
-<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00040"/>00040 }
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;QueryCPUFrequency()
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;size_t();
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00044"/>00044 }
 </programlisting></section>

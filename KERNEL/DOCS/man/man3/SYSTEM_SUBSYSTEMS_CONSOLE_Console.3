@@ -12,7 +12,7 @@ SYSTEM::SUBSYSTEMS::CONSOLE::Console
 .ti -1c
 .RI "static bool \fBInitConsole\fP (size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)"
 .br
-.RI "inits the console\&. must be called before any other console function can safely be used\&. "
+.RI "Initializes the console\&. must be called before any other console function can safely be used\&. "
 .ti -1c
 .RI "static void \fBWriteLine\fP (const wchar_t *str)"
 .br
@@ -20,11 +20,11 @@ SYSTEM::SUBSYSTEMS::CONSOLE::Console
 .ti -1c
 .RI "static void \fBWriteF\fP (size_t args, const char *format,\&.\&.\&.)"
 .br
-.RI "analog to printf\&. takes a format string and avariable amount of input additinaly it takse the amount of extra args as a parameter to increase safety "
+.RI "analog to printf\&. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety "
 .ti -1c
 .RI "static void \fBWrite\fP (const wchar_t *str)"
 .br
-.RI "writes an unformated string to the console\&. "
+.RI "writes an unformatted string to the console\&. "
 .ti -1c
 .RI "static const \fBConsoleInfo\fP \fBQueryConsoleInfo\fP ()"
 .br
@@ -36,7 +36,7 @@ SYSTEM::SUBSYSTEMS::CONSOLE::Console
 .ti -1c
 .RI "static void \fBFlush\fP ()"
 .br
-.RI "flushes the console buffer to the screen does nothing in early init while redering draws directly to the framebuffer "
+.RI "flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer "
 .ti -1c
 .RI "static bool \fBToggleANSICodes\fP ()"
 .br
@@ -44,7 +44,7 @@ SYSTEM::SUBSYSTEMS::CONSOLE::Console
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line \fB23\fP of file \fBCONSOLE\&.h\fP\&.
+Definition at line \fB24\fP of file \fBCONSOLE\&.h\fP\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::ClearConsole ()\fR [static]\fP"
@@ -52,38 +52,38 @@ Definition at line \fB23\fP of file \fBCONSOLE\&.h\fP\&.
 .PP
 clears the console and moves the cursor to 0,0 
 .PP
-Definition at line \fB102\fP of file \fBCONSOLE\&.cpp\fP\&.
+Definition at line \fB115\fP of file \fBCONSOLE\&.cpp\fP\&.
 .SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Flush ()\fR [static]\fP"
 
 .PP
-flushes the console buffer to the screen does nothing in early init while redering draws directly to the framebuffer 
+flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer 
 .PP
-Definition at line \fB105\fP of file \fBCONSOLE\&.cpp\fP\&.
+Definition at line \fB118\fP of file \fBCONSOLE\&.cpp\fP\&.
 .SS "bool SYSTEM::SUBSYSTEMS::CONSOLE::Console::InitConsole (size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)\fR [static]\fP"
 
 .PP
-inits the console\&. must be called before any other console function can safely be used\&. 
+Initializes the console\&. must be called before any other console function can safely be used\&. 
 .PP
 \fBParameters\fP
 .RS 4
-\fIcollums\fP amount of collums to use\&. does nothing rn
+\fIcollums\fP amount of columns to use\&. does nothing currently
 .br
-\fIrows\fP amount of rows\&. does nothing rn
+\fIrows\fP amount of rows\&. does nothing currently
 .br
-\fIpixelsperRow\fP influences vertial spacing should larger than the max size of a character or clipping might occur\&.
+\fIpixelsperRow\fP influences vertical spacing should larger than the max size of a character or clipping might occur\&.
 .br
-\fIpixelsperCollum\fP influences horizontal spacing\&. should be larger than the widht o a character or clipping might occur
+\fIpixelsperCollum\fP influences horizontal spacing\&. should be larger than the width o a character or clipping might occur
 .RE
 .PP
 \fBReturns\fP
 .RS 4
-succses is true
+success is true
 .RE
 .PP
 
 .PP
-Definition at line \fB59\fP of file \fBCONSOLE\&.cpp\fP\&.
-.SS "const \fBConsoleInfo\fP SYSTEM::SUBSYSTEMS::CONSOLE::Console::QueryConsoleInfo ()\fR [static]\fP"
+Definition at line \fB69\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "static const \fBConsoleInfo\fP SYSTEM::SUBSYSTEMS::CONSOLE::Console::QueryConsoleInfo ()\fR [static]\fP"
 
 .PP
 returns a instance of \fBConsoleInfo\fP containing information about the console 
@@ -99,11 +99,11 @@ returns a instance of \fBConsoleInfo\fP containing information about the console
 .PP
 toggles if the console should use ANSICodes or not\&. this is used to enable or disable color and other formatting codes\&. returns true if the codes are now enabled, false if they are now disabled\&. 
 .PP
-Definition at line \fB108\fP of file \fBCONSOLE\&.cpp\fP\&.
+Definition at line \fB121\fP of file \fBCONSOLE\&.cpp\fP\&.
 .SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Write (const wchar_t * str)\fR [static]\fP"
 
 .PP
-writes an unformated string to the console\&. 
+writes an unformatted string to the console\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -112,11 +112,11 @@ writes an unformated string to the console\&.
 .PP
 
 .PP
-Definition at line \fB80\fP of file \fBCONSOLE\&.cpp\fP\&.
+Definition at line \fB93\fP of file \fBCONSOLE\&.cpp\fP\&.
 .SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::WriteF (size_t args, const char * format,  \&.\&.\&.)\fR [static]\fP"
 
 .PP
-analog to printf\&. takes a format string and avariable amount of input additinaly it takse the amount of extra args as a parameter to increase safety 
+analog to printf\&. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety 
 .PP
 \fBParameters\fP
 .RS 4
@@ -125,7 +125,7 @@ analog to printf\&. takes a format string and avariable amount of input additina
 .PP
 
 .PP
-Definition at line \fB77\fP of file \fBCONSOLE\&.cpp\fP\&.
+Definition at line \fB87\fP of file \fBCONSOLE\&.cpp\fP\&.
 .SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::WriteLine (const wchar_t * str)\fR [static]\fP"
 
 .PP
@@ -138,7 +138,7 @@ writes a line to the console out
 .PP
 
 .PP
-Definition at line \fB68\fP of file \fBCONSOLE\&.cpp\fP\&.
+Definition at line \fB78\fP of file \fBCONSOLE\&.cpp\fP\&.
 
 .SH "Author"
 .PP 

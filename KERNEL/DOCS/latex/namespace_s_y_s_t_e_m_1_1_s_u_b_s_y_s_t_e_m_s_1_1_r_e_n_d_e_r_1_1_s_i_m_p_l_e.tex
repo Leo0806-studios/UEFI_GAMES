@@ -9,14 +9,14 @@ simple render interface to be used in pre driver mode. all draw functions in thi
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r}{CHAR}}
-\begin{DoxyCompactList}\small\item\em represents a 16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a2f1c7443345df32db9f0f0c992a05a09}{Simple\+Draw\+Char}} (unsigned int x, unsigned int y, wchar\+\_\+t c)
 \begin{DoxyCompactList}\small\item\em draws a char to the framebuffer at the specified position. will pint a A if the char is not in the font. draws directly to the framebuffer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_acd5586a738dc5f09cf6c39ed19bda4aa}{Simple\+Draw\+String}} (const wchar\+\_\+t \texorpdfstring{$\ast$}{*}str, unsigned int x, unsigned int y)
-\begin{DoxyCompactList}\small\item\em draws a string to the framebuffer at the specified position. calls Simple\+Draw\+Char for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em draws a string to the framebuffer at the specified position. calls Simple\+Draw\+Char for each char in the string. cant handle any control characters. treats every char as 10 pixels wide. does not handle wrapping \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,7 +29,7 @@ unsigned int \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_
 unsigned int \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ad943a45b9db25aa1ff307ca7767a2fc1}{Pixels\+Per\+Scanline}} = 0
 \item 
 \mbox{\hyperlink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r}{CHAR}} \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a1adf42179ffff6b40bbf237041dfc817}{Simple\+Font}} \mbox{[}255\mbox{]}
-\begin{DoxyCompactList}\small\item\em a hardcoded external font for now only contains the ASCII upercase latin letters \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em a hardcode external font for now only contains the ASCII uppercase Latin letters \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a8aaf43af0eca6ba5d4c7fe2ac7289a21}{Translation\+Table}} \mbox{[}256\mbox{]}
 \end{DoxyCompactItemize}
 
@@ -37,8 +37,6 @@ int \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e
 \doxysubsection{Detailed Description}
 simple render interface to be used in pre driver mode. all draw functions in this namespace are used to draw to the framebuffer directly. 
 
-\label{doc-func-members}
-\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_doc-func-members}
 \doxysubsection{Function Documentation}
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a2f1c7443345df32db9f0f0c992a05a09}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!SimpleDrawChar@{SimpleDrawChar}}
 \index{SimpleDrawChar@{SimpleDrawChar}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -61,7 +59,7 @@ draws a char to the framebuffer at the specified position. will pint a A if the 
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01125}{1125}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01130}{1130}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_acd5586a738dc5f09cf6c39ed19bda4aa}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!SimpleDrawString@{SimpleDrawString}}
 \index{SimpleDrawString@{SimpleDrawString}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -71,7 +69,7 @@ void SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Simple\+Draw\+String (\
 
 
 
-draws a string to the framebuffer at the specified position. calls Simple\+Draw\+Char for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping 
+draws a string to the framebuffer at the specified position. calls Simple\+Draw\+Char for each char in the string. cant handle any control characters. treats every char as 10 pixels wide. does not handle wrapping 
 
 
 \begin{DoxyParams}{Parameters}
@@ -84,12 +82,10 @@ draws a string to the framebuffer at the specified position. calls Simple\+Draw\
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01145}{1145}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01154}{1154}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 
 
-\label{doc-var-members}
-\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_doc-var-members}
 \doxysubsection{Variable Documentation}
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a59b90652f2c3973d23cbb0a2ca5179b4}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!FramebufferBase@{FramebufferBase}}
 \index{FramebufferBase@{FramebufferBase}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -99,7 +95,7 @@ unsigned int \texorpdfstring{$\ast$}{*} SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+
 
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ad1282cee88bc2488d4ab607b34105ced}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!FramebufferHeight@{FramebufferHeight}}
 \index{FramebufferHeight@{FramebufferHeight}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -109,7 +105,7 @@ unsigned int SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Framebuffer\+He
 
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a68b0119e5b0e715283096003a67efbaf}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!FramebufferWidth@{FramebufferWidth}}
 \index{FramebufferWidth@{FramebufferWidth}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -119,7 +115,7 @@ unsigned int SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Framebuffer\+Wi
 
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_ad943a45b9db25aa1ff307ca7767a2fc1}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!PixelsPerScanline@{PixelsPerScanline}}
 \index{PixelsPerScanline@{PixelsPerScanline}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -129,7 +125,7 @@ unsigned int SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Pixels\+Per\+Sc
 
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a1adf42179ffff6b40bbf237041dfc817}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!SimpleFont@{SimpleFont}}
 \index{SimpleFont@{SimpleFont}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -139,11 +135,11 @@ Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00009}{9}} of file
 
 
 
-a hardcoded external font for now only contains the ASCII upercase latin letters 
+a hardcode external font for now only contains the ASCII uppercase Latin letters 
 
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 
 \Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_a8aaf43af0eca6ba5d4c7fe2ac7289a21}\index{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}!TranslationTable@{TranslationTable}}
 \index{TranslationTable@{TranslationTable}!SYSTEM::SUBSYSTEMS::RENDER::SIMPLE@{SYSTEM::SUBSYSTEMS::RENDER::SIMPLE}}
@@ -153,5 +149,5 @@ int SYSTEM\+::\+SUBSYSTEMS\+::\+RENDER\+::\+SIMPLE\+::\+Translation\+Table\mbox{
 
 
 
-Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01011}{1011}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
+Definition at line \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source_l01016}{1016}} of file \mbox{\hyperlink{_r_e_n_d_e_r_8cpp_source}{RENDER.\+cpp}}.
 

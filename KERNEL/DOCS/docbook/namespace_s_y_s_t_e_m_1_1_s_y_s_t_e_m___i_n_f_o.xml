@@ -44,7 +44,7 @@
 <indexterm><primary>QueryCPUFrequency</primary><secondary>SYSTEM::SYSTEM_INFO</secondary></indexterm>
 <indexterm><primary>SYSTEM::SYSTEM_INFO</primary><secondary>QueryCPUFrequency</secondary></indexterm>
 <para><computeroutput>size_t SYSTEM::SYSTEM_INFO::QueryCPUFrequency ( )<computeroutput>[extern]</computeroutput></computeroutput></para><para>
-Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00033">33</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source">SYSTEM_INFO.cpp</link>.</para>
+Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00037">37</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source">SYSTEM_INFO.cpp</link>.</para>
 </section>
 </section>
 <section>
@@ -58,7 +58,7 @@ Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00033">3
 <para>the global page map. this contains information about the usage of physical pages </para>
 </para>
 <para>
-Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00006">6</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source">SYSTEM_INFO.cpp</link>.</para>
+Definition at line <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source_1l00010">10</link> of file <link linkend="__s_y_s_t_e_m___i_n_f_o_8cpp_source">SYSTEM_INFO.cpp</link>.</para>
 </section>
 </section>
 </section>

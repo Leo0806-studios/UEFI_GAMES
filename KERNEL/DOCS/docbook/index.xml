@@ -32,6 +32,7 @@
     <title>File Documentation</title>
     <xi:include href="_p_c_i_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_n_a_m_e_s_p_a_c_e___d_o_c_s_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_s_a_l_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_g_d_t_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_p_a_g_e___m_a_p_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="_a_l_l_o_c_a_t_i_o_n_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

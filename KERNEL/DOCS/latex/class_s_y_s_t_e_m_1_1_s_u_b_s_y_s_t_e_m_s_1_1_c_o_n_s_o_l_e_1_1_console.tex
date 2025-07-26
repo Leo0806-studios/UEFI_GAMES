@@ -4,19 +4,19 @@
 \begin{DoxyCompactItemize}
 \item 
 static bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a5fff8a0922d0682136415e8d78f2dc95}{Init\+Console}} (size\+\_\+t collums, size\+\_\+t rows, size\+\_\+t pixelsper\+Row, size\+\_\+t pixelsper\+Collum)
-\begin{DoxyCompactList}\small\item\em inits the console. must be called before any other console function can safely be used. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initializes the console. must be called before any other console function can safely be used. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_ad6b5abdd5efd62a53b7ab1728add9e38}{Write\+Line}} (const wchar\+\_\+t \texorpdfstring{$\ast$}{*}str)
 \begin{DoxyCompactList}\small\item\em writes a line to the console out \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a6bfc1f68dad0ef5a12be1a8c9a5a06fe}{WriteF}} (size\+\_\+t args, const char \texorpdfstring{$\ast$}{*}format,...)
-\begin{DoxyCompactList}\small\item\em analog to printf. takes a format string and avariable amount of input additinaly it takse the amount of extra args as a parameter to increase safety \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em analog to printf. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a7785f77c03ae536f44b29d3282297e53}{Write}} (const wchar\+\_\+t \texorpdfstring{$\ast$}{*}str)
-\begin{DoxyCompactList}\small\item\em writes an unformated string to the console. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em writes an unformatted string to the console. \end{DoxyCompactList}\item 
 static const \mbox{\hyperlink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info}{Console\+Info}} \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a80a6c6d79ea75dcebedb1fddbcf26f56}{Query\+Console\+Info}} ()
 \begin{DoxyCompactList}\small\item\em returns a instance of \doxylink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info}{Console\+Info} containing information about the console \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a4628121b862a823ec0b66a318a63a9df}{Clear\+Console}} ()
 \begin{DoxyCompactList}\small\item\em clears the console and moves the cursor to 0,0 \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_aeed04bff10ab5cbbe2119969fdcd3677}{Flush}} ()
-\begin{DoxyCompactList}\small\item\em flushes the console buffer to the screen does nothing in early init while redering draws directly to the framebuffer \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a9695316d613ebdd7189f7f6f6dde66ae}{Toggle\+ANSICodes}} ()
 \begin{DoxyCompactList}\small\item\em toggles if the console should use ANSICodes or not. this is used to enable or disable color and other formatting codes. returns true if the codes are now enabled, false if they are now disabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -24,12 +24,10 @@ static bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8h_source_l00023}{23}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8h_source}{CONSOLE.\+h}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8h_source_l00024}{24}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8h_source}{CONSOLE.\+h}}.
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a4628121b862a823ec0b66a318a63a9df}\index{SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}!ClearConsole@{ClearConsole}}
 \index{ClearConsole@{ClearConsole}!SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}}
@@ -43,7 +41,7 @@ clears the console and moves the cursor to 0,0
 
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
 
 \Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_aeed04bff10ab5cbbe2119969fdcd3677}\index{SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}!Flush@{Flush}}
 \index{Flush@{Flush}!SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}}
@@ -53,11 +51,11 @@ void SYSTEM\+::\+SUBSYSTEMS\+::\+CONSOLE\+::\+Console\+::\+Flush (\begin{DoxyPar
 
 
 
-flushes the console buffer to the screen does nothing in early init while redering draws directly to the framebuffer 
+flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer 
 
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
 
 \Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a5fff8a0922d0682136415e8d78f2dc95}\index{SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}!InitConsole@{InitConsole}}
 \index{InitConsole@{InitConsole}!SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}}
@@ -67,31 +65,31 @@ bool SYSTEM\+::\+SUBSYSTEMS\+::\+CONSOLE\+::\+Console\+::\+Init\+Console (\begin
 
 
 
-inits the console. must be called before any other console function can safely be used. 
+Initializes the console. must be called before any other console function can safely be used. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em collums} & amount of collums to use. does nothing rn\\
+{\em collums} & amount of columns to use. does nothing currently\\
 \hline
-{\em rows} & amount of rows. does nothing rn\\
+{\em rows} & amount of rows. does nothing currently\\
 \hline
-{\em pixelsper\+Row} & influences vertial spacing should larger than the max size of a character or clipping might occur.\\
+{\em pixelsper\+Row} & influences vertical spacing should larger than the max size of a character or clipping might occur.\\
 \hline
-{\em pixelsper\+Collum} & influences horizontal spacing. should be larger than the widht o a character or clipping might occur\\
+{\em pixelsper\+Collum} & influences horizontal spacing. should be larger than the width o a character or clipping might occur\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-succses is true
+success is true
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
 
 \Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a80a6c6d79ea75dcebedb1fddbcf26f56}\index{SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}!QueryConsoleInfo@{QueryConsoleInfo}}
 \index{QueryConsoleInfo@{QueryConsoleInfo}!SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}}
 \doxysubsubsection{\texorpdfstring{QueryConsoleInfo()}{QueryConsoleInfo()}}
 {\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a80a6c6d79ea75dcebedb1fddbcf26f56} 
-const \mbox{\hyperlink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info}{Console\+Info}} SYSTEM\+::\+SUBSYSTEMS\+::\+CONSOLE\+::\+Console\+::\+Query\+Console\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+static const \mbox{\hyperlink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info}{Console\+Info}} SYSTEM\+::\+SUBSYSTEMS\+::\+CONSOLE\+::\+Console\+::\+Query\+Console\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -112,7 +110,7 @@ toggles if the console should use ANSICodes or not. this is used to enable or di
 
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
 
 \Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a7785f77c03ae536f44b29d3282297e53}\index{SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}!Write@{Write}}
 \index{Write@{Write}!SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}}
@@ -122,7 +120,7 @@ void SYSTEM\+::\+SUBSYSTEMS\+::\+CONSOLE\+::\+Console\+::\+Write (\begin{DoxyPar
 
 
 
-writes an unformated string to the console. 
+writes an unformatted string to the console. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -131,7 +129,7 @@ writes an unformated string to the console.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
 
 \Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_a6bfc1f68dad0ef5a12be1a8c9a5a06fe}\index{SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}!WriteF@{WriteF}}
 \index{WriteF@{WriteF}!SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}}
@@ -141,7 +139,7 @@ void SYSTEM\+::\+SUBSYSTEMS\+::\+CONSOLE\+::\+Console\+::\+WriteF (\begin{DoxyPa
 
 
 
-analog to printf. takes a format string and avariable amount of input additinaly it takse the amount of extra args as a parameter to increase safety 
+analog to printf. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety 
 
 
 \begin{DoxyParams}{Parameters}
@@ -150,7 +148,7 @@ analog to printf. takes a format string and avariable amount of input additinaly
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
 
 \Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_ad6b5abdd5efd62a53b7ab1728add9e38}\index{SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}!WriteLine@{WriteLine}}
 \index{WriteLine@{WriteLine}!SYSTEM::SUBSYSTEMS::CONSOLE::Console@{SYSTEM::SUBSYSTEMS::CONSOLE::Console}}
@@ -169,7 +167,7 @@ writes a line to the console out
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
+Definition at line \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_c_o_n_s_o_l_e_8cpp_source}{CONSOLE.\+cpp}}.
 
 
 

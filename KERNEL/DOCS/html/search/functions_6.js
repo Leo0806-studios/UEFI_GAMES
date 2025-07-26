@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['queryconsoleinfo_0',['QueryConsoleInfo',['../class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console.html#a80a6c6d79ea75dcebedb1fddbcf26f56',1,'SYSTEM::SUBSYSTEMS::CONSOLE::Console']]],
-  ['queryinstalledram_1',['QueryInstalledRam',['../namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g.html#aae9224eb116bcf39e38230218e15a4f8',1,'SYSTEM::STARTUP::PAGING']]]
+  ['simpledrawchar_0',['SimpleDrawChar',['../namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e.html#a2f1c7443345df32db9f0f0c992a05a09',1,'SYSTEM::SUBSYSTEMS::RENDER::SIMPLE']]],
+  ['simpledrawstring_1',['SimpleDrawString',['../namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e.html#acd5586a738dc5f09cf6c39ed19bda4aa',1,'SYSTEM::SUBSYSTEMS::RENDER::SIMPLE']]]
 ];

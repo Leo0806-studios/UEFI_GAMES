@@ -12,8 +12,8 @@ structure of the global page map.
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a79dd2c2518cd4d8e2e38588966719f27}{Allocate\+PAge\+Map}} ()
-\begin{DoxyCompactList}\small\item\em allocated the global pagemap and translates the uefi memory map into it. every that is not Efi\+Conventional\+Memory is considered reserved. all memorymaped io is considered MMIO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a23918c9d4b3f0922b091601664470c72}{Allocate\+Page\+Map}} ()
+\begin{DoxyCompactList}\small\item\em allocated the global page map and translates the UEFI memory map into it. every that is not Efi\+Conventional\+Memory is considered reserved. all memory-\/mapped IO is considered MMIO. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -23,25 +23,23 @@ Definition at line \mbox{\hyperlink{_p_a_g_e___m_a_p_8h_source_l00079}{79}} of f
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a79dd2c2518cd4d8e2e38588966719f27}\index{SYSTEM::STARTUP::PAGING::GlobalPageMap@{SYSTEM::STARTUP::PAGING::GlobalPageMap}!AllocatePAgeMap@{AllocatePAgeMap}}
-\index{AllocatePAgeMap@{AllocatePAgeMap}!SYSTEM::STARTUP::PAGING::GlobalPageMap@{SYSTEM::STARTUP::PAGING::GlobalPageMap}}
-\doxysubsubsection{\texorpdfstring{AllocatePAgeMap()}{AllocatePAgeMap()}}
-{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a79dd2c2518cd4d8e2e38588966719f27} 
-bool SYSTEM\+::\+STARTUP\+::\+PAGING\+::\+Global\+Page\+Map\+::\+Allocate\+PAge\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a23918c9d4b3f0922b091601664470c72}\index{SYSTEM::STARTUP::PAGING::GlobalPageMap@{SYSTEM::STARTUP::PAGING::GlobalPageMap}!AllocatePageMap@{AllocatePageMap}}
+\index{AllocatePageMap@{AllocatePageMap}!SYSTEM::STARTUP::PAGING::GlobalPageMap@{SYSTEM::STARTUP::PAGING::GlobalPageMap}}
+\doxysubsubsection{\texorpdfstring{AllocatePageMap()}{AllocatePageMap()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a23918c9d4b3f0922b091601664470c72} 
+bool SYSTEM\+::\+STARTUP\+::\+PAGING\+::\+Global\+Page\+Map\+::\+Allocate\+Page\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-allocated the global pagemap and translates the uefi memory map into it. every that is not Efi\+Conventional\+Memory is considered reserved. all memorymaped io is considered MMIO. 
+allocated the global page map and translates the UEFI memory map into it. every that is not Efi\+Conventional\+Memory is considered reserved. all memory-\/mapped IO is considered MMIO. 
 
 \begin{DoxyReturn}{Returns}
-sucsess is true
+success is true
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source}{PAGE\+\_\+\+MAP.\+cpp}}.
+Definition at line \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source}{PAGE\+\_\+\+MAP.\+cpp}}.
 
 
 

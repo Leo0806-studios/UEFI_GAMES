@@ -13,9 +13,9 @@
 <simplesect>
     <title>Static Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para>static bool <link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_1a79dd2c2518cd4d8e2e38588966719f27">AllocatePAgeMap</link> ()</para>
+            <listitem><para>static bool <link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_1a23918c9d4b3f0922b091601664470c72">AllocatePageMap</link> ()</para>
 
-<para>allocated the global pagemap and translates the uefi memory map into it. every that is not EfiConventionalMemory is considered reserved. all memorymaped io is considered MMIO. </para>
+<para>allocated the global page map and translates the UEFI memory map into it. every that is not EfiConventionalMemory is considered reserved. all memory-mapped IO is considered MMIO. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -28,22 +28,22 @@ Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00079">79</link>
 </section>
 <section>
 <title>Member Function Documentation</title>
-<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_1a79dd2c2518cd4d8e2e38588966719f27"/><section>
-    <title>AllocatePAgeMap()</title>
-<indexterm><primary>AllocatePAgeMap</primary><secondary>SYSTEM::STARTUP::PAGING::GlobalPageMap</secondary></indexterm>
-<indexterm><primary>SYSTEM::STARTUP::PAGING::GlobalPageMap</primary><secondary>AllocatePAgeMap</secondary></indexterm>
-<para><computeroutput>bool SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePAgeMap ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_1a23918c9d4b3f0922b091601664470c72"/><section>
+    <title>AllocatePageMap()</title>
+<indexterm><primary>AllocatePageMap</primary><secondary>SYSTEM::STARTUP::PAGING::GlobalPageMap</secondary></indexterm>
+<indexterm><primary>SYSTEM::STARTUP::PAGING::GlobalPageMap</primary><secondary>AllocatePageMap</secondary></indexterm>
+<para><computeroutput>bool SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePageMap ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
-<para>allocated the global pagemap and translates the uefi memory map into it. every that is not EfiConventionalMemory is considered reserved. all memorymaped io is considered MMIO. </para>
+<para>allocated the global page map and translates the UEFI memory map into it. every that is not EfiConventionalMemory is considered reserved. all memory-mapped IO is considered MMIO. </para>
 </para>
 
 <para><formalpara><title>Returns</title>
 
-<para>sucsess is true</para>
+<para>success is true</para>
 </formalpara>
 </para>
 <para>
-Definition at line <link linkend="__p_a_g_e___m_a_p_8cpp_source_1l00035">35</link> of file <link linkend="__p_a_g_e___m_a_p_8cpp_source">PAGE_MAP.cpp</link>.</para>
+Definition at line <link linkend="__p_a_g_e___m_a_p_8cpp_source_1l00039">39</link> of file <link linkend="__p_a_g_e___m_a_p_8cpp_source">PAGE_MAP.cpp</link>.</para>
 </section>
 <para>
 The documentation for this class was generated from the following files:</para>

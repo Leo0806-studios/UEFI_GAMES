@@ -25,14 +25,14 @@ SYSTEM::SUBSYSTEMS::CONSOLE \- the console subsystem
 
 .in +1c
 .ti -1c
-.RI "void \fBHandleContolChar\fP (wchar_t chr)"
-.br
-.RI "hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary "
-.ti -1c
-.RI "bool \fBisControlChar\fP (wchar_t chr)"
-.br
-.ti -1c
 .RI "\fBConsoleInfo\fP \fBQueryConsoleInfo\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "constexpr size_t \fBtabSize\fP = 4"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -40,27 +40,16 @@ SYSTEM::SUBSYSTEMS::CONSOLE \- the console subsystem
 the console subsystem 
 .SH "Function Documentation"
 .PP 
-.SS "void SYSTEM::SUBSYSTEMS::CONSOLE::HandleContolChar (wchar_t chr)"
-
-.PP
-hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary 
-.PP
-\fBParameters\fP
-.RS 4
-\fIchr\fP 
-.RE
-.PP
-tabs are 4 tabs in this os by default
-.PP
-Definition at line \fB37\fP of file \fBCONSOLE\&.cpp\fP\&.
-.SS "bool SYSTEM::SUBSYSTEMS::CONSOLE::isControlChar (wchar_t chr)"
-
-.PP
-Definition at line \fB56\fP of file \fBCONSOLE\&.cpp\fP\&.
 .SS "\fBConsoleInfo\fP SYSTEM::SUBSYSTEMS::CONSOLE::QueryConsoleInfo ()"
 
 .PP
-Definition at line \fB98\fP of file \fBCONSOLE\&.cpp\fP\&.
+Definition at line \fB111\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::tabSize = 4\fR [inline]\fP, \fR [constexpr]\fP"
+
+.PP
+Definition at line \fB8\fP of file \fBCONSOLE\&.h\fP\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for OSDEV from the source code\&.

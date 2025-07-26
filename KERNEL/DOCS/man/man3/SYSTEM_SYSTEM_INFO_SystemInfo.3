@@ -15,7 +15,7 @@ SYSTEM::SYSTEM_INFO::SystemInfo \- system info is a global singleton that contai
 .ti -1c
 .RI "static void \fBInitSystemInfo\fP ()"
 .br
-.RI "inits the system info\&. it is imutable after this point\&. dont call any of the functions in this class before this function is called\&. "
+.RI "Initializes the system info\&. it is immutable after this point\&. don't call any of the functions in this class before this function is called\&. "
 .ti -1c
 .RI "static const \fBSystemInfo\fP & \fBGetInstance\fP ()"
 .br
@@ -50,13 +50,13 @@ returns the global instance of the system info
 .PP
 
 .PP
-Definition at line \fB25\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
+Definition at line \fB29\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
 .SS "void SYSTEM::SYSTEM_INFO::SystemInfo::InitSystemInfo ()\fR [static]\fP"
 
 .PP
-inits the system info\&. it is imutable after this point\&. dont call any of the functions in this class before this function is called\&. 
+Initializes the system info\&. it is immutable after this point\&. don't call any of the functions in this class before this function is called\&. 
 .PP
-Definition at line \fB18\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
+Definition at line \fB22\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "size_t SYSTEM::SYSTEM_INFO::SystemInfo::cpuCores = 0"

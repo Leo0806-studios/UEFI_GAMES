@@ -2,23 +2,23 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
 <title>Class List</title>
 Here are the classes, structs, unions and interfaces with brief descriptions:<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_____c_o_n_s_o_l_e_____s_t_r_u_c_t_u_r_e">SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE</link><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r">SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</link>
-<para>16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel </para>
+<para>16X8 hardcode char for a simple font used in the early stages of initialization of the kernel </para>
 <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console">SYSTEM::SUBSYSTEMS::CONSOLE::Console</link><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">SYSTEM::SUBSYSTEMS::CONSOLE::ConsoleInfo</link>
 <para>Information about the console </para>
 <link linkend="_struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y">SYSTEM::STARTUP::GDT::GDT_ENTRY</link>
-<para>Entry inside the gdt </para>
+<para>Entry inside the <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t">GDT</link> </para>
 <link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map">SYSTEM::STARTUP::PAGING::GlobalPageMap</link>
 <para>Structure of the global page map </para>
 <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_page_header">SYSTEM::SUBSYSTEMS::ALLOCATION::PageHeader</link>
-<para>Header inserted onto a allocation allocated with the physical allocator. is in the beginning of the first page of the allocation. do not rely on its internal layout (for byte wise accses) </para>
+<para>Header inserted onto a allocation allocated with the physical allocator. is in the beginning of the first page of the allocation. do not rely on its internal layout (for byte wise access) </para>
 <link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_page_map_entry">SYSTEM::STARTUP::PAGING::PageMapEntry</link>
 <para>Represents an entry in a page map, containing information about a physical memory region </para>
 <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator">SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</link>
-<para>Handles allocation of physical pages. for now relatively epthy. its just in a class for later if i want to add specific state </para>
+<para>Handles allocation of physical pages. for now relatively empty. its just in a class for later if i want to add specific state </para>
 <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_render_state">SYSTEM::SUBSYSTEMS::RENDER::RenderState</link>
-<para>Redner state class. a global singeton that holds the current render state </para>
+<para>Render state class. a global singleton that holds the current render state </para>
 <link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info">SYSTEM::SYSTEM_INFO::SystemInfo</link>
 <para>System info is a global singleton that contains information about the system </para>
 <link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_u_e_f_i___l_e_f_t_o_w_e_r">SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER</link>
-<para>Uefi leftovers are all contained in there. thismainly includes infomation about the memory map </para>
+<para>UEFI leftovers are all contained in there. this mainly includes information about the memory map </para>
 </section>

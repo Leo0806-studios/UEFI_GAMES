@@ -23,13 +23,14 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a92084723e60e136d4af66f2f51f8119d">HandleContolChar</link> (wchar_t chr)</para>
-
-<para>hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary </para>
-</listitem>
-            <listitem><para>bool <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a2ff07961261737b57b519abe60fd0013">isControlChar</link> (wchar_t chr)</para>
-</listitem>
             <listitem><para><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a538794b2f0fa1d06ebf0f5cd9baf85fa">QueryConsoleInfo</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>constexpr size_t <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a0dce84cae467028d8a9531a17f12e828">tabSize</link> = 4</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -40,52 +41,22 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a92084723e60e136d4af66f2f51f8119d"/><section>
-    <title>HandleContolChar()</title>
-<indexterm><primary>HandleContolChar</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
-<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>HandleContolChar</secondary></indexterm>
-<para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::HandleContolChar (wchar_t chr)</computeroutput></para><para>
-
-<para>hadles the control char chr (ascii control char) will modify the data inside the ConsoleStructure so re getting the cursor pos is neccesary </para>
-</para>
-
-<para>
-                <formalpara>
-                    <title>
-Parameters</title>
-                    <para>
-                    <table frame="all">
-                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
-                        <colspec colwidth="1*"/>
-                        <colspec colwidth="4*"/>
-                        <tbody>
-                            <row>
-<entry>chr</entry><entry></entry>
-                            </row>
-                        </tbody>
-                        </tgroup>
-                    </table>
-                    </para>
-                </formalpara>
-                </para>
-
-<para>tabs are 4 tabs in this os by default</para>
-<para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00037">37</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
-</section>
-<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a2ff07961261737b57b519abe60fd0013"/><section>
-    <title>isControlChar()</title>
-<indexterm><primary>isControlChar</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
-<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>isControlChar</secondary></indexterm>
-<para><computeroutput>bool SYSTEM::SUBSYSTEMS::CONSOLE::isControlChar (wchar_t chr)</computeroutput></para><para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00056">56</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
-</section>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a538794b2f0fa1d06ebf0f5cd9baf85fa"/><section>
     <title>QueryConsoleInfo()</title>
 <indexterm><primary>QueryConsoleInfo</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>QueryConsoleInfo</secondary></indexterm>
 <para><computeroutput><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> SYSTEM::SUBSYSTEMS::CONSOLE::QueryConsoleInfo ( )</computeroutput></para><para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00098">98</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00111">111</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a0dce84cae467028d8a9531a17f12e828"/><section>
+    <title>tabSize</title>
+<indexterm><primary>tabSize</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>tabSize</secondary></indexterm>
+<para><computeroutput>size_t SYSTEM::SUBSYSTEMS::CONSOLE::tabSize = 4<computeroutput>[inline]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8h_source_1l00008">8</link> of file <link linkend="__c_o_n_s_o_l_e_8h_source">CONSOLE.h</link>.</para>
 </section>
 </section>
 </section>

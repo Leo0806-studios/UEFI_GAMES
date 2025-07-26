@@ -4,7 +4,7 @@
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary></indexterm>
 <para>
 
-<para>represents a 16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel </para>
+<para>represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel </para>
  
 </para>
 <para>
@@ -17,7 +17,7 @@
 </listitem>
             <listitem><para>unsigned char <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1af4da141194a3339b48ddaa34c03c5b4d">width</link></para>
 
-<para>the actua lwidth of the char. can be used to improve spacing between characters </para>
+<para>the actual width of the char. can be used to improve spacing between characters </para>
 </listitem>
             <listitem><para>unsigned char <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1a3c330780844b53d77477be00ffdede3b">height</link></para>
 
@@ -36,7 +36,7 @@
 <section>
 <title>Detailed Description</title>
 
-<para>represents a 16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel </para>
+<para>represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel </para>
 <para>
 Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00017">17</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
 </section>
@@ -88,7 +88,7 @@ Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00026">26</link> of 
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary><secondary>width</secondary></indexterm>
 <para><computeroutput>unsigned char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::width</computeroutput></para><para>
 
-<para>the actua lwidth of the char. can be used to improve spacing between characters </para>
+<para>the actual width of the char. can be used to improve spacing between characters </para>
 </para>
 <para>
 Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00022">22</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>

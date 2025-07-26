@@ -4,7 +4,7 @@
 <indexterm><primary>SYSTEM::STARTUP::GDT::GDT_ENTRY</primary></indexterm>
 <para>
 
-<para>entry inside the gdt. </para>
+<para>entry inside the <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t">GDT</link>. </para>
  
 </para>
 <para>
@@ -30,7 +30,7 @@
 <section>
 <title>Detailed Description</title>
 
-<para>entry inside the gdt. </para>
+<para>entry inside the <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t">GDT</link>. </para>
 <para>
 Definition at line <link linkend="__g_d_t_8h_source_1l00014">14</link> of file <link linkend="__g_d_t_8h_source">GDT.h</link>.</para>
 </section>

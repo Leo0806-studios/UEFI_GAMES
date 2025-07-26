@@ -13,9 +13,9 @@ SYSTEM::STARTUP::PAGING::GlobalPageMap \- structure of the global page map\&.
 
 .in +1c
 .ti -1c
-.RI "static bool \fBAllocatePAgeMap\fP ()"
+.RI "static bool \fBAllocatePageMap\fP ()"
 .br
-.RI "allocated the global pagemap and translates the uefi memory map into it\&. every that is not EfiConventionalMemory is considered reserved\&. all memorymaped io is considered MMIO\&. "
+.RI "allocated the global page map and translates the UEFI memory map into it\&. every that is not EfiConventionalMemory is considered reserved\&. all memory-mapped IO is considered MMIO\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -24,19 +24,19 @@ structure of the global page map\&.
 Definition at line \fB79\fP of file \fBPAGE_MAP\&.h\fP\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "bool SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePAgeMap ()\fR [static]\fP"
+.SS "bool SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePageMap ()\fR [static]\fP"
 
 .PP
-allocated the global pagemap and translates the uefi memory map into it\&. every that is not EfiConventionalMemory is considered reserved\&. all memorymaped io is considered MMIO\&. 
+allocated the global page map and translates the UEFI memory map into it\&. every that is not EfiConventionalMemory is considered reserved\&. all memory-mapped IO is considered MMIO\&. 
 .PP
 \fBReturns\fP
 .RS 4
-sucsess is true
+success is true
 .RE
 .PP
 
 .PP
-Definition at line \fB35\fP of file \fBPAGE_MAP\&.cpp\fP\&.
+Definition at line \fB39\fP of file \fBPAGE_MAP\&.cpp\fP\&.
 
 .SH "Author"
 .PP 

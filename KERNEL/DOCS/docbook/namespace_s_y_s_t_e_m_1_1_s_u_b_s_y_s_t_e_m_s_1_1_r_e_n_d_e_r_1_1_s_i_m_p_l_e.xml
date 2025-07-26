@@ -12,7 +12,7 @@
         <itemizedlist>
             <listitem><para>struct <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r">CHAR</link></para>
 
-<para>represents a 16X8 hardcoded char for asimple font used in the early stages of initalisation of the kernel </para>
+<para>represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -25,7 +25,7 @@
 </listitem>
             <listitem><para>void <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1acd5586a738dc5f09cf6c39ed19bda4aa">SimpleDrawString</link> (const wchar_t *str, unsigned int x, unsigned int y)</para>
 
-<para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping </para>
+<para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any control characters. treats every char as 10 pixels wide. does not handle wrapping </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -42,7 +42,7 @@
 </listitem>
             <listitem><para><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r">CHAR</link> <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a1adf42179ffff6b40bbf237041dfc817">SimpleFont</link> [255]</para>
 
-<para>a hardcoded external font for now only contains the ASCII upercase latin letters </para>
+<para>a hardcode external font for now only contains the ASCII uppercase Latin letters </para>
 </listitem>
             <listitem><para>int <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a8aaf43af0eca6ba5d4c7fe2ac7289a21">TranslationTable</link> [256]</para>
 </listitem>
@@ -90,7 +90,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01125">1125</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01130">1130</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1acd5586a738dc5f09cf6c39ed19bda4aa"/><section>
     <title>SimpleDrawString()</title>
@@ -98,7 +98,7 @@ Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01125">1125</link>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>SimpleDrawString</secondary></indexterm>
 <para><computeroutput>void SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleDrawString (const wchar_t * str, unsigned int x, unsigned int y)</computeroutput></para><para>
 
-<para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any controll characters. treats every char as 10 pixels wide. does not handle wrapping </para>
+<para>draws a string to the framebuffer at the specified position. calls SimpleDrawChar for each char in the string. cant handle any control characters. treats every char as 10 pixels wide. does not handle wrapping </para>
 </para>
 
 <para>
@@ -127,7 +127,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01145">1145</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01154">1154</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 </section>
 <section>
@@ -137,28 +137,28 @@ Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01145">1145</link>
 <indexterm><primary>FramebufferBase</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>FramebufferBase</secondary></indexterm>
 <para><computeroutput>unsigned int * SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferBase = nullptr</computeroutput></para><para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00006">6</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00011">11</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ad1282cee88bc2488d4ab607b34105ced"/><section>
     <title>FramebufferHeight</title>
 <indexterm><primary>FramebufferHeight</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>FramebufferHeight</secondary></indexterm>
 <para><computeroutput>unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferHeight = 0</computeroutput></para><para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00008">8</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00013">13</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a68b0119e5b0e715283096003a67efbaf"/><section>
     <title>FramebufferWidth</title>
 <indexterm><primary>FramebufferWidth</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>FramebufferWidth</secondary></indexterm>
 <para><computeroutput>unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferWidth = 0</computeroutput></para><para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00007">7</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00012">12</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1ad943a45b9db25aa1ff307ca7767a2fc1"/><section>
     <title>PixelsPerScanline</title>
 <indexterm><primary>PixelsPerScanline</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>PixelsPerScanline</secondary></indexterm>
 <para><computeroutput>unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::PixelsPerScanline = 0</computeroutput></para><para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00009">9</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00014">14</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a1adf42179ffff6b40bbf237041dfc817"/><section>
     <title>SimpleFont</title>
@@ -166,17 +166,17 @@ Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00009">9</link> of
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>SimpleFont</secondary></indexterm>
 <para><computeroutput><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r">SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</link> SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::SimpleFont</computeroutput></para><para>
 
-<para>a hardcoded external font for now only contains the ASCII upercase latin letters </para>
+<para>a hardcode external font for now only contains the ASCII uppercase Latin letters </para>
 </para>
 <para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00011">11</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l00016">16</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1a8aaf43af0eca6ba5d4c7fe2ac7289a21"/><section>
     <title>TranslationTable</title>
 <indexterm><primary>TranslationTable</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE</primary><secondary>TranslationTable</secondary></indexterm>
 <para><computeroutput>int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::TranslationTable[256]</computeroutput></para><para>
-Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01011">1011</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
+Definition at line <link linkend="__r_e_n_d_e_r_8cpp_source_1l01016">1016</link> of file <link linkend="__r_e_n_d_e_r_8cpp_source">RENDER.cpp</link>.</para>
 </section>
 </section>
 </section>

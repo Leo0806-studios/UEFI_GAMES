@@ -20,7 +20,7 @@
 </listitem>
             <listitem><para>class <link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_u_e_f_i___l_e_f_t_o_w_e_r">UEFI_LEFTOWER</link></para>
 
-<para>uefi leftovers are all contained in there. thismainly includes infomation about the memory map </para>
+<para>UEFI leftovers are all contained in there. this mainly includes information about the memory map. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -33,7 +33,7 @@
 , <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084a0b8e028f19938bf9ae47616e4a0e6229">EFI_Reserved</link> = 3
  }</para>
 
-<para>types of pages in the global page table. everything above the specified types is reserved. dont depend on the order of the types as they may change in the future. </para>
+<para>types of pages in the global page table. everything above the specified types is reserved. don&apos;t depend on the order of the types as they may change in the future. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -42,7 +42,7 @@
         <itemizedlist>
             <listitem><para>size_t <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1aae9224eb116bcf39e38230218e15a4f8">QueryInstalledRam</link> ()</para>
 
-<para>queries the installed ram. first runn is slower than subsequent runs. </para>
+<para>queries the installed ram. first run is slower than subsequent runs. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -59,7 +59,7 @@
 <indexterm><primary>SYSTEM::STARTUP::PAGING</primary><secondary>PageType</secondary></indexterm>
 <para><computeroutput>enum class <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084">SYSTEM::STARTUP::PAGING::PageType</link><computeroutput>[strong]</computeroutput></computeroutput></para><para>
 
-<para>types of pages in the global page table. everything above the specified types is reserved. dont depend on the order of the types as they may change in the future. </para>
+<para>types of pages in the global page table. everything above the specified types is reserved. don&apos;t depend on the order of the types as they may change in the future. </para>
 </para>
 <informaltable frame="all">
 <title>Enumerator</title>
@@ -70,7 +70,7 @@
 <row><entry><indexterm><primary>MMIO</primary><secondary>SYSTEM::STARTUP::PAGING</secondary></indexterm>
 <indexterm><primary>SYSTEM::STARTUP::PAGING</primary><secondary>MMIO</secondary></indexterm>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084a3a3f5443a338a6ef9b608e29498aea89"/>MMIO</entry><entry>
-<para>memory mapped io. this includes efi_memorymapedIO_port and port_space </para>
+<para>memory mapped IO. this includes efi_memorymapedIO_port and port_space </para>
 </entry></row><row><entry><indexterm><primary>Allocated</primary><secondary>SYSTEM::STARTUP::PAGING</secondary></indexterm>
 <indexterm><primary>SYSTEM::STARTUP::PAGING</primary><secondary>Allocated</secondary></indexterm>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084a030218254584bb915dbaa23473bf1be7"/>Allocated</entry><entry>
@@ -78,7 +78,7 @@
 </entry></row><row><entry><indexterm><primary>EFI_Reserved</primary><secondary>SYSTEM::STARTUP::PAGING</secondary></indexterm>
 <indexterm><primary>SYSTEM::STARTUP::PAGING</primary><secondary>EFI_Reserved</secondary></indexterm>
 <anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084a0b8e028f19938bf9ae47616e4a0e6229"/>EFI_Reserved</entry><entry>
-<para>this is for naow a catch all for every reserved tpye in the uefi memory map translated into the global page table </para>
+<para>this is for now a catch all for every reserved type in the UEFI memory map translated into the global page table </para>
 </entry></row>    </tbody>
     </tgroup>
 </informaltable>
@@ -94,7 +94,7 @@ Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00043">43</link>
 <indexterm><primary>SYSTEM::STARTUP::PAGING</primary><secondary>QueryInstalledRam</secondary></indexterm>
 <para><computeroutput>size_t SYSTEM::STARTUP::PAGING::QueryInstalledRam ( )<computeroutput>[extern]</computeroutput></computeroutput></para><para>
 
-<para>queries the installed ram. first runn is slower than subsequent runs. </para>
+<para>queries the installed ram. first run is slower than subsequent runs. </para>
 </para>
 
 <para><formalpara><title>Returns</title>
@@ -103,7 +103,7 @@ Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00043">43</link>
 </formalpara>
 </para>
 <para>
-Definition at line <link linkend="__p_a_g_e___m_a_p_8cpp_source_1l00014">14</link> of file <link linkend="__p_a_g_e___m_a_p_8cpp_source">PAGE_MAP.cpp</link>.</para>
+Definition at line <link linkend="__p_a_g_e___m_a_p_8cpp_source_1l00018">18</link> of file <link linkend="__p_a_g_e___m_a_p_8cpp_source">PAGE_MAP.cpp</link>.</para>
 </section>
 </section>
 </section>

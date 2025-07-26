@@ -4,12 +4,12 @@
 <indexterm><primary>SYSTEM::DRIVERS::PCI</primary></indexterm>
 <para>
 
-<para>all pci driver are in this namespace </para>
+<para>all <link linkend="_namespace_s_y_s_t_e_m_1_1_d_r_i_v_e_r_s_1_1_p_c_i">PCI</link> driver are in this namespace </para>
  
 </para>
 <section>
 <title>Detailed Description</title>
 
-<para>all pci driver are in this namespace </para>
+<para>all <link linkend="_namespace_s_y_s_t_e_m_1_1_d_r_i_v_e_r_s_1_1_p_c_i">PCI</link> driver are in this namespace </para>
 </section>
 </section>

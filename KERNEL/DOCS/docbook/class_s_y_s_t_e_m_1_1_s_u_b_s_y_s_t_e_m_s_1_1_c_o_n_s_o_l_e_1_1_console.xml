@@ -7,7 +7,7 @@
         <itemizedlist>
             <listitem><para>static bool <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a5fff8a0922d0682136415e8d78f2dc95">InitConsole</link> (size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)</para>
 
-<para>inits the console. must be called before any other console function can safely be used. </para>
+<para>Initializes the console. must be called before any other console function can safely be used. </para>
 </listitem>
             <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">WriteLine</link> (const wchar_t *str)</para>
 
@@ -15,11 +15,11 @@
 </listitem>
             <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a6bfc1f68dad0ef5a12be1a8c9a5a06fe">WriteF</link> (size_t args, const char *format,...)</para>
 
-<para>analog to printf. takes a format string and avariable amount of input additinaly it takse the amount of extra args as a parameter to increase safety </para>
+<para>analog to printf. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety </para>
 </listitem>
             <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a7785f77c03ae536f44b29d3282297e53">Write</link> (const wchar_t *str)</para>
 
-<para>writes an unformated string to the console. </para>
+<para>writes an unformatted string to the console. </para>
 </listitem>
             <listitem><para>static const <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a80a6c6d79ea75dcebedb1fddbcf26f56">QueryConsoleInfo</link> ()</para>
 
@@ -31,7 +31,7 @@
 </listitem>
             <listitem><para>static void <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1aeed04bff10ab5cbbe2119969fdcd3677">Flush</link> ()</para>
 
-<para>flushes the console buffer to the screen does nothing in early init while redering draws directly to the framebuffer </para>
+<para>flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer </para>
 </listitem>
             <listitem><para>static bool <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a9695316d613ebdd7189f7f6f6dde66ae">ToggleANSICodes</link> ()</para>
 
@@ -42,7 +42,7 @@
 <section>
 <title>Detailed Description</title>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8h_source_1l00023">23</link> of file <link linkend="__c_o_n_s_o_l_e_8h_source">CONSOLE.h</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8h_source_1l00024">24</link> of file <link linkend="__c_o_n_s_o_l_e_8h_source">CONSOLE.h</link>.</para>
 </section>
 <section>
 <title>Member Function Documentation</title>
@@ -55,7 +55,7 @@ Definition at line <link linkend="__c_o_n_s_o_l_e_8h_source_1l00023">23</link> o
 <para>clears the console and moves the cursor to 0,0 </para>
 </para>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00102">102</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00115">115</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
 <anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1aeed04bff10ab5cbbe2119969fdcd3677"/><section>
     <title>Flush()</title>
@@ -63,10 +63,10 @@ Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00102">102</link
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</primary><secondary>Flush</secondary></indexterm>
 <para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Flush ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
-<para>flushes the console buffer to the screen does nothing in early init while redering draws directly to the framebuffer </para>
+<para>flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer </para>
 </para>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00105">105</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00118">118</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
 <anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a5fff8a0922d0682136415e8d78f2dc95"/><section>
     <title>InitConsole()</title>
@@ -74,7 +74,7 @@ Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00105">105</link
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</primary><secondary>InitConsole</secondary></indexterm>
 <para><computeroutput>bool SYSTEM::SUBSYSTEMS::CONSOLE::Console::InitConsole (size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
-<para>inits the console. must be called before any other console function can safely be used. </para>
+<para>Initializes the console. must be called before any other console function can safely be used. </para>
 </para>
 
 <para>
@@ -89,22 +89,22 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>collums</entry><entry>
-<para>amount of collums to use. does nothing rn</para>
+<para>amount of columns to use. does nothing currently</para>
 </entry>
                             </row>
                             <row>
 <entry>rows</entry><entry>
-<para>amount of rows. does nothing rn</para>
+<para>amount of rows. does nothing currently</para>
 </entry>
                             </row>
                             <row>
 <entry>pixelsperRow</entry><entry>
-<para>influences vertial spacing should larger than the max size of a character or clipping might occur.</para>
+<para>influences vertical spacing should larger than the max size of a character or clipping might occur.</para>
 </entry>
                             </row>
                             <row>
 <entry>pixelsperCollum</entry><entry>
-<para>influences horizontal spacing. should be larger than the widht o a character or clipping might occur</para>
+<para>influences horizontal spacing. should be larger than the width o a character or clipping might occur</para>
 </entry>
                             </row>
                         </tbody>
@@ -114,17 +114,17 @@ Parameters</title>
                 </formalpara>
                 <formalpara><title>Returns</title>
 
-<para>succses is true</para>
+<para>success is true</para>
 </formalpara>
 </para>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00059">59</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00069">69</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
 <anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a80a6c6d79ea75dcebedb1fddbcf26f56"/><section>
     <title>QueryConsoleInfo()</title>
 <indexterm><primary>QueryConsoleInfo</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</secondary></indexterm>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</primary><secondary>QueryConsoleInfo</secondary></indexterm>
-<para><computeroutput>const <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> SYSTEM::SUBSYSTEMS::CONSOLE::Console::QueryConsoleInfo ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+<para><computeroutput>static const <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> SYSTEM::SUBSYSTEMS::CONSOLE::Console::QueryConsoleInfo ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
 <para>returns a instance of <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> containing information about the console </para>
 </para>
@@ -144,7 +144,7 @@ Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00059">59</link>
 <para>toggles if the console should use ANSICodes or not. this is used to enable or disable color and other formatting codes. returns true if the codes are now enabled, false if they are now disabled. </para>
 </para>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00108">108</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00121">121</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
 <anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a7785f77c03ae536f44b29d3282297e53"/><section>
     <title>Write()</title>
@@ -152,7 +152,7 @@ Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00108">108</link
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</primary><secondary>Write</secondary></indexterm>
 <para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Write (const wchar_t * str)<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
-<para>writes an unformated string to the console. </para>
+<para>writes an unformatted string to the console. </para>
 </para>
 
 <para>
@@ -175,7 +175,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00080">80</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00093">93</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
 <anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a6bfc1f68dad0ef5a12be1a8c9a5a06fe"/><section>
     <title>WriteF()</title>
@@ -183,7 +183,7 @@ Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00080">80</link>
 <indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE::Console</primary><secondary>WriteF</secondary></indexterm>
 <para><computeroutput>void SYSTEM::SUBSYSTEMS::CONSOLE::Console::WriteF (size_t args, const char * format,  ...)<computeroutput>[static]</computeroutput></computeroutput></para><para>
 
-<para>analog to printf. takes a format string and avariable amount of input additinaly it takse the amount of extra args as a parameter to increase safety </para>
+<para>analog to printf. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety </para>
 </para>
 
 <para>
@@ -206,7 +206,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00077">77</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00087">87</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
 <anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38"/><section>
     <title>WriteLine()</title>
@@ -237,7 +237,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00068">68</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00078">78</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
 </section>
 <para>
 The documentation for this class was generated from the following files:</para>
