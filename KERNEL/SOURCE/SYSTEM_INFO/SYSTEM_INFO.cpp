@@ -1,7 +1,7 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
-
+#pragma warning(disable:26439)
 #include "../../HEADER/SYTEM_INFO/SYSTEM_INFO.h"
 #include <HEADER/UTILLITY/UTILLITY_F.h>
 namespace SYSTEM {

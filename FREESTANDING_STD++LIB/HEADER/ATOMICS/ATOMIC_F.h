@@ -31,6 +31,15 @@ namespace STD {
 			return value;
 
 		}
+		NODISCARD constexpr void store(const Type& value) {
+			_mm_mfence();
+			while (_InterlockedCompareExchange8(reinterpret_cast<char*>(&Flag), 1, 0) != 0) {
+				_mm_pause();
+			}
+			atomicStorage = value;
+			_mm_lfence();
+			_InterlockedExchange8(reinterpret_cast<char*>(&Flag), 0);
+		}
 		NODISCARD constexpr Type exchange(Type newValue) {
 			_mm_mfence();
 			while (_InterlockedCompareExchange8(reinterpret_cast<char*>(&Flag), 1, 0) != 0) {
