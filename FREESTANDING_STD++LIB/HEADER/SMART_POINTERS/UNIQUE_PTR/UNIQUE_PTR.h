@@ -18,6 +18,9 @@ namespace STD {
 		UniquePointer& operator=(const UniquePointer&) = delete;
 		UniquePointer& operator=(UniquePointer&& other)  {
 			if (this != &other) {
+				if (controlBlock) {
+					controlBlock->DecrementRefCount();
+				}
 				controlBlock = STD::exchange(other.controlBlock, nullptr);
 			}
 			return *this;

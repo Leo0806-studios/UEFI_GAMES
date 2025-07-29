@@ -36,7 +36,16 @@ ret = _InterlockedOr(reinterpret_cast<long*>(target), 0);\
 ret = _InterlockedOr64(reinterpret_cast<long long*>(target), 0);\
 	}
 
-
+#define SELECT_CORECT_ADD(Type,target,value,ret)\
+if constexpr(sizeof(Type)==1){\
+		ret = _InterlockedExchangeAdd8(reinterpret_cast<char*>(target), value);\
+	} else if constexpr(sizeof(Type)==2){\
+		ret = _InterlockedExchangeAdd16(reinterpret_cast<short*>(target), value);\
+	} else if constexpr(sizeof(Type)==4){\
+		ret = _InterlockedExchangeAdd(reinterpret_cast<long*>(target), value);\
+	} else if constexpr(sizeof(Type)==8){\
+		ret = _InterlockedExchangeAdd64(reinterpret_cast<long long*>(target), value);\
+	}
 
 	/**
 	* uses the correct compare exchange function based on the size of the type.
@@ -194,10 +203,10 @@ if constexpr(sizeof(Type)==1){\
 			SELECT_CORECT_LOAD(Type, &atomicStorage, ret);
 			return ret;
 		}
-		NODISCARD Type store(const Type value) {
+		NODISCARD void store(const Type value) {
 			Type ret = 0;
 			SELECT_CORECT_EXCHANGE(Type, &atomicStorage, value, ret);
-			return ret;
+			
 		}
 		NODISCARD Type exchange(Type newValue) {
 			Type ret = 0;
@@ -231,12 +240,12 @@ if constexpr(sizeof(Type)==1){\
 
 		NODISCARD Type fetch_add(Type value) {
 			Type ret = 0;
-			SELECT_CORECT_EXCHANGE(Type, &atomicStorage, atomicStorage + value, ret);
+			SELECT_CORECT_EXCHANGE(Type, &atomicStorage,  value, ret);
 			return ret;
 		}
 		NODISCARD Type fetch_sub(Type value) {
 			Type ret = 0;
-			SELECT_CORECT_EXCHANGE(Type, &atomicStorage, atomicStorage - value, ret);
+			SELECT_CORECT_ADD(Type, &atomicStorage,  value, ret);
 			return ret;
 		}
 		NODISCARD Type increment() {
@@ -276,10 +285,10 @@ if constexpr(sizeof(Type)==1){\
 			SELECT_CORECT_LOAD(Type, &atomicStorage, ret);
 			return ret;
 		}
-		NODISCARD Type store(const Type& value) {
+		NODISCARD void store(const Type& value) {
 			Type ret = 0.0;
 			SELECT_CORECT_EXCHANGE(Type, &atomicStorage, value, ret);
-			return ret;
+			
 		}
 		NODISCARD Type exchange(Type newValue) {
 			Type ret = 0.0;
@@ -297,12 +306,12 @@ if constexpr(sizeof(Type)==1){\
 
 		NODISCARD Type fetch_add(Type value) {
 			Type ret = 0.0;
-			SELECT_CORECT_EXCHANGE(Type, &atomicStorage, atomicStorage + value, ret);
+			SELECT_CORECT_ADD(Type, &atomicStorage,  value, ret);
 			return ret;
 		}
 		NODISCARD Type fetch_sub(Type value) {
 			Type ret = 0.0;
-			SELECT_CORECT_EXCHANGE(Type, &atomicStorage, atomicStorage - value, ret);
+			SELECT_CORECT_ADD(Type, &atomicStorage,  value, ret);
 			return ret;
 		}
 	};
