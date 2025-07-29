@@ -56,10 +56,14 @@ return static_cast<Type*>(controlBlock->Get());
 #endif // _DEBUG
 
 		}
-		static constexpr UniquePointer MakeUnique( CLAIMS(Type, ptr), CLAIMS(GenericUniqueBlock<Type>, controllBlock)) {
+		using DeleterObj = bool(*)(Type* self);
+		using Deleter = bool(*)(GenericUniqueBlock<Type>* self);
+		static constexpr UniquePointer MakeUnique( CLAIMS(Type, ptr), CLAIMS(GenericUniqueBlock<Type>, controllBlock),DeleterObj deleterObj,Deleter deleterControl) {
 			UniquePointer uniquePtr;
 			uniquePtr.controlBlock = controllBlock;
 			static_cast<GenericUniqueBlock<Type>*>(uniquePtr.controlBlock)->ptr = ptr;
+			static_cast<GenericUniqueBlock<Type>*>(uniquePtr.controlBlock)->deleterObj = deleterObj;
+			static_cast<GenericUniqueBlock<Type>*>(uniquePtr.controlBlock)->deleter = deleterControl;
 			return uniquePtr;
 			
 		}
