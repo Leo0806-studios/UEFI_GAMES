@@ -21,5 +21,8 @@
     <ClCompile Include="SMART_PTR\UNIQUE_PTR\UNIQUE_PTR_TEST.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VECTOR\VECTOR_TEST.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -51,6 +51,9 @@
     <ClInclude Include="HEADER\INTERNAL\MACROS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADER\VECTOR\VECTOR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp">

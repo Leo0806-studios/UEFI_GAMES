@@ -28,4 +28,6 @@ namespace STD {
 		 _Val = static_cast<_Other&&>(_New_val);
 		 return _Old_val;
 	 }
+		 struct _MoveOut{};
+		 inline constexpr _MoveOut move_out{};
 }

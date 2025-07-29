@@ -103,7 +103,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <DisableSpecificWarnings>4711;4710;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4711;4710;4514;5045</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="ATOMICS\ATOMIC_TEST.cpp" />
     <ClCompile Include="SMART_PTR\UNIQUE_PTR\UNIQUE_PTR_TEST.cpp" />
+    <ClCompile Include="VECTOR\VECTOR_TEST.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FREESTANDING_STD++LIB\FREESTANDING_STD++LIB.vcxproj">
