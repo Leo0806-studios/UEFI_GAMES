@@ -37,7 +37,9 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
  		};
 		/// <summary>
 		/// a hardcode external font
-		/// for now only contains the ASCII uppercase Latin letters
+		/// for now only contains upper case latin letters and about half of the lower case latin letters.
+		/// still wip
+		/// 
 		/// </summary>
 		extern CHAR SimpleFont[255];
 

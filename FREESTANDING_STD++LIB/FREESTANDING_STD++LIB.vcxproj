@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -21,14 +21,19 @@
   <ItemGroup>
     <ClInclude Include="HEADER\ATOMICS\ATOMIC_F.h" />
     <ClInclude Include="HEADER\CONCEPTS\CONCEPTS_f.h" />
+    <ClInclude Include="HEADER\INTERNAL\MACROS.h" />
     <ClInclude Include="HEADER\SAL\SAL_F.h" />
-    <ClInclude Include="HEADER\SHARED_POINTERS\CONTROL_BLOCKS\CONTROL_BASE\CONTROL_BASE_F.h" />
+    <ClInclude Include="HEADER\SMART_POINTERS\CONTROL_BLOCKS\CONTROL_BASE\CONTROL_BASE_F.h" />
+    <ClInclude Include="HEADER\SMART_POINTERS\CONTROL_BLOCKS\UNIQUE\UNIQUE_BLOCK.h" />
+    <ClInclude Include="HEADER\SMART_POINTERS\PTR_BASE\PTR_BASE.h" />
+    <ClInclude Include="HEADER\SMART_POINTERS\UNIQUE_PTR\UNIQUE_PTR.h" />
     <ClInclude Include="HEADER\STRING\STRING_F.h" />
     <ClInclude Include="HEADER\TYPE_TRAITS\TYPE_TRAITS_F.h" />
     <ClInclude Include="HEADER\UTILLITY\UTILLITY_F.h" />
     <ClInclude Include="HEADER\ARRAY\ARRAY_F.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SOURCE\ATOMIC\ATOMIC.cpp" />
     <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -158,7 +163,7 @@
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4464;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4464;4514;</DisableSpecificWarnings>
       <EnablePREfast>true</EnablePREfast>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>
@@ -192,7 +197,7 @@
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4464;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4464;4514;</DisableSpecificWarnings>
       <EnablePREfast>true</EnablePREfast>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>

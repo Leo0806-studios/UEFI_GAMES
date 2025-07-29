@@ -30,18 +30,33 @@
     <ClInclude Include="HEADER\STRING\STRING_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SHARED_POINTERS\CONTROL_BLOCKS\CONTROL_BASE\CONTROL_BASE_F.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HEADER\ATOMICS\ATOMIC_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HEADER\SAL\SAL_F.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADER\SMART_POINTERS\CONTROL_BLOCKS\CONTROL_BASE\CONTROL_BASE_F.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SMART_POINTERS\CONTROL_BLOCKS\UNIQUE\UNIQUE_BLOCK.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SMART_POINTERS\PTR_BASE\PTR_BASE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SMART_POINTERS\UNIQUE_PTR\UNIQUE_PTR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\INTERNAL\MACROS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\ATOMIC\ATOMIC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

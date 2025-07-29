@@ -5,23 +5,24 @@
 namespace STD {
 
 	class ControlBase {
-		STD::atomic_unsigned_long_long refCount = 1;
-		STD::atomic_unsigned_long_long weakCount = 1;
-		template <typename T>friend class SharedPointer;
-		template <typename T>friend class WeakPointer;
-		template<typename T> friend class UniquePointer;
+
+
 		friend class PointerBase;
 
-
-		NODISCARD constexpr ControlBase() = default;
 		NODISCARD constexpr ControlBase(const ControlBase&) = delete;
 		NODISCARD constexpr ControlBase(ControlBase&&) = delete;
 		NODISCARD ControlBase& operator=(const ControlBase&) = delete;
 		NODISCARD ControlBase& operator=(ControlBase&&) = delete;
-
-	protected:
+	public:
 		virtual void Destroy() = 0;
 		virtual void Delete() = 0;
+		virtual void* Get() = 0;
+	protected:
+		STD::atomic_unsigned_long_long refCount = 1;
+		STD::atomic_unsigned_long_long weakCount = 1;
+	public:
+
+
 		virtual void IncrementWeakCount() {
 			
 			STD::ignore= weakCount.fetch_add(1);
@@ -38,12 +39,11 @@ namespace STD {
 		virtual void DecrementRefCount() {
 			if (refCount.fetch_sub(1) == 1) {
 				Destroy();
-				DecrementRefCount();
+				DecrementWeakCount();
 			}
 		}
-	public:
+		NODISCARD constexpr ControlBase() = default;
 		virtual ~ControlBase() = default;
-
 
 	};
 }

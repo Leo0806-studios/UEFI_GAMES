@@ -167,4 +167,9 @@ namespace STD {
 		char8_t,
 #endif // defined(__cpp_char8_t)
 		char16_t, char32_t, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long>;
+		template <class _Ty>
+		constexpr bool is_floating_point_v = _Is_any_of_v<remove_cv_t<_Ty>, float, double, long double>;
+
+		template <class _From, class _To>
+		constexpr bool is_convertible_v = __is_convertible_to(_From, _To);
 }
