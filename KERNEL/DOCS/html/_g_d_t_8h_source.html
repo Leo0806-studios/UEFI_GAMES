@@ -100,27 +100,43 @@ $(function(){initNavTree('_g_d_t_8h_source.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">namespace </span>SYSTEM {</div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>    <span class="keyword">namespace </span>STARTUP {</div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t.html">    9</a></span>        <span class="keyword">namespace </span>GDT {</div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">   14</a></span>            <span class="keyword">struct </span><a class="code hl_struct" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">GDT_ENTRY</a> {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> limit;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _base;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> accses_byte;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> limit_flags;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                <span class="keywordtype">unsigned</span>  <span class="keywordtype">char</span> __base;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                <a class="code hl_struct" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">GDT_ENTRY</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            };</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;HEADER/SAL/SAL_F.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span>SYSTEM {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    <span class="keyword">namespace </span>STARTUP {</div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t.html">   10</a></span>        <span class="keyword">namespace </span><a class="code hl_class" href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t.html">GDT</a> {</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">   15</a></span>            <span class="keyword">struct </span><a class="code hl_struct" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">GDT_ENTRY</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                <span class="keywordtype">unsigned</span> __int64 packedData = 0; <span class="comment">//packed data for the GDT entry</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                NODISCARD_MSG(<span class="stringliteral">&quot;discarding the return of this function can lead to a corrupted GDT entry&quot;</span>)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    <span class="keywordtype">bool</span> <a class="code hl_function" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html#a519cdd4c8cf6e3627a448e8d78e773a9">SetLimit</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> limit);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                NODISCARD_MSG(<span class="stringliteral">&quot;discarding the return of this function can lead to a corrupted GDT entry&quot;</span>)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <span class="keywordtype">bool</span> <a class="code hl_function" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html#a737b03cf3536a7f0e41bfb596cbf9c51">SetBase</a>(<span class="keywordtype">unsigned</span> __int32 base);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            };</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t.html">   37</a></span>            <span class="keyword">class </span><a class="code hl_class" href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t.html">GDT</a> {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <a class="code hl_struct" href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">GDT_ENTRY</a>* GDT_Entries = <span class="keyword">nullptr</span>; <span class="comment">//pointer to the GDT entries</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                <span class="keywordtype">size_t</span> GDT_Entries_Size = 0; <span class="comment">//size of the GDT entries in bytes</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                <span class="keywordtype">size_t</span> GDT_Entries_Count = 0; <span class="comment">//number of GDT entries</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                <span class="keywordtype">size_t</span> GDT_Amount_Pages = 0; <span class="comment">//number of pages allocated for the GDT</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                <span class="keywordtype">bool</span> <a class="code hl_function" href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t.html#a506b9ab7e27bd6dec310f6afa541c2ad">CreateGDT</a>();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            };</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="ttc" id="astruct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y_html"><div class="ttname"><a href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">SYSTEM::STARTUP::GDT::GDT_ENTRY</a></div><div class="ttdoc">entry inside the GDT.</div><div class="ttdef"><b>Definition</b> <a href="#l00014">GDT.h:14</a></div></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
+</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="ttc" id="aclass_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t_html"><div class="ttname"><a href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t.html">SYSTEM::STARTUP::GDT::GDT</a></div><div class="ttdef"><b>Definition</b> <a href="#l00037">GDT.h:37</a></div></div>
+<div class="ttc" id="aclass_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t_html_a506b9ab7e27bd6dec310f6afa541c2ad"><div class="ttname"><a href="class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t.html#a506b9ab7e27bd6dec310f6afa541c2ad">SYSTEM::STARTUP::GDT::GDT::CreateGDT</a></div><div class="ttdeci">bool CreateGDT()</div><div class="ttdoc">allocates the GDT will allocate physical memory that needs to be taken care of when paging is enabled...</div><div class="ttdef"><b>Definition</b> <a href="_g_d_t_8cpp_source.html#l00007">GDT.cpp:7</a></div></div>
+<div class="ttc" id="astruct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y_html"><div class="ttname"><a href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html">SYSTEM::STARTUP::GDT::GDT_ENTRY</a></div><div class="ttdoc">entry inside the GDT.</div><div class="ttdef"><b>Definition</b> <a href="#l00015">GDT.h:15</a></div></div>
+<div class="ttc" id="astruct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y_html_a519cdd4c8cf6e3627a448e8d78e773a9"><div class="ttname"><a href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html#a519cdd4c8cf6e3627a448e8d78e773a9">SYSTEM::STARTUP::GDT::GDT_ENTRY::SetLimit</a></div><div class="ttdeci">bool SetLimit(unsigned int limit)</div><div class="ttdoc">Sets the limit value for a GDT (Global Descriptor Table) entry. limit must only have the lower 20 bit...</div><div class="ttdef"><b>Definition</b> <a href="_g_d_t_8cpp_source.html#l00019">GDT.cpp:19</a></div></div>
+<div class="ttc" id="astruct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y_html_a737b03cf3536a7f0e41bfb596cbf9c51"><div class="ttname"><a href="struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html#a737b03cf3536a7f0e41bfb596cbf9c51">SYSTEM::STARTUP::GDT::GDT_ENTRY::SetBase</a></div><div class="ttdeci">bool SetBase(unsigned __int32 base)</div><div class="ttdoc">Sets the base address for a GDT entry.</div><div class="ttdef"><b>Definition</b> <a href="_g_d_t_8cpp_source.html#l00039">GDT.cpp:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

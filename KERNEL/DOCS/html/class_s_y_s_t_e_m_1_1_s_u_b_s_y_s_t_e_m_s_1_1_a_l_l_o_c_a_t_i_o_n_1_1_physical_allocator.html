@@ -97,7 +97,7 @@ $(function(){initNavTree('class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator Class Reference</div></div>
 </div><!--header-->
@@ -108,18 +108,18 @@ $(function(){initNavTree('class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_
 
 <p><code>#include &lt;<a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html">ALLOCATION.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a1053ed21d2988a2cc7fded090c27e91e" id="r_a1053ed21d2988a2cc7fded090c27e91e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1053ed21d2988a2cc7fded090c27e91e">AllocatePAge</a> ()</td></tr>
-<tr class="memdesc:a1053ed21d2988a2cc7fded090c27e91e"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocates a single page faster than AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid address inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don't rely on it  <br /></td></tr>
-<tr class="separator:a1053ed21d2988a2cc7fded090c27e91e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad78aa200acc4a62616824d708736a244" id="r_ad78aa200acc4a62616824d708736a244"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78aa200acc4a62616824d708736a244">FreePage</a> (void *ptr)</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aa3445baa5a8b8dc6d895b8da299c19b6" id="r_aa3445baa5a8b8dc6d895b8da299c19b6"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3445baa5a8b8dc6d895b8da299c19b6">AllocatePage</a> ()</td></tr>
+<tr class="memdesc:aa3445baa5a8b8dc6d895b8da299c19b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocates a single page faster than AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid address inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don't rely on it  <br /></td></tr>
+<tr class="separator:aa3445baa5a8b8dc6d895b8da299c19b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad78aa200acc4a62616824d708736a244" id="r_ad78aa200acc4a62616824d708736a244"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78aa200acc4a62616824d708736a244">FreePage</a> (void *ptr)</td></tr>
 <tr class="memdesc:ad78aa200acc4a62616824d708736a244"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees a single page. faster than FreePages as it doesn't have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that corresponds to the sizeof the header and some other checks). if the pointer is invalid it will return false. nullptr is also invalid  <br /></td></tr>
 <tr class="separator:ad78aa200acc4a62616824d708736a244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f95e29be9563cf9a64874daca673a09" id="r_a8f95e29be9563cf9a64874daca673a09"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f95e29be9563cf9a64874daca673a09">AllocatePages</a> (size_t amountOfPages)</td></tr>
+<tr class="memitem:a8f95e29be9563cf9a64874daca673a09" id="r_a8f95e29be9563cf9a64874daca673a09"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f95e29be9563cf9a64874daca673a09">AllocatePages</a> (size_t amountOfPages)</td></tr>
 <tr class="memdesc:a8f95e29be9563cf9a64874daca673a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates a number of pages. returns a pointer to the first valid address inside the first page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don't rely on it.  <br /></td></tr>
 <tr class="separator:a8f95e29be9563cf9a64874daca673a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a204e52b71704aba91f47aa9e86e0009c" id="r_a204e52b71704aba91f47aa9e86e0009c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a204e52b71704aba91f47aa9e86e0009c">FreePages</a> (void *ptr)</td></tr>
+<tr class="memitem:a204e52b71704aba91f47aa9e86e0009c" id="r_a204e52b71704aba91f47aa9e86e0009c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a204e52b71704aba91f47aa9e86e0009c">FreePages</a> (void *ptr)</td></tr>
 <tr class="memdesc:a204e52b71704aba91f47aa9e86e0009c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees memory pages previously allocated and returns whether the operation was successful. a return of false can also indicate memory corruption or an invalid pointer.  <br /></td></tr>
 <tr class="separator:a204e52b71704aba91f47aa9e86e0009c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html#l00028">28</a> of file <a class="el" href="_a_l_l_o_c_a_t_i_o_n_8h_source.html">ALLOCATION.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1053ed21d2988a2cc7fded090c27e91e" name="a1053ed21d2988a2cc7fded090c27e91e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1053ed21d2988a2cc7fded090c27e91e">&#9670;&#160;</a></span>AllocatePAge()</h2>
+<a id="aa3445baa5a8b8dc6d895b8da299c19b6" name="aa3445baa5a8b8dc6d895b8da299c19b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3445baa5a8b8dc6d895b8da299c19b6">&#9670;&#160;</a></span>AllocatePage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,7 +138,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void * SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePAge </td>
+          <td class="memname">void * SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePage </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -146,7 +146,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -163,6 +163,9 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void * SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePages </td>
@@ -171,6 +174,11 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Allocates a number of pages. returns a pointer to the first valid address inside the first page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don't rely on it. </p>
@@ -204,7 +212,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -226,6 +234,9 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::FreePages </td>
@@ -234,6 +245,11 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Frees memory pages previously allocated and returns whether the operation was successful. a return of false can also indicate memory corruption or an invalid pointer. </p>

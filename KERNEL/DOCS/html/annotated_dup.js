@@ -3,7 +3,8 @@ var annotated_dup =
     [ "SYSTEM", null, [
       [ "STARTUP", null, [
         [ "GDT", "namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t.html", [
-          [ "GDT_ENTRY", "struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html", null ]
+          [ "GDT", "class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t.html", "class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t" ],
+          [ "GDT_ENTRY", "struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y.html", "struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y" ]
         ] ],
         [ "PAGING", "namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g.html", [
           [ "GlobalPageMap", "class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map.html", null ],
@@ -14,7 +15,7 @@ var annotated_dup =
       [ "SUBSYSTEMS", null, [
         [ "ALLOCATION", "namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n.html", [
           [ "PageHeader", "struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_page_header.html", "struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_page_header" ],
-          [ "PhysicalAllocator", "class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator.html", "class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator" ]
+          [ "PhysicalAllocator", "class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator.html", null ]
         ] ],
         [ "CONSOLE", "namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e.html", [
           [ "__CONSOLE__STRUCTURE", "class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_____c_o_n_s_o_l_e_____s_t_r_u_c_t_u_r_e.html", null ],
