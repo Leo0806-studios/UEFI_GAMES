@@ -10,7 +10,7 @@ extern "C" {
 #include "HEADER/STARTUP/PAGE_MAP/PAGE_MAP.h"
 namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 	using PageType = SYSTEM::STARTUP::PAGING::PageType;
-	void* PhysicalAllocator::AllocatePAge()
+	void* PhysicalAllocator::AllocatePage()
 	{
 		auto& GlobalPageMap = SYSTEM::SYSTEM_INFO::GlobalPageMap;
 		//iterate over the map and find a single free page.

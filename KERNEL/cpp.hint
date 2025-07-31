@@ -3,3 +3,4 @@
 // For more information see https://go.microsoft.com/fwlink/?linkid=865984
 #define NODISCARD_MSG(msg) [[nodiscard(msg)]]
 #define EFI_PAGE_SIZE
+#define NODISCARD [[nodiscard]]

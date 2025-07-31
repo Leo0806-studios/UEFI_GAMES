@@ -1,4 +1,5 @@
 #pragma once
+#include "HEADER/SAL/SAL_F.h"
 namespace SYSTEM {
 	namespace STARTUP {
 		/// <summary>
@@ -9,17 +10,43 @@ namespace SYSTEM {
 		namespace GDT {
 			/// <summary>
 			/// entry inside the GDT.
-			/// 
+			///
 			/// </summary>
 			struct GDT_ENTRY {
-				unsigned short limit;
-				unsigned short base;
-				unsigned char _base;
-				unsigned char accses_byte;
-				unsigned char limit_flags;
-				unsigned  char __base;
+			private:
+				unsigned __int64 packedData = 0; //packed data for the GDT entry
+			public:
+				/// <summary>
+				/// Sets the limit value for a GDT (Global Descriptor Table) entry.
+				/// limit must only have the lower 20 bits set.
+				/// returns false on failure.
+				/// </summary>
+				/// <param name="limit">The new limit value to set for the GDT entry.</param>
+				/// <returns>Returns true if the limit was set successfully; otherwise, returns false.</returns>
+				NODISCARD_MSG("discarding the return of this function can lead to a corrupted GDT entry")
+					bool SetLimit(unsigned int limit);
 
-				GDT_ENTRY() = default;
+				/// <summary>
+				/// Sets the base address for a GDT entry.
+				/// </summary>
+				/// <param name="base">The base address to set for the GDT entry.</param>
+				/// <returns>True if the base was set successfully; false otherwise. Discarding the return value can lead to a corrupted GDT entry.</returns>
+				NODISCARD_MSG("discarding the return of this function can lead to a corrupted GDT entry")
+				bool SetBase(unsigned __int32 base);
+			};
+			class GDT {
+				GDT_ENTRY* GDT_Entries = nullptr; //pointer to the GDT entries
+				size_t GDT_Entries_Size = 0; //size of the GDT entries in bytes
+				size_t GDT_Entries_Count = 0; //number of GDT entries
+				size_t GDT_Amount_Pages = 0; //number of pages allocated for the GDT
+
+			public:
+				/// <summary>
+				/// allocates the GDT
+				/// will allocate physical memory that needs to be taken care of when paging is enabled later on.
+				/// </summary>
+				/// <returns> succses</returns>
+				bool CreateGDT();
 			};
 		}
 	}

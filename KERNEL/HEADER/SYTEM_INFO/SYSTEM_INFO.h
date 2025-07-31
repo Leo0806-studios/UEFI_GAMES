@@ -11,6 +11,8 @@ namespace SYSTEM {
 		/// </summary>
 		extern SYSTEM::STARTUP::PAGING::GlobalPageMap GlobalPageMap;
 
+
+		extern SYSTEM::STARTUP::GDT::GDT GlobalGDT;
 		/// <summary>
 		/// system info is a global singleton that contains information about the system
 		/// </summary>

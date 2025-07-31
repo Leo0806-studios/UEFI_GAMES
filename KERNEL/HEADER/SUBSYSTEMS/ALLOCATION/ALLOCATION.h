@@ -36,7 +36,7 @@ namespace SYSTEM {
 				/// </summary>
 				/// <returns></returns>
 				[[nodiscard("discarding the address of the allocated page will lead to a memory leak as it cant be freed anymore")]] 
-				void* AllocatePAge();
+				static void* AllocatePage();
 				/// <summary>
 				/// frees a single page. faster than FreePages as it doesn't have to do bounds checking.
 				/// performs a check if the pointer is a valid page pinter. (at a offset that corresponds to the sizeof the header and some other checks).
@@ -45,7 +45,7 @@ namespace SYSTEM {
 				/// </summary>
 				/// <param name="ptr"></param>
 				[[nodiscard("discarding the return of this function can lead to leaks or undetected memory corruption")]]
-				bool FreePage(void* ptr);
+				static bool FreePage(void* ptr);
 
 
 				/// <summary>
@@ -56,7 +56,7 @@ namespace SYSTEM {
 				/// <param name="amountOfPages"></param>
 				/// <returns></returns>
 				NODISCARD_MSG("discarding the address of the allocated pages will lead to a memory leak as it cant be freed anymore")
-				void* AllocatePages(size_t amountOfPages);
+				static void* AllocatePages(size_t amountOfPages);
 
 				/// <summary>
 				/// Frees memory pages previously allocated and returns whether the operation was successful.
@@ -65,7 +65,7 @@ namespace SYSTEM {
 				/// <param name="ptr">Pointer to the memory pages to be freed.</param>
 				/// <returns>true if the pages were successfully freed; false otherwise.</returns>
 				NODISCARD_MSG("discarding the return of this function can lead to leaks or undetected memory corruption")
-				bool FreePages(void* ptr);
+				static bool FreePages(void* ptr);
 			};
 		}
 	}

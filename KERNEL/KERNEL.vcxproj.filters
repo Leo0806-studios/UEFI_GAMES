@@ -36,6 +36,9 @@
     <ClCompile Include="SOURCE\SUBSYSTEMS\ALLOCATION\ALLOCATION.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\STARTUP\GDT\GDT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h">
