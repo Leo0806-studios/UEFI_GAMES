@@ -8,6 +8,7 @@ namespace SYSTEM {
 	namespace SYSTEM_INFO {
 		extern size_t QueryCPUFrequency();
 		SYSTEM::STARTUP::PAGING::GlobalPageMap GlobalPageMap = {};
+		SYSTEM::STARTUP::GDT::GDT GlobalGDT = {};
 		SystemInfo SystemInfo::GLobalInst = SystemInfo();
 		SystemInfo::SystemInfo(SystemInfo&& other)  {
 			this->cpuCores = STD::move(other.cpuCores);

@@ -1,0 +1,35 @@
+\doxysection{SYSTEM\+::SUBSYSTEMS\+::ALLOCATION Namespace Reference}
+\hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n}{}\label{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n}\index{SYSTEM::SUBSYSTEMS::ALLOCATION@{SYSTEM::SUBSYSTEMS::ALLOCATION}}
+
+
+everything related to memory allocation is inside this namespace  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_page_header}{Page\+Header}}
+\begin{DoxyCompactList}\small\item\em header inserted onto a allocation allocated with the physical allocator. is in the beginning of the first page of the allocation. do not rely on its internal layout (for byte wise access) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator}{Physical\+Allocator}}
+\begin{DoxyCompactList}\small\item\em handles allocation of physical pages. for now relatively empty. its just in a class for later if i want to add specific state \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_a72b75e22895b52642fff13bb6b87ee8b}{Page\+Type}} = \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084}{SYSTEM\+::\+STARTUP\+::\+PAGING\+::\+Page\+Type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+everything related to memory allocation is inside this namespace 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_a72b75e22895b52642fff13bb6b87ee8b}\index{SYSTEM::SUBSYSTEMS::ALLOCATION@{SYSTEM::SUBSYSTEMS::ALLOCATION}!PageType@{PageType}}
+\index{PageType@{PageType}!SYSTEM::SUBSYSTEMS::ALLOCATION@{SYSTEM::SUBSYSTEMS::ALLOCATION}}
+\doxysubsubsection{\texorpdfstring{PageType}{PageType}}
+{\footnotesize\ttfamily \label{namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_a72b75e22895b52642fff13bb6b87ee8b} 
+using \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084}{SYSTEM\+::\+SUBSYSTEMS\+::\+ALLOCATION\+::\+Page\+Type}} = \mbox{\hyperlink{namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_a40e03e8bd875ff738bc9a76f84d2a084}{SYSTEM\+::\+STARTUP\+::\+PAGING\+::\+Page\+Type}}}
+
+
+
+Definition at line \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source}{ALLOCATION.\+cpp}}.
+

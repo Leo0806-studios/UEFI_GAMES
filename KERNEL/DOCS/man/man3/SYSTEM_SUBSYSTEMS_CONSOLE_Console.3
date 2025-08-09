@@ -1,0 +1,145 @@
+.TH "SYSTEM::SUBSYSTEMS::CONSOLE::Console" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::CONSOLE::Console
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBInitConsole\fP (size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)"
+.br
+.RI "Initializes the console\&. must be called before any other console function can safely be used\&. "
+.ti -1c
+.RI "static void \fBWriteLine\fP (const wchar_t *str)"
+.br
+.RI "writes a line to the console out "
+.ti -1c
+.RI "static void \fBWriteF\fP (size_t args, const char *format,\&.\&.\&.)"
+.br
+.RI "analog to printf\&. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety "
+.ti -1c
+.RI "static void \fBWrite\fP (const wchar_t *str)"
+.br
+.RI "writes an unformatted string to the console\&. "
+.ti -1c
+.RI "static const \fBConsoleInfo\fP \fBQueryConsoleInfo\fP ()"
+.br
+.RI "returns a instance of \fBConsoleInfo\fP containing information about the console "
+.ti -1c
+.RI "static void \fBClearConsole\fP ()"
+.br
+.RI "clears the console and moves the cursor to 0,0 "
+.ti -1c
+.RI "static void \fBFlush\fP ()"
+.br
+.RI "flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer "
+.ti -1c
+.RI "static bool \fBToggleANSICodes\fP ()"
+.br
+.RI "toggles if the console should use ANSICodes or not\&. this is used to enable or disable color and other formatting codes\&. returns true if the codes are now enabled, false if they are now disabled\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB24\fP of file \fBCONSOLE\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::ClearConsole ()\fR [static]\fP"
+
+.PP
+clears the console and moves the cursor to 0,0 
+.PP
+Definition at line \fB115\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Flush ()\fR [static]\fP"
+
+.PP
+flushes the console buffer to the screen does nothing in early stages while rendering draws directly to the framebuffer 
+.PP
+Definition at line \fB118\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "bool SYSTEM::SUBSYSTEMS::CONSOLE::Console::InitConsole (size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)\fR [static]\fP"
+
+.PP
+Initializes the console\&. must be called before any other console function can safely be used\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcollums\fP amount of columns to use\&. does nothing currently
+.br
+\fIrows\fP amount of rows\&. does nothing currently
+.br
+\fIpixelsperRow\fP influences vertical spacing should larger than the max size of a character or clipping might occur\&.
+.br
+\fIpixelsperCollum\fP influences horizontal spacing\&. should be larger than the width o a character or clipping might occur
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+success is true
+.RE
+.PP
+
+.PP
+Definition at line \fB69\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "static const \fBConsoleInfo\fP SYSTEM::SUBSYSTEMS::CONSOLE::Console::QueryConsoleInfo ()\fR [static]\fP"
+
+.PP
+returns a instance of \fBConsoleInfo\fP containing information about the console 
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "bool SYSTEM::SUBSYSTEMS::CONSOLE::Console::ToggleANSICodes ()\fR [static]\fP"
+
+.PP
+toggles if the console should use ANSICodes or not\&. this is used to enable or disable color and other formatting codes\&. returns true if the codes are now enabled, false if they are now disabled\&. 
+.PP
+Definition at line \fB121\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::Write (const wchar_t * str)\fR [static]\fP"
+
+.PP
+writes an unformatted string to the console\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB93\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::WriteF (size_t args, const char * format,  \&.\&.\&.)\fR [static]\fP"
+
+.PP
+analog to printf\&. takes a format string and a variable amount of input additionally it takes the amount of extra args as a parameter to increase safety 
+.PP
+\fBParameters\fP
+.RS 4
+\fIformat\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB87\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "void SYSTEM::SUBSYSTEMS::CONSOLE::Console::WriteLine (const wchar_t * str)\fR [static]\fP"
+
+.PP
+writes a line to the console out 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB78\fP of file \fBCONSOLE\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

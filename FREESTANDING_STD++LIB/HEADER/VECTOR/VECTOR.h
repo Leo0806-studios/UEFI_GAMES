@@ -4,6 +4,10 @@
 #include "HEADER/UTILLITY/UTILLITY_F.h"
 #include "HEADER/INTERNAL/MACROS.h"
 namespace STD {
+	/// <summary>
+	/// dynamicaly allocated resizable array.
+	/// objects allocated with the global allocator and global deallocator will not have their constructors and destructors called.
+	/// </summary>
 	template <typename T>
 	class vector {
 
@@ -89,10 +93,7 @@ namespace STD {
 		}
 
 
-		vector(STD::_MoveOut) {
-		//just a  noop to make it compatible with my extension for STD::exchange
-			//it allows for things like  something(other&& ): vec(STD::exchange(other.vec,STD::move_out)) {} to work
-		}
+
 	public:
 		static void SetGlobalAllocator(GlobalAllocatorFunc alloc) {
 			globalAllocator  (alloc);

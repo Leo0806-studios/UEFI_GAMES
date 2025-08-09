@@ -12,6 +12,10 @@ namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 	using PageType = SYSTEM::STARTUP::PAGING::PageType;
 	void* PhysicalAllocator::AllocatePage()
 	{
+		STD::atomic_bool& Locked = PhysicalAllocator::Locked();
+		while (Locked.compare_exchange_strong(false, true)) {
+			_mm_pause(); //spin until we can acquire the lock
+		}
 		auto& GlobalPageMap = SYSTEM::SYSTEM_INFO::GlobalPageMap;
 		//iterate over the map and find a single free page.
 		SYSTEM::STARTUP::PAGING::PageMapEntry* entry = nullptr;
@@ -30,7 +34,7 @@ namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 		PageHeader* page = reinterpret_cast<PageHeader*>(entry);
 		page->amoutofPages = 1;
 		page->usable = entry + sizeof(PageHeader);
-		
+		Locked.store(false); //release the lock
 		return page;;
 	}
 	bool PhysicalAllocator::FreePage(void* ptr)

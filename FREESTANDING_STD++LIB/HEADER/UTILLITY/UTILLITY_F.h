@@ -4,7 +4,7 @@ namespace STD {
 #pragma warning (push)
 #pragma warning(disable:26473)
 	template<typename _Ty>
-	constexpr remove_reference_t<_Ty>&& move(_Ty&& _Arg) noexcept {
+	constexpr remove_reference_t<_Ty>&& move(_Ty&& _Arg)  {
 		return static_cast<remove_reference_t<_Ty>&&>(_Arg);
 	}
 #pragma warning(pop)
@@ -12,7 +12,7 @@ namespace STD {
 
 	struct _Ignore { // struct that ignores assignments
 		template <class _Ty>
-		constexpr const _Ignore& operator=(const _Ty&) const noexcept {
+		constexpr const _Ignore& operator=(const _Ty&) const  {
 			// do nothing
 			return *this;
 		}

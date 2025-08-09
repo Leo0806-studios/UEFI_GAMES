@@ -1,0 +1,49 @@
+\doxysection{SYSTEM\+::STARTUP\+::PAGING\+::Global\+Page\+Map Class Reference}
+\hypertarget{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map}{}\label{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map}\index{SYSTEM::STARTUP::PAGING::GlobalPageMap@{SYSTEM::STARTUP::PAGING::GlobalPageMap}}
+
+
+structure of the global page map.  
+
+
+
+
+{\ttfamily \#include $<$PAGE\+\_\+\+MAP.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a23918c9d4b3f0922b091601664470c72}{Allocate\+Page\+Map}} ()
+\begin{DoxyCompactList}\small\item\em allocated the global page map and translates the UEFI memory map into it. every that is not Efi\+Conventional\+Memory is considered reserved. all memory-\/mapped IO is considered MMIO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+structure of the global page map. 
+
+Definition at line \mbox{\hyperlink{_p_a_g_e___m_a_p_8h_source_l00079}{79}} of file \mbox{\hyperlink{_p_a_g_e___m_a_p_8h_source}{PAGE\+\_\+\+MAP.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a23918c9d4b3f0922b091601664470c72}\index{SYSTEM::STARTUP::PAGING::GlobalPageMap@{SYSTEM::STARTUP::PAGING::GlobalPageMap}!AllocatePageMap@{AllocatePageMap}}
+\index{AllocatePageMap@{AllocatePageMap}!SYSTEM::STARTUP::PAGING::GlobalPageMap@{SYSTEM::STARTUP::PAGING::GlobalPageMap}}
+\doxysubsubsection{\texorpdfstring{AllocatePageMap()}{AllocatePageMap()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_a23918c9d4b3f0922b091601664470c72} 
+bool SYSTEM\+::\+STARTUP\+::\+PAGING\+::\+Global\+Page\+Map\+::\+Allocate\+Page\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+allocated the global page map and translates the UEFI memory map into it. every that is not Efi\+Conventional\+Memory is considered reserved. all memory-\/mapped IO is considered MMIO. 
+
+\begin{DoxyReturn}{Returns}
+success is true
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_p_a_g_e___m_a_p_8cpp_source}{PAGE\+\_\+\+MAP.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HEADER/\+STARTUP/\+PAGE\+\_\+\+MAP/PAGE\+\_\+\+MAP.\+h\item 
+SOURCE/\+STARTUP/\+PAGE\+\_\+\+MAP/PAGE\+\_\+\+MAP.\+cpp\end{DoxyCompactItemize}

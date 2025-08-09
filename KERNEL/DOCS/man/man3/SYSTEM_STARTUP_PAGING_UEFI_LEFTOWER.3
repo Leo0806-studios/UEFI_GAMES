@@ -1,0 +1,56 @@
+.TH "SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER \- UEFI leftovers are all contained in there\&. this mainly includes information about the memory map\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <PAGE_MAP\&.h>\fP
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static EFI_MEMORY_DESCRIPTOR__ \fBEFI_MEMORY_DESCRIPTOR_\fP = nullptr"
+.br
+.RI "a void pointer to the EFI_MEMORY_DESCRIPTOR structure\&. "
+.ti -1c
+.RI "static size_t \fBEFI_MEMORY_MAP_SIZE\fP = 0"
+.br
+.RI "the size of the EFI memory map in bytes\&. "
+.ti -1c
+.RI "static size_t \fBEFI_MEMORY_DESCRIPTOR_SIZE\fP = 0"
+.br
+.RI "the size of the EFI_MEMORY_DESCRIPTOR structure in bytes\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+UEFI leftovers are all contained in there\&. this mainly includes information about the memory map\&. 
+.PP
+Definition at line \fB23\fP of file \fBPAGE_MAP\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "EFI_MEMORY_DESCRIPTOR__ SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_ = nullptr\fR [static]\fP"
+
+.PP
+a void pointer to the EFI_MEMORY_DESCRIPTOR structure\&. 
+.PP
+Definition at line \fB28\fP of file \fBPAGE_MAP\&.h\fP\&.
+.SS "size_t SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE = 0\fR [static]\fP"
+
+.PP
+the size of the EFI_MEMORY_DESCRIPTOR structure in bytes\&. 
+.PP
+Definition at line \fB36\fP of file \fBPAGE_MAP\&.h\fP\&.
+.SS "size_t SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE = 0\fR [static]\fP"
+
+.PP
+the size of the EFI memory map in bytes\&. 
+.PP
+Definition at line \fB32\fP of file \fBPAGE_MAP\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

@@ -73,4 +73,9 @@
     <None Include="cpp.hint" />
     <None Include="KERNEL.suppress" />
   </ItemGroup>
+  <ItemGroup>
+    <MASM Include="SOURCE\STARTUP\GDT\GDT_LOAD.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__m_a_i_n_8cpp_source" xml:lang="en-US">
+<title>MAIN.cpp</title>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__m_a_i_n_8cpp_source_1l00001"/>00001 <emphasis role="comment">//&#32;This&#32;is&#32;a&#32;personal&#32;academic&#32;project.&#32;Dear&#32;PVS-Studio,&#32;please&#32;check&#32;it.</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00002"/>00002 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;PVS-Studio&#32;Static&#32;Code&#32;Analyzer&#32;for&#32;C,&#32;C++,&#32;C#,&#32;and&#32;Java:&#32;https://pvs-studio.com</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00004"/>00004 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00005"/>00005 <emphasis role="keyword">extern</emphasis><emphasis role="stringliteral">&quot;C&quot;</emphasis>&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00006"/>00006 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;gnu-efi/inc/efi.h&gt;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&lt;gnu-efi/inc/efilib.h&gt;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00009"/>00009 }
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&quot;HEADER/SUBSYSTEMS/RENDER/RENDER.h&quot;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&quot;HEADER/STARTUP/PAGE_MAP/PAGE_MAP.h&quot;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&quot;HEADER/SUBSYSTEMS/CONSOLE/CONSOLE.h&quot;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&quot;HEADER/SYTEM_INFO/SYSTEM_INFO.h&quot;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;intrin.h&gt;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&lt;HEADER/UTILLITY/UTILLITY_F.h&gt;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00016"/>00016 <emphasis role="keyword">static</emphasis>&#32;uint32_t&#32;get_cpu_base_freq_mhz()&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;cpuInfo[4]&#32;=&#32;{};
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;__cpuid(&amp;cpuInfo[0],&#32;0x16);&#32;<emphasis role="comment">//-V3546&#32;//&#32;IDK&#32;why&#32;PVS&#32;is&#32;complaining</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00019"/>00019 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cpuInfo[0]&#32;==&#32;0)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;&#32;<emphasis role="comment">//&#32;Unsupported</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00023"/>00023 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis><emphasis role="keyword">&gt;</emphasis>(cpuInfo[0]);&#32;&#32;<emphasis role="comment">//&#32;EAX&#32;=&#32;Base&#32;frequency&#32;in&#32;MHz</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00025"/>00025 }
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00026"/>00026 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;stall_us(uint64_t&#32;microseconds,&#32;uint64_t&#32;cpu_mhz)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint64_t&#32;start&#32;=&#32;__rdtsc();
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint64_t&#32;ticks&#32;=&#32;microseconds&#32;*&#32;cpu_mhz;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00029"/>00029 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;((__rdtsc()&#32;-&#32;start)&#32;&lt;&#32;ticks)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_mm_pause();&#32;<emphasis role="comment">//&#32;hint&#32;to&#32;CPU:&#32;spin-wait&#32;loop</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00033"/>00033 }
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00034"/>00034 <emphasis role="keyword">using&#32;</emphasis><link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console">Console</link>&#32;=&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console">SYSTEM::SUBSYSTEMS::CONSOLE::Console</link>;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00035"/>00035 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00036"/>00036 EFI_STATUS&#32;_KERNEL_MAIN(EFI_HANDLE&#32;ImageHandle,&#32;EFI_SYSTEM_TABLE*&#32;SystemTable)
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00037"/>00037 {
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;InitializeLib(ImageHandle,&#32;SystemTable);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Hello,&#32;World!\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;__assume(SystemTable&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>);&#32;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;STD::ignore&#32;=&#32;SystemTable-&gt;ConOut-&gt;ClearScreen(SystemTable-&gt;ConOut);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//getMemory&#32;map</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;EFI_MEMORY_DESCRIPTOR*&#32;MemoryMap&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;UINTN&#32;MemoryMapSize&#32;=&#32;0;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;UINTN&#32;MapKey&#32;=&#32;0;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;UINTN&#32;DescriptorSize&#32;=&#32;0;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;UINT32&#32;DescriptorVersion&#32;=&#32;0;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="comment">//</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;EFI_STATUS&#32;Status&#32;=&#32;SystemTable-&gt;BootServices-&gt;GetMemoryMap(&amp;MemoryMapSize,&#32;MemoryMap,&#32;&amp;MapKey,&#32;&amp;DescriptorSize,&#32;&amp;DescriptorVersion);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Status&#32;==&#32;EFI_BUFFER_TOO_SMALL)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;MemoryMapSize&#32;+=&#32;DescriptorSize&#32;*&#32;100;&#32;<emphasis role="comment">//&#32;Allocate&#32;more&#32;space&#32;than&#32;needed</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Status&#32;=&#32;SystemTable-&gt;BootServices-&gt;AllocatePool(EfiLoaderData,&#32;MemoryMapSize,&#32;<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keywordtype">void</emphasis>**<emphasis role="keyword">&gt;</emphasis>(&amp;MemoryMap));
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(EFI_ERROR(Status))&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Failed&#32;to&#32;allocate&#32;memory&#32;for&#32;the&#32;memory&#32;map.\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Status;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Status&#32;=&#32;SystemTable-&gt;BootServices-&gt;GetMemoryMap(&amp;MemoryMapSize,&#32;MemoryMap,&#32;&amp;MapKey,&#32;&amp;DescriptorSize,&#32;&amp;DescriptorVersion);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(EFI_ERROR(Status))&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Failed&#32;to&#32;get&#32;memory&#32;map.\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Status;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="comment">//saving&#32;the&#32;memory&#32;map&#32;to&#32;the&#32;UEFI&#32;leftover&#32;in&#32;the&#32;page&#32;map</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_u_e_f_i___l_e_f_t_o_w_e_r_1a3d0544737b06e0dab0764ef5d615a840">SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_</link>&#32;=&#32;MemoryMap;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_u_e_f_i___l_e_f_t_o_w_e_r_1abf26f843da55f1cceede4d1b669f73e2">SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_MAP_SIZE</link>&#32;=&#32;MemoryMapSize;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_u_e_f_i___l_e_f_t_o_w_e_r_1a4f2a6bed047138a3df80f3cfbb2938bf">SYSTEM::STARTUP::PAGING::UEFI_LEFTOWER::EFI_MEMORY_DESCRIPTOR_SIZE</link>&#32;=&#32;DescriptorSize;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;memory&#32;map&#32;Acquired&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;__assume(MemoryMap&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<emphasis role="comment">//print&#32;map</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;a&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(UINTN&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;MemoryMapSize&#32;/&#32;DescriptorSize;&#32;i++)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;__assume(MemoryMap&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;EFI_MEMORY_DESCRIPTOR*&#32;Descriptor&#32;=&#32;<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis>EFI_MEMORY_DESCRIPTOR*<emphasis role="keyword">&gt;</emphasis>(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis>UINT8*<emphasis role="keyword">&gt;</emphasis>(MemoryMap)&#32;+&#32;i&#32;*&#32;DescriptorSize);&#32;<emphasis role="comment">//-V769&#32;yeah&#32;there&#32;is&#32;a&#32;assume&#32;above&#32;but&#32;PVS&#32;is&#32;stoopid&#32;//-V3539</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;__assume(Descriptor&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>);&#32;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Type:&#32;%d,&#32;PhysicalStart:&#32;%lx,&#32;NumberOfPages:&#32;%lx&#32;&#32;&quot;</emphasis>&#32;,&#32;Descriptor-&gt;Type,&#32;Descriptor-&gt;PhysicalStart,&#32;Descriptor-&gt;NumberOfPages);<emphasis role="comment">//-V769&#32;//the&#32;memory&#32;map&#32;should&#32;always&#32;be&#32;valid&#32;as&#32;we&#32;just&#32;got&#32;it&#32;//-V522</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a&#32;=&#32;!a;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;conventionlaRAM&#32;=&#32;0;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(UINTN&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;MemoryMapSize&#32;/&#32;DescriptorSize;&#32;i++)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;EFI_MEMORY_DESCRIPTOR*&#32;Descriptor&#32;=&#32;<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis>EFI_MEMORY_DESCRIPTOR*<emphasis role="keyword">&gt;</emphasis>(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis>UINT8*<emphasis role="keyword">&gt;</emphasis>(MemoryMap)&#32;+&#32;i&#32;*&#32;DescriptorSize);&#32;<emphasis role="comment">//-V3539</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;__assume(Descriptor&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Descriptor-&gt;Type&#32;==&#32;EfiConventionalMemory)&#32;{&#32;<emphasis role="comment">//-V522&#32;//&#32;in&#32;this&#32;situation&#32;nullptr&#32;might&#32;be&#32;a&#32;legitimate&#32;pointer&#32;to&#32;a&#32;valid&#32;memory&#32;map&#32;entry</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conventionlaRAM&#32;+=&#32;Descriptor-&gt;NumberOfPages&#32;*&#32;EFI_PAGE_SIZE;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Print(L&quot;Type:&#32;%d,&#32;PhysicalStart:&#32;%lx,&#32;NumberOfPages:&#32;%lx&#32;&#32;&quot;,&#32;Descriptor-&gt;Type,&#32;Descriptor-&gt;PhysicalStart,&#32;Descriptor-&gt;NumberOfPages);</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//SystemTable-&gt;BootServices-&gt;Stall(1000000);&#32;//&#32;Stall&#32;for&#32;1&#32;second&#32;to&#32;allow&#32;reading&#32;the&#32;output</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Total&#32;Conventional&#32;Memory:&#32;%Lu&#32;bytes\n&quot;</emphasis>,&#32;conventionlaRAM);&#32;<emphasis role="comment">//-V111</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//print&#32;installed&#32;RAM&#32;size</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a0525bba8b47aa2bb9322f2f3556cf2e8">SYSTEM::SYSTEM_INFO::SystemInfo::InitSystemInfo</link>();
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Installed&#32;RAM:&#32;%Lu&#32;bytes\n&quot;</emphasis>,&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_y_s_t_e_m___i_n_f_o_1_1_system_info_1a16b451ad8ba566f232d78ae4e5d35614">SYSTEM::SYSTEM_INFO::SystemInfo::GetInstance</link>().installedRam);&#32;<emphasis role="comment">//-V111</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;STD::ignore=SystemTable-&gt;BootServices-&gt;Stall(5000000);&#32;<emphasis role="comment">//&#32;Stall&#32;for&#32;5&#32;second&#32;to&#32;allow&#32;reading&#32;the&#32;output</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;get&#32;graphics&#32;protocol</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;EFI_GRAPHICS_OUTPUT_PROTOCOL*&#32;GraphicsOutput&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;Status&#32;=&#32;SystemTable-&gt;BootServices-&gt;LocateProtocol(&amp;gEfiGraphicsOutputProtocolGuid,&#32;<emphasis role="keyword">nullptr</emphasis>,&#32;<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keywordtype">void</emphasis>**<emphasis role="keyword">&gt;</emphasis>(&amp;GraphicsOutput));
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(EFI_ERROR(Status))&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Failed&#32;to&#32;locate&#32;Graphics&#32;Output&#32;Protocol.\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Status;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GraphicsOutput&#32;==&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Graphics&#32;Output&#32;Protocol&#32;is&#32;NULL.\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;EFI_NOT_FOUND;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Graphics&#32;Output&#32;Protocol&#32;located.\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&#32;b&#32;=&#32;GraphicsOutput-&gt;Mode-&gt;Info-&gt;VerticalResolution;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Resolution:&#32;%d&#32;x&#32;%d\n&quot;</emphasis>,&#32;a,&#32;b);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="comment">//=======================================EXIT_BOOT_SERVICES===============================================///</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;Status&#32;=&#32;SystemTable-&gt;BootServices-&gt;ExitBootServices(ImageHandle,&#32;MapKey);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="comment">//fill&#32;framebuffer&#32;with&#32;red&#32;color</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;UINT32*&#32;FrameBuffer&#32;=&#32;<emphasis role="keyword">reinterpret_cast&lt;</emphasis>UINT32*<emphasis role="keyword">&gt;</emphasis>(GraphicsOutput-&gt;Mode-&gt;FrameBufferBase);&#32;<emphasis role="comment">//-V3546&#32;something&#32;something&#32;raw&#32;memory/physical&#32;memory</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferBase&#32;=&#32;FrameBuffer;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferHeight&#32;=&#32;GraphicsOutput-&gt;Mode-&gt;Info-&gt;VerticalResolution;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::FramebufferWidth&#32;=&#32;GraphicsOutput-&gt;Mode-&gt;Info-&gt;HorizontalResolution;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::PixelsPerScanline&#32;=&#32;GraphicsOutput-&gt;Mode-&gt;Info-&gt;PixelsPerScanLine;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;UINTN&#32;FrameBufferSize&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>UINTN<emphasis role="keyword">&gt;</emphasis>(GraphicsOutput-&gt;Mode-&gt;Info-&gt;HorizontalResolution)&#32;*&#32;GraphicsOutput-&gt;Mode-&gt;Info-&gt;VerticalResolution;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(UINTN&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;FrameBufferSize;&#32;i++)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;FrameBuffer[i]&#32;=&#32;0xafa5ff;&#32;//&#32;Red&#32;color&#32;in&#32;ARGB&#32;format</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FrameBuffer[i]&#32;=&#32;0xa000ff;&#32;<emphasis role="comment">//&#32;Red&#32;color&#32;in&#32;ARGB&#32;format&#32;//-V3539</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1a5fff8a0922d0682136415e8d78f2dc95">Console::InitConsole</link>(40,&#32;40,&#32;16,&#32;8))&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Failed&#32;to&#32;initialize&#32;console.\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;EFI_DEVICE_ERROR;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;CONSOLE&#32;STARTED&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;CONSOLE&#32;TEST&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;abcdefghijklmnopqrstuvwxyz&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;1234567890&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;!§$%&amp;/()=?,.-#+*&lt;&gt;&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;KERNEL&#32;LOADING&#32;COMPLETE&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;SETTING&#32;UP&#32;GLOBAL&#32;PAGE&#32;TABLE...&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_1a23918c9d4b3f0922b091601664470c72">SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePageMap</link>())&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Print(L<emphasis role="stringliteral">&quot;Failed&#32;to&#32;allocate&#32;global&#32;page&#32;map.\n&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;EFI_OUT_OF_RESOURCES;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;SETTING&#32;UP&#32;GDT...&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="comment">//TODO&#32;insert&#32;call&#32;to&#32;setup&#32;of&#32;the&#32;GDT;</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;GDT&#32;SETUP&#32;COMPLETE&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;SETTING&#32;UP&#32;IDT...&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="comment">//TODO&#32;insert&#32;call&#32;to&#32;setup&#32;of&#32;the&#32;IDT</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_1ad6b5abdd5efd62a53b7ab1728add9e38">Console::WriteLine</link>(L<emphasis role="stringliteral">&quot;IDT&#32;SETUP&#32;COMPLETE&quot;</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;freq&#32;=&#32;0;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;freq&#32;=&#32;get_cpu_base_freq_mhz();
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(freq&#32;==&#32;0)&#32;{
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//set&#32;to&#32;fallback&#32;3,6ghz</emphasis>
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;freq&#32;=&#32;3600;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;stall_us(10000000,&#32;freq);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;STD::ignore=SystemTable-&gt;RuntimeServices-&gt;ResetSystem(EfiResetShutdown,&#32;EFI_SUCCESS,&#32;0,&#32;<emphasis role="keyword">nullptr</emphasis>);
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;EFI_SUCCESS;
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00167"/>00167 
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00168"/>00168 }
+<anchor xml:id="__m_a_i_n_8cpp_source_1l00169"/>00169 }
+</programlisting></section>

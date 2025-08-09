@@ -1,0 +1,46 @@
+.TH "SYSTEM::SUBSYSTEMS::ALLOCATION::PageHeader" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::ALLOCATION::PageHeader \- header inserted onto a allocation allocated with the physical allocator\&. is in the beginning of the first page of the allocation\&. do not rely on its internal layout (for byte wise access)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ALLOCATION\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBamoutofPages\fP = 0"
+.br
+.RI "default to zero for error catching "
+.ti -1c
+.RI "void * \fBusable\fP = nullptr"
+.br
+.RI "pointer to the usable area\&. this is used for error checking "
+.in -1c
+.SH "Detailed Description"
+.PP 
+header inserted onto a allocation allocated with the physical allocator\&. is in the beginning of the first page of the allocation\&. do not rely on its internal layout (for byte wise access) 
+.PP
+Definition at line \fB13\fP of file \fBALLOCATION\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "size_t SYSTEM::SUBSYSTEMS::ALLOCATION::PageHeader::amoutofPages = 0"
+
+.PP
+default to zero for error catching 
+.PP
+Definition at line \fB17\fP of file \fBALLOCATION\&.h\fP\&.
+.SS "void* SYSTEM::SUBSYSTEMS::ALLOCATION::PageHeader::usable = nullptr"
+
+.PP
+pointer to the usable area\&. this is used for error checking 
+.PP
+Definition at line \fB21\fP of file \fBALLOCATION\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

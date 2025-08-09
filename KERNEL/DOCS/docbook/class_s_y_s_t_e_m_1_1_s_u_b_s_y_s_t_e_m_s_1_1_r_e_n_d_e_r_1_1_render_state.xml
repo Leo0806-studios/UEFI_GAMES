@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_render_state" xml:lang="en-US">
+<title>SYSTEM::SUBSYSTEMS::RENDER::RenderState Class Reference</title>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::RenderState</primary></indexterm>
+<para>
+
+<para>render state class. a global singleton that holds the current render state. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;RENDER.h&gt;</computeroutput>
+</para>
+<section>
+<title>Detailed Description</title>
+
+<para>render state class. a global singleton that holds the current render state. </para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00070">70</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
+<para>
+The documentation for this class was generated from the following file:</para>
+HEADER/SUBSYSTEMS/RENDER/RENDER.h</section>
+</section>

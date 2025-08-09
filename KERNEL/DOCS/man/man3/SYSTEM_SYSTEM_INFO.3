@@ -1,0 +1,52 @@
+.TH "SYSTEM::SYSTEM_INFO" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SYSTEM_INFO \- this namespace contains system information that is collected during the boot process\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSystemInfo\fP"
+.br
+.RI "system info is a global singleton that contains information about the system "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBQueryCPUFrequency\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBSYSTEM::STARTUP::PAGING::GlobalPageMap\fP \fBGlobalPageMap\fP = {}"
+.br
+.RI "the global page map\&. this contains information about the usage of physical pages "
+.in -1c
+.SH "Detailed Description"
+.PP 
+this namespace contains system information that is collected during the boot process\&. 
+.SH "Function Documentation"
+.PP 
+.SS "size_t SYSTEM::SYSTEM_INFO::QueryCPUFrequency ()\fR [extern]\fP"
+
+.PP
+Definition at line \fB37\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBSYSTEM::STARTUP::PAGING::GlobalPageMap\fP SYSTEM::SYSTEM_INFO::GlobalPageMap = {}"
+
+.PP
+the global page map\&. this contains information about the usage of physical pages 
+.PP
+Definition at line \fB10\fP of file \fBSYSTEM_INFO\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

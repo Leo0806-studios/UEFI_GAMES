@@ -147,6 +147,9 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	Console::WriteLine(L"SETTING UP GDT...");
 	//TODO insert call to setup of the GDT;
+	SYSTEM::STARTUP::GDT::GDT::CreateGDT();
+	//SYSTEM::STARTUP::GDT::GDT::LoadGDT();
+	//############################## DONT REFER TO PREVIOUS STACK VARIABLES AS THEY MIGHT BE INVALID AFTER THIS POINT ##############################
 	Console::WriteLine(L"GDT SETUP COMPLETE");
 
 	Console::WriteLine(L"SETTING UP IDT...");

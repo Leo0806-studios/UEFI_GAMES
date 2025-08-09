@@ -1,0 +1,100 @@
+.TH "SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fB__CONSOLE__STRUCTURE\fP (const \fB__CONSOLE__STRUCTURE\fP &other)=delete"
+.br
+.ti -1c
+.RI "\fB__CONSOLE__STRUCTURE\fP (\fB__CONSOLE__STRUCTURE\fP &&other)=delete"
+.br
+.ti -1c
+.RI "\fB__CONSOLE__STRUCTURE\fP & \fBoperator=\fP (const \fB__CONSOLE__STRUCTURE\fP &other)=delete"
+.br
+.ti -1c
+.RI "\fB__CONSOLE__STRUCTURE\fP & \fBoperator=\fP (\fB__CONSOLE__STRUCTURE\fP &&other)=delete"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "char * \fBbuffer\fP =nullptr"
+.br
+.ti -1c
+.RI "size_t \fBbufferSize\fP =0"
+.br
+.ti -1c
+.RI "size_t \fBcollums\fP = 0"
+.br
+.ti -1c
+.RI "size_t \fBrows\fP = 0"
+.br
+.ti -1c
+.RI "size_t \fBcursorPosRows\fP = 0"
+.br
+.ti -1c
+.RI "size_t \fBcursorPosCollums\fP = 0"
+.br
+.ti -1c
+.RI "size_t \fBpixelsPerRow\fP = 0"
+.br
+.ti -1c
+.RI "size_t \fBpixxelsPerCollum\fP = 0"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBConsole::InitConsole\fP (size_t collums, size_t rows, size_t pixelsperRow, size_t pixelsperCollum)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB12\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "char* SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::buffer =nullptr"
+
+.PP
+Definition at line \fB21\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::bufferSize =0"
+
+.PP
+Definition at line \fB22\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::collums = 0"
+
+.PP
+Definition at line \fB23\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::cursorPosCollums = 0"
+
+.PP
+Definition at line \fB27\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::cursorPosRows = 0"
+
+.PP
+Definition at line \fB26\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::pixelsPerRow = 0"
+
+.PP
+Definition at line \fB29\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::pixxelsPerCollum = 0"
+
+.PP
+Definition at line \fB30\fP of file \fBCONSOLE\&.cpp\fP\&.
+.SS "size_t SYSTEM::SUBSYSTEMS::CONSOLE::__CONSOLE__STRUCTURE::rows = 0"
+
+.PP
+Definition at line \fB24\fP of file \fBCONSOLE\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

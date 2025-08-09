@@ -1,0 +1,43 @@
+.TH "SYSTEM::STARTUP::PAGING::GlobalPageMap" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::STARTUP::PAGING::GlobalPageMap \- structure of the global page map\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <PAGE_MAP\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBAllocatePageMap\fP ()"
+.br
+.RI "allocated the global page map and translates the UEFI memory map into it\&. every that is not EfiConventionalMemory is considered reserved\&. all memory-mapped IO is considered MMIO\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+structure of the global page map\&. 
+.PP
+Definition at line \fB79\fP of file \fBPAGE_MAP\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePageMap ()\fR [static]\fP"
+
+.PP
+allocated the global page map and translates the UEFI memory map into it\&. every that is not EfiConventionalMemory is considered reserved\&. all memory-mapped IO is considered MMIO\&. 
+.PP
+\fBReturns\fP
+.RS 4
+success is true
+.RE
+.PP
+
+.PP
+Definition at line \fB39\fP of file \fBPAGE_MAP\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

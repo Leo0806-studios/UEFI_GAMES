@@ -54,6 +54,9 @@
     <ClInclude Include="HEADER\VECTOR\VECTOR.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADER\ASSINGABLE_ONCE\ASSINGABLE_ONCE_F.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp">

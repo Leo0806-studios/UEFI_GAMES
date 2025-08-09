@@ -33,8 +33,36 @@ namespace SYSTEM {
 				/// <returns>True if the base was set successfully; false otherwise. Discarding the return value can lead to a corrupted GDT entry.</returns>
 				NODISCARD_MSG("discarding the return of this function can lead to a corrupted GDT entry")
 				bool SetBase(unsigned __int32 base);
+
+				/// <summary>
+				/// Sets the access byte for a GDT entry.
+				/// returns false on failure.
+				/// DPL is only allowed to the lowest 2 bits set.(so 0-3 are valid values)
+				/// </summary>
+				/// <param name="present"></param>
+				/// <param name="dpl"></param>
+				/// <param name="segmentType"></param>
+				/// <param name="executable"></param>
+				/// <param name="directionOrConforming"></param>
+				/// <param name="readWrite"></param>
+				/// <param name="accessed"></param>
+				/// <returns></returns>
+				NODISCARD_MSG("discarding the return of this function can lead to a corrupted GDT entry")
+					bool SetAcccsesByte(bool present, unsigned char DPL, bool segmentType, bool executable, bool directionOrConforming, bool readWrite, bool accessed);
+
+				/// <summary>
+				/// sets the flags for a GDT entry.
+				/// returns false on failure.
+				/// </summary>
+				/// <param name="granularity"></param>
+				/// <param name="size"></param>
+				/// <param name="longMode"></param>
+				/// <returns></returns>
+				NODISCARD_MSG("discarding the return of this function can lead to a corrupted GDT entry")
+				bool SetFlags(bool granularity, bool size, bool longMode);
 			};
 			class GDT {
+				unsigned char PackedData[sizeof(void*) + sizeof(short)];//packed data. a pointer to this will actually be passed to lgdt
 				GDT_ENTRY* GDT_Entries = nullptr; //pointer to the GDT entries
 				size_t GDT_Entries_Size = 0; //size of the GDT entries in bytes
 				size_t GDT_Entries_Count = 0; //number of GDT entries
@@ -45,8 +73,16 @@ namespace SYSTEM {
 				/// allocates the GDT
 				/// will allocate physical memory that needs to be taken care of when paging is enabled later on.
 				/// </summary>
-				/// <returns> succses</returns>
-				bool CreateGDT();
+				/// <returns> success</returns>
+				static bool CreateGDT();
+
+
+				/// <summary>
+				/// / Loads the GDT into the CPU.
+				/// </summary>
+				/// <returns></returns>
+				NODISCARD_MSG("discarding the return of the value can leave the system in an undetected invalid state")
+				 bool LoadGDT(void* gdtPtr);
 			};
 		}
 	}

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_a_l_8h_source" xml:lang="en-US">
+<title>SAL.h</title>
+<indexterm><primary>HEADER/SAL/SAL.h</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__s_a_l_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#ifndef&#32;OS_SAL_H</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00003"/>00003 <emphasis role="preprocessor">#define&#32;OS_SAL_H</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#define&#32;NODISCARD&#32;[[nodiscard]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#define&#32;NODISCARD_MSG(msg)&#32;[[nodiscard(msg)]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#define&#32;FALLTHROUGH&#32;[[fallthrough]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#define&#32;MAYBE_UNUSED&#32;[[maybe_unused]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00009"/>00009 <emphasis role="preprocessor">#define&#32;LIKELY&#32;[[likely]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00010"/>00010 <emphasis role="preprocessor">#define&#32;UNLIKELY&#32;[[unlikely]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00011"/>00011 <emphasis role="preprocessor">#define&#32;NO_RETURN&#32;[[noreturn]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00012"/>00012 <emphasis role="preprocessor">#define&#32;DEPRECATED&#32;[[deprecated]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00013"/>00013 <emphasis role="preprocessor">#define&#32;DEPRECATED_MSG(msg)&#32;[[deprecated(msg)]]</emphasis>
+<anchor xml:id="__s_a_l_8h_source_1l00014"/>00014 
+<anchor xml:id="__s_a_l_8h_source_1l00015"/>00015 <emphasis role="keyword">import</emphasis>&#32;&#32;&lt;sal.h&gt;;
+<anchor xml:id="__s_a_l_8h_source_1l00016"/>00016 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;!_SAL_H</emphasis>
+</programlisting></section>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map" xml:lang="en-US">
+<title>SYSTEM::STARTUP::PAGING::GlobalPageMap Class Reference</title>
+<indexterm><primary>SYSTEM::STARTUP::PAGING::GlobalPageMap</primary></indexterm>
+<para>
+
+<para>structure of the global page map. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;PAGE_MAP.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static bool <link linkend="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_1a23918c9d4b3f0922b091601664470c72">AllocatePageMap</link> ()</para>
+
+<para>allocated the global page map and translates the UEFI memory map into it. every that is not EfiConventionalMemory is considered reserved. all memory-mapped IO is considered MMIO. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>structure of the global page map. </para>
+<para>
+Definition at line <link linkend="__p_a_g_e___m_a_p_8h_source_1l00079">79</link> of file <link linkend="__p_a_g_e___m_a_p_8h_source">PAGE_MAP.h</link>.</para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1_1_global_page_map_1a23918c9d4b3f0922b091601664470c72"/><section>
+    <title>AllocatePageMap()</title>
+<indexterm><primary>AllocatePageMap</primary><secondary>SYSTEM::STARTUP::PAGING::GlobalPageMap</secondary></indexterm>
+<indexterm><primary>SYSTEM::STARTUP::PAGING::GlobalPageMap</primary><secondary>AllocatePageMap</secondary></indexterm>
+<para><computeroutput>bool SYSTEM::STARTUP::PAGING::GlobalPageMap::AllocatePageMap ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>allocated the global page map and translates the UEFI memory map into it. every that is not EfiConventionalMemory is considered reserved. all memory-mapped IO is considered MMIO. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>success is true</para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__p_a_g_e___m_a_p_8cpp_source_1l00039">39</link> of file <link linkend="__p_a_g_e___m_a_p_8cpp_source">PAGE_MAP.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+HEADER/STARTUP/PAGE_MAP/PAGE_MAP.hSOURCE/STARTUP/PAGE_MAP/PAGE_MAP.cpp</section>
+</section>

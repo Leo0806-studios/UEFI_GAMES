@@ -175,7 +175,6 @@ void DeAlloc(void* ptr)
 		node = MergeNodes(node, node->next);
 	}
 
-	PrintHeap();
 
 }
 static void PrintHeapNode(HeapNode* node)

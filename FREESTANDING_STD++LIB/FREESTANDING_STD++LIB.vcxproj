@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HEADER\ASSINGABLE_ONCE\ASSINGABLE_ONCE_F.h" />
     <ClInclude Include="HEADER\ATOMICS\ATOMIC_F.h" />
     <ClInclude Include="HEADER\CONCEPTS\CONCEPTS_f.h" />
     <ClInclude Include="HEADER\INTERNAL\MACROS.h" />

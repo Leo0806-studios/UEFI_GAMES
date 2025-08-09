@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r" xml:lang="en-US">
+<title>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR Struct Reference</title>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary></indexterm>
+<para>
+
+<para>represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;RENDER.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>char <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1a62b07861b105c7cf9d3c648ec18861aa">c</link></para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1af4da141194a3339b48ddaa34c03c5b4d">width</link></para>
+
+<para>the actual width of the char. can be used to improve spacing between characters </para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1a3c330780844b53d77477be00ffdede3b">height</link></para>
+
+<para>the actual height of the char. can be used to improve spacing between characters </para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1ae5687e6a14d84ba963f4754a58ea0b0b">Color</link></para>
+
+<para>the colour of the char </para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1a1f38fb13f355c592b8fe04cc47f3cc72">BMP</link> [16]</para>
+
+<para>bitmap of the char. max char size is 16X8 </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel </para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00017">17</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1a1f38fb13f355c592b8fe04cc47f3cc72"/><section>
+    <title>BMP</title>
+<indexterm><primary>BMP</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary><secondary>BMP</secondary></indexterm>
+<para><computeroutput>unsigned char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::BMP[16]</computeroutput></para><para>
+
+<para>bitmap of the char. max char size is 16X8 </para>
+</para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00036">36</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
+</section>
+<anchor xml:id="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1a62b07861b105c7cf9d3c648ec18861aa"/><section>
+    <title>c</title>
+<indexterm><primary>c</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary><secondary>c</secondary></indexterm>
+<para><computeroutput>char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::c</computeroutput></para><para>
+Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00018">18</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
+</section>
+<anchor xml:id="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1ae5687e6a14d84ba963f4754a58ea0b0b"/><section>
+    <title>Color</title>
+<indexterm><primary>Color</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary><secondary>Color</secondary></indexterm>
+<para><computeroutput>unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::Color</computeroutput></para><para>
+
+<para>the colour of the char </para>
+</para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00032">32</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
+</section>
+<anchor xml:id="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1a3c330780844b53d77477be00ffdede3b"/><section>
+    <title>height</title>
+<indexterm><primary>height</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary><secondary>height</secondary></indexterm>
+<para><computeroutput>unsigned char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::height</computeroutput></para><para>
+
+<para>the actual height of the char. can be used to improve spacing between characters </para>
+</para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00026">26</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
+</section>
+<anchor xml:id="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_r_e_n_d_e_r_1_1_s_i_m_p_l_e_1_1_c_h_a_r_1af4da141194a3339b48ddaa34c03c5b4d"/><section>
+    <title>width</title>
+<indexterm><primary>width</primary><secondary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR</primary><secondary>width</secondary></indexterm>
+<para><computeroutput>unsigned char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::width</computeroutput></para><para>
+
+<para>the actual width of the char. can be used to improve spacing between characters </para>
+</para>
+<para>
+Definition at line <link linkend="__r_e_n_d_e_r_8h_source_1l00022">22</link> of file <link linkend="__r_e_n_d_e_r_8h_source">RENDER.h</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+HEADER/SUBSYSTEMS/RENDER/RENDER.h</section>
+</section>

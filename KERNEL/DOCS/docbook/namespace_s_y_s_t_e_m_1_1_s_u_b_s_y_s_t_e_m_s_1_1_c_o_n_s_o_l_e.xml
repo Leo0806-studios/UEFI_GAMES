@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e" xml:lang="en-US">
+<title>SYSTEM::SUBSYSTEMS::CONSOLE Namespace Reference</title>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary></indexterm>
+<para>
+
+<para>the console subsystem </para>
+ 
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_____c_o_n_s_o_l_e_____s_t_r_u_c_t_u_r_e">__CONSOLE__STRUCTURE</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console">Console</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link></para>
+
+<para>contains information about the console </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a538794b2f0fa1d06ebf0f5cd9baf85fa">QueryConsoleInfo</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>constexpr size_t <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a0dce84cae467028d8a9531a17f12e828">tabSize</link> = 4</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>the console subsystem </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a538794b2f0fa1d06ebf0f5cd9baf85fa"/><section>
+    <title>QueryConsoleInfo()</title>
+<indexterm><primary>QueryConsoleInfo</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>QueryConsoleInfo</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1_1_console_info">ConsoleInfo</link> SYSTEM::SUBSYSTEMS::CONSOLE::QueryConsoleInfo ( )</computeroutput></para><para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8cpp_source_1l00111">111</link> of file <link linkend="__c_o_n_s_o_l_e_8cpp_source">CONSOLE.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_c_o_n_s_o_l_e_1a0dce84cae467028d8a9531a17f12e828"/><section>
+    <title>tabSize</title>
+<indexterm><primary>tabSize</primary><secondary>SYSTEM::SUBSYSTEMS::CONSOLE</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::CONSOLE</primary><secondary>tabSize</secondary></indexterm>
+<para><computeroutput>size_t SYSTEM::SUBSYSTEMS::CONSOLE::tabSize = 4<computeroutput>[inline]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__c_o_n_s_o_l_e_8h_source_1l00008">8</link> of file <link linkend="__c_o_n_s_o_l_e_8h_source">CONSOLE.h</link>.</para>
+</section>
+</section>
+</section>

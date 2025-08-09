@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator" xml:lang="en-US">
+<title>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator Class Reference</title>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</primary></indexterm>
+<para>
+
+<para>handles allocation of physical pages. for now relatively empty. its just in a class for later if i want to add specific state </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;ALLOCATION.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void * <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a1053ed21d2988a2cc7fded090c27e91e">AllocatePAge</link> ()</para>
+
+<para>allocates a single page faster than AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid address inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don&apos;t rely on it </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1ad78aa200acc4a62616824d708736a244">FreePage</link> (void *ptr)</para>
+
+<para>frees a single page. faster than FreePages as it doesn&apos;t have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that corresponds to the sizeof the header and some other checks). if the pointer is invalid it will return false. nullptr is also invalid </para>
+</listitem>
+            <listitem><para>void * <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a8f95e29be9563cf9a64874daca673a09">AllocatePages</link> (size_t amountOfPages)</para>
+
+<para>Allocates a number of pages. returns a pointer to the first valid address inside the first page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don&apos;t rely on it. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a204e52b71704aba91f47aa9e86e0009c">FreePages</link> (void *ptr)</para>
+
+<para>Frees memory pages previously allocated and returns whether the operation was successful. a return of false can also indicate memory corruption or an invalid pointer. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>handles allocation of physical pages. for now relatively empty. its just in a class for later if i want to add specific state </para>
+<para>
+Definition at line <link linkend="__a_l_l_o_c_a_t_i_o_n_8h_source_1l00028">28</link> of file <link linkend="__a_l_l_o_c_a_t_i_o_n_8h_source">ALLOCATION.h</link>.</para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a1053ed21d2988a2cc7fded090c27e91e"/><section>
+    <title>AllocatePAge()</title>
+<indexterm><primary>AllocatePAge</primary><secondary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</primary><secondary>AllocatePAge</secondary></indexterm>
+<para><computeroutput>void * SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePAge ( )<computeroutput>[nodiscard]</computeroutput></computeroutput></para><para>
+
+<para>allocates a single page faster than AllocatePages for a single page as it does not have to do size checking returns a pointer to the first valid address inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don&apos;t rely on it </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source_1l00013">13</link> of file <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source">ALLOCATION.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a8f95e29be9563cf9a64874daca673a09"/><section>
+    <title>AllocatePages()</title>
+<indexterm><primary>AllocatePages</primary><secondary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</primary><secondary>AllocatePages</secondary></indexterm>
+<para><computeroutput>void * SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePages (size_t amountOfPages)</computeroutput></para><para>
+
+<para>Allocates a number of pages. returns a pointer to the first valid address inside the first page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don&apos;t rely on it. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>amountOfPages</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source_1l00052">52</link> of file <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source">ALLOCATION.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1ad78aa200acc4a62616824d708736a244"/><section>
+    <title>FreePage()</title>
+<indexterm><primary>FreePage</primary><secondary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</primary><secondary>FreePage</secondary></indexterm>
+<para><computeroutput>bool SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::FreePage (void * ptr)<computeroutput>[nodiscard]</computeroutput></computeroutput></para><para>
+
+<para>frees a single page. faster than FreePages as it doesn&apos;t have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that corresponds to the sizeof the header and some other checks). if the pointer is invalid it will return false. nullptr is also invalid </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ptr</entry><entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source_1l00036">36</link> of file <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source">ALLOCATION.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_1a204e52b71704aba91f47aa9e86e0009c"/><section>
+    <title>FreePages()</title>
+<indexterm><primary>FreePages</primary><secondary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator</primary><secondary>FreePages</secondary></indexterm>
+<para><computeroutput>bool SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::FreePages (void * ptr)</computeroutput></para><para>
+
+<para>Frees memory pages previously allocated and returns whether the operation was successful. a return of false can also indicate memory corruption or an invalid pointer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ptr</entry><entry>
+<para>Pointer to the memory pages to be freed.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true if the pages were successfully freed; false otherwise.</para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source_1l00092">92</link> of file <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source">ALLOCATION.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+HEADER/SUBSYSTEMS/ALLOCATION/ALLOCATION.hSOURCE/SUBSYSTEMS/ALLOCATION/ALLOCATION.cpp</section>
+</section>

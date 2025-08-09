@@ -1,0 +1,73 @@
+.TH "SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR" 3 "Version 0.0.01" "OSDEV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR \- represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <RENDER\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "char \fBc\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBwidth\fP"
+.br
+.RI "the actual width of the char\&. can be used to improve spacing between characters "
+.ti -1c
+.RI "unsigned char \fBheight\fP"
+.br
+.RI "the actual height of the char\&. can be used to improve spacing between characters "
+.ti -1c
+.RI "unsigned int \fBColor\fP"
+.br
+.RI "the colour of the char "
+.ti -1c
+.RI "unsigned char \fBBMP\fP [16]"
+.br
+.RI "bitmap of the char\&. max char size is 16X8 "
+.in -1c
+.SH "Detailed Description"
+.PP 
+represents a 16X8 hardcode char for a simple font used in the early stages of initialization of the kernel 
+.PP
+Definition at line \fB17\fP of file \fBRENDER\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "unsigned char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::BMP[16]"
+
+.PP
+bitmap of the char\&. max char size is 16X8 
+.PP
+Definition at line \fB36\fP of file \fBRENDER\&.h\fP\&.
+.SS "char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::c"
+
+.PP
+Definition at line \fB18\fP of file \fBRENDER\&.h\fP\&.
+.SS "unsigned int SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::Color"
+
+.PP
+the colour of the char 
+.PP
+Definition at line \fB32\fP of file \fBRENDER\&.h\fP\&.
+.SS "unsigned char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::height"
+
+.PP
+the actual height of the char\&. can be used to improve spacing between characters 
+.PP
+Definition at line \fB26\fP of file \fBRENDER\&.h\fP\&.
+.SS "unsigned char SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR::width"
+
+.PP
+the actual width of the char\&. can be used to improve spacing between characters 
+.PP
+Definition at line \fB22\fP of file \fBRENDER\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OSDEV from the source code\&.

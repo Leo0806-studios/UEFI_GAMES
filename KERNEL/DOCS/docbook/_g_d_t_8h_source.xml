@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__g_d_t_8h_source" xml:lang="en-US">
+<title>GDT.h</title>
+<indexterm><primary>HEADER/STARTUP/GDT/GDT.h</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__g_d_t_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+<anchor xml:id="__g_d_t_8h_source_1l00002"/>00002 <emphasis role="keyword">namespace&#32;</emphasis>SYSTEM&#32;{
+<anchor xml:id="__g_d_t_8h_source_1l00003"/>00003 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>STARTUP&#32;{
+<anchor xml:id="__g_d_t_8h_source_1l00009"/><link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t">00009</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>GDT&#32;{
+<anchor xml:id="__g_d_t_8h_source_1l00014"/><link linkend="_struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y">00014</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y">GDT_ENTRY</link>&#32;{
+<anchor xml:id="__g_d_t_8h_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;limit;
+<anchor xml:id="__g_d_t_8h_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;base;
+<anchor xml:id="__g_d_t_8h_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;_base;
+<anchor xml:id="__g_d_t_8h_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;accses_byte;
+<anchor xml:id="__g_d_t_8h_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;limit_flags;
+<anchor xml:id="__g_d_t_8h_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;__base;
+<anchor xml:id="__g_d_t_8h_source_1l00021"/>00021 
+<anchor xml:id="__g_d_t_8h_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_g_d_t_1_1_g_d_t___e_n_t_r_y">GDT_ENTRY</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+<anchor xml:id="__g_d_t_8h_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__g_d_t_8h_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_d_t_8h_source_1l00025"/>00025 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_d_t_8h_source_1l00026"/>00026 }
+</programlisting></section>

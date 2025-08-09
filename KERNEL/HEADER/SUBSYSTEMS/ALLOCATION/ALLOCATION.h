@@ -1,5 +1,6 @@
 #pragma once
 #include "SAL/SAL.h"
+#include "HEADER/ATOMICS/ATOMIC_F.h"
 namespace SYSTEM {
 	namespace SUBSYSTEMS {
 		/// <summary>
@@ -27,6 +28,7 @@ namespace SYSTEM {
 			/// </summary>
 			class PhysicalAllocator {
 				constexpr static size_t PageSize = 4096; // size of a single page
+				static inline  STD::atomic_bool& Locked() { static STD::atomic_bool Val = false; return Val; }; // atomic lock to prevent concurrent access to the allocator
 			public:
 				/// <summary>
 				/// allocates a single page

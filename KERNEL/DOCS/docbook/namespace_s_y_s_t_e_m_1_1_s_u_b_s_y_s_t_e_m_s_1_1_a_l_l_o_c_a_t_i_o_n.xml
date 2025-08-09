@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n" xml:lang="en-US">
+<title>SYSTEM::SUBSYSTEMS::ALLOCATION Namespace Reference</title>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::ALLOCATION</primary></indexterm>
+<para>
+
+<para>everything related to memory allocation is inside this namespace </para>
+ 
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_struct_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_page_header">PageHeader</link></para>
+
+<para>header inserted onto a allocation allocated with the physical allocator. is in the beginning of the first page of the allocation. do not rely on its internal layout (for byte wise access) </para>
+</listitem>
+            <listitem><para>class <link linkend="_class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator">PhysicalAllocator</link></para>
+
+<para>handles allocation of physical pages. for now relatively empty. its just in a class for later if i want to add specific state </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1a72b75e22895b52642fff13bb6b87ee8b">PageType</link> = <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084">SYSTEM::STARTUP::PAGING::PageType</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>everything related to memory allocation is inside this namespace </para>
+</section>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_namespace_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1a72b75e22895b52642fff13bb6b87ee8b"/><section>
+    <title>PageType</title>
+<indexterm><primary>PageType</primary><secondary>SYSTEM::SUBSYSTEMS::ALLOCATION</secondary></indexterm>
+<indexterm><primary>SYSTEM::SUBSYSTEMS::ALLOCATION</primary><secondary>PageType</secondary></indexterm>
+<para><computeroutput>using <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084">SYSTEM::SUBSYSTEMS::ALLOCATION::PageType</link> = <link linkend="_namespace_s_y_s_t_e_m_1_1_s_t_a_r_t_u_p_1_1_p_a_g_i_n_g_1a40e03e8bd875ff738bc9a76f84d2a084">SYSTEM::STARTUP::PAGING::PageType</link></computeroutput></para><para>
+Definition at line <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source_1l00012">12</link> of file <link linkend="__a_l_l_o_c_a_t_i_o_n_8cpp_source">ALLOCATION.cpp</link>.</para>
+</section>
+</section>
+</section>

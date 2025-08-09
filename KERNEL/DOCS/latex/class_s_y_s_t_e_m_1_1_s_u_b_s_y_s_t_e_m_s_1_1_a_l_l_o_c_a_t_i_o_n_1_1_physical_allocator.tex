@@ -1,0 +1,118 @@
+\doxysection{SYSTEM\+::SUBSYSTEMS\+::ALLOCATION\+::Physical\+Allocator Class Reference}
+\hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator}{}\label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+
+
+handles allocation of physical pages. for now relatively empty. its just in a class for later if i want to add specific state  
+
+
+
+
+{\ttfamily \#include $<$ALLOCATION.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a1053ed21d2988a2cc7fded090c27e91e}{Allocate\+PAge}} ()
+\begin{DoxyCompactList}\small\item\em allocates a single page faster than Allocate\+Pages for a single page as it does not have to do size checking returns a pointer to the first valid address inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don\textquotesingle{}t rely on it \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_ad78aa200acc4a62616824d708736a244}{Free\+Page}} (void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em frees a single page. faster than Free\+Pages as it doesn\textquotesingle{}t have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that corresponds to the sizeof the header and some other checks). if the pointer is invalid it will return false. nullptr is also invalid \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a8f95e29be9563cf9a64874daca673a09}{Allocate\+Pages}} (size\+\_\+t amount\+Of\+Pages)
+\begin{DoxyCompactList}\small\item\em Allocates a number of pages. returns a pointer to the first valid address inside the first page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don\textquotesingle{}t rely on it. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a204e52b71704aba91f47aa9e86e0009c}{Free\+Pages}} (void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em Frees memory pages previously allocated and returns whether the operation was successful. a return of false can also indicate memory corruption or an invalid pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+handles allocation of physical pages. for now relatively empty. its just in a class for later if i want to add specific state 
+
+Definition at line \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8h_source_l00028}{28}} of file \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8h_source}{ALLOCATION.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a1053ed21d2988a2cc7fded090c27e91e}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}!AllocatePAge@{AllocatePAge}}
+\index{AllocatePAge@{AllocatePAge}!SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+\doxysubsubsection{\texorpdfstring{AllocatePAge()}{AllocatePAge()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a1053ed21d2988a2cc7fded090c27e91e} 
+void \texorpdfstring{$\ast$}{*} SYSTEM\+::\+SUBSYSTEMS\+::\+ALLOCATION\+::\+Physical\+Allocator\+::\+Allocate\+PAge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+allocates a single page faster than Allocate\+Pages for a single page as it does not have to do size checking returns a pointer to the first valid address inside the page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don\textquotesingle{}t rely on it 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source}{ALLOCATION.\+cpp}}.
+
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a8f95e29be9563cf9a64874daca673a09}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}!AllocatePages@{AllocatePages}}
+\index{AllocatePages@{AllocatePages}!SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+\doxysubsubsection{\texorpdfstring{AllocatePages()}{AllocatePages()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a8f95e29be9563cf9a64874daca673a09} 
+void \texorpdfstring{$\ast$}{*} SYSTEM\+::\+SUBSYSTEMS\+::\+ALLOCATION\+::\+Physical\+Allocator\+::\+Allocate\+Pages (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{amount\+Of\+Pages}{}\end{DoxyParamCaption})}
+
+
+
+Allocates a number of pages. returns a pointer to the first valid address inside the first page. the offset from the beginning of the page is not stable and might change based on the format and size of the header information. don\textquotesingle{}t rely on it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount\+Of\+Pages} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source}{ALLOCATION.\+cpp}}.
+
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_ad78aa200acc4a62616824d708736a244}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}!FreePage@{FreePage}}
+\index{FreePage@{FreePage}!SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+\doxysubsubsection{\texorpdfstring{FreePage()}{FreePage()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_ad78aa200acc4a62616824d708736a244} 
+bool SYSTEM\+::\+SUBSYSTEMS\+::\+ALLOCATION\+::\+Physical\+Allocator\+::\+Free\+Page (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+frees a single page. faster than Free\+Pages as it doesn\textquotesingle{}t have to do bounds checking. performs a check if the pointer is a valid page pinter. (at a offset that corresponds to the sizeof the header and some other checks). if the pointer is invalid it will return false. nullptr is also invalid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source}{ALLOCATION.\+cpp}}.
+
+\Hypertarget{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a204e52b71704aba91f47aa9e86e0009c}\index{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}!FreePages@{FreePages}}
+\index{FreePages@{FreePages}!SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator@{SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator}}
+\doxysubsubsection{\texorpdfstring{FreePages()}{FreePages()}}
+{\footnotesize\ttfamily \label{class_s_y_s_t_e_m_1_1_s_u_b_s_y_s_t_e_m_s_1_1_a_l_l_o_c_a_t_i_o_n_1_1_physical_allocator_a204e52b71704aba91f47aa9e86e0009c} 
+bool SYSTEM\+::\+SUBSYSTEMS\+::\+ALLOCATION\+::\+Physical\+Allocator\+::\+Free\+Pages (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})}
+
+
+
+Frees memory pages previously allocated and returns whether the operation was successful. a return of false can also indicate memory corruption or an invalid pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & Pointer to the memory pages to be freed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the pages were successfully freed; false otherwise.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_a_l_l_o_c_a_t_i_o_n_8cpp_source}{ALLOCATION.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HEADER/\+SUBSYSTEMS/\+ALLOCATION/ALLOCATION.\+h\item 
+SOURCE/\+SUBSYSTEMS/\+ALLOCATION/ALLOCATION.\+cpp\end{DoxyCompactItemize}
