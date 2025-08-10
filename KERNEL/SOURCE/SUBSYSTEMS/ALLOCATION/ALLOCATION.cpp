@@ -8,6 +8,7 @@ extern "C" {
 #include "HEADER/SUBSYSTEMS/ALLOCATION/ALLOCATION.h"
 #include "HEADER/SYTEM_INFO/SYSTEM_INFO.h"
 #include "HEADER/STARTUP/PAGE_MAP/PAGE_MAP.h"
+#include <UTILLITY_F.h>
 namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 	using PageType = SYSTEM::STARTUP::PAGING::PageType;
 	void* PhysicalAllocator::AllocatePage()
@@ -34,11 +35,15 @@ namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 		PageHeader* page = reinterpret_cast<PageHeader*>(entry);
 		page->amoutofPages = 1;
 		page->usable = entry + sizeof(PageHeader);
-		Locked.store(false); //release the lock
+		STD::ignore = Locked.store(false); //release the lock
 		return page;;
 	}
 	bool PhysicalAllocator::FreePage(void* ptr)
 	{
+		STD::atomic_bool& Locked = PhysicalAllocator::Locked();
+		while (Locked.compare_exchange_strong(false, true)) {
+			_mm_pause(); //spin until we can acquire the lock
+		}
 		if (!ptr) { return false; }
 		void* fullpage = reinterpret_cast<void*>(reinterpret_cast<size_t>(ptr) - sizeof(PageHeader));
 
@@ -51,11 +56,17 @@ namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 		auto& Entry = globalMap.Entrys[pagenum]; //-V3539
 		Entry.isFree = true;
 		Entry.Type = PageType::Free;
+		STD::ignore =Locked.store(false); //release the lock
 		return true;
 	}
 	void* PhysicalAllocator::AllocatePages(size_t amountOfPages)
 	{
 
+
+		STD::atomic_bool& Locked = PhysicalAllocator::Locked();
+		while (Locked.compare_exchange_strong(false, true)) {
+			_mm_pause(); //spin until we can acquire the lock
+		}
 		if (amountOfPages == 0) { return nullptr; }//no pages requested
 		if (amountOfPages > (SYSTEM_INFO::SystemInfo::GetInstance().installedRam / PageSize) / 2) { return nullptr; }//i wont allow allocating more than half of the installed ram in one go.
 		size_t pagesFound = 0;
@@ -91,10 +102,15 @@ namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 			curr.isFree = false;
 			curr.Type = PageType::Allocated;
 		}
+		STD::ignore= Locked.store(false); //release the lock
 		return header->usable; //return the usable area
 	}
 	bool PhysicalAllocator::FreePages(void* ptr)
 	{
+		STD::atomic_bool& Locked = PhysicalAllocator::Locked();
+		while (Locked.compare_exchange_strong(false, true)) {
+			_mm_pause(); //spin until we can acquire the lock
+		}
 		if (!ptr) { return false; }//null pointer is not valid
 		void* fullpage = reinterpret_cast<void*>(reinterpret_cast<size_t>(ptr) - sizeof(PageHeader));
 		PageHeader* header = reinterpret_cast<PageHeader*>(fullpage); //-V3546 necessary here as we deal with physical memory
@@ -108,7 +124,7 @@ namespace SYSTEM::SUBSYSTEMS::ALLOCATION{
 			Entry.isFree = true;
 			Entry.Type = PageType::Free;
 		}
-
+		STD::ignore= Locked.store(false); //release the lock
 		return true;
 	}
 }

@@ -13,6 +13,7 @@ extern"C" {
 #include "HEADER/SYTEM_INFO/SYSTEM_INFO.h"
 #include <intrin.h>
 #include <HEADER/UTILLITY/UTILLITY_F.h>
+#include "INIT_RUNTIME.h"
 static uint32_t get_cpu_base_freq_mhz() {
 	int cpuInfo[4] = {};
 	__cpuid(&cpuInfo[0], 0x16); //-V3546 // IDK why PVS is complaining
@@ -32,13 +33,22 @@ static void stall_us(uint64_t microseconds, uint64_t cpu_mhz) {
 	}
 }
 using Console = SYSTEM::SUBSYSTEMS::CONSOLE::Console;
+struct R {
+	R() {
+		Print(L"Hello World from Global Object Constructor.\n");
+
+	}
+};
+R testglobal;
 extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
 	InitializeLib(ImageHandle, SystemTable);
-
+	initRuntime();
 	Print(L"Hello, World!\n");
 	__assume(SystemTable != nullptr); 
+	SystemTable->BootServices->Stall(10000000); // Stall for 1 second to allow reading the output
+
 	STD::ignore = SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	//getMemory map
 	EFI_MEMORY_DESCRIPTOR* MemoryMap = nullptr;
