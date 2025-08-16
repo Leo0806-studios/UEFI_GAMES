@@ -1,4 +1,5 @@
 #include "INIT_RUNTIME.h"
+#include "ALLOCATORS.h"
 #define _CRT_ALLOCATE(X)__declspec(allocate(X))
 
 #pragma section(".CRT$XIA",long,read)
@@ -22,20 +23,42 @@ extern "C" _CRT_ALLOCATE(".CRT$XPZ") _PVFV __xp_z[] = { 0 }; // C pre-terminator
 extern "C" _CRT_ALLOCATE(".CRT$XTA") _PVFV __xt_a[] = { 0 }; // C terminators (first)
 extern "C" _CRT_ALLOCATE(".CRT$XTZ") _PVFV __xt_z[] = { 0 }; // C terminators (last)
 void _init_Ctors() {
-		// Call C++ initializers
-	for (_PVFV* p = __xc_a; p < __xc_z; ++p) {
-		if (*p) {
-			(*p)();
-		}
-	}
 	// Call C initializers
 	for (_PVFV* p = __xi_a; p < __xi_z; ++p) {
 		if (*p) {
 			(*p)();
 		}
 	}
+		// Call C++ initializers
+	for (_PVFV* p = __xc_a; p < __xc_z; ++p) {
+		if (*p) {
+			(*p)();
+		}
+	}
 }
-void initRuntime()
+struct AtExitEntry {
+	using AtExitfunc = void(*)();
+	AtExitfunc func = nullptr;
+};
+struct AtExitList {
+	AtExitEntry* Entries = nullptr;
+	size_t count = 0;
+	size_t capacity = 0;
+};
+
+bool registerAtExit() {
+	return false;
+}
+extern "C" 
 {
-	_init_Ctors();
+	void initRuntime(RuntimeInitParameters InitParameters)
+	{
+
+		::initParameters = InitParameters;
+		CreateHeap(InitParameters.initialHeapSize);
+		_init_Ctors();
+		(void)registerAtExit();
+	}
 }
+
+RuntimeInitParameters initParameters;

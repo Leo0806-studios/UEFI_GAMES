@@ -22,6 +22,7 @@
     <ClInclude Include="HEADER\ASSINGABLE_ONCE\ASSINGABLE_ONCE_F.h" />
     <ClInclude Include="HEADER\ATOMICS\ATOMIC_F.h" />
     <ClInclude Include="HEADER\CONCEPTS\CONCEPTS_f.h" />
+    <ClInclude Include="HEADER\EXCEPTIONS\EXCEPTIONS.h" />
     <ClInclude Include="HEADER\INTERNAL\MACROS.h" />
     <ClInclude Include="HEADER\SAL\SAL_F.h" />
     <ClInclude Include="HEADER\SMART_POINTERS\CONTROL_BLOCKS\CONTROL_BASE\CONTROL_BASE_F.h" />
@@ -36,11 +37,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\ATOMIC\ATOMIC.cpp" />
+    <ClCompile Include="SOURCE\DELETE.cpp" />
+    <ClCompile Include="SOURCE\NEW.cpp" />
     <ClCompile Include="SOURCE\UTILLITY\UTILLITY.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-tidy" />
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CPP_RUNTIMELIB_STATIC_PART\CPP_RUNTIMELIB_STATIC_PART.vcxproj">
+      <Project>{433d88f9-0cf3-42da-9a57-d717557a5258}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -158,14 +166,14 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <ExceptionHandling>false</ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4464;4514;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4464;4514;4710;</DisableSpecificWarnings>
       <EnablePREfast>true</EnablePREfast>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>
@@ -194,12 +202,12 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <ExceptionHandling>false</ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4464;4514;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4464;4514;4710;</DisableSpecificWarnings>
       <EnablePREfast>true</EnablePREfast>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>

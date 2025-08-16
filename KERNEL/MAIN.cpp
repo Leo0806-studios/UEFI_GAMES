@@ -14,6 +14,7 @@ extern"C" {
 #include <intrin.h>
 #include <HEADER/UTILLITY/UTILLITY_F.h>
 #include "INIT_RUNTIME.h"
+#include "HEADER/SUBSYSTEMS/ALLOCATION/ALLOCATION.h"
 static uint32_t get_cpu_base_freq_mhz() {
 	int cpuInfo[4] = {};
 	__cpuid(&cpuInfo[0], 0x16); //-V3546 // IDK why PVS is complaining
@@ -40,11 +41,22 @@ struct R {
 	}
 };
 R testglobal;
+void d() {
+	throw R();
+
+}
 extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
+	try {
+		d();
+
+	}
+	catch(R e) {
+		Print(L"Exception caught: %d\n", e);
+	}
 	InitializeLib(ImageHandle, SystemTable);
-	initRuntime();
+	
 	Print(L"Hello, World!\n");
 	__assume(SystemTable != nullptr); 
 	SystemTable->BootServices->Stall(10000000); // Stall for 1 second to allow reading the output
@@ -166,6 +178,18 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	//TODO insert call to setup of the IDT
 
 	Console::WriteLine(L"IDT SETUP COMPLETE");
+	//###############################---C++ Runtime Init Here---###############################
+	using PhysicalAllocator = SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator;
+	RuntimeInitParameters Parameters = {
+		.callbacks = {
+			.alocatePage = PhysicalAllocator::AllocatePage,
+			.allocatePages = SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePages,
+			.freePage = PhysicalAllocator::FreePage,
+			.freePages = PhysicalAllocator::FreePages
+},
+.initialHeapSize = 10
+	};
+	initRuntime(Parameters);
 	size_t freq = 0;
 	freq = get_cpu_base_freq_mhz();
 	if (freq == 0) {
@@ -180,3 +204,5 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 }
 }
+
+

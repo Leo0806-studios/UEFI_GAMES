@@ -21,9 +21,18 @@
     <ClInclude Include="HEADER\CPPRUNTIME.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADER\ALLOCATORS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\INIT_RUNTIME.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\EXCEPTIONS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\ALLOCATORS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HEADER\ALLOCATORS.h" />
     <ClInclude Include="HEADER\CPPRUNTIME.h" />
     <ClInclude Include="HEADER\INIT_RUNTIME.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SOURCE\ALLOCATORS.cpp" />
+    <ClCompile Include="SOURCE\EXCEPTIONS.cpp" />
     <ClCompile Include="SOURCE\INIT_RUNTIME.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -135,7 +138,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <DisableSpecificWarnings>5247;5248;4711;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>5247;5248;4711;4505;4514;5045;4710</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -144,6 +147,7 @@
     </Link>
     <Lib>
       <SubSystem>EFI Application</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -165,7 +169,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <DisableSpecificWarnings>5247;5248;4711;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>5247;5248;4711;4505;4514;5045;4710</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -174,6 +178,7 @@
     </Link>
     <Lib>
       <SubSystem>EFI Application</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
