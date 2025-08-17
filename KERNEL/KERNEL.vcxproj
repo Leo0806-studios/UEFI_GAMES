@@ -186,6 +186,7 @@
     <ClCompile Include="SOURCE\STARTUP\PAGE_MAP\PAGE_MAP.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\ALLOCATION\ALLOCATION.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp" />
+    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\FONT.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp" />
     <ClCompile Include="SOURCE\SYSTEM_INFO\SYSTEM_INFO.cpp" />
   </ItemGroup>

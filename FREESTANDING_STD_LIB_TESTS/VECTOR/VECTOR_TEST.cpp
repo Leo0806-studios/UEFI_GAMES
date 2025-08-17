@@ -57,9 +57,8 @@ namespace FREE_STD_LIB_TESTS
 		delete[] ptr;
 	}
 	TEST_CLASS(VectorTest) {
-
-		public:
-			TEST_METHOD(TestVectorInsert_TriviallyCopyableType_NotMove) {
+	public:
+		TEST_METHOD(TestVectorInsert_TriviallyCopyableType_NotMove) {
 			STD::vector<TriviallyCopyableType_NotMove> vec;
 			vec.SetAllocator(createTriviallyCopyableType_NotMove);
 			vec.SetDeallocator(DeallocateTriviallyCopyableType_NotMove);
@@ -68,52 +67,50 @@ namespace FREE_STD_LIB_TESTS
 			Assert::AreEqual(vec[0].value, 0);
 			Assert::AreEqual(vec[1].value, 0);
 			Assert::AreEqual(vec.Size(), size_t(2));
-
-			}
-			TEST_METHOD(TestVectorInsert_TriviallyMovableType) {
-				STD::vector<TriviallyMovableType> vec;
-				vec.SetAllocator(createTriviallyMovableType);
-				vec.SetDeallocator(DeallocateTriviallyMovableType);
-				vec.push_back(TriviallyMovableType{ 1 });
-				vec.insert(TriviallyMovableType{ 2 }, 0);
-				Assert::AreEqual(vec[0].value, 2);
-				Assert::AreEqual(vec[1].value, 1);
-				Assert::AreEqual(vec.Size(), size_t(2));
-			}
-			TEST_METHOD(TestVectorInsert_NonTrivialType) {
-				STD::vector<NonTrivialType> vec;
-				vec.SetAllocator(createNonTrivialType);
-				vec.SetDeallocator(DeallocateNonTrivialType);
-				vec.push_back(NonTrivialType());
-				vec.insert(NonTrivialType(), 0);
-				Assert::AreEqual(vec[0].value, 0);
-				Assert::AreEqual(vec[1].value, 0);
-				Assert::AreEqual(vec.Size(), size_t(2));
-			}
-			TEST_METHOD(TestVectorPushBack_TriviallyCopyableType_NotMove) {
-				STD::vector<TriviallyCopyableType_NotMove> vec;
-				vec.SetAllocator(createTriviallyCopyableType_NotMove);
-				vec.SetDeallocator(DeallocateTriviallyCopyableType_NotMove);
-				vec.push_back(TriviallyCopyableType_NotMove());
-				Assert::AreEqual(vec[0].value, 0);
-				Assert::AreEqual(vec.Size(), size_t(1));
-			}
-			TEST_METHOD(TestVectorPushBack_TriviallyMovableType) {
-				STD::vector<TriviallyMovableType> vec;
-				vec.SetAllocator(createTriviallyMovableType);
-				vec.SetDeallocator(DeallocateTriviallyMovableType);
-				vec.push_back(TriviallyMovableType{ 1 });
-				Assert::AreEqual(vec[0].value, 1);
-				Assert::AreEqual(vec.Size(), size_t(1));
-			}
-			TEST_METHOD(TestVectorPushBack_NonTrivialType) {
-				STD::vector<NonTrivialType> vec;
-				vec.SetAllocator(createNonTrivialType);
-				vec.SetDeallocator(DeallocateNonTrivialType);
-				vec.push_back(NonTrivialType());
-				Assert::AreEqual(vec[0].value, 0);
-				Assert::AreEqual(vec.Size(), size_t(1));
-			}
-
+		}
+		TEST_METHOD(TestVectorInsert_TriviallyMovableType) {
+			STD::vector<TriviallyMovableType> vec;
+			vec.SetAllocator(createTriviallyMovableType);
+			vec.SetDeallocator(DeallocateTriviallyMovableType);
+			vec.push_back(TriviallyMovableType{ 1 });
+			vec.insert(TriviallyMovableType{ 2 }, 0);
+			Assert::AreEqual(vec[0].value, 2);
+			Assert::AreEqual(vec[1].value, 1);
+			Assert::AreEqual(vec.Size(), size_t(2));
+		}
+		TEST_METHOD(TestVectorInsert_NonTrivialType) {
+			STD::vector<NonTrivialType> vec;
+			vec.SetAllocator(createNonTrivialType);
+			vec.SetDeallocator(DeallocateNonTrivialType);
+			vec.push_back(NonTrivialType());
+			vec.insert(NonTrivialType(), 0);
+			Assert::AreEqual(vec[0].value, 0);
+			Assert::AreEqual(vec[1].value, 0);
+			Assert::AreEqual(vec.Size(), size_t(2));
+		}
+		TEST_METHOD(TestVectorPushBack_TriviallyCopyableType_NotMove) {
+			STD::vector<TriviallyCopyableType_NotMove> vec;
+			vec.SetAllocator(createTriviallyCopyableType_NotMove);
+			vec.SetDeallocator(DeallocateTriviallyCopyableType_NotMove);
+			vec.push_back(TriviallyCopyableType_NotMove());
+			Assert::AreEqual(vec[0].value, 0);
+			Assert::AreEqual(vec.Size(), size_t(1));
+		}
+		TEST_METHOD(TestVectorPushBack_TriviallyMovableType) {
+			STD::vector<TriviallyMovableType> vec;
+			vec.SetAllocator(createTriviallyMovableType);
+			vec.SetDeallocator(DeallocateTriviallyMovableType);
+			vec.push_back(TriviallyMovableType{ 1 });
+			Assert::AreEqual(vec[0].value, 1);
+			Assert::AreEqual(vec.Size(), size_t(1));
+		}
+		TEST_METHOD(TestVectorPushBack_NonTrivialType) {
+			STD::vector<NonTrivialType> vec;
+			vec.SetAllocator(createNonTrivialType);
+			vec.SetDeallocator(DeallocateNonTrivialType);
+			vec.push_back(NonTrivialType());
+			Assert::AreEqual(vec[0].value, 0);
+			Assert::AreEqual(vec.Size(), size_t(1));
+		}
 	};
 }

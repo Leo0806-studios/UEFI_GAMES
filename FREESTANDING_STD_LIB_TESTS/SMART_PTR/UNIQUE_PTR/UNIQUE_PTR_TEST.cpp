@@ -14,7 +14,7 @@ namespace FREE_STD_LIB_TESTS
 	TEST_CLASS(UNIQUE_PTR_TEST_INT) {
 		TEST_METHOD(TestUniquePointerCreation) {
 			// Create a unique pointer to an integer
-			STD::UniquePointer<int> uniquePtr = STD::UniquePointer<int>::MakeUnique(new int(42), new STD::GenericUniqueBlock<int>(),DeleterFunc,DeleterControlFunc);
+			STD::UniquePointer<int> uniquePtr = STD::UniquePointer<int>::MakeUnique(new int(42), new STD::GenericUniqueBlock<int>(), DeleterFunc, DeleterControlFunc);
 			Assert::IsNotNull(uniquePtr.operator->());
 			Assert::AreEqual(42, *uniquePtr.operator->());
 		}
@@ -33,8 +33,5 @@ namespace FREE_STD_LIB_TESTS
 			uniquePtr = STD::UniquePointer<int>::MakeUnique(new int(300), new STD::GenericUniqueBlock<int>(), DeleterFunc, DeleterControlFunc);
 			Assert::AreEqual(300, *uniquePtr.operator->());
 		}
-
 	};
 }
-
-

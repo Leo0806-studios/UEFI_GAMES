@@ -2,6 +2,7 @@
 namespace SYSTEM::SUBSYSTEMS::RENDER {
 	namespace COLOURS {
 		constexpr unsigned int White = 0xffffffffU; //-V112
+		constexpr unsigned int Black = 0xff000000U; //-V112
 	}
 	/// <summary>
 	/// simple render interface to be used in pre driver mode. all draw functions in this namespace are used to draw to the framebuffer directly.
@@ -26,10 +27,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				unsigned char height;
 		private:
 		public:
-			/// <summary>
-			/// the colour of the char
-			/// </summary>
-			unsigned int Color;
+
 			/// <summary>
 			/// bitmap of the char. max char  size is 16X8
 			/// </summary>
@@ -51,7 +49,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		/// <param name="x"></param>
 		/// <param name="y"></param>
 		/// <param name="c"></param>
-		void SimpleDrawChar(unsigned int x, unsigned int y, wchar_t c); //-V2565 // contains direct recursion on a invalid char. will only recur once as the char printed instead is always valid
+		void SimpleDrawChar(unsigned int x, unsigned int y, wchar_t c, unsigned int colour, unsigned int bg_colour); //-V2565 // contains direct recursion on a invalid char. will only recur once as the char printed instead is always valid
 
 		 /// <summary>
 		 /// draws a string to the framebuffer at the specified position.

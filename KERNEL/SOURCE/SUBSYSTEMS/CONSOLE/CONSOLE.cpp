@@ -6,6 +6,8 @@
 #include "../../../HEADER/SUBSYSTEMS/RENDER/RENDER.h"
 #include <HEADER/STRING/STRING_F.h>
 #include <HEADER/UTILLITY/UTILLITY_F.h>
+#include <cstdarg>
+#include <stdint.h>
 namespace SYSTEM {
 	namespace SUBSYSTEMS {
 		namespace CONSOLE {
@@ -23,11 +25,13 @@ namespace SYSTEM {
 				size_t collums = 0;
 				size_t rows = 0;
 
-				size_t cursorPosRows = 0;
+				size_t cursorPosRows = 1;
 				size_t cursorPosCollums = 0;
 
 				size_t pixelsPerRow = 0;
 				size_t pixxelsPerCollum = 0;
+				unsigned int CurrentColour = RENDER::COLOURS::White; // default colour is white
+				unsigned int BackgroundColour = RENDER::COLOURS::Black; // default background colour is white
 			};
 			static __CONSOLE__STRUCTURE& ConsoleStructure() {
 				static __CONSOLE__STRUCTURE str;
@@ -80,7 +84,26 @@ namespace SYSTEM {
 				__CONSOLE__STRUCTURE& console = ConsoleStructure();
 				const size_t x = console.pixxelsPerCollum * console.cursorPosCollums;
 				const size_t y = console.pixelsPerRow * console.cursorPosRows;
-				RENDER::SIMPLE::SimpleDrawString(str, static_cast<unsigned int>(x), static_cast<unsigned int>(y));
+				if (str == nullptr) { return; }
+				const size_t len = STD::strlen(str);
+				unsigned int xpos = static_cast<unsigned int>(x);
+				const unsigned int ypos = static_cast<unsigned int>(y);
+				if (len >= UINT32_MAX) {
+					RENDER::SIMPLE::SimpleDrawString(L"String too long", static_cast<unsigned int>(x), static_cast<unsigned int>(y));
+					return;
+				}
+				//we check beforehand if the string is too long
+				for (size_t i = 0; i < len; i++) {
+					if (str[i] == ' ') { //-V3539
+						xpos += static_cast<unsigned int>(console.pixxelsPerCollum); //-V127
+
+
+						continue;
+					}
+					RENDER::SIMPLE::SimpleDrawChar(xpos, ypos, str[i], console.CurrentColour, console.BackgroundColour); //-V3539
+					xpos += static_cast<unsigned int>(console.pixxelsPerCollum); //-V127
+
+				}
 				console.cursorPosRows++;
 
 			}
@@ -89,6 +112,8 @@ namespace SYSTEM {
 				//TODO: implement printf like function
 				STD::ignore = args; // to avoid unused parameter warning
 				STD::ignore = format; // to avoid unused parameter warning
+				va_list argsList;
+				va_start(argsList, format);
 			}
 			void Console::Write(const wchar_t* str)
 			{
@@ -104,7 +129,7 @@ namespace SYSTEM {
 					else {
 						console.cursorPosCollums++;
 					}
-					RENDER::SIMPLE::SimpleDrawChar(static_cast<unsigned int>(x), static_cast<unsigned int>(y), str[i]); //-V3539
+					RENDER::SIMPLE::SimpleDrawChar(static_cast<unsigned int>(x), static_cast<unsigned int>(y), str[i],console.CurrentColour,console.BackgroundColour); //-V3539
 
 				}
 			}

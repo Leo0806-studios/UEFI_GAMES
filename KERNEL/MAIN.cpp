@@ -49,7 +49,7 @@ extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
 	try {
-		d();
+	//	d();
 
 	}
 	catch(R e) {
@@ -57,9 +57,14 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	}
 	InitializeLib(ImageHandle, SystemTable);
 	
+
+
+
+
+
 	Print(L"Hello, World!\n");
 	__assume(SystemTable != nullptr); 
-	SystemTable->BootServices->Stall(10000000); // Stall for 1 second to allow reading the output
+	//SystemTable->BootServices->Stall(10000000); // Stall for 1 second to allow reading the output
 
 	STD::ignore = SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	//getMemory map
@@ -152,7 +157,7 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		Print(L"Failed to initialize console.\n");
 		return EFI_DEVICE_ERROR;
 	}
-
+	Console::WriteLine(L"  ");
 	Console::WriteLine(L"CONSOLE STARTED");
 	Console::WriteLine(L"CONSOLE TEST");
 	Console::WriteLine(L"ABCDEFGHIJKLMNOPQRSTUVWXYZ");

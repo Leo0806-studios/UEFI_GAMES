@@ -82,9 +82,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
+    <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
+    <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
