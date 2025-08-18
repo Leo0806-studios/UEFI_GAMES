@@ -81,4 +81,9 @@
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="SOURCE\SUBSYSTEMS\RENDER\FONT_BMP.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

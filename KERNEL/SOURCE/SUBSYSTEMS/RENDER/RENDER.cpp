@@ -127,7 +127,11 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 			38,			//l
 			39,			//m
 			40,			//n
-			41
+			41,			//o
+			42,			//p
+			43,			//q
+			44,			//r
+			45,			//s
 		};
 		void SimpleDrawChar(unsigned int x, unsigned int y, wchar_t c ,unsigned int colour,unsigned int bg_colour)
 		{

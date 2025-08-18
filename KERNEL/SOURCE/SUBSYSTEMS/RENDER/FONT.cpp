@@ -1,21 +1,32 @@
 #pragma once
 #include "HEADER/SUBSYSTEMS/RENDER/RENDER.h"
+//defines a entry in the simple font with hardcoded width and height to be 8 and 16
+#define FONT_ENTRY(chr,...) \
+{\
+.c = chr,\
+.width = 8,\
+.height = 16,\
+.BMP = __VA_ARGS__\
+},
+
+
+//defines a entry in the simple font with stable width and height
+#define FONT_ENTRY_C(chr,W,H,...) \
+{\
+.c = chr,\
+.width = W,\
+.height = H,\
+.BMP = __VA_ARGS__\
+},
+
+
+
 namespace SYSTEM::SUBSYSTEMS::RENDER {
 	namespace SIMPLE {
 		SYSTEM::SUBSYSTEMS::RENDER::SIMPLE::CHAR SimpleFont[255] = {
-			{
-				 0, // Null character
-				0, // No width
-				8, // Height of the character
-				 {0}
-
-
-			},
-			{
-				 'A', // Character 'A'
-				 8, // Width of the character
-				 16, // Height of the character
-			{
+FONT_ENTRY(0,{0}) //null entry
+FONT_ENTRY('A',
+	{
 				0b01111110,
 				0b01000010,
 				0b01000010, // 0x18
@@ -33,7 +44,8 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 				0b01000010, // 0x00
 				0b00000000// 0x00
 				}
-			},
+	)
+
 			{
 				'B',
 				8,
@@ -993,7 +1005,106 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 					0b00111100,
 					0b00000000
 }
+			},
+			{
+				.c='p',
+				.width=8,
+				.height=16,
+				.BMP={
+					0b00000000,
+					0b0,
+					0b0,
+					0b0,
+					0b0,
+					0b0,
+					0b0,
+					0b01111100,
+					0b01000010,
+					0b01000010,
+					0b01000010,
+					0b01111100,
+					0b01000000,
+					0b01000000,
+					0b01000000,
+					0b00000000
+				}
+			},
+			FONT_ENTRY('q',
+			{
+				0b00000000, // 0x00
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b00111110,
+				0b01000010,
+				0b01000010,
+				0b01000010,
+				0b00111110,
+				0b00000010,
+				0b00000010,
+				0b00000010,
+				0b00000000
+
+			})
+			FONT_ENTRY('r',
+			{
+				0b00000000,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b01011100,
+				0b00100000,
+				0b00100000,
+				0b00100000,
+				0b00100000,
+				0b00100000,
+				0b00100000,
+				0b00100000,
+				0b00000000
 			}
+			)
+			FONT_ENTRY('s', {
+				0b00000000,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b00111110,
+				0b01000000,
+				0b01110000,
+				0b00011100,
+				0b00000010,
+				0b01111100,
+				0b00000000,
+			})
+			FONT_ENTRY('t', {
+				0b00000000,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b0,
+				0b00000000,
+			})
 
 
 		};

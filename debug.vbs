@@ -145,8 +145,8 @@ Call fso.CopyFile(WScript.Arguments(0), "image\efi\boot\" & BOOT_NAME, True)
 ' NB: We mount the UEFI firmware as -drive rather than -bios so that we can
 ' persist NV Variables, such as Secure Boot ones, into the firmware file.
 ' However, we use -bios for ARM images as -drive doesn't work there
-Call shell.Run("""" & QEMU_PATH & QEMU_EXE  & """ " & QEMU_OPTS & " -s -S "& " -L . " & BIOS_OPT & " " & FW_FILE & " -hda fat:rw:image" )
-'Call shell.Run("""" & QEMU_PATH & QEMU_EXE  & """ " & QEMU_OPTS & ""& " -L . " & BIOS_OPT & " " & FW_FILE & " -hda fat:rw:image" )
+'Call shell.Run("""" & QEMU_PATH & QEMU_EXE  & """ " & QEMU_OPTS & " -s -S "& " -L . " & BIOS_OPT & " " & FW_FILE & " -hda fat:rw:image" )
+Call shell.Run("""" & QEMU_PATH & QEMU_EXE  & """ " & QEMU_OPTS & ""& " -L . " & BIOS_OPT & " " & FW_FILE & " -hda fat:rw:image" )
 
 'Call shell.Run("""" & QEMU_PATH & QEMU_EXE  & " -windbg"" " & QEMU_OPTS & " "& " -L . " & BIOS_OPT & " " & FW_FILE & " -hda fat:rw:image" )
 
