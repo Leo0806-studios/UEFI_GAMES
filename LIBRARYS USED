@@ -1,0 +1,3 @@
+gnu - efi https://github.com/ncroxon/gnu-efi
+parts from uefi-simple https://github.com/pbatard/uefi-simple (mainly used to build gnu-efi and the vbs script)
+libbpm https://github.com/marc-q/libbmp
