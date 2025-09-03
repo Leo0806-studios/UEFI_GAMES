@@ -24,6 +24,24 @@
     <ClInclude Include="HEADER\ALLOCATORS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADER\INTERNAL\GLOBAL_STATE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\EH_DATA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\RTTI_DATA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\STRING.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\CRT_MACROS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\LANGUAGE_EXTENSION.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\INIT_RUNTIME.cpp">
@@ -35,5 +53,19 @@
     <ClCompile Include="SOURCE\ALLOCATORS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\TERMINATE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\STRING.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\FASTFAIL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-tidy" />
+    <None Include="SuppressionFile.suppress" />
+    <None Include="CPP_RUNTIMELIB_STATIC_PART.suppress" />
   </ItemGroup>
 </Project>

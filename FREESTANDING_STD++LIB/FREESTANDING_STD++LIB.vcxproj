@@ -172,7 +172,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4464;4514;4710;</DisableSpecificWarnings>
       <EnablePREfast>true</EnablePREfast>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
@@ -206,7 +206,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4464;4514;4710;</DisableSpecificWarnings>
       <EnablePREfast>true</EnablePREfast>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>

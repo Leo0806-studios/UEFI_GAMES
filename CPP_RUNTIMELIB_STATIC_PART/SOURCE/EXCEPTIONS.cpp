@@ -1,227 +1,203 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 //################Exception support for my freestanding c++ runtie.
-// part of the code is taken from 
-//#include "ehdata.h"
-// and
-//#include "ehdata_forceinclude.h"
-// 
-// 
-// 
+// explanation to linter disables.
+// -NOSTD  : this warnign is disabled because not standart library is availible for the runtime
+// -NOCASTWARN : warning disabled because Reinterpret_cast is required for the runtime
 //
-#if defined(_M_CEE_PURE) || defined(BUILDING_C1XX_FORCEINCLUDE)
-#define _EH_RELATIVE_TYPEINFO 0
-#define _EH_RELATIVE_FUNCINFO 0
-#define _RTTI_RELATIVE_TYPEINFO 0
-#elif defined(_CHPE_X86_ARM64_EH_)
-#define _EH_RELATIVE_TYPEINFO 0
-#define _EH_RELATIVE_FUNCINFO 1
-#define _RTTI_RELATIVE_TYPEINFO 0
-#elif defined(_M_ARM)
-#define _EH_RELATIVE_TYPEINFO 1
-#define _EH_RELATIVE_FUNCINFO 1
-#define _RTTI_RELATIVE_TYPEINFO 0
-#elif defined(_M_X64) || defined(_M_ARM64)
-#define _EH_RELATIVE_TYPEINFO 1
-#define _EH_RELATIVE_FUNCINFO 1
-#define _RTTI_RELATIVE_TYPEINFO 1
-#else
-#define _EH_RELATIVE_TYPEINFO 0
-#define _EH_RELATIVE_FUNCINFO 0
-#define _RTTI_RELATIVE_TYPEINFO 0
-#endif
 
 
-
-
-//
-// PMD - Pointer to Member Data: generalized pointer-to-member descriptor
-//
-typedef struct PMD
-{
-	int	mdisp;	// Offset of intended data within base
-	int	pdisp;	// Displacement to virtual base pointer
-	int	vdisp;	// Index within vbTable to offset of base
-} PMD;
-
-//
-// PMFN - Pointer to Member Function
-//
-#if _EH_RELATIVE_TYPEINFO
-typedef	int	PMFN;					// Image relative offset of Member Function
-#else
-typedef void(__cdecl* PMFN)(void*);
-#endif
-
-typedef void* (__stdcall* PGETWINRT_OOM_EXCEPTION)();
-
-//
-// TypeDescriptor - per-type record which uniquely identifies the type.
-//
-// Each type has a decorated name which uniquely identifies it, and a hash
-// value which is computed by the compiler.  The hash function used is not
-// important; the only thing which is essential is that it be the same for
-// all time.
-//
-// The special type '...' (ellipsis) is represented by a null name.
-//
+#include "INIT_RUNTIME.h"
+#include "CPPRUNTIME.h"
+#include "EH_DATA.h"
+#include <intrin.h>//NOLINT(llvmlibc-restrict-system-libc-headers)
+#include <stdint.h>//NOLINT
 #pragma warning(push)
-#pragma warning(disable:4200)	// nonstandard extension used: array of runtime bound
+#pragma warning (disable:26457)
 
-#if defined(_M_X64) || defined(_M_ARM64) || defined(BUILDING_C1XX_FORCEINCLUDE)
-#pragma pack(push, TypeDescriptor, 8)
-#endif
-
-typedef struct TypeDescriptor
-{
-#if defined(_WIN64) || defined(_RTTI) || defined(BUILDING_C1XX_FORCEINCLUDE)
-	const void* pVFTable;	// Field overloaded by RTTI
-#else
-	unsigned long	hash;			// Hash value computed from type's decorated name
-#endif
-	void* spare;			// reserved, possible for RTTI
-	char			name[];			// The decorated name of the type; 0 terminated.
-} TypeDescriptor;
-
-#if defined(_M_X64) || defined(_M_ARM64) || defined(BUILDING_C1XX_FORCEINCLUDE)
-#pragma pack(pop, TypeDescriptor)
-#endif
-#pragma warning(pop)
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Description of the thrown object.
-//
-// This information is broken down into three levels, to allow for maximum
-// comdat folding (at the cost of some extra pointers).
-//
-// ThrowInfo is the head of the description, and contains information about
-// 				the particular variant thrown.
-// CatchableTypeArray is an array of pointers to type descriptors.  It will
-//				be shared between objects thrown by reference but with varying
-//				qualifiers.
-// CatchableType is the description of an individual type, and how to effect
-//				the conversion from a given type.
-//
-//---------------------------------------------------------------------------
-
-
-//
-// CatchableType - description of a type that can be caught.
-//
-// Note:  although isSimpleType can be part of ThrowInfo, it is more
-//		  convenient for the run-time to have it here.
-//
-typedef const struct _s_CatchableType {
-	unsigned int		properties;			// Catchable Type properties (Bit field)
-#if _EH_RELATIVE_TYPEINFO
-	int					pType;				// Image relative offset of TypeDescriptor
-#else
-	TypeDescriptor* pType;				// Pointer to the type descriptor for this type
-#endif
-	PMD 				thisDisplacement;	// Pointer to instance of catch type within thrown object.
-	int					sizeOrOffset;		// Size of simple-type object or offset into
-	//  buffer of 'this' pointer for catch object
-	PMFN				copyFunction;		// Copy constructor or CC-closure
-} CatchableType;
-
-//
-// CatchableTypeArray - array of pointers to catchable types, with length
-//
-#pragma warning (push)
-#pragma warning (disable:4200)	// nonstandard extension used: array of runtime bound
-typedef const struct _s_CatchableTypeArray {
-	int	nCatchableTypes;
-#if _EH_RELATIVE_TYPEINFO
-	int				arrayOfCatchableTypes[];	// Image relative offset of Catchable Types
-#else
-	CatchableType* arrayOfCatchableTypes[];
-#endif
-} CatchableTypeArray;
-#pragma warning (pop)
-
-//
-// ThrowInfo - information describing the thrown object, statically built
-// at the throw site.
-//
-// pExceptionObject (the dynamic part of the throw; see below) is always a
-// reference, whether or not it is logically one.  If 'isSimpleType' is true,
-// it is a reference to the simple type, which is 'size' bytes long.  If
-// 'isReference' and 'isSimpleType' are both false, then it's a UDT or
-// a pointer to any type (i.e. pExceptionObject points to a pointer).  If it's
-// a pointer, copyFunction is NULL, otherwise it is a pointer to a copy
-// constructor or copy constructor closure.
-//
-// The pForwardCompat function pointer is intended to be filled in by future
-// versions, so that if say a DLL built with a newer version (say C10) throws,
-// and a C9 frame attempts a catch, the frame handler attempting the catch (C9)
-// can let the version that knows all the latest stuff do the work.
-//
-typedef const struct _s_ThrowInfo {
-	unsigned int	attributes;							// Throw Info attributes (Bit field)
-	PMFN			pmfnUnwind;							// Destructor to call when exception has been handled or aborted
-#if _EH_RELATIVE_TYPEINFO && !defined(BUILDING_C1XX_FORCEINCLUDE)
-	int				pForwardCompat;						// Image relative offset of Forward compatibility frame handler
-	int				pCatchableTypeArray;				// Image relative offset of CatchableTypeArray
-#else
-	int(__cdecl* pForwardCompat)(...);				// Forward compatibility frame handler
-	CatchableTypeArray* pCatchableTypeArray;			// Pointer to list of pointers to types
-#endif
-} ThrowInfo;
-
-
-
-enum unwind_info_flags: unsigned char  {
-	UNW_FLAG_EHANDLER,
-	UNW_FLAG_UHANDLER,
-	UNW_FLAG_CHAININFO
-};
-
-
-typedef struct _s_runtime_function {
-	unsigned long BeginAddress;		// The address of the first instruction in the function
-	unsigned long EndAddress;		// The address of the first instruction after the function
-	unsigned long UnwindData;		// The address of the unwind data for this function
-} _RUNTIME_FUNCTION;
-
-using UBYTE = unsigned char;
-
-
-
-//typedef struct _s_unwind_info {
-//	UBYTE version : 3;
-//	UBYTE flags : 5;
-//	UBYTE size_of_prolog;	
-//	UBYTE count_of_codes;
-//	UBYTE frame_register : 4;
-//	UBYTE frame_offset : 4;
-//	unsigned short* unwind_code_array;
-//	union flagDependant {
-//		struct exceptionHandler {
-//			unsigned long exception_handler;	
-//		} exceptionHandler;
-//		struct chainedUnwindInfo{
-//			unsigned long begin_address;	
-//			unsigned long end_address;
-//			unsigned long unwind_info_address;	
-//			unsigned long long Placeholder;;// this is only there so the size is compatible with the compiler generated format. this field is windows specific and so unused
-//		} chainedUnwindInfo;
-//	}flag_dependant;
-//}_UNWIND_INFO;
-
-
-
-
-
-extern "C" __declspec(noreturn) void __stdcall _CxxThrowException(
-	void* pExceptionObject, _ThrowInfo* pThrowInfo) noexcept(false)
-{
-	(void)pExceptionObject; // Suppress unused parameter warning
-	(void)pThrowInfo; // Suppress unused parameter warning
-	ThrowInfo* const throwInfo = reinterpret_cast<ThrowInfo*>(pThrowInfo);
-	(void)throwInfo;
+#define _RT__LIKELY [[likely]] //NOLINT
+#define _RT__UNLIKELY [[unlikely]]
+//NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+#define MEMCOPY(dest,src,size)\
+for(size_t i = 0; i < (size); ++i) {\
+	(reinterpret_cast<unsigned char*>(dest))[i] = (reinterpret_cast<unsigned const char*>(src))[i];\
+}
+//NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+#define MEMSET(dest,val,size)\
+for(size_t i =0;i<(size);i++){\
+(reinterpret_cast<unsigned char*>(dest))[i] =val;\
 }
 
+
+
+
+
+
+
+
+
+
+static __forceinline void CaptureThrowSiteContext(CONTEXT64& ctx) {
+	void* ret = _ReturnAddress();                  // RIP after the call to _CxxThrowException
+	ctx.Rip = reinterpret_cast<uint64_t>(ret);
+	// In the caller, the return address is at [RSP], so the caller's RSP after "ret" would be +8
+	void** addrOfRet = static_cast<void**>(_AddressOfReturnAddress()); //NOSONAR -NOCASTWARN
+	ctx.Rsp = reinterpret_cast<uint64_t>(addrOfRet + 1);   // point past the return address //NOLINT(clang-diagnostic-unsafe-buffer-usage)
+	// Rbp is whatever it is; non-volatiles are unknown yet (unwind will reconstruct as needed)
+}
+/// <summary>
+/// looks up a RUNTIME_FUNCTION entry for the given rva in the given table.
+///the rva is RIP - ImageBase
+/// </summary>
+/// <param name="rva"></param>
+/// <param name="table"></param>
+/// <param name="count"></param>
+/// <returns></returns>
+static const RUNTIME_FUNCTION* LookupFunctionEntry(unsigned int rva, const RUNTIME_FUNCTION table[], size_t count) {//NOLINT(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
+	size_t lo = 0;
+	size_t hi = count;
+	while (lo < hi) {
+		const size_t mid = (lo + hi) / 2; //NOSONAR 
+		const auto& e = table[mid];//NOLINT(clang-diagnostic-unsafe-buffer-usage)
+		if (rva < e.BeginAddress) {
+			hi = mid;
+		}
+		else if (rva >= e.EndAddress) {
+			lo = mid + 1;
+		}
+		else {
+			return &e; // found
+		}
+	}
+	return nullptr; // leaf function (no unwind info)
+}
+
+
+#pragma section(".xcata", read)
+#pragma warning (push)
+#pragma warning (disable:26814)
+__declspec(allocate(".xcata")) const int __unwinddata_start = 0;
+
+#pragma section(".xdata", read)
+#pragma warning (pop)
+static _UNWIND_INFO ReadUnwindInfo(_In_ const char* unwindData) {
+	if (!AS_BOOL(unwindData)) {
+		
+		std::terminate();
+	}
+	(void)__unwinddata_start;
+	size_t ofsettinStruct = 0;
+	_UNWIND_INFO unwindInfo = {};
+	MEMCOPY(&unwindInfo, unwindData, 4);//we can copy the first bytes as they are  of static size n the struct. //NOLINT(clang-diagnostic-unsafe-buffer-usage)
+	ofsettinStruct += 4; // Move the offset to the next field
+	unwindInfo.unwind_code_array = reinterpret_cast<UNWIND_CODE*>(reinterpret_cast<size_t>(unwindData) + ofsettinStruct);//NOSONAR -NOCASTWARN //NOLINT
+	if (unwindInfo.count_of_codes % 2 == 0) {
+		ofsettinStruct += unwindInfo.count_of_codes*sizeof(UNWIND_CODE);
+	}
+	else {
+		constexpr unsigned char MaxCodes = 255U;
+		if (unwindInfo.count_of_codes ==MaxCodes) {
+			std::terminate();
+		}
+		ofsettinStruct += (static_cast<size_t>(unwindInfo.count_of_codes) + 1U)*sizeof(UNWIND_CODE); // Align to even number
+	}
+	switch (unwindInfo.flags) {
+	case UNW_FLAG_NHANDLER:
+	{
+		return unwindInfo;
+	}
+	case UNW_FLAG_EHANDLER: {
+
+		unwindInfo.flag_dependant.exceptionHandler = *reinterpret_cast<RVA*>(reinterpret_cast<size_t>(unwindData) + ofsettinStruct);//NOSONAR -NOCASTWARN
+		break;
+	}
+	case UNW_FLAG_UHANDLER: {
+		unwindInfo.flag_dependant.exceptionHandler = *reinterpret_cast<RVA*>(reinterpret_cast<size_t>(unwindData) + ofsettinStruct);//NOSONAR -NOCASTWARN
+		break;
+	}
+	case (UNW_FLAG_EHANDLER ^ UNW_FLAG_UHANDLER): {
+		unwindInfo.flag_dependant.exceptionHandler = *reinterpret_cast<RVA*>(reinterpret_cast<size_t>(unwindData) + ofsettinStruct);//NOSONAR -NOCASTWARN
+		break;
+	}
+	case UNW_FLAG_CHAININFO: {
+		unwindInfo.flag_dependant.chainedFunction = *reinterpret_cast<RVA*>(reinterpret_cast<size_t>(unwindData) + ofsettinStruct);//NOSONAR -NOCASTWARN
+		break;
+	}
+	_RT__UNLIKELY default: {
+		std::terminate();
+		
+	}
+	}
+	ofsettinStruct += 4; // Move past the flag dependant field
+	if (unwindInfo.flags & UNW_FLAG_EHANDLER || unwindInfo.flags & UNW_FLAG_UHANDLER) {//NOLINT(readability-implicit-bool-conversion)
+		unwindInfo.optionalData = reinterpret_cast<FH4::FuncInfo4*>(reinterpret_cast<size_t>(unwindData) + ofsettinStruct);//NOSONAR -NOCASTWARN
+	}
+	return unwindInfo;
+}
+/// <summary>
+/// phase 1 of the exception process.
+/// this function unwinds untill it finds a matching catch handler or the end of the stack.
+/// returns false if no handler was found and true if a handler was found.
+/// </summary>
+/// <param name="ctx"></param>
+/// <param name=""></param>
+/// <returns></returns>
+static bool UnwindSearch(const CONTEXT64& ctx, const ThrowInfo*const throwInfo) {
+	(void)ctx;
+	(void)throwInfo;
+	return false;
+}
+#ifdef __INTELLISENSE__
+struct _ThrowInfo; //this si just to disable the intellisense error it doesnt get the type injected
+
+#endif // __INTELLISENSE__
+
+
+#pragma warning (push)
+#pragma warning(disable:4577)
+extern "C" __declspec(noreturn) __declspec(noinline)  void __stdcall _CxxThrowException(
+	void* pExceptionObject, _ThrowInfo* pThrowInfo) noexcept(false)
+{
+	
+	(void)pExceptionObject; // Suppress unused parameter warning
+	(void)pThrowInfo; // Suppress unused parameter warning
+	CONTEXT64 ctx{};
+	CaptureThrowSiteContext(ctx);
+	const CONTEXT64 ctxCopy = ctx;
+	const auto* const throwInfo = reinterpret_cast<ThrowInfo*>(pThrowInfo); //NOSONAR -NOCASTWARN
+	size_t count = initParameters.pdata.size / sizeof(RUNTIME_FUNCTION);
+	//const void*const rip = _ReturnAddress();
+	auto rva = static_cast<RVA>(ctx.Rip - reinterpret_cast<unsigned long long>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
+	const RUNTIME_FUNCTION* const table = reinterpret_cast<const RUNTIME_FUNCTION*>(initParameters.pdata.offset + reinterpret_cast<size_t>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
+	const RUNTIME_FUNCTION* const found = [&]() {
+		const RUNTIME_FUNCTION* found_ = nullptr;
+		while (!found_) {
+			found_ = LookupFunctionEntry(rva, table, count);
+			if (!found_) {
+				ctx.Rsp += 8;
+				ctx.Rip = reinterpret_cast<uint64_t>(*reinterpret_cast<void**>(ctx.Rsp));//NOSONAR -NOCASTWARN
+			}
+		}
+		return found_;
+
+		}();
+
+
+	const char* const unwindData = reinterpret_cast<const char* const>(found->UnwindData + reinterpret_cast<size_t>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN //-V3546 //-V2571
+	(void)unwindData;
+	(void)throwInfo;
+
+
+
+
+
+
+	std::terminate(); // For now, just terminate the program //this is here just to make msvc happy
+}
+#pragma warning (pop)
 extern "C" {
-	void* __CxxFrameHandler4(void* pExceptionRecord, void* pEstablisherFrame, void* pContextRecord, void* pDispatcherContext) {
+	void* __CxxFrameHandler4(void* pExceptionRecord, void* pEstablisherFrame, void* pContextRecord, void* pDispatcherContext) { //NOLINT(bugprone-easily-swappable-parameters,clang-diagnostic-missing-prototypes)
 	// This function is a placeholder for the C++ exception handling mechanism.
 	// It is typically used by the C++ runtime to handle exceptions thrown in the code.
 	// The actual implementation would be provided by the C++ standard library or runtime.
@@ -232,7 +208,7 @@ extern "C" {
 	(void)pEstablisherFrame; // Suppress unused parameter warning
 	(void)pContextRecord; // Suppress unused parameter warning
 	(void)pDispatcherContext; // Suppress unused parameter warning
-
 	return nullptr; // Return nullptr as a placeholder
 }
  }
+#pragma warning(pop)

@@ -76,13 +76,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
     <CustomBuildAfterTargets>TlogCleanup</CustomBuildAfterTargets>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <CustomBuildAfterTargets>TlogCleanup</CustomBuildAfterTargets>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -121,7 +121,6 @@
       <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <ExceptionHandling>Sync</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
@@ -129,6 +128,8 @@
       <DisableSpecificWarnings>5045;4464;4820;4711;4100;4505;4514;4710;</DisableSpecificWarnings>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -140,6 +141,9 @@
       <AdditionalLibraryDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\depend\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>false</DataExecutionPrevention>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MergeSections>.xdata=.xcdata</MergeSections>
     </Link>
     <PostBuildEvent>
       <Command> xcopy /Q /Y $(TargetDir)$(TargetName)$(TargetExt) $(SolutionDir)image\efi\boot</Command>
@@ -156,13 +160,13 @@
       <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <ExceptionHandling>Sync</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>5045;4464;4820;4711;4100;4505;4514;4710;</DisableSpecificWarnings>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -174,6 +178,7 @@
       <AdditionalLibraryDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\depend\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>false</DataExecutionPrevention>
+      <MergeSections>.xdata=.xcdata</MergeSections>
     </Link>
     <PostBuildEvent>
       <Command> xcopy /Q /Y $(TargetDir)$(TargetName)$(TargetExt) $(SolutionDir)image\efi\boot</Command>

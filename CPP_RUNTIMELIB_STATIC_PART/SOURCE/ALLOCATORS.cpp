@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 #include "INIT_RUNTIME.h"
 #include "CPPRUNTIME.h"
 #include "ALLOCATORS.h"
@@ -51,11 +54,12 @@ Heap heap; // global heap variable to store the heap state.
 /// <returns></returns>
 static MemoryNode* SplittHeapNode(HeapNode heapNode, MemoryNode* Node, size_t size) {
 	//Handle Special case where only one node Exists.
+	__assume(Node != nullptr); 
 	if ((Node->prev == nullptr) && (Node->next == nullptr)) {
 		MemoryNode* NewNodeSecond = reinterpret_cast<MemoryNode*>(reinterpret_cast<char*>(Node) + size + (sizeof(MemoryNode)));// + sizeof(HeapNode) to account for the size of the HeapNode itself
 		MEMSET(NewNodeSecond, 0, sizeof(MemoryNode));
 		MemoryNode* NewNodeFirst = Node;
-		size_t OldSize = Node->size;
+		const size_t OldSize = Node->size;
 		NewNodeFirst->size = size;
 		NewNodeFirst->next = NewNodeSecond;
 		NewNodeFirst->isFree = true;// actual setting will be done in alloc
@@ -75,7 +79,7 @@ static MemoryNode* SplittHeapNode(HeapNode heapNode, MemoryNode* Node, size_t si
 	}
 
 	MemoryNode* NewNodeFirst = Node;
-	size_t oldSize = NewNodeFirst->size;
+	const size_t oldSize = NewNodeFirst->size;
 
 	NewNodeFirst->size = size;
 	//get the split point and assign it to the new node
@@ -97,6 +101,8 @@ static MemoryNode* SplittHeapNode(HeapNode heapNode, MemoryNode* Node, size_t si
 }
 static MemoryNode* MergeNodes(HeapNode heapNode, MemoryNode* Node1, MemoryNode* Node2) {
 	// merge two nodes into one
+	__assume(Node1 != nullptr);
+	__assume(Node2 != nullptr);
 	Node1->size += Node2->size + sizeof(HeapNode); // add the size of the second node and the size of the HeapNode itself
 	if (Node2->next == nullptr) {
 		// this is the last node in the heap
@@ -158,13 +164,14 @@ static bool FreeToOS(HeapNode* ptr) {
 		prev->next = next; // link the previous node to the next node
 	}
 
-	initParameters.callbacks.freePages(ptr);
+	bool sucsess =initParameters.callbacks.freePages(ptr);
 	heap.totalSize -= ptr->size; // decrease the total size of the heap
+	return sucsess;
 }
 
 
 
-void* malloc(size_t size) {
+ _declspec(restrict) void* malloc(size_t size) {
 	//walk the HeapNode list and the internal list of memory nodes
 	HeapNode* currentHeapNode = heap.first;
 	MemoryNode* ptr = nullptr;
@@ -196,7 +203,7 @@ void* malloc(size_t size) {
 	if (!ptr) {
 		HeapNode* newNode = nullptr;
 		if (size < PAGE_SIZE / 2) {
-			newNode = AllocateFromOS((size / PAGE_SIZE) + 1);
+			newNode = AllocateFromOS((size / PAGE_SIZE) + 1); //-V1064
 		}
 		else {
 			newNode = AllocateFromOS((size / PAGE_SIZE) + 2);

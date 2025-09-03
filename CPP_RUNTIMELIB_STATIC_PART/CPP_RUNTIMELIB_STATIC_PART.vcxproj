@@ -21,12 +21,26 @@
   <ItemGroup>
     <ClInclude Include="HEADER\ALLOCATORS.h" />
     <ClInclude Include="HEADER\CPPRUNTIME.h" />
+    <ClInclude Include="HEADER\CRT_MACROS.h" />
+    <ClInclude Include="HEADER\EH_DATA.h" />
     <ClInclude Include="HEADER\INIT_RUNTIME.h" />
+    <ClInclude Include="HEADER\INTERNAL\GLOBAL_STATE.h" />
+    <ClInclude Include="HEADER\LANGUAGE_EXTENSION.h" />
+    <ClInclude Include="HEADER\RTTI_DATA.h" />
+    <ClInclude Include="HEADER\STRING.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\ALLOCATORS.cpp" />
     <ClCompile Include="SOURCE\EXCEPTIONS.cpp" />
+    <ClCompile Include="SOURCE\FASTFAIL.cpp" />
     <ClCompile Include="SOURCE\INIT_RUNTIME.cpp" />
+    <ClCompile Include="SOURCE\STRING.cpp" />
+    <ClCompile Include="SOURCE\TERMINATE.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-tidy" />
+    <None Include="CPP_RUNTIMELIB_STATIC_PART.suppress" />
+    <None Include="SuppressionFile.suppress" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -83,10 +97,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
     <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
     <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>false</VcpkgEnabled>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -138,9 +161,12 @@
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>5247;5248;4711;4505;4514;5045;4710</DisableSpecificWarnings>
+      <EnablePREfast>true</EnablePREfast>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -169,9 +195,12 @@
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <DisableSpecificWarnings>5247;5248;4711;4505;4514;5045;4710</DisableSpecificWarnings>
+      <EnablePREfast>true</EnablePREfast>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>

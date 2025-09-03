@@ -30,7 +30,9 @@ import PE;
 		4th is the symbol table header. this header contains the symbol table for the file.
 		5th is a export table.
 		6th is a import table
+		the last (bit 64) is for a custom header headre that points to a section tht contains an array of custom headers whose parsers  must be registerd with the os runtime services
 		others are reserved for future use.
+
 		*/
 		std::bitset<64> HeaderBitmap = 0; // this is a bitmap of the headers that are present in the file. each bit represents a header. if the bit is set then the header is present.
 		std::vector<unsigned __int8> Headers; // this is a vector of bytes that contains all the headers in the file. the headers are packed in the order they are defined in the header bitmap.

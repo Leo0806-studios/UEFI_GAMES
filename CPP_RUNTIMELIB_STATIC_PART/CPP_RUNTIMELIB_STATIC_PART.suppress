@@ -1,0 +1,236 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SuppressVersion">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CurrentVersion" type="xs:int" minOccurs="0" />
+                <xs:element name="IsPrimary" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="CPP_RUNTIMELIB_STATIC_PART" msdata:CaseSensitive="False">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FileName" type="xs:string" default="" />
+                <xs:element name="ErrorCode" type="xs:string" default="" />
+                <xs:element name="Message" type="xs:string" default="" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" default="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//CPP_RUNTIMELIB_STATIC_PART" />
+        <xs:field xpath="FileName" />
+        <xs:field xpath="ErrorCode" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="CodePrev" />
+        <xs:field xpath="CodeCurrent" />
+        <xs:field xpath="CodeNext" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <SuppressVersion>
+    <CurrentVersion>3</CurrentVersion>
+    <IsPrimary>false</IsPrimary>
+  </SuppressVersion>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>ALLOCATORS.h</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__CPP_RUNTIME_ALLOCATOR__' identifier.</Message>
+    <CodePrev>4095910386</CodePrev>
+    <CodeCurrent>371368433</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>CPPRUNTIME.h</FileName>
+    <ErrorCode>V1061</ErrorCode>
+    <Message>Extending the 'std' namespace may result in undefined behavior.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>314763</CodeCurrent>
+    <CodeNext>205655172</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>CPPRUNTIME.h</FileName>
+    <ErrorCode>V1061</ErrorCode>
+    <Message>Extending the 'std' namespace may result in undefined behavior.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>161165888</CodeCurrent>
+    <CodeNext>101308</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EH_DATA.h</FileName>
+    <ErrorCode>V1061</ErrorCode>
+    <Message>Extending the 'std' namespace may result in undefined behavior.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>314763</CodeCurrent>
+    <CodeNext>1649831063</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EH_DATA.h</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '_UTILITY_' identifier.</Message>
+    <CodePrev>240789</CodePrev>
+    <CodeCurrent>5269</CodeCurrent>
+    <CodeNext>104925</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EH_DATA.h</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '_INC_STRING' identifier.</Message>
+    <CodePrev>29344</CodePrev>
+    <CodeCurrent>29199</CodeCurrent>
+    <CodeNext>397975531</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EH_DATA.h</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '_INC_STDLIB' identifier.</Message>
+    <CodePrev>54945173</CodePrev>
+    <CodeCurrent>29344</CodeCurrent>
+    <CodeNext>29199</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EXCEPTIONS.cpp</FileName>
+    <ErrorCode>V2571</ErrorCode>
+    <Message>Conversions between pointers and integer types should not be performed. Consider inspecting the expression: 'reinterpret_cast&lt; void * * &gt; (ctx.Rsp)'.</Message>
+    <CodePrev>71431</CodePrev>
+    <CodeCurrent>1383500179</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EXCEPTIONS.cpp</FileName>
+    <ErrorCode>V3546</ErrorCode>
+    <Message>Conversions between pointers and integer types should not be performed. Consider inspecting the expression: 'reinterpret_cast&lt; void * * &gt; (ctx.Rsp)'.</Message>
+    <CodePrev>71431</CodePrev>
+    <CodeCurrent>1383500179</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EXCEPTIONS.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '_CxxThrowException' identifier.</Message>
+    <CodePrev>2093649523</CodePrev>
+    <CodeCurrent>284682238</CodeCurrent>
+    <CodeNext>2051756228</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EXCEPTIONS.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '_RT__UNLIKELY' identifier.</Message>
+    <CodePrev>1270612477</CodePrev>
+    <CodeCurrent>342541587</CodeCurrent>
+    <CodeNext>1633484010</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EXCEPTIONS.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '_RT__LIKELY' identifier.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1270612477</CodeCurrent>
+    <CodeNext>342541587</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>EXCEPTIONS.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__CxxFrameHandler_' identifier.</Message>
+    <CodePrev>39363</CodePrev>
+    <CodeCurrent>1943209590</CodeCurrent>
+    <CodeNext>3008521625</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xt_a' identifier.</Message>
+    <CodePrev>1750556239</CodePrev>
+    <CodeCurrent>707316764</CodeCurrent>
+    <CodeNext>2483573859</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xc_a' identifier.</Message>
+    <CodePrev>2075974866</CodePrev>
+    <CodeCurrent>1627150226</CodeCurrent>
+    <CodeNext>2928261236</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xp_z' identifier.</Message>
+    <CodePrev>3754875374</CodePrev>
+    <CodeCurrent>1750556239</CodeCurrent>
+    <CodeNext>707316764</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xi_z' identifier.</Message>
+    <CodePrev>3660175561</CodePrev>
+    <CodeCurrent>2075974866</CodeCurrent>
+    <CodeNext>1627150226</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xt_z' identifier.</Message>
+    <CodePrev>707316764</CodePrev>
+    <CodeCurrent>2483573859</CodeCurrent>
+    <CodeNext>189564443</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xc_z' identifier.</Message>
+    <CodePrev>1627150226</CodePrev>
+    <CodeCurrent>2928261236</CodeCurrent>
+    <CodeNext>3754875374</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '_CRT_ALLOCATE' identifier.</Message>
+    <CodePrev>8993938</CodePrev>
+    <CodeCurrent>3263787516</CodeCurrent>
+    <CodeNext>3735292241</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xi_a' identifier.</Message>
+    <CodePrev>410918430</CodePrev>
+    <CodeCurrent>3660175561</CodeCurrent>
+    <CodeNext>2075974866</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.cpp</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__xp_a' identifier.</Message>
+    <CodePrev>2928261236</CodePrev>
+    <CodeCurrent>3754875374</CodeCurrent>
+    <CodeNext>1750556239</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>INIT_RUNTIME.h</FileName>
+    <ErrorCode>V3547</ErrorCode>
+    <Message>Identifiers that contain '__' or start with '_[A-Z]' are reserved. Consider inspecting the '__OS_CALLBACKS' identifier.</Message>
+    <CodePrev>16019</CodePrev>
+    <CodeCurrent>99666361</CodeCurrent>
+    <CodeNext>4109337113</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+  <CPP_RUNTIMELIB_STATIC_PART>
+    <FileName>TERMINATE.cpp</FileName>
+    <ErrorCode>V1061</ErrorCode>
+    <Message>Extending the 'std' namespace may result in undefined behavior.</Message>
+    <CodePrev>8993938</CodePrev>
+    <CodeCurrent>314763</CodeCurrent>
+    <CodeNext>1236870692</CodeNext>
+  </CPP_RUNTIMELIB_STATIC_PART>
+</NewDataSet>

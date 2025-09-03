@@ -1,7 +1,10 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 #include "INIT_RUNTIME.h"
 #include "ALLOCATORS.h"
-#define _CRT_ALLOCATE(X)__declspec(allocate(X))
-
+#include "CPPRUNTIME.h"
+#define _CRT_ALLOCATE(X)__declspec(allocate(X)) // NOLINT
 #pragma section(".CRT$XIA",long,read)
 #pragma section(".CRT$XIZ",long,read)
 #pragma section(".CRT$XCA",long,read)
@@ -13,25 +16,28 @@
 
 
 using _PVFV = void (*)(void);
-//using _PIFV =  int (*)(void)
-extern "C" _CRT_ALLOCATE(".CRT$XIA") _PVFV __xi_a[] = { 0 };//C initialization array start
-extern "C" _CRT_ALLOCATE(".CRT$XIZ") _PVFV __xi_z[] = { 0 };//C initialization array end
-extern "C" _CRT_ALLOCATE(".CRT$XCA") _PVFV __xc_a[] = { 0 };//C++ initialization array start
-extern "C" _CRT_ALLOCATE(".CRT$XCZ") _PVFV __xc_z[] = { 0 };//C++ initialization array end
-extern "C" _CRT_ALLOCATE(".CRT$XPA") _PVFV __xp_a[] = { 0 }; // C pre-terminators (first)
-extern "C" _CRT_ALLOCATE(".CRT$XPZ") _PVFV __xp_z[] = { 0 }; // C pre-terminators (last)
-extern "C" _CRT_ALLOCATE(".CRT$XTA") _PVFV __xt_a[] = { 0 }; // C terminators (first)
-extern "C" _CRT_ALLOCATE(".CRT$XTZ") _PVFV __xt_z[] = { 0 }; // C terminators (last)
-void _init_Ctors() {
+//using _PIFV =  int (*)(void) //NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XIA") _PVFV __xi_a[] = { nullptr };//C initialization array start //NOLINT//NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XIZ") _PVFV __xi_z[] = {nullptr };//C initialization array end //NOLINT		//NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XCA") _PVFV __xc_a[] = { nullptr };//C++ initialization array start//NOLINT	//NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XCZ") _PVFV __xc_z[] = { nullptr };//C++ initialization array end//NOLINT	//NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XPA") _PVFV __xp_a[] = { nullptr }; // C pre-terminators (first)//NOLINT		//NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XPZ") _PVFV __xp_z[] = { nullptr }; // C pre-terminators (last)//NOLINT		//NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XTA") _PVFV __xt_a[] = { nullptr }; // C terminators (first)//NOLINT			//NOSONAR
+extern "C" _CRT_ALLOCATE(".CRT$XTZ") _PVFV __xt_z[] = { nullptr }; // C terminators (last)//NOLINT			//NOSONAR
+ static void _init_Ctors() {																				//NOSONAR
 	// Call C initializers
-	for (_PVFV* p = __xi_a; p < __xi_z; ++p) {
-		if (*p) {
+	 for (_PVFV* p = &__xi_a[0]; p < &__xi_z[0]; ++p) {//NOLINT
+		 __assume(p != nullptr);
+		if (AS_BOOL(*p)) {//NOSONAR
 			(*p)();
 		}
 	}
 		// Call C++ initializers
-	for (_PVFV* p = __xc_a; p < __xc_z; ++p) {
-		if (*p) {
+	 for (_PVFV* p = &__xc_a[0]; p < &__xc_z[0]; ++p) {//NOLINT
+		 __assume(p != nullptr);
+
+		if (AS_BOOL(*p)) {//NOSONAR
 			(*p)();
 		}
 	}
@@ -46,19 +52,23 @@ struct AtExitList {
 	size_t capacity = 0;
 };
 
-bool registerAtExit() {
+static bool registerAtExit() {
 	return false;
 }
 extern "C" 
 {
-	void initRuntime(RuntimeInitParameters InitParameters)
+	void initRuntime(const RuntimeInitParameters& InitParameters)
 	{
 
-		::initParameters = InitParameters;
 		CreateHeap(InitParameters.initialHeapSize);
 		_init_Ctors();
+		::initParameters = InitParameters;// must be done after ctor calls as it would be overriden otherwise
+
 		(void)registerAtExit();
 	}
+	
 }
 
-RuntimeInitParameters initParameters;
+RuntimeInitParameters initParameters; //NOLINT //yeh i should do something about the globals...
+
+void* GlobalState = nullptr;//NOLINT //yeh i should do something about the globals...

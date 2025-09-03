@@ -1,0 +1,38 @@
+Checks: >-
+  *,
+  -clang-diagnostic-reserved-macro-identifier,
+  -clang-diagnostic-reserved-identifier,
+  -bugprone-reserved-identifier,
+  -cert-dcl37-c,
+  -cert-dcl51-cpp,
+  -llvmlibc-implementation-in-namespace,
+  -clang-diagnostic-c++98-compat,
+  -modernize-redundant-void-arg,
+  -misc-use-anonymous-namespace,
+  -clang-diagnostic-language-extension-token,
+  -modernize-use-trailing-return-type,
+  -altera-unroll-loops,
+  -readability-identifier-length,
+  -altera-id-dependent-backward-branch,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -llvmlibc-callee-namespace,
+  -altera-struct-pack-align,
+  -misc-include-cleaner,
+  -clang-diagnostic-c++98-compat-pedantic,
+  -llvm-header-guard,
+  -cert-dcl58-cpp,
+  -llvmlibc-inline-function-decl,
+  -fuchsia-overloaded-operator,
+  -clang-diagnostic-pre-c++14-compat,
+  -clang-diagnostic-c++98-c++11-compat-binary-literal,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -cppcoreguidelines-pro-type-union-access,
+  -clang-diagnostic-unused-macros,
+  -clang-diagnostic-extra-semi-stmt,
+  -performance-no-int-to-ptr
+  
+
+HeaderFilterRegex: '.*'
+CheckOptions:
+  -key: misc-non-private-member-variables-in-classes.IgnorePublicMemberVariables
+  value: 'true'

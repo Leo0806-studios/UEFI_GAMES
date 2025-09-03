@@ -1,7 +1,74 @@
+#include <sal.h>//NOLINT //this is itelsf a system header. im writing a runtime
 extern "C" {
 
-	void* malloc(size_t size);
-	void free(void* ptr);
+	_Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(_Size) 
+		_declspec(restrict) void* malloc(_In_ size_t _Size); //NOLINT(readability-redundant-declaration)
+	void free(//NOLINT(readability-redundant-declaration)
+		_Pre_maybenull_ _Post_invalid_ void* _Block
+	);
 
-	void _free_dbg(void* ptr);
+	void _free_dbg(void* _Block);
+
 }
+template<typename T> [[nodiscard]] constexpr __forceinline bool static AS_BOOL(T x) { return static_cast<bool>(x); }//NOLINT //NOSONAR
+
+
+namespace std {//NOSONAR
+	/// <summary>
+	/// terminates the current process and all its threds. if no os callback is supplied it will looop forever. in kernel mode it causes a panic
+	/// </summary>
+	_declspec(noreturn) void terminate();
+
+	void setTerminateHandler(void(*handler)());
+}//namespace std
+__declspec(noreturn) void abort();
+
+namespace std {
+	template<typename SizeType,typename Tag>
+	class StrongSize {
+		SizeType value_;
+		template<typename SizeType2,typename Tag2> friend class StrongSize;
+	public:
+		// Constructor
+		explicit constexpr StrongSize(SizeType v) : value_(v) {}
+
+		// Access the raw value explicitly
+		[[nodiscard]]  constexpr  SizeType value() const { return value_; }
+
+		// Increment / decrement
+		StrongSize& operator++() { ++value_; return *this; }
+		StrongSize operator++(int) { StrongSize temp = *this; ++value_; return temp; }
+		StrongSize& operator--() { --value_; return *this; }
+
+		// Arithmetic with same type
+		constexpr StrongSize operator+(StrongSize other) const { return StrongSize(value_ + other.value_); }
+		constexpr StrongSize operator-(StrongSize other) const { return StrongSize(value_ - other.value_); }
+
+		// Comparison
+		constexpr bool operator==(StrongSize other) const { return value_ == other.value_; }
+		constexpr bool operator!=(StrongSize other) const { return value_ != other.value_; }
+		constexpr bool operator<(StrongSize other) const { return value_ < other.value_; }
+		constexpr bool operator<=(StrongSize other) const { return value_ <= other.value_; }
+		constexpr bool operator>(StrongSize other) const { return value_ > other.value_; }
+		constexpr bool operator>=(StrongSize other) const { return value_ >= other.value_; }
+		template<typename Tag2>
+		constexpr StrongSize<SizeType,Tag2> castTo() const { return StrongSize<SizeType,Tag2>(value_); }
+		template<typename SizeType2,typename Tag2>
+		constexpr void castFrom(StrongSize<SizeType2,Tag2> other) { value_ = other.value_; }
+	};
+	struct IndexTag {};
+	struct SizeTag {};
+	struct OffsetTag {};
+
+	using Index = StrongSize<size_t,IndexTag>;
+	using Size = StrongSize<size_t,SizeTag>;
+	using Offset = StrongSize<size_t,OffsetTag>;
+
+	using iIndex = StrongSize<int, IndexTag>;
+	using iSize = StrongSize<int, SizeTag>;
+	using iOffset = StrongSize<int, OffsetTag>;
+	using cIndex = StrongSize<char, IndexTag>;
+	using cSize = StrongSize<char, SizeTag>;
+	using cOffset = StrongSize<char, OffsetTag>;
+
+}//namespace std

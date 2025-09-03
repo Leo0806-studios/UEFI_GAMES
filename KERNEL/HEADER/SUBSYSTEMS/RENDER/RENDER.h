@@ -47,7 +47,7 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		/// draws directly to the framebuffer.
 		/// </summary>
 		/// <param name="x"></param>
-		/// <param name="y"></param>
+		/// <param name="y"></param>s
 		/// <param name="c"></param>
 		void SimpleDrawChar(unsigned int x, unsigned int y, wchar_t c, unsigned int colour, unsigned int bg_colour); //-V2565 // contains direct recursion on a invalid char. will only recur once as the char printed instead is always valid
 

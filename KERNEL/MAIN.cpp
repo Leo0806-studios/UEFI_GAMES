@@ -42,6 +42,9 @@ struct R {
 };
 R testglobal;
 void d() {
+	int i = 0;
+	(void)i;
+
 	throw R();
 
 }
@@ -49,7 +52,7 @@ extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
 	try {
-	//	d();
+		d();
 
 	}
 	catch(R e) {

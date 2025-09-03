@@ -1,4 +1,7 @@
 #pragma once
+#ifndef __CPP_RUNTIME_ALLOCATOR__
+#define __CPP_RUNTIME_ALLOCATOR__
+
 /// <summary>
 /// Creates the ProgramHeap with a initial size.
 /// InitSize is in pages.
@@ -7,3 +10,4 @@
 /// <param name="initSize"></param>
 /// <returns></returns>
 bool CreateHeap(size_t initSize);
+#endif // !__CPP_RUNTIME_ALLOCATOR__
