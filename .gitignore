@@ -363,3 +363,9 @@ MigrationBackup/
 FodyWeavers.xsd
 /.vscode/launch.json
 /.vscode/launch.json-disabled
+/depend/headers/stb/VisualStudioDiscordRPC.Dev17.vsix
+/depend/headers/stb/clang+llvm-21.1.0-rc3-aarch64-pc-windows-msvc.tar.xz
+/depend/headers/stb/clang+llvm-21.dDgiyKMz.1.0-rc3-aarch64-pc-windows-msvc.tar.xz.part
+/depend/headers/stb/LLVM-21.1.0-rc3-win32.exe
+/depend/headers/stb/LLVM-21.qK9Al_Yt.1.0-rc3-win32.exe.part
+/depend/headers/stb/olympus_a8ef3.exe
