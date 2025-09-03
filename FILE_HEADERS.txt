@@ -1,0 +1,10 @@
+all dates are in dd.mm.yyyy
+//###########################################
+//				[FILENAME] 
+//	Copyright (C) Leo0806 2025
+//	Created [DATE] (if known)
+//	Created by Leo0806
+//	Last modified [DATE]
+//	This file is part of [PROJECT_NAME]
+//	[DESCRIPTION/SUMMARY]
+//############################################

@@ -1,3 +1,14 @@
+//###########################################
+//				CPPRUNTIME.h
+//	Copyright (C) Leo0806 2025
+//	Created -
+//	Created by Leo0806
+//	Last modified 03.09.2025
+//	This file is part of the cpp runtime
+//	this is the main include for the cpp runtime. contains many forward declarations (untill moved to their own headers later)
+// and small helper functions
+//############################################
+
 #include <sal.h>//NOLINT //this is itelsf a system header. im writing a runtime
 extern "C" {
 
