@@ -1,11 +1,11 @@
 //###########################################
-//				[FILENAME] 
+//				EH_DATA.h
 //	Copyright (C) Leo0806 2025
-//	Created [DATE] (if known)
+//	Created -
 //	Created by Leo0806
-//	Last modified [DATE]
-//	This file is part of [PROJECT_NAME]
-//	[DESCRIPTION/SUMMARY]
+//	Last modified 03.09.2025
+//	This file is part of the cpp runtime
+//	this is the main header for exception data and pulls in the msvc defs for structs used in SEH
 //############################################
 
 
@@ -15,7 +15,7 @@
 #endif // _UTILITY_
 #define _UTILITY_
 #ifdef __clang__
-struct _ThrowInfo;//dummy forward declaration to make clangtidy happy
+struct _ThrowInfo;//dummy forward declaration to make clangtidy happy (smh)
 #endif // __clang__
 
 #include "STRING.h"
@@ -86,10 +86,8 @@ namespace FH4 {
  };
  using PRUNTIME_FUNCTION = RUNTIME_FUNCTION*;
 struct CONTEXT64 {
-	// minimal fields you'll actually use; or use Windows CONTEXT if you can.
 	Register Rip, Rsp, Rbp; //NOSONAR
 	Register Rbx, Rsi, Rdi, R12, R13, R14, R15; // non-volatiles //NOSONAR
-	// ... XMM non-volatiles if you care, flags, etc.
 };
 
 

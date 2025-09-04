@@ -1,3 +1,14 @@
+//###########################################
+//				INIT_RUNTIME.h
+//	Copyright (C) Leo0806 2025
+//	Created -
+//	Created by Leo0806
+//	Last modified 03.09.2025
+//	This file is part of the cpp runtime
+//	contains forward declarations for runtime startup and typedefs for the init parameters.
+// also contains global state 
+//############################################
+
 #pragma once
 struct __OS_CALLBACKS {
 	void(*StackUnwind)(void* exceptionObject, void* context) = nullptr;

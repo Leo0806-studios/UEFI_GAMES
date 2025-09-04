@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />
+    <None Include="cpp.hint" />
     <None Include="CPP_RUNTIMELIB_STATIC_PART.suppress" />
     <None Include="SuppressionFile.suppress" />
   </ItemGroup>

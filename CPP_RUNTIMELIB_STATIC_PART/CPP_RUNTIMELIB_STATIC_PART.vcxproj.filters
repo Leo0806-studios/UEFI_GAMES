@@ -67,5 +67,6 @@
     <None Include=".clang-tidy" />
     <None Include="SuppressionFile.suppress" />
     <None Include="CPP_RUNTIMELIB_STATIC_PART.suppress" />
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
