@@ -16,10 +16,12 @@ static	void(*HTERMINATE_HANDLER)() = nullptr;
 
 	_declspec(noreturn) void terminate() { //-V1082
 		if (AS_BOOL(HTERMINATE_HANDLER)) {
+			__assume(HTERMINATE_HANDLER != nullptr);
 		HTERMINATE_HANDLER();
 
 		}
 		if (AS_BOOL(initParameters.callbacks.TerminateProcess)) {
+			__assume(initParameters.callbacks.TerminateProcess != nullptr);//idk why i have to add this to silence the static analyzer as i check the poiter directly above
 			initParameters.callbacks.TerminateProcess(-1);
 		} else {
 			while(true) {

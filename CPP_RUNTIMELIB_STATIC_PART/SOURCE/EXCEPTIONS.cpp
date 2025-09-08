@@ -1,6 +1,18 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+//###########################################
+//				EXCEPTIONS.cpp 
+//	Copyright (C) Leo0806 2025
+//	Created -
+//	Created by Leo0806
+//	Last modified 04.09.2025
+//	This file is part of the cpp runtime
+//	implemntation of exception handling for the freestanding c++ runtime
+//############################################
+
+
 //################Exception support for my freestanding c++ runtie.
 // explanation to linter disables.
 // -NOSTD  : this warnign is disabled because not standart library is availible for the runtime
@@ -149,7 +161,7 @@ static bool UnwindSearch(const CONTEXT64& ctx, const ThrowInfo*const throwInfo) 
 	return false;
 }
 #ifdef __INTELLISENSE__
-struct _ThrowInfo; //this si just to disable the intellisense error it doesnt get the type injected
+struct _ThrowInfo; //this is just to disable the intellisense error it doesnt get the type injected
 
 #endif // __INTELLISENSE__
 
@@ -168,14 +180,14 @@ extern "C" __declspec(noreturn) __declspec(noinline)  void __stdcall _CxxThrowEx
 	const auto* const throwInfo = reinterpret_cast<ThrowInfo*>(pThrowInfo); //NOSONAR -NOCASTWARN
 	size_t count = initParameters.pdata.size / sizeof(RUNTIME_FUNCTION);
 	//const void*const rip = _ReturnAddress();
-	auto rva = static_cast<RVA>(ctx.Rip - reinterpret_cast<unsigned long long>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
+	auto rva = static_cast<RVA>(ctx.Rip - reinterpret_cast<size_t>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
 	const RUNTIME_FUNCTION* const table = reinterpret_cast<const RUNTIME_FUNCTION*>(initParameters.pdata.offset + reinterpret_cast<size_t>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
 	const RUNTIME_FUNCTION* const found = [&]() {
 		const RUNTIME_FUNCTION* found_ = nullptr;
 		while (!found_) {
 			found_ = LookupFunctionEntry(rva, table, count);
 			if (!found_) {
-				ctx.Rsp += 8;
+				ctx.Rsp += sizeof(Register);
 				ctx.Rip = reinterpret_cast<uint64_t>(*reinterpret_cast<void**>(ctx.Rsp));//NOSONAR -NOCASTWARN
 			}
 		}

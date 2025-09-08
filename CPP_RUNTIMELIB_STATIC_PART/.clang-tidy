@@ -29,7 +29,8 @@ Checks: >-
   -cppcoreguidelines-pro-type-union-access,
   -clang-diagnostic-unused-macros,
   -clang-diagnostic-extra-semi-stmt,
-  -performance-no-int-to-ptr
+  -performance-no-int-to-ptr,
+  -readability-redundant-declaration
   
 
 HeaderFilterRegex: '.*'

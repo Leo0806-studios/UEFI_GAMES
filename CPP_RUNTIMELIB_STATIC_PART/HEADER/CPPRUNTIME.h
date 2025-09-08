@@ -10,10 +10,16 @@
 //############################################
 
 #include <sal.h>//NOLINT //this is itelsf a system header. im writing a runtime
+#include "HEADER/CRT_MACROS.h"
 extern "C" {
-
-	_Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(_Size) 
-		_declspec(restrict) void* malloc(_In_ size_t _Size); //NOLINT(readability-redundant-declaration)
+	/// <summary>
+	/// malloc.
+	/// if _DEBUG is defined returns nullptr on more error conditions.
+	/// without it it assumes that none of these error conditions will happen and might crash the program if they do.
+	/// </summary>
+	/// <param name="_Size"></param>
+	/// <returns></returns>
+	_Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(_Size)_declspec(restrict) void* malloc(_In_ size_t _Size); //NOLINT(readability-redundant-declaration)
 	void free(//NOLINT(readability-redundant-declaration)
 		_Pre_maybenull_ _Post_invalid_ void* _Block
 	);
@@ -32,8 +38,9 @@ namespace std {//NOSONAR
 
 	void setTerminateHandler(void(*handler)());
 }//namespace std
+CRT_START
 __declspec(noreturn) void abort();
-
+CRT_END
 namespace std {
 	template<typename SizeType,typename Tag>
 	class StrongSize {

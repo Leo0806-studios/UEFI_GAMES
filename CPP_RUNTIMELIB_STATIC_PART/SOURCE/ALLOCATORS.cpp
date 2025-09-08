@@ -170,9 +170,16 @@ static bool FreeToOS(HeapNode* ptr) {
 }
 
 
+_Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 
- _declspec(restrict) void* malloc(size_t size) {
+ _declspec(restrict) void* malloc(_In_ size_t size) {
 	//walk the HeapNode list and the internal list of memory nodes
+#ifdef _DEBUG
+	if (!AS_BOOL(heap.first)) {
+		return nullptr; // heap not initialized
+	}
+#endif // _DEBUG
+
 	HeapNode* currentHeapNode = heap.first;
 	MemoryNode* ptr = nullptr;
 	while (currentHeapNode->next) {
@@ -234,12 +241,12 @@ static bool FreeToOS(HeapNode* ptr) {
 	}
 	return ptr ? ptr->data : nullptr; // return the data pointer of the allocated node or nullptr if no suitable node was found
 }
-void free(void* ptr) {
-	if (!ptr) {
+void free(void* _Block) {
+	if (!_Block) {
 		return;
 	}
-	MemoryNode* node = reinterpret_cast<MemoryNode*>(reinterpret_cast<char*>(ptr) - sizeof(MemoryNode)); // get the memory node from the pointer
-	if (!(node->data == ptr)) {
+	MemoryNode* node = reinterpret_cast<MemoryNode*>(reinterpret_cast<char*>(_Block) - sizeof(MemoryNode)); // get the memory node from the pointer
+	if (!(node->data == _Block)) {
 		return; //invalid ptr. returning
 	}
 	node->isFree = true; // mark the node as free
@@ -264,16 +271,20 @@ void _free_dbg(void* ptr)
 	if (!ptr) {
 		return;
 	}
+
 	MemoryNode* node = reinterpret_cast<MemoryNode*>(reinterpret_cast<char*>(ptr) - sizeof(MemoryNode)); // get the memory node from the pointer
+	if(node == nullptr) {
+		return;
+	}
 	if (!(node->data == ptr)) {
 		//throw STD::Bad_free(); // throw an exception if the pointer is invalid
 		return;
 	}
-	if (node->next && node->next->isFree) {
+	if (AS_BOOL(node->next) && AS_BOOL(node->next->isFree)) {
 		// merge with next node if it is free
 		node = MergeNodes(*node->parrent, node, node->next);
 	}
-	if (node->prev && node->prev->isFree) {
+	if (AS_BOOL(node->prev) && node->prev->isFree) {
 		// merge with previous node if it is free
 		node = MergeNodes(*node->parrent, node->prev, node);
 	}
@@ -287,9 +298,11 @@ void _free_dbg(void* ptr)
 bool CreateHeap(size_t initSize)
 {
 	HeapNode* node = AllocateFromOS(initSize);
-	if(!node) {
+	if (!AS_BOOL(node)) {
 		return false; // if the allocation failed, return false
 	}
+	heap.first = node;
+	heap.last = node;
 	heap.totalSize = initSize; // set the total size of the heap
 	heap.usedSize = 0; // initialize the used size to 0
 	return true;
