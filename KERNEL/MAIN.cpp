@@ -52,7 +52,7 @@ extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
 	try {
-		d();
+//		d();
 
 	}
 	catch(R e) {

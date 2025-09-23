@@ -147,6 +147,16 @@ static _UNWIND_INFO ReadUnwindInfo(_In_ const char* unwindData) {
 	}
 	return unwindInfo;
 }
+static bool UnwindFrame( CONTEXT64& ctx,const ThrowInfo* throwInfo,const _UNWIND_INFO*const uwInfo) {
+	const FH4::FuncInfo4*const FrameData = uwInfo->optionalData;
+	FH4::UWMap4 Func(FrameData, reinterpret_cast<size_t>(initParameters.imageBaseAddress));
+	FH4::TryBlockMap4 HandlerMap(FrameData, reinterpret_cast<size_t>(initParameters.imageBaseAddress));
+	//since this is not directly the amount of entries but the amount of "slots" we need to actualy check each entry for its type
+	size_t countOfUWcodes = uwInfo->count_of_codes;
+	for (std::Index i(0); i < countOfUWcodes;) {
+	}
+	
+}
 /// <summary>
 /// phase 1 of the exception process.
 /// this function unwinds untill it finds a matching catch handler or the end of the stack.
@@ -158,6 +168,8 @@ static _UNWIND_INFO ReadUnwindInfo(_In_ const char* unwindData) {
 static bool UnwindSearch(const CONTEXT64& ctx, const ThrowInfo*const throwInfo) {
 	(void)ctx;
 	(void)throwInfo;
+	CONTEXT64 ctxCopy = ctx;
+
 	return false;
 }
 #ifdef __INTELLISENSE__

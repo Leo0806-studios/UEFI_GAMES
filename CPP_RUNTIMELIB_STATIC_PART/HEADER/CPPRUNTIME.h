@@ -11,6 +11,7 @@
 
 #include <sal.h>//NOLINT //this is itelsf a system header. im writing a runtime
 #include "HEADER/CRT_MACROS.h"
+//#include<compare>
 extern "C" {
 	/// <summary>
 	/// malloc.
@@ -63,12 +64,10 @@ namespace std {
 		constexpr StrongSize operator-(StrongSize other) const { return StrongSize(value_ - other.value_); }
 
 		// Comparison
-		constexpr bool operator==(StrongSize other) const { return value_ == other.value_; }
-		constexpr bool operator!=(StrongSize other) const { return value_ != other.value_; }
-		constexpr bool operator<(StrongSize other) const { return value_ < other.value_; }
-		constexpr bool operator<=(StrongSize other) const { return value_ <= other.value_; }
-		constexpr bool operator>(StrongSize other) const { return value_ > other.value_; }
-		constexpr bool operator>=(StrongSize other) const { return value_ >= other.value_; }
+		constexpr bool operator<=>(const StrongSize& other) const = default;
+		constexpr bool operator<=>(const SizeType& other)const {
+			return value_ <=> other;
+		}
 		template<typename Tag2>
 		constexpr StrongSize<SizeType,Tag2> castTo() const { return StrongSize<SizeType,Tag2>(value_); }
 		template<typename SizeType2,typename Tag2>

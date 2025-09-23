@@ -271,11 +271,14 @@ void _free_dbg(void* ptr)
 	if (!ptr) {
 		return;
 	}
-
+#pragma warning(push)
+#pragma warning (disable:26430 )
 	MemoryNode* node = reinterpret_cast<MemoryNode*>(reinterpret_cast<char*>(ptr) - sizeof(MemoryNode)); // get the memory node from the pointer
+#pragma warning(pop)
 	if(node == nullptr) {
 		return;
 	}
+	__assume(node != nullptr);
 	if (!(node->data == ptr)) {
 		//throw STD::Bad_free(); // throw an exception if the pointer is invalid
 		return;
