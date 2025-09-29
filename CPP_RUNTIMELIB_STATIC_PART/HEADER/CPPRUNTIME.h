@@ -42,7 +42,7 @@ namespace std {//NOSONAR
 CRT_START
 __declspec(noreturn) void abort();
 CRT_END
-namespace std {
+namespace std::ext {
 	template<typename SizeType,typename Tag>
 	class StrongSize {
 		SizeType value_;
@@ -65,8 +65,19 @@ namespace std {
 
 		// Comparison
 		constexpr bool operator<=>(const StrongSize& other) const = default;
-		constexpr bool operator<=>(const SizeType& other)const {
-			return value_ <=> other;
+		constexpr bool operator==(const SizeType& other)const {
+		}
+		constexpr bool operator<=(const SizeType& other) const {
+
+		}
+		constexpr bool operator >=(const SizeType& other)const {
+
+		}
+		constexpr bool operator !=(const SizeType& other)const {
+
+		}
+		constexpr bool operator <(const SizeType& other) const {
+
 		}
 		template<typename Tag2>
 		constexpr StrongSize<SizeType,Tag2> castTo() const { return StrongSize<SizeType,Tag2>(value_); }

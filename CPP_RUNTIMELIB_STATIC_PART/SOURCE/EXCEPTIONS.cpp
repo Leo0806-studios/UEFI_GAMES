@@ -153,7 +153,8 @@ static bool UnwindFrame( CONTEXT64& ctx,const ThrowInfo* throwInfo,const _UNWIND
 	FH4::TryBlockMap4 HandlerMap(FrameData, reinterpret_cast<size_t>(initParameters.imageBaseAddress));
 	//since this is not directly the amount of entries but the amount of "slots" we need to actualy check each entry for its type
 	size_t countOfUWcodes = uwInfo->count_of_codes;
-	for (std::Index i(0); i < countOfUWcodes;) {
+	for (std::ext::Index i(0); i < countOfUWcodes;) {
+
 	}
 	
 }
