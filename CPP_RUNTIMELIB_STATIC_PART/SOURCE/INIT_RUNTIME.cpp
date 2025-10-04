@@ -4,6 +4,7 @@
 #include "INIT_RUNTIME.h"
 #include "ALLOCATORS.h"
 #include "CPPRUNTIME.h"
+#include <intrin.h>
 #define _CRT_ALLOCATE(X)__declspec(allocate(X)) // NOLINT
 #pragma section(".CRT$XIA",long,read)
 #pragma section(".CRT$XIZ",long,read)
@@ -57,12 +58,23 @@ static bool registerAtExit() {
 }
 extern "C" 
 {
-	void initRuntime(const RuntimeInitParameters& InitParameters)
+	void initRuntime(const RuntimeInitParameters& pInitParameters)
 	{
-
-		CreateHeap(InitParameters.initialHeapSize);
+		
+		if(pInitParameters.callbacks.TerminateProcess == nullptr) {
+			__fastfail(20);
+		}
+		if (pInitParameters.callbacks.WriteLine == nullptr) {
+			std::terminate();
+		}
+		::initParameters = pInitParameters;// we need this for error handling in CreateHeap
+		bool succses =CreateHeap(pInitParameters.initialHeapSize);
+		if(!succses) {
+			pInitParameters.callbacks.WriteLine(L"FAILED TO CREATE HEAP. TERMINATIN");
+			std::terminate();
+		}
 		_init_Ctors();
-		::initParameters = InitParameters;// must be done after ctor calls as it would be overriden otherwise
+		::initParameters = pInitParameters;// must be done after ctor calls as it would be overriden otherwise
 
 		(void)registerAtExit();
 	}

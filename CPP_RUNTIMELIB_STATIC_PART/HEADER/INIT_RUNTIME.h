@@ -29,6 +29,7 @@ struct __OS_CALLBACKS {
 	void* (*CreateThread)(void(*startAddress)(void*), void* arg) = nullptr;
 	void (*JoinThread)(void* threadHandle) = nullptr;
 	void (*Sleep)(size_t milliseconds) = nullptr;
+	void (*WriteLine)(const wchar_t* str) = nullptr;
 	
 };
 struct sectioninfo {

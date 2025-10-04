@@ -53,32 +53,68 @@ namespace std::ext {
 
 		// Access the raw value explicitly
 		[[nodiscard]]  constexpr  SizeType value() const { return value_; }
-
+		constexpr void setValue(SizeType v) { value_ = v; }
 		// Increment / decrement
 		StrongSize& operator++() { ++value_; return *this; }
 		StrongSize operator++(int) { StrongSize temp = *this; ++value_; return temp; }
 		StrongSize& operator--() { --value_; return *this; }
+		StrongSize& operator--(int) { StrongSize temp = *this; --value_; return temp; }
 
 		// Arithmetic with same type
 		constexpr StrongSize operator+(StrongSize other) const { return StrongSize(value_ + other.value_); }
 		constexpr StrongSize operator-(StrongSize other) const { return StrongSize(value_ - other.value_); }
 
 		// Comparison
-		constexpr bool operator<=>(const StrongSize& other) const = default;
+
+
+		constexpr bool operator==(const StrongSize& other)const {
+			return (value_ == other);
+		}
+		constexpr bool operator<=(const StrongSize& other) const {
+			return (value_ <= other);
+
+		}
+		constexpr bool operator >=(const StrongSize& other)const {
+			return (value_ >= other);
+
+		}
+		constexpr bool operator !=(const StrongSize& other)const {
+			return (value_ != other);
+
+		}
+		constexpr bool operator <(const StrongSize& other) const {
+			return(value_ < other);
+
+		}
+		constexpr bool operator >(const StrongSize& other) const {
+			return (value_ > other);
+		}
+
+
+
 		constexpr bool operator==(const SizeType& other)const {
+			return (value_ == other);
 		}
 		constexpr bool operator<=(const SizeType& other) const {
+			return (value_ <= other);
 
 		}
 		constexpr bool operator >=(const SizeType& other)const {
+			return (value_ >= other);
 
 		}
 		constexpr bool operator !=(const SizeType& other)const {
+			return (value_ != other);
 
 		}
 		constexpr bool operator <(const SizeType& other) const {
+			return(value_ < other);
 
 		}
+		constexpr bool operator >(const SizeType& other) const {
+			return (value_ > other);
+		}
+		constexpr bool operator!() const { return !value_; }
 		template<typename Tag2>
 		constexpr StrongSize<SizeType,Tag2> castTo() const { return StrongSize<SizeType,Tag2>(value_); }
 		template<typename SizeType2,typename Tag2>
@@ -95,8 +131,13 @@ namespace std::ext {
 	using iIndex = StrongSize<int, IndexTag>;
 	using iSize = StrongSize<int, SizeTag>;
 	using iOffset = StrongSize<int, OffsetTag>;
+
+	using sIndex = StrongSize<short, IndexTag>;
+	using sSize = StrongSize<short, SizeTag>;
+	using sOffset = StrongSize<short, OffsetTag>;
+
 	using cIndex = StrongSize<char, IndexTag>;
 	using cSize = StrongSize<char, SizeTag>;
 	using cOffset = StrongSize<char, OffsetTag>;
 
-}//namespace std
+}//namespace std::ext

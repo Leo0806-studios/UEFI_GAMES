@@ -300,6 +300,7 @@ void _free_dbg(void* ptr)
 
 bool CreateHeap(size_t initSize)
 {
+	initParameters.callbacks.WriteLine(L"CREATING HEAP");
 	HeapNode* node = AllocateFromOS(initSize);
 	if (!AS_BOOL(node)) {
 		return false; // if the allocation failed, return false
