@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\ALLOCATORS.h" />
+    <ClInclude Include="HEADER\COMPARE.h" />
     <ClInclude Include="HEADER\CPPRUNTIME.h" />
     <ClInclude Include="HEADER\CRT_MACROS.h" />
     <ClInclude Include="HEADER\EH_DATA.h" />

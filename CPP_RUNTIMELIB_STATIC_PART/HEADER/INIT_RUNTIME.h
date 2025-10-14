@@ -8,9 +8,12 @@
 //	contains forward declarations for runtime startup and typedefs for the init parameters.
 // also contains global state 
 //############################################
-
+namespace SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE {
+	struct Watchdog;
+}
 #pragma once
 struct __OS_CALLBACKS {
+	
 	void(*StackUnwind)(void* exceptionObject, void* context) = nullptr;
 	void (*raiseException)(void* exceptionObject) = nullptr;
 	 void(*TerminateProcess)(int exitCode) = nullptr;
@@ -29,6 +32,10 @@ struct __OS_CALLBACKS {
 	void* (*CreateThread)(void(*startAddress)(void*), void* arg) = nullptr;
 	void (*JoinThread)(void* threadHandle) = nullptr;
 	void (*Sleep)(size_t milliseconds) = nullptr;
+	void (*WriteLine)(const wchar_t* str) = nullptr;
+	SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::	Watchdog* (*WatchDogStart)(__int64 Cycles) = nullptr;
+	void (*WatchdogCheck)(SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::Watchdog*) = nullptr;
+	bool (*WatchdogStop)(SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::Watchdog*) = nullptr;
 	
 };
 struct sectioninfo {
@@ -54,5 +61,15 @@ extern "C" {
 
 }
 extern void* GlobalState;//NOLINT //yeh i should do something about the globals...
+
+#ifdef _DEBUG
+#define WatchdogStart(cycles) ::initParameters.callbacks.WatchDogStart(cycles)
+#define WatchDogCheck(WD) ::initParameters.callbacks.WatchdogCheck(WD)
+#define WatchdogStop(WD) ::initParameters.callbacks.WatchdogStop(WD)
+#define DebugPrint(msg) ::initParameters.callbacks.WriteLine((msg))
+#else
+#define DebugPrint(msg)
+#endif // DEBUG
+
 
  

@@ -1,6 +1,7 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+#pragma warning (disable:4702)
 
 extern"C" {
 
@@ -15,6 +16,8 @@ extern"C" {
 #include <HEADER/UTILLITY/UTILLITY_F.h>
 #include "INIT_RUNTIME.h"
 #include "HEADER/SUBSYSTEMS/ALLOCATION/ALLOCATION.h"
+#include "CPPRUNTIME.h"
+#include "SUBSYSTEMS/WATCHDOG/WATCHDOG.h"
 static uint32_t get_cpu_base_freq_mhz() {
 	int cpuInfo[4] = {};
 	__cpuid(&cpuInfo[0], 0x16); //-V3546 // IDK why PVS is complaining
@@ -40,6 +43,7 @@ struct R {
 
 	}
 };
+
 R testglobal;
 void d() {
 	int i = 0;
@@ -48,25 +52,36 @@ void d() {
 	throw R();
 
 }
+void TerminationHandler(int exitcode) {
+	STD::ignore = exitcode; //-V1082
+	Console::WriteLine(L"TERMINATION HANDLER CALLED SYSTEM WILL HALT");
+	__halt();
+}
+void NullptrJmp() {
+	Console::WriteLine(L"LOL YOU JUMPED TO NULLPTR     IDIOT");
+}
 extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
-	try {
-//		d();
-
-	}
-	catch(R e) {
-		Print(L"Exception caught: %d\n", e);
-	}
+	__assume(SystemTable != nullptr); 
+	__assume(ImageHandle != nullptr);
 	InitializeLib(ImageHandle, SystemTable);
 	
 
 
 
 
-
+	void* ImageBaseAdress = 0;
+	EFI_STATUS ImgStatus = 0;
+	EFI_LOADED_IMAGE* loadedImage = nullptr;
+	EFI_GUID LoadedImageProtocoll = LOADED_IMAGE_PROTOCOL;
+	ImgStatus = uefi_call_wrapper(SystemTable->BootServices->HandleProtocol, 3, ImageHandle, &LoadedImageProtocoll, reinterpret_cast<void**>(&loadedImage));
+	if (EFI_ERROR(ImgStatus)) {
+		Print(L"Failed to get image protocoll");
+		return ImgStatus;
+	}
+	ImageBaseAdress = (loadedImage->ImageBase);
 	Print(L"Hello, World!\n");
-	__assume(SystemTable != nullptr); 
 	//SystemTable->BootServices->Stall(10000000); // Stall for 1 second to allow reading the output
 
 	STD::ignore = SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
@@ -186,24 +201,48 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	//TODO insert call to setup of the IDT
 
 	Console::WriteLine(L"IDT SETUP COMPLETE");
+	Console::WriteLine(L"INITIALIZATION COMPLETE");
+	Console::WriteLine(L"WELCOME TO USL OS");
+
 	//###############################---C++ Runtime Init Here---###############################
 	using PhysicalAllocator = SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator;
 	RuntimeInitParameters Parameters = {
 		.callbacks = {
+			.TerminateProcess = TerminationHandler,
 			.alocatePage = PhysicalAllocator::AllocatePage,
 			.allocatePages = SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePages,
 			.freePage = PhysicalAllocator::FreePage,
-			.freePages = PhysicalAllocator::FreePages
+			.freePages = PhysicalAllocator::FreePages,
+			.WriteLine = Console::WriteLine,
+			.WatchDogStart = SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::StartWatchdog,
+			.WatchdogCheck = SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::CheckWatchdg,
+			.WatchdogStop=SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::StopWatchdog,
+			
 },
-.initialHeapSize = 10
+.initialHeapSize = 10,
+		.imageBaseAddress = ImageBaseAdress,
 	};
+	Console::WriteLine(L"CXX RUNTIME INITIALIZATION STARTING");
+	//############################################### AFTER THIS LINE GLOBAL AND STATIC VARS RESET! #####################################################
 	initRuntime(Parameters);
+	Console::WriteLine(L"CXX RUNTIME INITIALIZATION COMPLETE");
+	Console::WriteLine(L"EXCEPTION HANDLING TEST STARTING");
+	//std::terminate();
+	try {
+				d();
+
+	}
+	catch (R e) {
+		Print(L"Exception caught: %d\n", e);
+	}
+	Console::WriteLine(L"EXCEPTION HANDLING TEST COMPLETE");
 	size_t freq = 0;
 	freq = get_cpu_base_freq_mhz();
 	if (freq == 0) {
 		//set to fallback 3,6ghz
 		freq = 3600;
 	}
+
 	stall_us(10000000, freq);
 
 

@@ -130,6 +130,7 @@
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <ExceptionHandling>Sync</ExceptionHandling>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -167,6 +168,7 @@
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -193,6 +195,7 @@
     <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\FONT.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp" />
+    <ClCompile Include="SOURCE\SUBSYSTEMS\WATCHDOG\WATCHDOG.cpp" />
     <ClCompile Include="SOURCE\SYSTEM_INFO\SYSTEM_INFO.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +207,7 @@
     <ClInclude Include="HEADER\SUBSYSTEMS\ALLOCATION\ALLOCATION.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\CONSOLE\CONSOLE.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h" />
+    <ClInclude Include="HEADER\SUBSYSTEMS\WATCHDOG\WATCHDOG.h" />
     <ClInclude Include="HEADER\SYTEM_INFO\SYSTEM_INFO.h" />
   </ItemGroup>
   <ItemGroup>

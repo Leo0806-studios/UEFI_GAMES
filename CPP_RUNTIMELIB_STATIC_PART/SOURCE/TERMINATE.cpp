@@ -15,6 +15,8 @@ namespace std {
 static	void(*HTERMINATE_HANDLER)() = nullptr;
 
 	_declspec(noreturn) void terminate() { //-V1082
+		initParameters.callbacks.TerminateProcess(-1);
+
 		if (AS_BOOL(HTERMINATE_HANDLER)) {
 			__assume(HTERMINATE_HANDLER != nullptr);
 		HTERMINATE_HANDLER();

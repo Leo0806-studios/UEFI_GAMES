@@ -69,7 +69,9 @@ static __forceinline void CaptureThrowSiteContext(CONTEXT64& ctx) {
 static const RUNTIME_FUNCTION* LookupFunctionEntry(unsigned int rva, const RUNTIME_FUNCTION table[], size_t count) {//NOLINT(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
 	size_t lo = 0;
 	size_t hi = count;
+	auto dog = WatchdogStart(10000);
 	while (lo < hi) {
+		WatchDogCheck(dog);
 		const size_t mid = (lo + hi) / 2; //NOSONAR 
 		const auto& e = table[mid];//NOLINT(clang-diagnostic-unsafe-buffer-usage)
 		if (rva < e.BeginAddress) {
@@ -79,9 +81,12 @@ static const RUNTIME_FUNCTION* LookupFunctionEntry(unsigned int rva, const RUNTI
 			lo = mid + 1;
 		}
 		else {
+			initParameters.callbacks.WriteLine(L"FUNCTION ENTRY FOUND");
+			WatchdogStop(dog);
 			return &e; // found
 		}
 	}
+	WatchdogStop(dog);
 	return nullptr; // leaf function (no unwind info)
 }
 
@@ -153,9 +158,12 @@ static bool UnwindFrame( CONTEXT64& ctx,const ThrowInfo* throwInfo,const _UNWIND
 	FH4::TryBlockMap4 HandlerMap(FrameData, reinterpret_cast<size_t>(initParameters.imageBaseAddress));
 	//since this is not directly the amount of entries but the amount of "slots" we need to actualy check each entry for its type
 	size_t countOfUWcodes = uwInfo->count_of_codes;
-	for (std::Index i(0); i < countOfUWcodes;) {
+	for (std::ext::Index i(0); i < countOfUWcodes;) {
+
 	}
-	
+	(void)ctx;
+	(void)throwInfo;
+	return false;//default return value
 }
 /// <summary>
 /// phase 1 of the exception process.
@@ -186,18 +194,20 @@ extern "C" __declspec(noreturn) __declspec(noinline)  void __stdcall _CxxThrowEx
 	
 	(void)pExceptionObject; // Suppress unused parameter warning
 	(void)pThrowInfo; // Suppress unused parameter warning
+	initParameters.callbacks.WriteLine(L"EXCEPTION THROWN");
 	CONTEXT64 ctx{};
 	CaptureThrowSiteContext(ctx);
 	const CONTEXT64 ctxCopy = ctx;
 	const auto* const throwInfo = reinterpret_cast<ThrowInfo*>(pThrowInfo); //NOSONAR -NOCASTWARN
 	size_t count = initParameters.pdata.size / sizeof(RUNTIME_FUNCTION);
 	//const void*const rip = _ReturnAddress();
-	auto rva = static_cast<RVA>(ctx.Rip - reinterpret_cast<size_t>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
+	//auto rva = static_cast<RVA>(ctx.Rip - reinterpret_cast<size_t>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
 	const RUNTIME_FUNCTION* const table = reinterpret_cast<const RUNTIME_FUNCTION*>(initParameters.pdata.offset + reinterpret_cast<size_t>(initParameters.imageBaseAddress));//NOSONAR -NOCASTWARN
 	const RUNTIME_FUNCTION* const found = [&]() {
 		const RUNTIME_FUNCTION* found_ = nullptr;
+		initParameters.callbacks.WriteLine(L"LOOKING UP FUNCTION ENTRY");
 		while (!found_) {
-			found_ = LookupFunctionEntry(rva, table, count);
+			found_ = LookupFunctionEntry(static_cast<RVA>(ctx.Rip - reinterpret_cast<size_t>(initParameters.imageBaseAddress)), table, count);//TODO: fix logic error and update rva to return adress of caller if not found
 			if (!found_) {
 				ctx.Rsp += sizeof(Register);
 				ctx.Rip = reinterpret_cast<uint64_t>(*reinterpret_cast<void**>(ctx.Rsp));//NOSONAR -NOCASTWARN
@@ -216,7 +226,7 @@ extern "C" __declspec(noreturn) __declspec(noinline)  void __stdcall _CxxThrowEx
 
 
 
-
+	initParameters.callbacks.WriteLine(L"NO EXCEPTION HANDLER FOUND. TERMINATING");
 	std::terminate(); // For now, just terminate the program //this is here just to make msvc happy
 }
 #pragma warning (pop)

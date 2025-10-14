@@ -12,5 +12,5 @@
 #define DEPRECATED [[deprecated]]
 #define DEPRECATED_MSG(msg) [[deprecated(msg)]]
 
-#include  <sal.h>;
+#include  <sal.h>
 #endif // !_SAL_H
