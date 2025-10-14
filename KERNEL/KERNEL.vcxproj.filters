@@ -42,6 +42,9 @@
     <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\FONT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\SUBSYSTEMS\WATCHDOG\WATCHDOG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HEADER\SAL\SAL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SUBSYSTEMS\WATCHDOG\WATCHDOG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

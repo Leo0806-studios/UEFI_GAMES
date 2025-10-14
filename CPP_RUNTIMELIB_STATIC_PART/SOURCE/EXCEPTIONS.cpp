@@ -69,7 +69,9 @@ static __forceinline void CaptureThrowSiteContext(CONTEXT64& ctx) {
 static const RUNTIME_FUNCTION* LookupFunctionEntry(unsigned int rva, const RUNTIME_FUNCTION table[], size_t count) {//NOLINT(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
 	size_t lo = 0;
 	size_t hi = count;
+	auto dog = WatchdogStart(10000);
 	while (lo < hi) {
+		WatchDogCheck(dog);
 		const size_t mid = (lo + hi) / 2; //NOSONAR 
 		const auto& e = table[mid];//NOLINT(clang-diagnostic-unsafe-buffer-usage)
 		if (rva < e.BeginAddress) {
@@ -80,9 +82,11 @@ static const RUNTIME_FUNCTION* LookupFunctionEntry(unsigned int rva, const RUNTI
 		}
 		else {
 			initParameters.callbacks.WriteLine(L"FUNCTION ENTRY FOUND");
+			WatchdogStop(dog);
 			return &e; // found
 		}
 	}
+	WatchdogStop(dog);
 	return nullptr; // leaf function (no unwind info)
 }
 

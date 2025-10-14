@@ -17,6 +17,7 @@ extern"C" {
 #include "INIT_RUNTIME.h"
 #include "HEADER/SUBSYSTEMS/ALLOCATION/ALLOCATION.h"
 #include "CPPRUNTIME.h"
+#include "SUBSYSTEMS/WATCHDOG/WATCHDOG.h"
 static uint32_t get_cpu_base_freq_mhz() {
 	int cpuInfo[4] = {};
 	__cpuid(&cpuInfo[0], 0x16); //-V3546 // IDK why PVS is complaining
@@ -42,6 +43,7 @@ struct R {
 
 	}
 };
+
 R testglobal;
 void d() {
 	int i = 0;
@@ -61,16 +63,25 @@ void NullptrJmp() {
 extern "C"{
 EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
-
+	__assume(SystemTable != nullptr); 
+	__assume(ImageHandle != nullptr);
 	InitializeLib(ImageHandle, SystemTable);
 	
 
 
 
 
-
+	void* ImageBaseAdress = 0;
+	EFI_STATUS ImgStatus = 0;
+	EFI_LOADED_IMAGE* loadedImage = nullptr;
+	EFI_GUID LoadedImageProtocoll = LOADED_IMAGE_PROTOCOL;
+	ImgStatus = uefi_call_wrapper(SystemTable->BootServices->HandleProtocol, 3, ImageHandle, &LoadedImageProtocoll, reinterpret_cast<void**>(&loadedImage));
+	if (EFI_ERROR(ImgStatus)) {
+		Print(L"Failed to get image protocoll");
+		return ImgStatus;
+	}
+	ImageBaseAdress = (loadedImage->ImageBase);
 	Print(L"Hello, World!\n");
-	__assume(SystemTable != nullptr); 
 	//SystemTable->BootServices->Stall(10000000); // Stall for 1 second to allow reading the output
 
 	STD::ignore = SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
@@ -202,11 +213,17 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 			.allocatePages = SYSTEM::SUBSYSTEMS::ALLOCATION::PhysicalAllocator::AllocatePages,
 			.freePage = PhysicalAllocator::FreePage,
 			.freePages = PhysicalAllocator::FreePages,
-			.WriteLine = Console::WriteLine
+			.WriteLine = Console::WriteLine,
+			.WatchDogStart = SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::StartWatchdog,
+			.WatchdogCheck = SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::CheckWatchdg,
+			.WatchdogStop=SYSTEM::SUBSYSTEMS::WATCHDOG::SIMPLE::StopWatchdog,
+			
 },
-.initialHeapSize = 10
+.initialHeapSize = 10,
+		.imageBaseAddress = ImageBaseAdress,
 	};
 	Console::WriteLine(L"CXX RUNTIME INITIALIZATION STARTING");
+	//############################################### AFTER THIS LINE GLOBAL AND STATIC VARS RESET! #####################################################
 	initRuntime(Parameters);
 	Console::WriteLine(L"CXX RUNTIME INITIALIZATION COMPLETE");
 	Console::WriteLine(L"EXCEPTION HANDLING TEST STARTING");

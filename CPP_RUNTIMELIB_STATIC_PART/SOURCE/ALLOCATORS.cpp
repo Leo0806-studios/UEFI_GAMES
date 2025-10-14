@@ -173,9 +173,11 @@ static bool FreeToOS(HeapNode* ptr) {
 _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 
  _declspec(restrict) void* malloc(_In_ size_t size) {
+	DebugPrint(L"ALLOCATING MEMORY");
 	//walk the HeapNode list and the internal list of memory nodes
 #ifdef _DEBUG
 	if (!AS_BOOL(heap.first)) {
+		DebugPrint(L"HEAP INVALID");
 		return nullptr; // heap not initialized
 	}
 #endif // _DEBUG
@@ -183,14 +185,23 @@ _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 	HeapNode* currentHeapNode = heap.first;
 	MemoryNode* ptr = nullptr;
 	while (currentHeapNode->next) {
+		DebugPrint(L"CHECKING HEAP NODE");
 		MemoryNode* currentNode = currentHeapNode->first;
+		if (!AS_BOOL(currentNode)) {
+			DebugPrint(L"NODE INVALID");
+		}
 		if (currentHeapNode->freeBytes < size) {
+			DebugPrint(L"NOT ENOUGH SPACE IN CURRENT HEAP NODE");
 			currentHeapNode = currentHeapNode->next;
 			continue; // not enough free bytes in this heap node, go to the next one
 		}
-		while (currentNode->next)
+		DebugPrint(L"AAAAAAAAAAAAAAAAAAAAAAAaa");
+		DebugPrint(L"AAAAAAAAAAAAAAAAAAAAAAAaa");
+		while (AS_BOOL(currentNode->next))
 		{
+			DebugPrint(L"CHECKING MEMORY NODE");
 			if (currentNode->isFree && currentNode->size >= size) {
+				DebugPrint(L"FOUND MEMORY NODE");
 				// found a free node with enough size
 				ptr = SplittHeapNode(*currentHeapNode, currentNode, size);
 				currentHeapNode->freeBytes -= size;
@@ -206,9 +217,13 @@ _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 			}
 			currentNode = currentNode->next; // go to the next node
 		}
+		DebugPrint(L"BBBBBBBBBBBBBBBBBBBBBBBBBb");
 	}
+	DebugPrint(L"WALKED HEAP ");
 	if (!ptr) {
+
 		HeapNode* newNode = nullptr;
+		DebugPrint(L"ALLOCATING FROM OS");
 		if (size < PAGE_SIZE / 2) {
 			newNode = AllocateFromOS((size / PAGE_SIZE) + 1); //-V1064
 		}
@@ -239,6 +254,7 @@ _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 			currentNode = currentNode->next; // go to the next node
 		}
 	}
+	DebugPrint(L"ALLOCATED MEMORY");
 	return ptr ? ptr->data : nullptr; // return the data pointer of the allocated node or nullptr if no suitable node was found
 }
 void free(void* _Block) {
@@ -309,6 +325,7 @@ bool CreateHeap(size_t initSize)
 	heap.last = node;
 	heap.totalSize = initSize; // set the total size of the heap
 	heap.usedSize = 0; // initialize the used size to 0
+	initParameters.callbacks.WriteLine(L"HEAP CREATED");
 	return true;
 }
 #pragma warning(pop)
