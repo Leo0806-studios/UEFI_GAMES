@@ -12,3 +12,5 @@
 #define CRT_START extern "C"{
 
 #define CRT_END }
+
+#define __NOT_NULL(ptr) __assume( (ptr) != nullptr )

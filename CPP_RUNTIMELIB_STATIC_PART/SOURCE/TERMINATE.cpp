@@ -7,7 +7,7 @@
 //	Created  -
 //	Last modified 03.09.2025
 //	This file is part of the CPP runtime 
-//	this file contains the logic for std::terinate and for setting and storing a termination handler
+//	this file contains the logic for std::terminate and for setting and storing a termination handler
 //############################################
 #include "INIT_RUNTIME.h"
 #include "CPPRUNTIME.h"

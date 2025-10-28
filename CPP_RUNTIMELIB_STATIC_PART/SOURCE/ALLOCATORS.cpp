@@ -169,6 +169,33 @@ static bool FreeToOS(HeapNode* ptr) {
 	return sucsess;
 }
 
+[[nodiscard("discarding the result of this function will leave the heap in an undefined state")]] static MemoryNode* FindMemNode(HeapNode& heapNode,size_t size) {
+	MemoryNode* currentNode = heapNode.first;
+	MemoryNode* ptr = nullptr;
+	if(!AS_BOOL(currentNode)) {
+		return nullptr;
+	}
+	while (AS_BOOL(currentNode))
+	{
+		__NOT_NULL(currentNode);//this is just to make the static analyzer happy
+		if (currentNode->isFree && currentNode->size >= size) {
+			
+			// found a free node with enough size
+			ptr = SplittHeapNode(heapNode, currentNode, size);
+			heapNode.freeBytes -= size;
+			heapNode.usedSize += size;
+			ptr->data = reinterpret_cast<char*>(ptr) + sizeof(MemoryNode); // set the data pointer to the start of the data block
+			ptr->isFree = false; // mark the node as allocated
+
+			heap.usedSize += size;
+			break; // exit the inner loop
+		} 
+
+		currentNode = currentNode->next;
+	}
+	return ptr;
+}
+
 
 _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 
@@ -180,55 +207,28 @@ _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 		DebugPrint(L"HEAP INVALID");
 		return nullptr; // heap not initialized
 	}
+	__assume(heap.first != nullptr);
 #endif // _DEBUG
 
 	HeapNode* currentHeapNode = heap.first;
 	MemoryNode* ptr = nullptr;
-	while (currentHeapNode->next) {
-		DebugPrint(L"CHECKING HEAP NODE");
-		MemoryNode* currentNode = currentHeapNode->first;
-		if (!AS_BOOL(currentNode)) {
-			DebugPrint(L"NODE INVALID");
-		}
+	while (AS_BOOL(currentHeapNode)) {
 		if (currentHeapNode->freeBytes < size) {
-			DebugPrint(L"NOT ENOUGH SPACE IN CURRENT HEAP NODE");
 			currentHeapNode = currentHeapNode->next;
 			continue; // not enough free bytes in this heap node, go to the next one
 		}
-		DebugPrint(L"AAAAAAAAAAAAAAAAAAAAAAAaa");
-		DebugPrint(L"AAAAAAAAAAAAAAAAAAAAAAAaa");
-		while (AS_BOOL(currentNode->next))
-		{
-			DebugPrint(L"CHECKING MEMORY NODE");
-			if (currentNode->isFree && currentNode->size >= size) {
-				DebugPrint(L"FOUND MEMORY NODE");
-				// found a free node with enough size
-				ptr = SplittHeapNode(*currentHeapNode, currentNode, size);
-				currentHeapNode->freeBytes -= size;
-				currentHeapNode->usedSize += size;
-				ptr->data = reinterpret_cast<char*>(ptr) + sizeof(MemoryNode); // set the data pointer to the start of the data block
-				ptr->isFree = false; // mark the node as allocated
-
-				heap.usedSize += size;
-				break; // exit the inner loop
-			}
-			if (ptr) {
-				break; // exit the outer loop if we found a suitable node
-			}
-			currentNode = currentNode->next; // go to the next node
-		}
-		DebugPrint(L"BBBBBBBBBBBBBBBBBBBBBBBBBb");
+		ptr =FindMemNode(*currentHeapNode, size);
+		currentHeapNode = currentHeapNode->next;
 	}
-	DebugPrint(L"WALKED HEAP ");
-	if (!ptr) {
+	if (!AS_BOOL(ptr)) {
 
 		HeapNode* newNode = nullptr;
 		DebugPrint(L"ALLOCATING FROM OS");
 		if (size < PAGE_SIZE / 2) {
-			newNode = AllocateFromOS((size / PAGE_SIZE) + 1); //-V1064
+			newNode = AllocateFromOS(1); //-V1064
 		}
 		else {
-			newNode = AllocateFromOS((size / PAGE_SIZE) + 2);
+			newNode = AllocateFromOS((size / PAGE_SIZE) *2);
 		}
 		if (!newNode) {
 			return nullptr; // if the allocation failed, return nullptr

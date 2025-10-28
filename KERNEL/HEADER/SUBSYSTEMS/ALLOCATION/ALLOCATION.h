@@ -41,7 +41,7 @@ namespace SYSTEM {
 				static void* AllocatePage();
 				/// <summary>
 				/// frees a single page. faster than FreePages as it doesn't have to do bounds checking.
-				/// performs a check if the pointer is a valid page pinter. (at a offset that corresponds to the sizeof the header and some other checks).
+				/// performs a check if the pointer is a valid page pointer. (at a offset that corresponds to the sizeof the header and some other checks).
 				/// if the pointer is invalid it will return false. 
 				/// nullptr is also invalid
 				/// </summary>

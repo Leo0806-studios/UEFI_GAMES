@@ -28,6 +28,12 @@ extern "C" {
 	void _free_dbg(void* _Block);
 
 }
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="x"></param>
+/// <returns></returns>
 template<typename T> [[nodiscard]] constexpr __forceinline bool static AS_BOOL(T x) { return static_cast<bool>(x); }//NOLINT //NOSONAR
 
 
