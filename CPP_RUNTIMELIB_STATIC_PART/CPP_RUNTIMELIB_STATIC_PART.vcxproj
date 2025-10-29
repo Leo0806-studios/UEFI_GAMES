@@ -28,7 +28,7 @@
     <ClInclude Include="HEADER\INTERNAL\GLOBAL_STATE.h" />
     <ClInclude Include="HEADER\LANGUAGE_EXTENSION.h" />
     <ClInclude Include="HEADER\RTTI_DATA.h" />
-    <ClInclude Include="HEADER\STRING.h" />
+    <ClInclude Include="HEADER\_STRING.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\ALLOCATORS.cpp" />

@@ -198,6 +198,16 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 
 			}
 		}
+		void SimpleFillScreen(unsigned int colour)
+		{
+			if (FramebufferBase == nullptr) {
+				return;
+			}
+			const size_t FrameBufferSize = static_cast<size_t>(FramebufferHeight) * static_cast<size_t>(FramebufferWidth);
+			for (unsigned int  i = 0; i < FrameBufferSize; i++) {
+				FramebufferBase[i] = colour; 
+			}
+		}
 	}
 }
 

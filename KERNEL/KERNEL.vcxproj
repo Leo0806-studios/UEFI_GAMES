@@ -191,8 +191,10 @@
     <ClCompile Include="SOURCE\DRIVERS\PCI\PCI.cpp" />
     <ClCompile Include="SOURCE\STARTUP\GDT\GDT.cpp" />
     <ClCompile Include="SOURCE\STARTUP\PAGE_MAP\PAGE_MAP.cpp" />
+    <ClCompile Include="SOURCE\STARTUP\PE_PARSER\PE_PARSER.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\ALLOCATION\ALLOCATION.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp" />
+    <ClCompile Include="SOURCE\SUBSYSTEMS\PANIC\PANIC.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\FONT.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp" />
     <ClCompile Include="SOURCE\SUBSYSTEMS\WATCHDOG\WATCHDOG.cpp" />
@@ -204,8 +206,10 @@
     <ClInclude Include="HEADER\SAL\SAL.h" />
     <ClInclude Include="HEADER\STARTUP\GDT\GDT.h" />
     <ClInclude Include="HEADER\STARTUP\PAGE_MAP\PAGE_MAP.h" />
+    <ClInclude Include="HEADER\STARTUP\PE_PARSER\PE_PARSER.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\ALLOCATION\ALLOCATION.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\CONSOLE\CONSOLE.h" />
+    <ClInclude Include="HEADER\SUBSYSTEMS\PANIC\PANIC.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h" />
     <ClInclude Include="HEADER\SUBSYSTEMS\WATCHDOG\WATCHDOG.h" />
     <ClInclude Include="HEADER\SYTEM_INFO\SYSTEM_INFO.h" />

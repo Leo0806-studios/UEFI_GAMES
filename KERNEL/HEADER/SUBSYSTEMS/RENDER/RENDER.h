@@ -61,6 +61,11 @@ namespace SYSTEM::SUBSYSTEMS::RENDER {
 		 /// <param name="x"></param>
 		 /// <param name="y"></param>
 		 void SimpleDrawString(const wchar_t* str, unsigned int x, unsigned int y); //-V2565 // contains direct recursion on a too long string. will only recur once as the string printed instead is always short enough
+		 /// <summary>
+		 /// fills the entire screen with one colour, overwriting anything that was there before
+		 /// </summary>
+		 /// <param name="colour"></param>
+		 void SimpleFillScreen(unsigned int colour);
 
 	}
 	/// <summary>

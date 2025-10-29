@@ -5,6 +5,7 @@
 #include <intrin.h>
 #include <stdint.h>
 #include <SUBSYSTEMS/CONSOLE/CONSOLE.h>
+#include "SUBSYSTEMS/PANIC/PANIC.h"
 namespace SYSTEM::SUBSYSTEMS::WATCHDOG {
 	namespace SIMPLE {
 		struct Watchdog {
@@ -79,7 +80,7 @@ namespace SYSTEM::SUBSYSTEMS::WATCHDOG {
 		Watchdogs watchdogs_G = {};
 		Watchdog* StartWatchdog(int64_t timeMS)
 		{
-			CONSOLE::Console::WriteLine(L"CREATING WATCHDOG");
+			///CONSOLE::Console::WriteLine(L"CREATING WATCHDOG");
 			Watchdog wd = {
 				.id = watchdogs_G.getNextId(),
 				.maxtime = timeMS,
@@ -104,7 +105,7 @@ namespace SYSTEM::SUBSYSTEMS::WATCHDOG {
 				}()//TODO: replace with actual rtc port reading once i read up on it.for now its cycle counting
 			};
 			Watchdog* ret = watchdogs_G.push_back(wd);
-			CONSOLE::Console::WriteLine(L"WATCHDOG CREATED");
+			//CONSOLE::Console::WriteLine(L"WATCHDOG CREATED");
 			return ret;
 		}
 		void CheckWatchdg(Watchdog* watchdog)
@@ -121,8 +122,7 @@ namespace SYSTEM::SUBSYSTEMS::WATCHDOG {
 			const int64_t diff = curr - watchdog->Created;
 			const int64_t remaining = watchdog->RemainingTime - diff;
 			if (remaining <= 0) {
-				CONSOLE::Console::WriteLine(L"WATCHDOG TRIGGERED");
-				std::terminate();
+				SUBSYSTEMS::PANIC::Panic(L"WATCHDOG TRIGGERED", SUBSYSTEMS::PANIC::WatchdogTriggered);
 			}
 			watchdog->RemainingTime = remaining;
 			watchdog->lastTimestamp = curr;
@@ -131,6 +131,7 @@ namespace SYSTEM::SUBSYSTEMS::WATCHDOG {
 		}
 		bool StopWatchdog(Watchdog* watchdog)
 		{
+			//CONSOLE::Console::WriteLine(L"WATCHDOG DESTROYED");
 			watchdogs_G.erase(watchdog);
 			return true;
 		}

@@ -97,6 +97,7 @@ static const RUNTIME_FUNCTION* LookupFunctionEntry(unsigned int rva, const RUNTI
 __declspec(allocate(".xcata")) const int __unwinddata_start = 0;
 
 #pragma section(".xdata", read)
+
 #pragma warning (pop)
 static _UNWIND_INFO ReadUnwindInfo(_In_ const char* unwindData) {
 	if (!AS_BOOL(unwindData)) {

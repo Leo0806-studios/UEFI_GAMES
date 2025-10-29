@@ -33,7 +33,7 @@
     <ClInclude Include="HEADER\RTTI_DATA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\STRING.h">
+    <ClInclude Include="HEADER\_STRING.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HEADER\CRT_MACROS.h">

@@ -18,6 +18,7 @@ extern"C" {
 #include "HEADER/SUBSYSTEMS/ALLOCATION/ALLOCATION.h"
 #include "CPPRUNTIME.h"
 #include "SUBSYSTEMS/WATCHDOG/WATCHDOG.h"
+#include "STARTUP/PE_PARSER/PE_PARSER.h"
 static uint32_t get_cpu_base_freq_mhz() {
 	int cpuInfo[4] = {};
 	__cpuid(&cpuInfo[0], 0x16); //-V3546 // IDK why PVS is complaining
@@ -189,7 +190,7 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		return EFI_OUT_OF_RESOURCES;
 	}
 
-
+	STD::ignore= SYSTEM::STARTUP::PE_PARSER::PePerser::CreateAndParse(ImageBaseAdress);
 	Console::WriteLine(L"SETTING UP GDT...");
 	//TODO insert call to setup of the GDT;
 	SYSTEM::STARTUP::GDT::GDT::CreateGDT();
@@ -221,6 +222,7 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 },
 .initialHeapSize = 10,
 		.imageBaseAddress = ImageBaseAdress,
+		.pdata = {.offset = SYSTEM::STARTUP::PE_PARSER::PePerser::GetSectionOffsetByName(".pdata")},
 	};
 	Console::WriteLine(L"CXX RUNTIME INITIALIZATION STARTING");
 	//############################################### AFTER THIS LINE GLOBAL AND STATIC VARS RESET! #####################################################

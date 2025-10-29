@@ -200,7 +200,7 @@ static bool FreeToOS(HeapNode* ptr) {
 _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 
  _declspec(restrict) void* malloc(_In_ size_t size) {
-	DebugPrint(L"ALLOCATING MEMORY");
+	//DebugPrint(L"ALLOCATING MEMORY");
 	//walk the HeapNode list and the internal list of memory nodes
 #ifdef _DEBUG
 	if (!AS_BOOL(heap.first)) {
@@ -254,7 +254,7 @@ _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 			currentNode = currentNode->next; // go to the next node
 		}
 	}
-	DebugPrint(L"ALLOCATED MEMORY");
+	//DebugPrint(L"ALLOCATED MEMORY");
 	return ptr ? ptr->data : nullptr; // return the data pointer of the allocated node or nullptr if no suitable node was found
 }
 void free(void* _Block) {

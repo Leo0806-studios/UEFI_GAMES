@@ -45,6 +45,12 @@
     <ClCompile Include="SOURCE\SUBSYSTEMS\WATCHDOG\WATCHDOG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SOURCE\STARTUP\PE_PARSER\PE_PARSER.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\SUBSYSTEMS\PANIC\PANIC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h">
@@ -75,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HEADER\SUBSYSTEMS\WATCHDOG\WATCHDOG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\STARTUP\PE_PARSER\PE_PARSER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\SUBSYSTEMS\PANIC\PANIC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
