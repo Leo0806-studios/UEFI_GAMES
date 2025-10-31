@@ -4,6 +4,7 @@
 #include <cstring>
 #include "Windows.h"
 #include "UTILLITY_F.h"
+#include "STRING_F.h"
 namespace SYSTEM::STARTUP::PE_PARSER {
 	struct Section {
 		size_t setionStart = 0;//this is the offset in the pe file.
@@ -96,7 +97,7 @@ namespace SYSTEM::STARTUP::PE_PARSER {
 	}
 	size_t PePerser::GetSectionOffsetByName(const char* name)
 	{
-		const size_t len =strlen(name);
+		const size_t len =STD::strlen(name);
 		if (len > IMAGE_SIZEOF_SHORT_NAME + 1) {
 			SUBSYSTEMS::PANIC::Panic(L"STRING TOO LONG", PanicCode::StringTooLong);
 		}
@@ -110,6 +111,9 @@ namespace SYSTEM::STARTUP::PE_PARSER {
 				sectionStart=( internals->Sections[i].setionStart);
 				break;
 			}
+		}
+		if (sectionStart == 0) {
+			SUBSYSTEMS::PANIC::Panic(L"PE DATA CORRUPTED", PanicCode::KernelImageCorrupted);
 		}
 		return (sectionStart);
 	}
