@@ -224,6 +224,8 @@ EFI_STATUS _KERNEL_MAIN(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		.imageBaseAddress = ImageBaseAdress,
 		.pdata = {.offset = SYSTEM::STARTUP::PE_PARSER::PePerser::GetSectionOffsetByName(".pdata")},
 	};
+	Print(L"Image Base Address: %p\n", Parameters.imageBaseAddress);
+	Print(L".pdata offset: %lu\n", Parameters.pdata.offset);
 	Console::WriteLine(L"CXX RUNTIME INITIALIZATION STARTING");
 	//############################################### AFTER THIS LINE GLOBAL AND STATIC VARS RESET! #####################################################
 	initRuntime(Parameters);
