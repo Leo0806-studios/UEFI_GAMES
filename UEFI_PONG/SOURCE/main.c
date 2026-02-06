@@ -13,11 +13,7 @@
 #include <GLOBALS.h>
 #include "HEAP/HEAP.h"
 #include <intrin.h>
-#include <../GAME/HEADER/RENDER/RENDER.h>
-#include <../GAME/HEADER/OBJECTS/BALL.h>
-#include <../GAME/HEADER/OBJECTS/PLAYER.h>
-#include "../GAME/HEADER/INPUT/INPUT.h"
-#include "../HEADER/RNG/RNG.h"
+
 
 typedef  _Bool BOOL;
 #if defined(_M_X64) || defined(__x86_64__)
@@ -137,6 +133,7 @@ BOOL WasKeyPressed() {
 // Application entrypoint (must be set to 'efi_main' for gnu-efi crt0 compatibility)
 EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 {
+
 	GlobalST = SystemTable;
 	UINTN Event;
 
@@ -155,47 +152,10 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 
 
-//	EFI_HANDLE* fsHandles;
-//	UINTN fsHandleCount;
-//	EFI_FILE_IO_INTERFACE* FileSystem;
-//	EFI_FILE_HANDLE RootDir;
-//
-//	EFI_STATUS status = uefi_call_wrapper(BS->LocateHandleBuffer, 5,
-//		ByProtocol,
-//		&gEfiSimpleFileSystemProtocolGuid,
-//		NULL,
-//		&fsHandleCount,
-//		&fsHandles);
-//
-//	if (EFI_ERROR(status)) {
-//		Print(L"Unable to find any file system handles.\n");
-//		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-//		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-//	}
-//
-//	// Just pick the first one for now (or loop if needed)
-//	status = uefi_call_wrapper(BS->HandleProtocol, 3,
-//		fsHandles[0],
-//		&gEfiSimpleFileSystemProtocolGuid,
-//		(void**)&FileSystem);
-//
-//	if (EFI_ERROR(status)) {
-//		Print(L"HandleProtocol failed\n");
-//		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-//		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-//	}
-//
-//	status = uefi_call_wrapper(FileSystem->OpenVolume, 2, FileSystem, &RootDir);
-//
-//	if (EFI_ERROR(status)) {
-//		Print(L"Failed to open volume.\n");
-//		SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-//		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-//	}
 
 
 
-	EFI_LOADED_IMAGE* LoadedImage;
+	EFI_LOADED_IMAGE* LoadedImage =NULL;
 
 	EFI_STATUS status = uefi_call_wrapper(BS->HandleProtocol, 3,
 		ImageHandle,
@@ -209,7 +169,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	}
 	Print(L"Loaded Image Protocol: %p\n", LoadedImage);
 
-	EFI_FILE_IO_INTERFACE* FileSystem;
+	EFI_FILE_IO_INTERFACE* FileSystem=NULL;
 
 	status = uefi_call_wrapper(BS->HandleProtocol, 3,
 		LoadedImage->DeviceHandle,
@@ -297,50 +257,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	
 	Pong:
 
-	//EFI_FILE_IO_INTERFACE* FileSystem;
-	//EFI_FILE_HANDLE RootFS, KernelFile;
 
-	// Get file system protocol
-	//Status =uefi_call_wrapper(BS->HandleProtocol, 3,
-	//	ImageHandle,
-	//	&gEfiSimpleFileSystemProtocolGuid,
-	//	(void**)&FileSystem);
-	//if (EFI_ERROR(Status)) {
-	//	Print(L"%EError: Could not get file system protocol: %r%N\n", Status);
-	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-	//}
-	//Status = uefi_call_wrapper(FileSystem->OpenVolume, 2, FileSystem, &RootFS);
-	//if (EFI_ERROR(Status)) {
-	//	Print(L"%EError: Could not open root file system: %r%N\n", Status);
-	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-	//}
-	//Status = uefi_call_wrapper(RootFS->Open, 5, RootFS, &KernelFile,
-	//	L"KERNEL.exe", EFI_FILE_MODE_READ, 0);
-	//if( EFI_ERROR(Status)) {
-	//	Print(L"%EError: Could not open kernel file: %r%N\n", Status);
-	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-	//}
-	//EFI_HANDLE KernelImageHandle;
-	////EFI_STATUS status;
-	//
-	//status = uefi_call_wrapper(BS->LoadImage, 6,
-	//	FALSE,
-	//	ImageHandle,
-	//	NULL,         // optional device path
-	//	NULL, 0,      // no buffer; we're loading from file
-	//	&KernelImageHandle
-	//);
-	//if (EFI_ERROR(status)) {
-	//	Print(L"%EError: Could not load kernel image: %r%N\n", status);
-	//	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-	//	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);;
-	//}
-	//status = uefi_call_wrapper(BS->StartImage, 3,
-	//	KernelImageHandle, NULL, NULL);
-	//
 	CreatHeap(MiB(10));
 
 	InitRender();
@@ -400,7 +317,6 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	CreatePlayers((Vector2) { 30, 400 });
 	Print(L"Players Created\n");
 	bool dontExit = true;
-	//PrintHeap();
 	while (dontExit) {
 		if (GetKey(SCAN_ESC, 1)) { dontExit = false; }
 		ClearScreen();
@@ -410,7 +326,6 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		DrawBall(ball);
 		DrawPlayers();
 		RefreshScreen();
-	//	GlobalST->BootServices->Stall(100);
 	}
 
 	DestroyBall(ball);

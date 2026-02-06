@@ -132,7 +132,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_PONG\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)BOOTLOADER\HEADER;$(ProjectDir)$PONG\GAME\HEADER;$(ProjectDir)PONG\ENGINE\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>false</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -193,6 +193,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h" />
+    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP.c" />
     <ClCompile Include="GAME\SOURCE\INPUT\INPUT.c" />
     <ClCompile Include="GAME\SOURCE\OBJECTS\BALL\BALL.c" />
     <ClCompile Include="GAME\SOURCE\OBJECTS\PLAYER\PLAYER.c" />
@@ -203,15 +205,15 @@
     <ClCompile Include="SOURCE\RNG\RNG.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GAME\HEADER\DATATYPES\VEC2\VEC2.h" />
-    <ClInclude Include="GAME\HEADER\INPUT\INPUT.h" />
-    <ClInclude Include="GAME\HEADER\OBJECTS\BALL.h" />
-    <ClInclude Include="GAME\HEADER\OBJECTS\PLAYER.h" />
-    <ClInclude Include="GAME\HEADER\PHYSICS\PHYSICS.h" />
-    <ClInclude Include="GAME\HEADER\RENDER\RENDER.h" />
-    <ClInclude Include="HEADER\ANNOTATIONS.h" />
-    <ClInclude Include="HEADER\GLOBALS.h" />
-    <ClInclude Include="HEADER\HEAP\HEAP.h" />
+    <ClInclude Include="PONG\ENGINE\HEADER\DATATYPES\VEC2\VEC2.h" />
+    <ClInclude Include="PONG\ENGINE\HEADER\INPUT\INPUT.h" />
+    <ClInclude Include="PONG\GAME\OBJECTS\BALL.h" />
+    <ClInclude Include="PONG\GAME\OBJECTS\PLAYER.h" />
+    <ClInclude Include="PONG\ENGINE\HEADER\PHYSICS\PHYSICS.h" />
+    <ClInclude Include="PONG\ENGINE\HEADER\RENDER\RENDER.h" />
+    <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h" />
+    <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h" />
+    <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h" />
     <ClInclude Include="HEADER\RNG\RNG.h" />
   </ItemGroup>
   <ItemGroup>

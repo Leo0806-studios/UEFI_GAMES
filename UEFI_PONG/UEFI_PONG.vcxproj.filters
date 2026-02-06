@@ -39,36 +39,42 @@
     <ClCompile Include="SOURCE\RNG\RNG.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\HEAP\HEAP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADER\GLOBALS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GAME\HEADER\RENDER\RENDER.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GAME\HEADER\DATATYPES\VEC2\VEC2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GAME\HEADER\OBJECTS\BALL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GAME\HEADER\INPUT\INPUT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GAME\HEADER\OBJECTS\PLAYER.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GAME\HEADER\PHYSICS\PHYSICS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADER\ANNOTATIONS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HEADER\RNG\RNG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PONG\ENGINE\HEADER\DATATYPES\VEC2\VEC2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PONG\ENGINE\HEADER\INPUT\INPUT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PONG\GAME\OBJECTS\BALL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PONG\GAME\OBJECTS\PLAYER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PONG\ENGINE\HEADER\PHYSICS\PHYSICS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PONG\ENGINE\HEADER\RENDER\RENDER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

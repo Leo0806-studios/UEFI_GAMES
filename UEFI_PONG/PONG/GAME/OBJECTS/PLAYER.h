@@ -1,8 +1,8 @@
 #pragma once
 #include <GLOBALS.h>
-#include <../GAME/HEADER/DATATYPES/VEC2/VEC2.h>
+#include <DATATYPES/VEC2/VEC2.h>
 #include <ANNOTATIONS.h>
-#include "../PHYSICS/PHYSICS.h"
+#include "PHYSICS/PHYSICS.h"
 typedef struct {
 	Vector2 position;
 	Vector2 extends;
