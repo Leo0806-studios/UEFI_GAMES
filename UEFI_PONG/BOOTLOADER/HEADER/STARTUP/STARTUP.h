@@ -1,9 +1,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif // __cplusplus
-#include <gnu-efi/inc/efi.h>
-#include <gnu-efi/inc/efilib.h>
-#include <gnu-efi/inc/libsmbios.h>
+#include <efi.h>
+#include <efilib.h>
+#include <libsmbios.h>
 	/// <summary>
 	/// performs the necesary initialisation of the bootloader
 	/// such as
@@ -21,7 +21,7 @@ extern "C" {
 
 	typedef struct {
 		EFI_GRAPHICS_OUTPUT_PROTOCOL GOP;
-		EFI_MP_PROTOCOL
+		EFI_MP_SERVICES_PROTOCOL MPP;
 
 	} BOOTLOADER_PROTOCOLS;
 #ifdef __cplusplus

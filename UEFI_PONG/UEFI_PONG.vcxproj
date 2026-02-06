@@ -132,7 +132,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)BOOTLOADER\HEADER;$(ProjectDir)$PONG\GAME\HEADER;$(ProjectDir)PONG\ENGINE\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)BOOTLOADER\HEADER;$(ProjectDir)$PONG\GAME\HEADER;$(ProjectDir)PONG\ENGINE\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>false</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
