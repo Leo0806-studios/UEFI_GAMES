@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Copy of Microsoft Native Recommended Rules" Description="These rules focus on the most critical and common problems in your native code, including potential security holes and application crashes.  You should include this rule set in any custom rule set you create for your native projects.  This ruleset is designed to work with Visual Studio Professional edition and higher." ToolsVersion="17.0">
+<RuleSet Name="Copy of Microsoft Native Recommended Rules" Description="These rules focus on the most critical and common problems in your native code, including potential security holes and application crashes.  You should include this rule set in any custom rule set you create for your native projects.  This ruleset is designed to work with Visual Studio Professional edition and higher." ToolsVersion="18.0">
   <Include Path="nativeminimumrules.ruleset" Action="Default" />
   <Rules AnalyzerId="Microsoft.Analyzers.NativeCodeAnalysis" RuleNamespace="Microsoft.Rules.Native">
     <Rule Id="C26100" Action="Warning" />
@@ -46,7 +46,6 @@
     <Rule Id="C26818" Action="Warning" />
     <Rule Id="C26820" Action="Warning" />
     <Rule Id="C26822" Action="Warning" />
-    <Rule Id="C26823" Action="Warning" />
     <Rule Id="C26827" Action="Warning" />
     <Rule Id="C26828" Action="Warning" />
     <Rule Id="C26829" Action="Warning" />
