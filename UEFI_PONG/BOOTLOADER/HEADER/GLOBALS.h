@@ -1,6 +1,6 @@
 #pragma once
 #pragma warning(push, 0)
-#include <gnu-efi/inc/efi.h>
+#include <efi.h>
 #include <stdbool.h>
 #pragma warning(pop)
 extern EFI_SYSTEM_TABLE* GlobalST;

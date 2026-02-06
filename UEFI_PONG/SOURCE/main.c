@@ -4,9 +4,9 @@
  * See COPYING for the full licensing terms.
  */
 #pragma warning(push,0)
-#include <gnu-efi/inc/efi.h>
-#include <gnu-efi/inc/efilib.h>
-#include <gnu-efi/inc/libsmbios.h>
+#include <efi.h>
+#include <efilib.h>
+#include <libsmbios.h>
 #include <string.h>
 #pragma warning(pop)
 
@@ -260,29 +260,8 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	CreatHeap(MiB(10));
 
-	InitRender();
-	InitPhysics();
-	InitRNG(80085);
-	//test RNG
-	Print(L"RNG Test uint64: %d\n" ,GetRandomUint());
-	Print(L"RNG Test int: %d\n", GetRandomInt());
-	Print(L"RNG Test float: %f\n", GetRandomFloat());
-	Print(L"RNG Test double: %f\n", GetRandomDouble());
-	Print(L"RNG Test int range: %d\n", GetRandomIntRange(10, 100));
-	Print(L"RNG Test float range: %f\n", GetRandomFloatRange(10.0f, 100.0f));
-	Print(L"RNG Test double range: %f\n", GetRandomDoubleRange(10.0, 100.0));
-	Vector2 a = { 100, 50 };
-	DrawPixel(a, 0xff0000);
+	
 
-	Vector2 b = { 500, 1000 };
-	DrawLine(a, b, 0xff0000);
-	/*
-	 * In addition to the standard %-based flags, Print() supports the following:
-	 *   %N       Set output attribute to normal
-	 *   %H       Set output attribute to highlight
-	 *   %E       Set output attribute to error
-	 *   %r       Human readable version of a status code
-	 */
 	Print(L"\n%H*** (%s) ***%N\n\n", ArchName);
 	SystemTable->BootServices->AllocatePages(
 		AllocateAnyPages, // Allocate any pages
@@ -305,31 +284,9 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
 
 	GlobalST->BootServices->Stall(1000000);
-	PrintHeap();
 
-	Ball* ball = CreateBall(200, 100, 30, 10, 10);
-	PrintHeap();
-	if (!ball) {
-		Print(L"Ball Creation faliled");
-		return -1;
-	}
-	Print(L" Ball position x %f, y %f \n", ball->position.x, ball->position.y);
-	CreatePlayers((Vector2) { 30, 400 });
-	Print(L"Players Created\n");
-	bool dontExit = true;
-	while (dontExit) {
-		if (GetKey(SCAN_ESC, 1)) { dontExit = false; }
-		ClearScreen();
-		UpdateBall(ball,0.5f);
-	UpdatePlayers();
-		UpdatePhysics();
-		DrawBall(ball);
-		DrawPlayers();
-		RefreshScreen();
-	}
+	
 
-	DestroyBall(ball);
-	PrintScores();
 	Print(L"\n%EPress any key to exit.%N\n");
 	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
 	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
