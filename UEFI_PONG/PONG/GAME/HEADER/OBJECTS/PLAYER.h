@@ -3,8 +3,9 @@
 #include <DATATYPES/VEC2/VEC2.h>
 #include <ANNOTATIONS.h>
 #include "PHYSICS/PHYSICS.h"
+#include "GAME_OBJECT/GAME_OBJECT.h"
 typedef struct {
-	Vector2 position;
+	GameObject Base;
 	Vector2 extends;
 	__OWNING(Collider*)collider;
 	bool player1;
@@ -15,16 +16,10 @@ typedef struct {
 /// </summary>
 /// <param name="Size">The size to assign to each player, represented as a Vector2.</param>
 void CreatePlayers(Vector2 Size);
-/// <summary>
-/// Destroys both players.
-/// </summary>
-/// <param name=""></param>
-void DestroyPlayers(void);
-/// <summary>
-/// opdates both players.
-/// polls input, updates location etc
-/// </summary>
-void UpdatePlayers();
+void DestroyPlayer(Player* thisPtr);
+
+
+void UpdatePlayer(Player* thisPtr, float deltaTime);
 /// <summary>
 /// Draws both players to the screen.  
 /// </summary>

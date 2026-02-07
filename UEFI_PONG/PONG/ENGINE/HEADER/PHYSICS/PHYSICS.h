@@ -1,6 +1,7 @@
 #pragma once
 #include <GLOBALS.h>
 #include <../GAME/HEADER/DATATYPES/VEC2/VEC2.h>
+#include <GAME_OBJECT/GAME_OBJECT.h>
 #include <ANNOTATIONS.h>
 /// <summary>
 /// this is a simple physics engine that uses AABB collision detection and triggers callbacks when colliders collide.
@@ -23,10 +24,9 @@ typedef void(*TrigerCallBack)(void* self, void*other);
 typedef struct {
 	Vector2 extends;
 	bool isShphere;//spherer is a specia lcollider as it has its objPosition in the center instead of one corner
-	Vector2* ObjPosition;
 	TrigerCallBack TriggerCallBack;
 	bool DebugDrawCollider;
-	void* object;
+	__NON_OWNING(GameObject*)object;
 }Collider;
 
 /// <summary>
@@ -41,7 +41,7 @@ void InitPhysics();
 /// <param name="a">non owning pointer to a</param>
 /// <param name="b">non owning pointer to b</param>
 /// <returns></returns>
-bool AABBCheck(__NON_OWNING(Collider* a), __NON_OWNING(Collider* b));
+bool AABBCheck(__NON_OWNING(Collider* )a, __NON_OWNING(Collider* )b);
 /// <summary>
 /// updates the physics engine, this will check for collisions and call the trigger callbacks if needed.
 /// </summary>
@@ -51,7 +51,7 @@ void UpdatePhysics(void);
 /// adds the collider to the physics engine, this will perform a heap allocation to store a pointer to the collider.
 /// </summary>
 /// <param name="collider"></param>
-void AddtoPhysics(__NON_OWNING(Collider* collider),int slot);
+void AddtoPhysics(__NON_OWNING(Collider*)collider,int slot);
 /// <summary>
 /// removes the collider from the physics engine, this will free the memory allocated for the pointer.
 /// </summary>

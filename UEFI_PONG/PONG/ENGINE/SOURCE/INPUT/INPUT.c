@@ -1,4 +1,4 @@
-#include <../GAME/HEADER/INPUT/INPUT.h>
+#include <INPUT/INPUT.h>
 #include <GLOBALS.h>
 
 

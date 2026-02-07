@@ -1,10 +1,10 @@
-#include "../../../HEADER/OBJECTS/PLAYER.h"
-#include "../../../../HEADER/HEAP/HEAP.h"
-#include "../../../HEADER/RENDER/RENDER.h"
+#include "OBJECTS/PLAYER.h"
+#include "HEAP/HEAP.h"
+#include "RENDER/RENDER.h"
 #pragma warning (push,0)
-#include <gnu-efi/inc/efilib.h>
+#include <efilib.h>
 #pragma warning(pop)
-#include "../../../HEADER/INPUT/INPUT.h"
+#include "INPUT/INPUT.h"
 Player* Players[2] = { 0 };
 
 static void PlayerCallback(void* this, void* other) {
@@ -19,15 +19,11 @@ static void PlayerCallback(void* this, void* other) {
 static  __OWNING(Player*)CreatePlayer1(Vector2 size, Vector2 position,int playerslot)
 {
 	__OWNING(Player * player) = Alloc(sizeof(Player));
-	player->position = position;
+	player->Base = (GameObject){ .Position = position ,.VTable = (vTable){.Update = UpdatePlayer,.Destroy = DestroyPlayer} };
 	player->extends = size;
 	player->Score = 0;
 	player->collider = Alloc(sizeof(Collider));
-	player->collider->ObjPosition = &player->position;
-	player->collider->extends = size;
-	player->collider->TriggerCallBack = PlayerCallback;
-	player->collider->DebugDrawCollider = true;
-	player->collider->object = player;
+	*(player->collider) = (Collider){ .extends = size,.isShphere = false,.TriggerCallBack = PlayerCallback,.DebugDrawCollider = true,.object = player };
 	AddtoPhysics(player->collider, playerslot);
 	return player;
 }
@@ -45,11 +41,11 @@ void  CreatePlayers(Vector2 size)
 
 }
 
-void DestroyPlayers(void)
+void DestroyPlayers(Player* thisPtr)
 {
 }
 
-void UpdatePlayers()
+void UpdatePlayer(Player* thisPtr, float deltaTime)
 {
 	//Print(L"\n Updating Players\n");
 	//check if both exist

@@ -27,3 +27,6 @@ typedef enum Keys {
 /// <param name="key"></param>
 /// <returns></returns>
 bool GetKey(Keys key,int tries);
+
+void InitInput();
+void NextFrame(void);

@@ -1,11 +1,12 @@
 #pragma once
 #include <GLOBALS.h>
-#include <../GAME/HEADER/DATATYPES/VEC2/VEC2.h>
-#include <../HEADER/HEAP/HEAP.h>
-#include <../GAME/HEADER/RENDER/RENDER.h>
-#include "../PHYSICS/PHYSICS.h"
+#include "GAME_OBJECT/GAME_OBJECT.h"
+#include <DATATYPES/VEC2/VEC2.h>
+#include <HEAP/HEAP.h>
+#include <RENDER/RENDER.h>
+#include "PHYSICS/PHYSICS.h"
 typedef struct Ball {
-	Vector2 position; // Position of the ball
+	GameObject Base;
 	Vector2 velocity; // Velocity of the ball
 	int radius;    // Radius of the ball
 	__OWNING(Collider*)collider;

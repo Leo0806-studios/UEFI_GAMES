@@ -1,6 +1,6 @@
 #pragma once
 #include <GLOBALS.h>
-#include <../GAME/HEADER/DATATYPES/VEC2/VEC2.h>
+#include <DATATYPES/VEC2/VEC2.h>
 	/// <summary>
 	/// inits render. only call any render functions after a call to this
 	/// </summary>

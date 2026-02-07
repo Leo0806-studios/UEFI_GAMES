@@ -1,26 +1,50 @@
 #pragma warning (push,0)
-#include <gnu-efi/inc/efi.h>
-#include <gnu-efi/inc/efilib.h>
+#include <efi.h>
+#include <efilib.h>
 #pragma warning(pop)
-#include <../GAME/HEADER/PHYSICS/PHYSICS.h>
-#include <../HEADER/HEAP/HEAP.h>
-#include "../../HEADER/RENDER/RENDER.h"
-static Collider* Colliders[3] = { 0 };
+#include <PHYSICS/PHYSICS.h>
+#include <HEAP/HEAP.h>
+#include "RENDER/RENDER.h"
+typedef struct {
+    __NON_OWNING(Collider*)*collider;
+    size_t count, capacity;
+}ColiderList;
+static ColiderList GlobalColiderList;
+static Collider** AppendToList(ColiderList* thisPtr, Collider* newObj) {
+    if (thisPtr->count == thisPtr->capacity) {
+        Collider** tmp = Alloc(sizeof(Collider*) * thisPtr->count * 2);
+        for (size_t index = 0; index < thisPtr->count; index++) {
+            tmp[index] = thisPtr->collider[index];
+        }
+        DeAlloc(thisPtr->collider);
+        thisPtr->collider = tmp;
+        thisPtr->capacity = thisPtr->capacity * 2;
+    }
+    thisPtr->collider[thisPtr->count] = newObj;
+    thisPtr->count++;
+    return &thisPtr->collider[thisPtr->count - 1];
+
+}
+static void RemoveFromListVal(ColiderList* thisPtr, Collider* val) {
+
+}
+static void RemoveFromListIndex(ColiderList* thisPtr, size_t index) {
+
+}
+
 //handles special sphere case where we first need to calculate te corner from the obj position
 // as the extends are not half extends we can just use the obj position as min
-static Vector2 get_min(Collider* c) {
+static Vector2 get_min(const Collider* c) {
     Vector2 min = { 0 };
     if (c->isShphere) {
-        Vector2 ActualPos = AddVector2(
-            *c->ObjPosition,
+        min = AddVector2(
+            c->object->Position,
             ScaleVector2(c->extends, -0.5)
         );
-        min.x = ActualPos.x;
-        min.y = ActualPos.y ;
+
     }
     else {
-        min.x = c->ObjPosition->x;
-        min.y= c->ObjPosition->y;
+       min= c->object->Position;
     }
 
     return min;
@@ -30,15 +54,21 @@ static Vector2 get_max(Collider* c) {
     Vector2 max = { 0 };
     if (c->isShphere) {
         Vector2 ActualPos = AddVector2(
-            *c->ObjPosition,
+            c->object->Position,
             ScaleVector2(c->extends, -0.5)
         );
-        max.x = ActualPos.x + c->extends.x;
-        max.y =ActualPos.y + c->extends.y;
+        max = AddVector2(
+            ActualPos,
+            c->extends
+		);
+
 
     }
-    max.x = c->ObjPosition->x + c->extends.x;
-    max.y = c->ObjPosition->y + c->extends.y;
+    max = AddVector2(
+        c->object->Position,
+        c->extends
+	);
+
     return max;
 }
 
