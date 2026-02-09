@@ -200,9 +200,8 @@
     <ClCompile Include="PONG\GAME\SOURCE\OBJECTS\PLAYER\PLAYER.c" />
     <ClCompile Include="PONG\ENGINE\SOURCE\PHYSICS\PHYSICS.c" />
     <ClCompile Include="PONG\ENGINE\SOURCE\RENDER\RENDER.c" />
-    <ClCompile Include="SOURCE\HEAP\HEAP.c" />
+    <ClCompile Include="BOOTLOADER\SOURCE\HEAP\HEAP.c" />
     <ClCompile Include="SOURCE\main.c" />
-    <ClCompile Include="SOURCE\RNG\RNG.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PONG\ENGINE\HEADER\DATATYPES\VEC2\VEC2.h" />
@@ -215,7 +214,6 @@
     <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h" />
     <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h" />
     <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h" />
-    <ClInclude Include="HEADER\RNG\RNG.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

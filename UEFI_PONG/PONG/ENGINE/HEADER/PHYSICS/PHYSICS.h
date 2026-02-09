@@ -1,6 +1,6 @@
 #pragma once
 #include <GLOBALS.h>
-#include <../GAME/HEADER/DATATYPES/VEC2/VEC2.h>
+#include <DATATYPES/VEC2/VEC2.h>
 #include <GAME_OBJECT/GAME_OBJECT.h>
 #include <ANNOTATIONS.h>
 /// <summary>
