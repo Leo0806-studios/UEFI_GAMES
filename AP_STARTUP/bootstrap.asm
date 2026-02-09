@@ -42,14 +42,14 @@ PAGESIZE        equ 1<<7 ;sets pagesize to 2 mib
 ;page Table
 align 4096
 pml4:
-    dq  ($+8*512)|PRESENT|WRITABLE;top level page dir. grrrrr can bOR with lable
+    dq  0;need to fill on runtime
     times 511 dq 0 ;grrr must be one page in size. much wasted space
 pdpt:
-    dq  ($+8*512) | PRESENT|WRITABLE;
+    dq  0;need to fill on runtime
     times 511 dq 0 ;grrr must be one page in size. much wasted space
 pd:    
-    dq 0x00000000 | PRESENT | WRITABLE | PS   ; 0–2 MiB
-    dq 0x00200000 | PRESENT | WRITABLE | PS   ; 2–4 MiB
-    dq 0x00400000 | PRESENT | WRITABLE | PS   ; 4–6 MiB
-    dq 0x00600000 | PRESENT | WRITABLE | PS   ; 6–8 MiB
+    dq 0x00000000 | PRESENT | WRITABLE | PAGESIZE   ; 0–2 MiB
+    dq 0x00200000 | PRESENT | WRITABLE | PAGESIZE   ; 2–4 MiB
+    dq 0x00400000 | PRESENT | WRITABLE | PAGESIZE   ; 4–6 MiB
+    dq 0x00600000 | PRESENT | WRITABLE | PAGESIZE   ; 6–8 MiB
     times 508 dq 0
