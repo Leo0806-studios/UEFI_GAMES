@@ -128,8 +128,8 @@ pd:
 	add rbx,rax
 	mov rsp, [rbx]
 	jmp [ApKernelLoop]
-PtrStackArray: dq 0x0; will be filled by the kernel once all processors are ready. is a vodi** indexed by the processor id
-PtrReachedLongModeArray: dq 0x0; will be filled before sipi is send so that processors can signal when they reachedlong mode. is a bool* indexed by the processor id
+PtrStackArray: 				dq 0x0; will be filled by the kernel once all processors are ready. is a vodi** indexed by the processor id
+PtrReachedLongModeArray: 	dq 0x0; will be filled before sipi is send so that processors can signal when they reachedlong mode. is a bool* indexed by the processor id
 ContiniueFlag:              db 0x0; will get set by the kernel once all cores have reached long mode
 ApKernelLoop:               dq 0x0; gets set by the kerenl on load before the sipi is send
 
