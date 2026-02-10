@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.2.11415.280 d18.0
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BOOTLOADER", "UEFI_PONG\UEFI_PONG.vcxproj", "{1C6AA463-4706-40F5-84A7-EE2D28B2B692}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "USB_STACK", "USB_STACK\USB_STACK.vcxproj", "{9BF024A2-5244-4D80-A94E-3FA5C810FDFB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AP_STARTUP", "AP_STARTUP\AP_STARTUP.vcxproj", "{5EA723C4-0BC3-4D3B-A433-BB59E291E329}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LOW_LEVEL_LIB", "LOW_LEVEL_LIB\LOW_LEVEL_LIB.vcxproj", "{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,14 @@ Global
 		{5EA723C4-0BC3-4D3B-A433-BB59E291E329}.Release|x64.Build.0 = Release|x64
 		{5EA723C4-0BC3-4D3B-A433-BB59E291E329}.Release|x86.ActiveCfg = Release|Win32
 		{5EA723C4-0BC3-4D3B-A433-BB59E291E329}.Release|x86.Build.0 = Release|Win32
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Debug|x64.ActiveCfg = Debug|x64
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Debug|x64.Build.0 = Debug|x64
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Debug|x86.ActiveCfg = Debug|Win32
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Debug|x86.Build.0 = Debug|Win32
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Release|x64.ActiveCfg = Release|x64
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Release|x64.Build.0 = Release|x64
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Release|x86.ActiveCfg = Release|Win32
+		{DFCF059E-F9A2-47C8-B770-5F4BEDE0CDC5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
