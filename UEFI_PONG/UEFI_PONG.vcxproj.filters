@@ -74,8 +74,14 @@
     <ClInclude Include="PONG\ENGINE\HEADER\GAME_OBJECT\GAME_OBJECT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DESCRIPTOR.TXT" />
   </ItemGroup>
 </Project>

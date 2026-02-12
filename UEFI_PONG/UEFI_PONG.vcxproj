@@ -204,6 +204,7 @@
     <ClCompile Include="SOURCE\main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h" />
     <ClInclude Include="PONG\ENGINE\HEADER\DATATYPES\VEC2\VEC2.h" />
     <ClInclude Include="PONG\ENGINE\HEADER\GAME_OBJECT\GAME_OBJECT.h" />
     <ClInclude Include="PONG\ENGINE\HEADER\INPUT\INPUT.h" />
@@ -222,6 +223,9 @@
     <ProjectReference Include="..\gnu-efi\.vs\efilib.vcxproj">
       <Project>{3135d563-9596-4584-9ed6-616adec52974}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DESCRIPTOR.TXT" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

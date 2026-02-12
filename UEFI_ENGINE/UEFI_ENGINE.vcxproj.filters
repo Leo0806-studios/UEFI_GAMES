@@ -15,11 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="bootstrap.asm">
+    <ClCompile Include="UEFI_ENGINE.cpp">
       <Filter>Source Files</Filter>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="DESCRIPTOR.TXT" />
+    </ClCompile>
   </ItemGroup>
 </Project>
