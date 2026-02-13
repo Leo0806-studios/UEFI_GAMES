@@ -27,7 +27,6 @@ gdt:
 gdt_desc:
 	dw gdt_end - gdt - 1
 	dd gdt
-
 gdt_end:
 	CodeProtectedMode:  equ 08
 	DataProtectedMode:  equ 16
@@ -36,7 +35,6 @@ gdt_end:
 [bits 32]
 align 32
 protectedMode:;yayyyyyy no more real mode :3 :3 :3 :3
-	;here i need to compute the actual values for the pagemap entries. ill do that before anzthing else so i dont clobber any values
 
 	mov ax, DataProtectedMode
 	mov ds, ax
@@ -106,11 +104,13 @@ pd:
 		;   get stack pointer from array.
 		;   update stack pointer
 		;   jump to apKernelLoop
+
 ;get local core id
 	mov eax, 1        
 	cpuid             
 	shr rbx, 24       
-	mov rax, rbx      
+	mov rax, rbx  
+	
 	DEFAULT ABS
 	mov rbx, qword [PtrReachedLongModeArray]
 .loopWait:
@@ -119,12 +119,12 @@ pd:
 
 	add rbx, rax
 	mov [rbx],byte 1 ;set Ready Flag
-	mov rcx, [ContiniueFlag]
 	.loopWaitContiniue:
+	mov rcx, [ContiniueFlag]
 	test rcx, rcx
 	jz .loopWaitContiniue
 
-	mov rbx, [PtrStackArray]
+	mov rbx, [PtrStackArray] 
 	add rbx,rax
 	mov rsp, [rbx]
 	jmp [ApKernelLoop]

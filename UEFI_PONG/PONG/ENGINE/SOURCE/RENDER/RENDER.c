@@ -1,10 +1,10 @@
 #pragma once
-#include <../GAME/HEADER/RENDER/RENDER.h>
+#include <RENDER/RENDER.h>
 #pragma warning(push,0)
 #include <string.h>
-#include <gnu-efi/inc/efilib.h>
+#include <efilib.h>
 #pragma warning(pop)
-#include "../../../HEADER/HEAP/HEAP.h"
+#include "HEAP/HEAP.h"
 #include <intrin.h>
 static EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput = NULL;
 static  UINT32* DoubleBuffer = NULLPTR;

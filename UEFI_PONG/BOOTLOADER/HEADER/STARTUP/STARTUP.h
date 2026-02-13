@@ -11,7 +11,7 @@ extern "C" {
 	/// printing startup info
 	/// gathering system information
 	/// locating all neccesary protocols and populating global variables with them
-	/// startup all AP
+	/// also populates the BOOT_DATA_INTERFACE (Except for the CMD args)
 	/// and other neccesary services for the boot enviroment and boot drivers (if applicable)
 	/// </summary>
 	/// <param name="ImageHandle"></param>
@@ -19,11 +19,7 @@ extern "C" {
 	EFI_STATUS InitBootloader(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable);
 
 
-	typedef struct {
-		EFI_GRAPHICS_OUTPUT_PROTOCOL GOP;
-		EFI_MP_SERVICES_PROTOCOL MPP;
 
-	} BOOTLOADER_PROTOCOLS;
 #ifdef __cplusplus
 }
 #endif // __cplusplus

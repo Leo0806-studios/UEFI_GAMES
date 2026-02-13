@@ -29,5 +29,8 @@
     <None Include="SOURCE\HYPERCALL.asm">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="SOURCE\SYSCALL.asm">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

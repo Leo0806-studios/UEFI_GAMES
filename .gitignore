@@ -372,3 +372,5 @@ FodyWeavers.xsd
 /inc
 /AP_STARTUP/bootstrap
 /nasm.exe - Shortcut.lnk
+/LOW_LEVEL_LIB/SOURCE/HYPERCALL
+/LOW_LEVEL_LIB/SOURCE/SYSCALL

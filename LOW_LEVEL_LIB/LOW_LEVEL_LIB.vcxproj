@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SOURCE\HYPERCALL.asm" />
+    <None Include="SOURCE\SYSCALL.asm" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

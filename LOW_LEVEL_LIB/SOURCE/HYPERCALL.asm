@@ -4,10 +4,9 @@ section .code
 MakeHypercall:
     push r15;
     push r14
-    mov r15, rdi    ;move hypercall number to r15
-
+    mov r15, rcx    ;move hypercall number to r15
     vmcall;actual hypercall
-    mov rcx,r14
+    mov rax,r14
     pop r14
     pop r15
     ret
