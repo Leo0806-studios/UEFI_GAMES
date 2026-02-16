@@ -7,3 +7,4 @@
 // For more information see https://go.microsoft.com/fwlink/?linkid=865984
 #define __NON_OWNING(X)
 #define __OWNING(X)
+#define BitfieldWidth(top, bottom) ((top) - (bottom)) +1

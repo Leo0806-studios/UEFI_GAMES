@@ -70,6 +70,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_ENGINE\HEADER;$(PublicIncludeDirectories)</PublicIncludeDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_ENGINE\HEADER;$(PublicIncludeDirectories)</PublicIncludeDirectories>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -113,6 +119,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_ENGINE\HEADER\ENGINE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -131,6 +138,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_ENGINE\HEADER\ENGINE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -139,7 +147,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HEADER\ENGINE\SOURCE\INPUT\INPUT.c" />
+    <ClCompile Include="HEADER\ENGINE\SOURCE\PHYSICS\PHYSICS.c" />
+    <ClCompile Include="HEADER\ENGINE\SOURCE\RENDER\RENDER.c" />
     <ClCompile Include="UEFI_ENGINE.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HEADER\ENGINE\HEADER\DATATYPES\VEC2\VEC2.h" />
+    <ClInclude Include="HEADER\ENGINE\HEADER\GAME_OBJECT\GAME_OBJECT.h" />
+    <ClInclude Include="HEADER\ENGINE\HEADER\INPUT\INPUT.h" />
+    <ClInclude Include="HEADER\ENGINE\HEADER\PHYSICS\PHYSICS.h" />
+    <ClInclude Include="HEADER\ENGINE\HEADER\RENDER\RENDER.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,40 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SOURCE\main.c">
+    <ClCompile Include="PONG.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\SOURCE\HEAP\HEAP.c">
+    <ClCompile Include="HEADER\GAME\SOURCE\OBJECTS\BALL\BALL.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP_BOOTLOADER.c">
+    <ClCompile Include="HEADER\GAME\SOURCE\OBJECTS\PLAYER\PLAYER.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h">
+    <ClInclude Include="HEADER\GAME\HEADER\OBJECTS\BALL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h">
+    <ClInclude Include="HEADER\GAME\HEADER\OBJECTS\PLAYER.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BOOTLOADER\HEADER\CPUID_LEAFS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="DESCRIPTOR.TXT" />
   </ItemGroup>
 </Project>

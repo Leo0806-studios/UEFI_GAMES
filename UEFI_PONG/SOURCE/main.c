@@ -203,8 +203,6 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		&Event            // Store the allocated address in Event
 	);
 	Print(L"Does the CPU support AVX? %s\n", cpu_supports_avx() ? L"Yes" : L"No");
-	AVXEnabled = cpu_supports_avx();
-	PrintSystemInfo();
 	Print(L"Screen Might Flicker a lot. Be warned\n");
 	Print(L"Pres up and down to moeve the right player.\n");
 	Print(L"press F1 and F2 to move the Left player\n");
@@ -232,5 +230,3 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 }
 // Global variables
 EFI_SYSTEM_TABLE* GlobalST = NULL;
-Framebuffer GlobalFramebuffer = { 0, 0, 0, NULLPTR };
-bool AVXEnabled = false;

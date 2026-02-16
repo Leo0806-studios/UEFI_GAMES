@@ -1,8 +1,10 @@
-#include <HEAP/HEAP.h>
-#include <gnu-efi/inc/efi.h>
-#include <GLOBALS.h>
-#include <gnu-efi/inc/efilib.h>
+#pragma warning (push,0)
+#include <gnu_efi/efi.h>
+#include <gnu_efi/efilib.h>
+#pragma warning(pop)
 #include <string.h>
+#include "HEAP/HEAP.h"
+#include "GLOBALS.h"
 Heap heap = { 0 };
 void* CreatHeap(size_t size)
 {
@@ -39,7 +41,7 @@ void* CreatHeap(size_t size)
 static HeapNode* SplittHeapNode(HeapNode* Node, size_t size) {
 	//Handle Special Cae where only one node Exists. thsi is the case at the first allocation after heap creation.
 	if (Node->prev == NULLPTR && Node->next == NULLPTR) {
-		HeapNode* NewNodeSecond = ((char*)Node) + size + (sizeof(HeapNode));// + sizeof(HeapNode) to account for the size of the HeapNode itself
+		HeapNode* NewNodeSecond =(HeapNode*) ((char*)Node) + size + (sizeof(HeapNode));// + sizeof(HeapNode) to account for the size of the HeapNode itself
 		memset(NewNodeSecond, 0, sizeof(HeapNode));
 		HeapNode* NewNodeFirst = Node;
 		size_t OldSize = Node->size;
@@ -65,7 +67,7 @@ static HeapNode* SplittHeapNode(HeapNode* Node, size_t size) {
 
 	NewNodeFirst->size = size;
 	//get the split point and asign it to the new node
-	HeapNode* NewNodeSecond = ((char*)Node) + size + sizeof(HeapNode);// + sizeof(HeapNode) to account for the size of the HeapNode itself
+	HeapNode* NewNodeSecond = (HeapNode*)((char*)Node) + size + sizeof(HeapNode);// + sizeof(HeapNode) to account for the size of the HeapNode itself
 	NewNodeSecond->size = oldSize - size - sizeof(HeapNode);
 	NewNodeSecond->prev = NewNodeFirst;
 	if (NewNodeFirst->next == NULLPTR) {

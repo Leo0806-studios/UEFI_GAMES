@@ -18,5 +18,31 @@
     <ClCompile Include="UEFI_ENGINE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HEADER\ENGINE\SOURCE\INPUT\INPUT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HEADER\ENGINE\SOURCE\PHYSICS\PHYSICS.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HEADER\ENGINE\SOURCE\RENDER\RENDER.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HEADER\ENGINE\HEADER\DATATYPES\VEC2\VEC2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\ENGINE\HEADER\GAME_OBJECT\GAME_OBJECT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\ENGINE\HEADER\INPUT\INPUT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\ENGINE\HEADER\PHYSICS\PHYSICS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HEADER\ENGINE\HEADER\RENDER\RENDER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

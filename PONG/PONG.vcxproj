@@ -19,12 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>17.0</VCProjectVersion>
+    <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1c6aa463-4706-40f5-84a7-ee2d28b2b692}</ProjectGuid>
-    <RootNamespace>UEFIPONG</RootNamespace>
+    <ProjectGuid>{b2832118-f895-4968-96cb-0fcd81afb4a9}</ProjectGuid>
+    <RootNamespace>PONG</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>BOOTLOADER</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -45,15 +44,13 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -73,38 +70,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)x64\$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)$(ProjectName)\</IntDir>
-    <TargetName />
-    <TargetExt>.efi</TargetExt>
-    <ExtensionsToDeleteOnClean />
-    <CopyLocalDeploymentContent />
-    <CopyLocalProjectReference />
-    <CopyLocalDebugSymbols />
-    <CopyCppRuntimeToOutputDir />
-    <UseStructuredOutput />
-    <LinkIncremental>false</LinkIncremental>
-    <GenerateManifest>false</GenerateManifest>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)x64\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
-    <TargetExt>.efi</TargetExt>
-    <ExtensionsToDeleteOnClean />
-    <CopyLocalDeploymentContent />
-    <CopyLocalProjectReference />
-    <CopyLocalDebugSymbols />
-    <CopyCppRuntimeToOutputDir />
-    <LinkIncremental>false</LinkIncremental>
-    <GenerateManifest>false</GenerateManifest>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,6 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,93 +101,57 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <SDLCheck>
-      </SDLCheck>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\DIR_JUNKTIONS;C:\Users\leo08\source\repos\UEFI_GAMES\UEFI_PONG\PONG\GAME\HEADER;$(ProjectDir)BOOTLOADER\HEADER;$(ProjectDir)$PONG\GAME\HEADER;$(ProjectDir)PONG\ENGINE\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
       <ExceptionHandling>false</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <CompileAs>CompileAsC</CompileAs>
-      <DisableSpecificWarnings>4091;4820</DisableSpecificWarnings>
-      <LanguageStandard_C>stdclatest</LanguageStandard_C>
-      <Optimization>MaxSpeed</Optimization>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
-      <EnableVectorLength>NotSet</EnableVectorLength>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
-      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
-      <EntryPointSymbol>efi_main</EntryPointSymbol>
-      <RandomizedBaseAddress>
-      </RandomizedBaseAddress>
-      <DataExecutionPrevention>false</DataExecutionPrevention>
-      <AdditionalLibraryDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-      <AdditionalDependencies>efilib.lib;libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <FunctionLevelLinking>
-      </FunctionLevelLinking>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <SDLCheck>
-      </SDLCheck>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES;C:\Users\leo08\source\repos\UEFI_GAMES\depend;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers\gnu-efi\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
       <ExceptionHandling>false</ExceptionHandling>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <CompileAs>CompileAsC</CompileAs>
-      <DisableSpecificWarnings>4091</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
-      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\depend\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gnu-efi.lib;libcmt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-      <OptimizeReferences>true</OptimizeReferences>
-      <EntryPointSymbol>efi_main</EntryPointSymbol>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>false</DataExecutionPrevention>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h" />
-    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP_BOOTLOADER.c" />
-    <ClCompile Include="BOOTLOADER\SOURCE\HEAP\HEAP.c" />
-    <ClCompile Include="SOURCE\main.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\CPUID_LEAFS.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h" />
-    <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
+    <ClCompile Include="HEADER\GAME\SOURCE\OBJECTS\BALL\BALL.c" />
+    <ClCompile Include="HEADER\GAME\SOURCE\OBJECTS\PLAYER\PLAYER.c" />
+    <ClCompile Include="PONG.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\gnu-efi\.vs\efilib.vcxproj">
       <Project>{3135d563-9596-4584-9ed6-616adec52974}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\UEFI_ENGINE\UEFI_ENGINE.vcxproj">
+      <Project>{9f32229b-ee5b-4d98-a5ae-3a56217a08f5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UEFI_PONG\UEFI_PONG.vcxproj">
+      <Project>{1c6aa463-4706-40f5-84a7-ee2d28b2b692}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="DESCRIPTOR.TXT" />
+    <ClInclude Include="HEADER\GAME\HEADER\OBJECTS\BALL.h" />
+    <ClInclude Include="HEADER\GAME\HEADER\OBJECTS\PLAYER.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

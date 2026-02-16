@@ -374,3 +374,4 @@ FodyWeavers.xsd
 /nasm.exe - Shortcut.lnk
 /LOW_LEVEL_LIB/SOURCE/HYPERCALL
 /LOW_LEVEL_LIB/SOURCE/SYSCALL
+/DIR_JUNKTIONS/gnu_efi

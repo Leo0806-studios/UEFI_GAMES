@@ -5,6 +5,7 @@ extern "C" {
 #include <efi.h>
 #include <efilib.h>
 #include <libsmbios.h>
+#include "CPUID_LEAFS.h"
 #ifdef __cplusplus
 }
 #endif // __cplusplus
@@ -49,6 +50,14 @@ typedef struct {
 	unsigned int Size;
 	unsigned long long CoreCount;
 }MP_DATA;
+
+#define CPUID_VERSION 0001
+typedef struct {
+	unsigned int Version;
+	unsigned int Size;
+	CPUIDLeafs Leafs;
+}CPUID;
+
 #define BOOT_DATA_INTERFACE_VERSION 0001
 /// <summary>
 /// contains all the data that the bootloader needs to pass to the kernel or other chainloaded UEFI applications from this repo.
