@@ -115,7 +115,7 @@ EFI_STATUS InitBootloader(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	bool found_ACPI_1_0 = false;
 	if (!found_ACPI_2_0) {
 		for (unsigned long long index = 0; index < SystemTable->NumberOfTableEntries; index++) {
-			EFI_CONFIGURATION_TABLE* configTable = &SystemTable->ConfigurationTable[index];
+			const EFI_CONFIGURATION_TABLE* configTable = &SystemTable->ConfigurationTable[index];
 
 			if (CompareGuid(&configTable->VendorGuid, &ACPI_1_0)) {
 
@@ -132,8 +132,11 @@ EFI_STATUS InitBootloader(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	return EFI_SUCCESS;
 }
 
+static	int buff[(sizeof(CPUIDLeafs)/sizeof(int)) / 4][4] = {0};//EAX, EBX, ECX, and EDX registers (in that order) (from https://learn.microsoft.com/en-us/cpp/intrinsics/cpuid-cpuidex?view=msvc-170#remarks)
 CPUID ParseCPUID(void) {
-	int buff[25][4] = {0};//EAX, EBX, ECX, and EDX registers (in that order) (from https://learn.microsoft.com/en-us/cpp/intrinsics/cpuid-cpuidex?view=msvc-170#remarks)
+	static_assert(sizeof(int) == 4, "This code assumes that sizeof(int) is 4 bytes");
+	static_assert(sizeof(buff) == sizeof(buff), " buff and CPUID must be the same size");
+	static_assert(sizeof(CPUIDLeafs) % 4 == 0, "CPUIDLeafs must be a multiple of 4 bytes in size");
 	MEMSET(buff, 0, sizeof(buff));
 	__cpuid(buff[0], 0);
 	CPUIDLeafs allLeafs={ 0 };

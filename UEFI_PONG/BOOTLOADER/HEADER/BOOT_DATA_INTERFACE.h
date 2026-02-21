@@ -67,7 +67,7 @@ typedef struct {
 	unsigned int Size;
 	EFI_SYSTEM_INTERFACE SystemInterface;
 	GOP_INFO GraphicsOutputProtocolInfo;
-	
+	CPUID CpuIdInfo;
 	char** CmdlineArgs;
 
 
