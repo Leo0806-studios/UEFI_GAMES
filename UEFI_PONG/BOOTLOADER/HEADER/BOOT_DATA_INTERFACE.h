@@ -72,3 +72,5 @@ typedef struct {
 
 
 } BOOT_DATA_INTERFACE;
+
+static  const unsigned int bootLoaderHeapMemory = 0xFFFFFFFF;

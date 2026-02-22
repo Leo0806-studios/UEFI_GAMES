@@ -5,12 +5,13 @@
 #include <string.h>
 #include "HEAP/HEAP.h"
 #include "GLOBALS.h"
+#include "BOOT_DATA_INTERFACE.h"
 Heap heap = { 0 };
 void* CreatHeap(size_t size)
 {
 	Print(L"Creating heap of size %d\n", size);
 	EFI_PHYSICAL_ADDRESS heapBase = 0;
-	EFI_STATUS HepCreateStatus = GlobalST->BootServices->AllocatePages(AllocateAnyPages,EfiLoaderData, size / EFI_PAGE_SIZE, &heapBase);
+	EFI_STATUS HepCreateStatus = GlobalST->BootServices->AllocatePages(AllocateAnyPages,bootLoaderHeapMemory, size / EFI_PAGE_SIZE, &heapBase);
 	if (EFI_ERROR(HepCreateStatus)) {
 		Print(L"error code %d\n", HepCreateStatus);
 		Print(L"Failed to allocate heap memory\n");

@@ -37,12 +37,6 @@ static CHAR16* ArchName = L"RISC-V 64-bit";
 
 
 
-bool cpu_supports_avx() {
-	int info[4];
-	__cpuid(info, 1);
-	// ECX bit 28 indicates AVX support
-	return (info[2] & (1 << 28)) != 0;
-}
 BOOL WasKeyPressed() {
 	EFI_INPUT_KEY key;
 	EFI_STATUS status;
@@ -75,7 +69,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	}
 	// The platform logo may still be displayed → remove it
-	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+	//SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	EFI_STATUS Status = { 0 };
 
 
@@ -158,37 +152,37 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 	}
 	Print(L"Kernel Image Handle: %p\n", KernelImage);
 	GlobalST->BootServices->Stall(1000000);
-	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+	//SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 
 	Print(L"Do you want to play pong or boot the os? f1 for pong, f2 for os\n");
 	EFI_INPUT_KEY Key;
 	while (true) {
 		GlobalST->ConIn->ReadKeyStroke(GlobalST->ConIn, &Key);
 		if (Key.ScanCode == SCAN_F1) {
-			Print(L"Starting Pong\n");
-			goto Pong;
+			//Print(L"Starting Pong\n");
+		//	goto Pong;
 			break;
 		}
 		else if (Key.ScanCode == SCAN_F2) {
-			Print(L"Starting OS\n");
-			Print(L"transferring control to KERNEL.exe\n");
+			//Print(L"Starting OS\n");
+			//Print(L"transferring control to KERNEL.exe\n");
 
 
-			goto OS;
+			//goto OS;
 		}
 		else {
 			//Print(L"Invalid key, press F1 for pong or F2 for os\n");
 		}
 	}
 	if (false) {
-		OS:
-		status = uefi_call_wrapper(BS->StartImage, 3, KernelImage, NULL, NULL);
+	//	OS:
+		//status = uefi_call_wrapper(BS->StartImage, 3, KernelImage, NULL, NULL);
 
 	}
 
 	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 	
-	Pong:
+	//Pong:
 
 
 	CreatHeap(MiB(10));
@@ -202,7 +196,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		1,                // Allocate 1 page (4 KiB)
 		&Event            // Store the allocated address in Event
 	);
-	Print(L"Does the CPU support AVX? %s\n", cpu_supports_avx() ? L"Yes" : L"No");
+	//Print(L"Does the CPU support AVX? %s\n", cpu_supports_avx() ? L"Yes" : L"No");
 	Print(L"Screen Might Flicker a lot. Be warned\n");
 	Print(L"Pres up and down to moeve the right player.\n");
 	Print(L"press F1 and F2 to move the Left player\n");

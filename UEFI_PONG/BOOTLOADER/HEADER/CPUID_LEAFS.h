@@ -647,10 +647,79 @@ typedef struct {
 	CPUIDLeaf0x0FSubLeafGeneric GenereicSubLeafs[6];
 } CPUIDLeaf0x0F;
 
-
+typedef struct {
+	//EAX
+uint32_t:BitFieldWitdhEAX(31, 0);
+	//EBX
+uint32_t:BitFieldWitdhEBX(0, 0);
+	uint32_t CAT_L3 : BitFieldWitdhEBX(1, 1);
+	uint32_t CAT_L2 : BitFieldWitdhEBX(2, 2);
+	uint32_t MBA : BitFieldWitdhEBX(3, 3);
+uint32_t:BitFieldWitdhEBX(31, 4);
+	//ECX
+uint32_t:BitFieldWitdhECX(31, 0);
+	//EDX
+uint32_t:BitFieldWitdhEDX(31, 0);
+}CPUIDLeaf0x10SubLeaf0;
 
 typedef struct {
-	uint32_t tmp;
+	//EAX
+	uint32_t CAT_L3_BITMASK_LENGTH : BitFieldWitdhEAX(4, 0);
+uint32_t: BitFieldWitdhEAX(31, 5);
+	//EBX
+	uint32_t CAT_L3_MAP : BitFieldWitdhEBX(31, 0);
+	//ECX
+uint32_t: BitFieldWitdhECX(0, 0);
+	uint32_t CAT_L3_NONCPU : BitFieldWitdhECX(1, 1);
+	uint32_t CAT_L3_CDP : BitFieldWitdhECX(2, 2);
+	uint32_t CAT_L3_NONCONTIG : BitFieldWitdhECX(3, 3);
+uint32_t:BitFieldWitdhECX(31, 4);
+	//EDX
+	uint32_t CAT_L3_MAX_CLOS : BitFieldWitdhEDX(15, 0);
+uint32_t: BitFieldWitdhEDX(31, 16);
+}CPUIDLeaf0x10SubLeaf1;
+
+typedef struct {
+	//EAX
+	uint32_t CAT_L2_BITMASK_LENGTH : BitFieldWitdhEAX(4, 0);
+uint32_t: BitFieldWitdhEAX(31, 5);
+	//EBX
+	uint32_t CAT_L2_MAP : BitFieldWitdhEBX(31, 0);
+	//ECX
+uint32_t: BitFieldWitdhECX(1, 0);
+	uint32_t CAT_L2_CDP : BitFieldWitdhECX(2, 2);
+	uint32_t CAT_L2_NONCONTIG : BitFieldWitdhECX(3, 3);
+uint32_t: BitFieldWitdhECX(31, 4);
+	//EDX
+	uint32_t CAT_L2_MAX_CLOS : BitFieldWitdhEDX(15, 0);
+uint32_t:BitFieldWitdhEDX(31, 16);
+} CPUIDLeaf0x10SubLeaf2;
+
+typedef struct {
+	//EAX
+	uint32_t MBA_MAX : BitFieldWitdhEAX(11, 0);
+uint32_t: BitFieldWitdhEAX(31, 12);
+	//EBX
+uint32_t: BitFieldWitdhEBX(31, 0);
+	//ECX
+	uint32_t PER_THREAD_MBA : BitFieldWitdhECX(0, 0);
+uint32_t:BitFieldWitdhECX(1, 1);
+	uint32_t MBA_LINEAR : BitFieldWitdhECX(2, 2);
+uint32_t:BitFieldWitdhECX(31, 3);
+	//EDX
+	uint32_t MBA_MAX_CLOS : BitFieldWitdhEDX(15, 0);
+uint32_t: BitFieldWitdhEDX(31, 16);
+}CPUIDLeaf0x10SubLeaf3;
+
+typedef struct {
+	uint32_t storage[4];
+}CPUIDLeaf0x10SubLeafGeneric;
+typedef struct {
+	CPUIDLeaf0x10SubLeaf0 subLeaf0;
+	CPUIDLeaf0x10SubLeaf1 subLeaf1;
+	CPUIDLeaf0x10SubLeaf2 subLeaf2;
+	CPUIDLeaf0x10SubLeaf3 subLeaf3;
+	CPUIDLeaf0x10SubLeafGeneric genericLeafs[4];
 } CPUIDLeaf0x10;
 
 typedef struct {
@@ -769,9 +838,19 @@ typedef struct {
 
 typedef struct {
 	//EAX
+	uint32_t MAX_SUBLEAF : BitFieldWitdhEAX(31, 0);
+	//EBX
+	uint32_t VECTOR_ISA_VERSION : BitFieldWitdhEBX(7, 0);
+uint32_t:BitFieldWitdhEBX(31, 8);
+	//ECX
+uint32_t:BitFieldWitdhECX(31, 0);
+	//EDX
+uint32_t:BitFieldWitdhEDX(31, 0);
+
 }CPUIDLeaf0x24Subleaf;
 typedef struct {
-	uint32_t tmp;
+	CPUIDLeaf0x24Subleaf* Subleafs;
+uint64_t: BitfieldWidth(63, 0);
 } CPUIDLeaf0x24;
 
 

@@ -12,8 +12,8 @@ extern EFI_SYSTEM_TABLE* GlobalST;
 #endif // !__cplusplus
 
 typedef struct {
-	EFI_GRAPHICS_OUTPUT_PROTOCOL GOP;
-	EFI_MP_SERVICES_PROTOCOL MPP;
+	EFI_GRAPHICS_OUTPUT_PROTOCOL* GOP;
+	EFI_MP_SERVICES_PROTOCOL* MPP;
 	//EFI_SMBIOS_PROTOCOL SMBIOS; GRRRRRRR gnuefi doesnt support this protocol for some reason. i rly should switch to EDK II
 
 } BOOTLOADER_PROTOCOLS;
