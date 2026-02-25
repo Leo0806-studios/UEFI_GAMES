@@ -27,6 +27,12 @@
     <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP_BOOTLOADER.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\CPUID_HANDELING.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\ACPI_HANDELING.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h">
@@ -45,6 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BOOTLOADER\HEADER\ACPI_STRUCTS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BOOTLOADER\SOURCE\STARTUP\SUB\SUB_FORWARD_DECLARATIONS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BOOTLOADER\HEADER\BCD\BCD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

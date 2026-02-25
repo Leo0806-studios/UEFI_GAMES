@@ -196,15 +196,19 @@
     <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h" />
     <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP_BOOTLOADER.c" />
     <ClCompile Include="BOOTLOADER\SOURCE\HEAP\HEAP.c" />
+    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\ACPI_HANDELING.cpp" />
+    <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\CPUID_HANDELING.c" />
     <ClCompile Include="SOURCE\main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BOOTLOADER\HEADER\ACPI_STRUCTS.h" />
+    <ClInclude Include="BOOTLOADER\HEADER\BCD\BCD.h" />
     <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h" />
     <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h" />
     <ClInclude Include="BOOTLOADER\HEADER\CPUID_LEAFS.h" />
     <ClInclude Include="BOOTLOADER\HEADER\GLOBALS.h" />
     <ClInclude Include="BOOTLOADER\HEADER\HEAP\HEAP.h" />
+    <ClInclude Include="BOOTLOADER\SOURCE\STARTUP\SUB\SUB_FORWARD_DECLARATIONS.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

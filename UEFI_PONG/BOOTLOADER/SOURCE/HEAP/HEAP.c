@@ -18,6 +18,7 @@ void* CreatHeap(size_t size)
 		// Handle allocation failure
 		return NULLPTR;
 	}
+	
 	HeapNode* BaseNode = (HeapNode*)heapBase;
 	BaseNode->size = size;
 	BaseNode->next = NULLPTR;
