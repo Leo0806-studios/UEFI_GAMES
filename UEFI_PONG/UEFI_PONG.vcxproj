@@ -199,6 +199,7 @@
     <ClCompile Include="SOURCE\main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BOOTLOADER\HEADER\ACPI_STRUCTS.h" />
     <ClInclude Include="BOOTLOADER\HEADER\BOOT_DATA_INTERFACE.h" />
     <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h" />
     <ClInclude Include="BOOTLOADER\HEADER\CPUID_LEAFS.h" />

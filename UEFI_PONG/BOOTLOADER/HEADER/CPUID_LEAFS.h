@@ -799,15 +799,56 @@ typedef struct {
 } CPUIDLeaf0x1D;
 
 typedef struct {
-	uint32_t tmp;
+	//EAX
+	uint32_t MAX_SUBLEAF : BitFieldWitdhEAX(31, 0);
+	//EBX
+	uint32_t TMUL_MAXK : BitFieldWitdhEBX(7, 0);
+	uint32_t TMUL_MAXN : BitFieldWitdhEBX(23, 8);
+uint32_t: BitFieldWitdhEBX(31, 24);
+	//ECX 
+uint32_t: BitFieldWitdhECX(31, 0);
+	//EDX
+uint32_t: BitFieldWitdhEDX(31, 0);
+}CPUIDLeaf0x1ESubLeaf0;
+typedef struct {
+	uint32_t storage[4];
+}CPUIDLeaf0x1ESubLeafGeneric;
+typedef struct {
+	CPUIDLeaf0x1ESubLeaf0 subleaf0;
+	CPUIDLeaf0x1ESubLeafGeneric genericSubLeafs[7];
 } CPUIDLeaf0x1E;
-
+typedef struct{
+	//EAX
+	uint32_t SHIFT_COUNT : BitFieldWitdhEAX(4, 0);
+uint32_t : BitFieldWitdhEAX(31, 5);
+	//EBX
+uint32_t LOCAL_NEXT_LEVEL_NUM_LP : BitFieldWitdhEBX(15, 0);
+uint32_t: BitFieldWitdhEBX(31, 16);
+	//ECX
+	uint32_t LEVEL_NUM : BitFieldWitdhECX(7, 0);
+	uint32_t DOMAIN_TYPE : BitFieldWitdhECX(15, 8);
+uint32_t: BitFieldWitdhECX(31, 16);
+	//EDX
+	uint32_t LOCAL_X2APIC_ID : BitFieldWitdhEDX(31, 0);
+}CPUIDLeaf0x1FSubLeaf;
 typedef struct {
-	uint32_t tmp;
+	CPUIDLeaf0x1FSubLeaf* subleafs;
+uint64_t: BitfieldWidth(63, 0);
 } CPUIDLeaf0x1F;
-
 typedef struct {
-	uint32_t tmp;
+	//EAX
+	uint32_t MAX_SUBLEAF : BitFieldWitdhEAX(31, 0);
+	//EBX
+	uint32_t THREAD_DIRECTOR_HRESET : BitFieldWitdhEBX(0, 0);
+uint32_t: BitFieldWitdhEBX(31, 1);
+	//ECX
+uint32_t: BitFieldWitdhECX(31, 0);
+	//EDX
+uint32_t: BitFieldWitdhEDX(31, 0);
+}CPUIDLeaf0x20SubLeaf;
+typedef struct {
+	CPUIDLeaf0x20SubLeaf* subleafs;
+uint64_t: BitfieldWidth(63, 0);
 } CPUIDLeaf0x20;
 
 typedef struct {
@@ -831,9 +872,76 @@ uint32_t: BitFieldWitdhECX(31, 0);
 	//EDX
 uint32_t: BitFieldWitdhEDX(31, 0);
 } CPUIDLeaf0x22;
-
 typedef struct {
-	uint32_t tmp;
+	//EAX
+	uint32_t SUBLEAF_MASK : BitFieldWitdhEAX(31, 0);
+	//EBX
+	uint32_t UNITMASK2 : BitFieldWitdhEBX(0, 0);
+	uint32_t EQ : BitFieldWitdhEBX(1, 1);
+uint32_t: BitFieldWitdhEBX(31, 2);
+	//ECX
+	uint32_t SLOTS_PER_CYC : BitFieldWitdhECX(7, 0);
+uint32_t: BitFieldWitdhECX(31, 8);
+	//EDX
+	uint32_t  : BitFieldWitdhEDX(31, 0);
+}CPUIDLeaf0x23SubLeaf0;
+typedef struct {
+	//EAX
+	uint32_t GP_COUNTERS : BitFieldWitdhEAX(31, 0);
+	//EBX
+	uint32_t FIXED_COUNTERS : BitFieldWitdhEBX(31, 0);
+	//ECX
+uint32_t: BitFieldWitdhECX(31, 0);
+	//EDX
+uint32_t: BitFieldWitdhEDX(31, 0);
+
+}CPUIDLeaf0x23SubLeaf1;
+typedef struct {
+	//EAX
+	uint32_t ACR_GP_RELOAD : BitFieldWitdhEAX(31, 0);
+	//EBX
+	uint32_t ACR_FIXED_RELOAD : BitFieldWitdhEBX(31, 0);
+	//ECX
+	uint32_t ACR_GP_TRIGGER : BitFieldWitdhECX(31, 0);
+	//EDX
+	uint32_t ACR_FIXED_TRIGGER : BitFieldWitdhEDX(31, 0);
+
+
+}CPUIDLeaf0x23SubLeaf2;
+typedef struct {
+	//EAX
+	uint32_t CORE_CYC : BitFieldWitdhEAX(0, 0);
+	uint32_t INSTR_RET : BitFieldWitdhEAX(1, 1);
+	uint32_t REF_CYC : BitFieldWitdhEAX(2, 2);
+	uint32_t LLC_REF : BitFieldWitdhEAX(3, 3);
+	uint32_t LLC_MISS : BitFieldWitdhEAX(4, 4);
+	uint32_t BR_INSTR_RET : BitFieldWitdhEAX(5, 5);
+	uint32_t BR_MISPRED_RET : BitFieldWitdhEAX(6, 6);
+	uint32_t SLOTS : BitFieldWitdhEAX(7, 7);
+	uint32_t BACKEND : BitFieldWitdhEAX(8, 8);
+	uint32_t BADSPEC : BitFieldWitdhEAX(9, 9);
+	uint32_t FRONTEND : BitFieldWitdhEAX(10, 10);
+	uint32_t RETIRING : BitFieldWitdhEAX(11, 11);
+	uint32_t LBR_INSERTS : BitFieldWitdhEAX(12, 12);
+uint32_t: BitFieldWitdhEAX(31, 13);
+//EBX
+uint32_t: BitFieldWitdhEBX(31, 0);
+	//ECX
+uint32_t: BitFieldWitdhECX(31, 0);
+	//EDX
+uint32_t: BitFieldWitdhEDX(31, 0);
+
+
+}CPUIDLeaf0x23SubLeaf3;
+typedef struct {
+	uint32_t storage[4];
+}CPUIDLeaf0x23SubLeafGeneric;
+typedef struct {
+	CPUIDLeaf0x23SubLeaf0 subleaf0;
+	CPUIDLeaf0x23SubLeaf1 subleaf1;
+	CPUIDLeaf0x23SubLeaf2 subleaf2;
+	CPUIDLeaf0x23SubLeaf3 subleaf3;
+	CPUIDLeaf0x23SubLeafGeneric GenereicSubLeafs[4];
 } CPUIDLeaf0x23;
 
 typedef struct {

@@ -6,6 +6,7 @@ extern "C" {
 #include <efilib.h>
 #include <libsmbios.h>
 #include "CPUID_LEAFS.h"
+#include "ACPI_STRUCTS.h"
 #ifdef __cplusplus
 }
 #endif // __cplusplus
@@ -41,8 +42,16 @@ typedef struct {
 
 	unsigned int Version;
 	unsigned int Size;
+	RootSystemDescriptionPointer* RSDP;
+	ExtendedDescriptionPointer* XSDP;
+
+	RootSystemDescriptionTable* RSDT;
+	ExtendedSystemDescriptionTable* XSDT;
+	MADT_TABLES MadtTables;
+
+
 	
-}APCI_TABLES;
+}ACPI_TABLES;
 
 #define MP_DATA_VERSION 0001
 typedef struct {
@@ -67,7 +76,10 @@ typedef struct {
 	unsigned int Size;
 	EFI_SYSTEM_INTERFACE SystemInterface;
 	GOP_INFO GraphicsOutputProtocolInfo;
+	ACPI_TABLES ACPI_Tables;
 	CPUID CpuIdInfo;
+	uint8_t* APBringupBinary;
+	uint64_t APBringupBinarySize;
 	char** CmdlineArgs;
 
 

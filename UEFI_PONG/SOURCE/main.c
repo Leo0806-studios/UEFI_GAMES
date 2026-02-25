@@ -138,6 +138,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 	}
 	Print(L"Kernel File: %p\n", KernelFile);
+	
 	EFI_DEVICE_PATH* KernelPath;
 	KernelPath = FileDevicePath(LoadedImage->DeviceHandle, L"EFI\\BOOT\\KERNEL.exe");
 

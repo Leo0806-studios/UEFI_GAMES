@@ -1,5 +1,5 @@
 #pragma warning (push,0)
-#include <gnu_efi/efi.h>
+#include "gnu_efi/efi.h"
 #include <gnu_efi/efilib.h>
 #pragma warning(pop)
 #include <string.h>
@@ -179,6 +179,22 @@ void DeAlloc(void* ptr)
 	}
 
 
+}
+void* ReAlloc(void* ptr, size_t newSize)
+{
+	if (ptr == NULLPTR) {
+		Print(L"Cannot deallocate NULL pointer\n. the minimum valid addres is sizeof(HeapNode) %d", heap.head);
+		return;
+	}
+
+	void* tmp = Alloc(newSize);
+	if (tmp == NULLPTR) {
+		Print(L"Failed to allocate memory for ReAlloc\n");
+		return NULLPTR;
+	}
+	HeapNode* node = (HeapNode*)(((char*)ptr) - sizeof(HeapNode));
+	CopyMem(tmp, ptr, node->size);
+	DeAlloc(ptr);
 }
 static void PrintHeapNode(HeapNode* node)
 {
