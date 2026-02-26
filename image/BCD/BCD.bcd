@@ -1,0 +1,9 @@
+#BCD formt
+# the BCD stores the Boot Configuration Data in cleartext form
+# section names are in square brackets followed by an optional W that marks the section as writable
+# a entry is defined as a line containing a colon. they must follow the following format
+# type "key" colon "value"
+#there are no spaces allowed outside the quotes 
+# empty lines are not allowed
+# a comment is defined as a newline followed by a hash symbol
+#colons and square brackets are not allowed in comments

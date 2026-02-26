@@ -33,6 +33,9 @@
     <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\SUB\ACPI_HANDELING.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BOOTLOADER\HEADER\BCD\BCD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BOOTLOADER\HEADER\ANNOTATIONS.h">

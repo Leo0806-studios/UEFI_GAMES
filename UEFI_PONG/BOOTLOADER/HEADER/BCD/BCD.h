@@ -1,4 +1,5 @@
 #pragma once
+#include <stdbool.h>
 #include <stdint.h>
 typedef enum {
 	TypeInteger,
@@ -12,6 +13,7 @@ typedef enum {
 	TypeDate
 
 }AllowedValueTypes;
+
 typedef struct {
 	const char* str;
 	uint64_t hash;
@@ -26,6 +28,7 @@ typedef struct {
 	StringHashPair Key;
 	uint64_t Count;
 	BcdPair* Pairs;
+	bool Writable;
 }BcdSection;
 #define BCD_VERSION 0001
 typedef struct {
@@ -36,7 +39,7 @@ typedef struct {
 
 uint64_t StrHash(const char* str);
 
-BCD* ParseBCD(void);
+BCD* ParseBCD(const char* bcdStr);
 
 FreeBCD(BCD* bcd);
 BcdPair* FindPair(BCD* self, BcdSection* section, const char* key);

@@ -193,6 +193,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BOOTLOADER\HEADER\BCD\BCD.cpp" />
     <ClCompile Include="BOOTLOADER\HEADER\STARTUP\STARTUP.h" />
     <ClCompile Include="BOOTLOADER\SOURCE\STARTUP\STARTUP_BOOTLOADER.c" />
     <ClCompile Include="BOOTLOADER\SOURCE\HEAP\HEAP.c" />
