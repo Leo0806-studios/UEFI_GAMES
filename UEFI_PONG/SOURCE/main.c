@@ -11,7 +11,7 @@
 #pragma warning(pop)
 
 #include <intrin.h>
-#include "JSON/jsonParser.h"
+
 
 #include <GLOBALS.h>
 #include "HEAP/HEAP.h"
@@ -70,12 +70,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	}
 
-	char input[] = "{\"name\": \"Frank\",\"country\": \"Canada\",\"friends\":[{\"name\": \"Jack\",\"age\": 21,\"country\":\"USA\"},{\"name\": \"Ivan\",\"age\": 22,\"country\": \"Russia\"}]}";
-	json_object* res = parseJson(input);
-	Print(L"Parsed....\n");
-	Print(L"%a: %a\n", res->keyList[0].keyName, res->keyList[0].value); // output: name: Frank
-	Print(L"%a: %a\n", res->keyList[1].keyName, res->keyList[1].value); // output: country: Canada
-	DeAlloc(res);
+
 	
 	// The platform logo may still be displayed → remove it
 	//SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
