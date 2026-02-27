@@ -1,3 +1,5 @@
+#1.0.0
+#first line has to be a version number
 #BCD formt
 # the BCD stores the Boot Configuration Data in cleartext form
 # section names are in square brackets followed by an optional W that marks the section as writable
