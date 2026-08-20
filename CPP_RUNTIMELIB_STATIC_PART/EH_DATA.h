@@ -18,7 +18,7 @@
 struct _ThrowInfo;//dummy forward declaration to make clangtidy happy (smh)
 #endif // __clang__
 
-#include "STRING.h"
+#include "string.h"
 #include <ehdata_forceinclude.h>//NOLINT(llvmlibc-restrict-system-libc-headers)
 #include <intrin.h>//NOLINT(llvmlibc-restrict-system-libc-headers)
 #include <stdint.h>//NOLINT(llvmlibc-restrict-system-libc-headers)

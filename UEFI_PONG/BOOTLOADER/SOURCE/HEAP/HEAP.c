@@ -230,3 +230,8 @@ void PrintHeap(void)
 	Print(L"================================================================\n");
 
 }
+
+uint64_t QueryHeapStatus(void)
+{
+	return heap.totalSize - heap.usedSize;
+}

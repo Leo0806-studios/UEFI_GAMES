@@ -2,7 +2,7 @@
 #include "HEADER/TYPE_TRAITS/TYPE_TRAITS_F.h"
 #include "HEADER/UTILLITY/UTILLITY_F.h"
 #include "HEADER/INTERNAL/MACROS.h"
-namespace STD {
+namespace std::ext {
 	template<typename T>
 	class assignable_once {
 		private:

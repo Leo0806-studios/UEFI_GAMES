@@ -18,75 +18,75 @@
     <ClCompile Include="MAIN.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\DRIVERS\PCI\PCI.cpp">
+    <ClCompile Include="PCI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp">
+    <ClCompile Include="RENDER.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\STARTUP\PAGE_MAP\PAGE_MAP.cpp">
+    <ClCompile Include="PAGE_MAP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\SYSTEM_INFO\SYSTEM_INFO.cpp">
+    <ClCompile Include="SYSTEM_INFO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp">
+    <ClCompile Include="CONSOLE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\ALLOCATION\ALLOCATION.cpp">
+    <ClCompile Include="ALLOCATION.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\STARTUP\GDT\GDT.cpp">
+    <ClCompile Include="GDT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\FONT.cpp">
+    <ClCompile Include="FONT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\WATCHDOG\WATCHDOG.cpp">
+    <ClCompile Include="WATCHDOG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\STARTUP\PE_PARSER\PE_PARSER.cpp">
+    <ClCompile Include="PE_PARSER.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\SUBSYSTEMS\PANIC\PANIC.cpp">
+    <ClCompile Include="PANIC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h">
+    <ClInclude Include="PCI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h">
+    <ClInclude Include="RENDER.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\STARTUP\GDT\GDT.h">
+    <ClInclude Include="GDT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\STARTUP\PAGE_MAP\PAGE_MAP.h">
+    <ClInclude Include="PAGE_MAP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SYTEM_INFO\SYSTEM_INFO.h">
+    <ClInclude Include="SYSTEM_INFO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SUBSYSTEMS\CONSOLE\CONSOLE.h">
+    <ClInclude Include="CONSOLE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SUBSYSTEMS\ALLOCATION\ALLOCATION.h">
+    <ClInclude Include="ALLOCATION.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\NAMESPACE_DOCS.h">
+    <ClInclude Include="SAL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SAL\SAL.h">
+    <ClInclude Include="WATCHDOG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SUBSYSTEMS\WATCHDOG\WATCHDOG.h">
+    <ClInclude Include="PE_PARSER.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\STARTUP\PE_PARSER\PE_PARSER.h">
+    <ClInclude Include="PANIC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\SUBSYSTEMS\PANIC\PANIC.h">
+    <ClInclude Include="FILESYSTEM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,12 +95,12 @@
     <None Include="KERNEL.suppress" />
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="SOURCE\STARTUP\GDT\GDT_LOAD.asm">
+    <MASM Include="GDT_LOAD.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="SOURCE\SUBSYSTEMS\RENDER\FONT_BMP.bmp">
+    <Image Include="FONT_BMP.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

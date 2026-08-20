@@ -3,7 +3,7 @@
 #include "SUBSYSTEMS/CONSOLE/CONSOLE.h"
 #include "STRING_F.h"
 namespace SYSTEM::SUBSYSTEMS::PANIC {
-	void Panic(const wchar_t* msg, PanicCode errorCode)
+	void Panic(const wchar_t* msg, PanicCode errorCode)//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa
 	{
 		SUBSYSTEMS::RENDER::SIMPLE::SimpleFillScreen(0xffff0000);
 		const size_t len_in =[&](){

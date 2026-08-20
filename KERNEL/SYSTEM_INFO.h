@@ -1,6 +1,6 @@
 #pragma once
-#include "../STARTUP/PAGE_MAP/PAGE_MAP.h"
-#include "../STARTUP/GDT/GDT.h"
+#include "PAGE_MAP.h"
+#include "GDT.h"
 namespace SYSTEM {
 	/// <summary>
 	/// this namespace contains system information that is collected during the boot process.

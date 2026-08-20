@@ -62,6 +62,9 @@
     <ClInclude Include="BOOTLOADER\HEADER\BCD\BCD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BOOTLOADER\HEADER\FILESYSTEM\FILESYSTEM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

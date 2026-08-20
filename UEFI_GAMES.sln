@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		FILE_HEADERS.txt = FILE_HEADERS.txt
 		Filters1.pvsconfig = Filters1.pvsconfig
 		LICENCES .txt = LICENCES .txt
-		PostBuildTool.bat = PostBuildTool.bat
+		PreBuildTool.ps1 = PreBuildTool.ps1
 		PVS_COMMENT.txt = PVS_COMMENT.txt
 		README.md = README.md
 	EndProjectSection

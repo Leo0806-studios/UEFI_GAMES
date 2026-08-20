@@ -56,3 +56,11 @@ void* ZeroAlloc(size_t size);
 /// </summary>
 /// <param name=""></param>
 void PrintHeap(void);
+
+
+/// <summary>
+/// returns the freespace in the heap
+/// </summary>
+/// <param name=""></param>
+/// <returns></returns>
+uint64_t QueryHeapStatus(void);

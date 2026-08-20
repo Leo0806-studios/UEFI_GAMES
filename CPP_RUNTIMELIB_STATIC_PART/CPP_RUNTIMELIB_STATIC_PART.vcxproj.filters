@@ -15,54 +15,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\INIT_RUNTIME.h">
+    <ClInclude Include="INIT_RUNTIME.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\CPPRUNTIME.h">
+    <ClInclude Include="CPPRUNTIME.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\ALLOCATORS.h">
+    <ClInclude Include="ALLOCATORS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\INTERNAL\GLOBAL_STATE.h">
+    <ClInclude Include="GLOBAL_STATE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\EH_DATA.h">
+    <ClInclude Include="EH_DATA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\RTTI_DATA.h">
+    <ClInclude Include="RTTI_DATA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\_STRING.h">
+    <ClInclude Include="string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\CRT_MACROS.h">
+    <ClInclude Include="CRT_MACROS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\LANGUAGE_EXTENSION.h">
+    <ClInclude Include="LANGUAGE_EXTENSION.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADER\COMPARE.h">
+    <ClInclude Include="COMPARE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SOURCE\INIT_RUNTIME.cpp">
+    <ClCompile Include="INIT_RUNTIME.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\EXCEPTIONS.cpp">
+    <ClCompile Include="EXCEPTIONS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\ALLOCATORS.cpp">
+    <ClCompile Include="ALLOCATORS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\TERMINATE.cpp">
+    <ClCompile Include="TERMINATE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\STRING.cpp">
+    <ClCompile Include="STRING.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\FASTFAIL.cpp">
+    <ClCompile Include="FASTFAIL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

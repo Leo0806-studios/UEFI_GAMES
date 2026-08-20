@@ -118,7 +118,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\FREESTANDING_STD++LIB;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL;C:\Users\leo08\source\repos\UEFI_GAMES\depend\headers;C:\Users\leo08\source\repos\UEFI_GAMES\KERNEL\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CPP_RUNTIMELIB_STATIC_PART\HEADER;$(SolutionDir)FREESTANDING_STD++LIB;$(SolutionDir)depend\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -131,6 +131,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -188,31 +189,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MAIN.cpp" />
-    <ClCompile Include="SOURCE\DRIVERS\PCI\PCI.cpp" />
-    <ClCompile Include="SOURCE\STARTUP\GDT\GDT.cpp" />
-    <ClCompile Include="SOURCE\STARTUP\PAGE_MAP\PAGE_MAP.cpp" />
-    <ClCompile Include="SOURCE\STARTUP\PE_PARSER\PE_PARSER.cpp" />
-    <ClCompile Include="SOURCE\SUBSYSTEMS\ALLOCATION\ALLOCATION.cpp" />
-    <ClCompile Include="SOURCE\SUBSYSTEMS\CONSOLE\CONSOLE.cpp" />
-    <ClCompile Include="SOURCE\SUBSYSTEMS\PANIC\PANIC.cpp" />
-    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\FONT.cpp" />
-    <ClCompile Include="SOURCE\SUBSYSTEMS\RENDER\RENDER.cpp" />
-    <ClCompile Include="SOURCE\SUBSYSTEMS\WATCHDOG\WATCHDOG.cpp" />
-    <ClCompile Include="SOURCE\SYSTEM_INFO\SYSTEM_INFO.cpp" />
+    <ClCompile Include="PCI.cpp" />
+    <ClCompile Include="GDT.cpp" />
+    <ClCompile Include="PAGE_MAP.cpp" />
+    <ClCompile Include="PE_PARSER.cpp" />
+    <ClCompile Include="ALLOCATION.cpp" />
+    <ClCompile Include="CONSOLE.cpp" />
+    <ClCompile Include="PANIC.cpp" />
+    <ClCompile Include="FONT.cpp" />
+    <ClCompile Include="RENDER.cpp" />
+    <ClCompile Include="WATCHDOG.cpp" />
+    <ClCompile Include="SYSTEM_INFO.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\DRIVERS\PCI\PCI.h" />
-    <ClInclude Include="HEADER\NAMESPACE_DOCS.h" />
-    <ClInclude Include="HEADER\SAL\SAL.h" />
-    <ClInclude Include="HEADER\STARTUP\GDT\GDT.h" />
-    <ClInclude Include="HEADER\STARTUP\PAGE_MAP\PAGE_MAP.h" />
-    <ClInclude Include="HEADER\STARTUP\PE_PARSER\PE_PARSER.h" />
-    <ClInclude Include="HEADER\SUBSYSTEMS\ALLOCATION\ALLOCATION.h" />
-    <ClInclude Include="HEADER\SUBSYSTEMS\CONSOLE\CONSOLE.h" />
-    <ClInclude Include="HEADER\SUBSYSTEMS\PANIC\PANIC.h" />
-    <ClInclude Include="HEADER\SUBSYSTEMS\RENDER\RENDER.h" />
-    <ClInclude Include="HEADER\SUBSYSTEMS\WATCHDOG\WATCHDOG.h" />
-    <ClInclude Include="HEADER\SYTEM_INFO\SYSTEM_INFO.h" />
+    <ClInclude Include="PCI.h" />
+    <ClInclude Include="SAL.h" />
+    <ClInclude Include="GDT.h" />
+    <ClInclude Include="PAGE_MAP.h" />
+    <ClInclude Include="PE_PARSER.h" />
+    <ClInclude Include="ALLOCATION.h" />
+    <ClInclude Include="CONSOLE.h" />
+    <ClInclude Include="FILESYSTEM.h" />
+    <ClInclude Include="PANIC.h" />
+    <ClInclude Include="RENDER.h" />
+    <ClInclude Include="WATCHDOG.h" />
+    <ClInclude Include="SYSTEM_INFO.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CPP_RUNTIMELIB_STATIC_PART\CPP_RUNTIMELIB_STATIC_PART.vcxproj">
@@ -227,10 +228,10 @@
     <None Include="KERNEL.suppress" />
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="SOURCE\STARTUP\GDT\GDT_LOAD.asm" />
+    <MASM Include="GDT_LOAD.asm" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="SOURCE\SUBSYSTEMS\RENDER\FONT_BMP.bmp" />
+    <Image Include="FONT_BMP.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

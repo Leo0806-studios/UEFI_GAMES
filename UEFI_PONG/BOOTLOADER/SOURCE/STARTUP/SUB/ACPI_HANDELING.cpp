@@ -66,6 +66,7 @@ void PrintFADT(FixedACPIDescriptionTable* fadt, const char* intendent)
 	Print(L"%aFACP HypervisorVendorIdentity: %llx\n", intendent, fadt->HypervisorVendorIdentity);
 }
 
+
 void PrintSystemTableHeader(const SystemDescriptionTableHeader* header, const char* tableName, const char* intendetn) {
 	Print(L"%a%a Signature: %d\n", intendetn, tableName, header->Signature);
 	Print(L"%a%a Length: %d\n", intendetn, tableName, header->Length);
@@ -97,9 +98,7 @@ ACPI_TABLES ParseXACPI(ExtendedDescriptionPointer* XSDP)
 	ExtendedSystemDescriptionTable* xSDT = (ExtendedSystemDescriptionTable*)XSDP->XsdtAddress;
 	if (xSDT->Signature != XSDT) {
 		Print(L"XSDT Signature is incorrect\n");
-		return (ACPI_TABLES) {
-			0
-		}; //XSDT signature is incorrect, this means that the table is either not an XSDT or its corrupted
+		return (ACPI_TABLES) {0}; //XSDT signature is incorrect, this means that the table is either not an XSDT or its corrupted
 	}
 	Print(TABW TABW TABW TABW L"XSDT Signature is correct\n");
 
@@ -135,6 +134,11 @@ ACPI_TABLES ParseXACPI(ExtendedDescriptionPointer* XSDP)
 			
 			break;
 		}
+		case FACS: {
+			FirmwareACPIControlStructure* facs = (FirmwareACPIControlStructure*)entryAddr;
+			Print(L"%aParsing FACS Table...\n", TABW20);
+		}
+				 
 		}
 	}
 }

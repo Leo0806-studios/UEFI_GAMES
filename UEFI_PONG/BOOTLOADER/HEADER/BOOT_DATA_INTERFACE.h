@@ -85,4 +85,4 @@ typedef struct {
 
 } BOOT_DATA_INTERFACE;
 
-static  const unsigned int bootLoaderHeapMemory = 0xFFFFFFFF;
+static  const unsigned int bootLoaderHeapMemory = 0xFFFFFFFF; //custom magic memory number that shows up in the memory map that signifies this is bootloader memory

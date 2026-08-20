@@ -86,7 +86,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 
 
-	EFI_LOADED_IMAGE* LoadedImage =NULL;
+	EFI_LOADED_IMAGE_PROTOCOL* LoadedImage =NULL;
 
 	EFI_STATUS status = uefi_call_wrapper(BS->HandleProtocol, 3,
 		ImageHandle,
@@ -113,7 +113,7 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 	}
 	Print(L"FileSystem Protocol: %p\n", FileSystem);
-
+	
 	EFI_FILE_HANDLE Root, CurrentDir;
 
 	// Open volume

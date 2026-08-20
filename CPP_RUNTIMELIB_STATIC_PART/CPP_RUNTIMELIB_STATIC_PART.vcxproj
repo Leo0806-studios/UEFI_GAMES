@@ -19,24 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HEADER\ALLOCATORS.h" />
-    <ClInclude Include="HEADER\COMPARE.h" />
-    <ClInclude Include="HEADER\CPPRUNTIME.h" />
-    <ClInclude Include="HEADER\CRT_MACROS.h" />
-    <ClInclude Include="HEADER\EH_DATA.h" />
-    <ClInclude Include="HEADER\INIT_RUNTIME.h" />
-    <ClInclude Include="HEADER\INTERNAL\GLOBAL_STATE.h" />
-    <ClInclude Include="HEADER\LANGUAGE_EXTENSION.h" />
-    <ClInclude Include="HEADER\RTTI_DATA.h" />
-    <ClInclude Include="HEADER\_STRING.h" />
+    <ClInclude Include="ALLOCATORS.h" />
+    <ClInclude Include="COMPARE.h" />
+    <ClInclude Include="CPPRUNTIME.h" />
+    <ClInclude Include="CRT_MACROS.h" />
+    <ClInclude Include="EH_DATA.h" />
+    <ClInclude Include="INIT_RUNTIME.h" />
+    <ClInclude Include="GLOBAL_STATE.h" />
+    <ClInclude Include="LANGUAGE_EXTENSION.h" />
+    <ClInclude Include="RTTI_DATA.h" />
+    <ClInclude Include="string.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SOURCE\ALLOCATORS.cpp" />
-    <ClCompile Include="SOURCE\EXCEPTIONS.cpp" />
-    <ClCompile Include="SOURCE\FASTFAIL.cpp" />
-    <ClCompile Include="SOURCE\INIT_RUNTIME.cpp" />
-    <ClCompile Include="SOURCE\STRING.cpp" />
-    <ClCompile Include="SOURCE\TERMINATE.cpp" />
+    <ClCompile Include="ALLOCATORS.cpp" />
+    <ClCompile Include="EXCEPTIONS.cpp" />
+    <ClCompile Include="FASTFAIL.cpp" />
+    <ClCompile Include="INIT_RUNTIME.cpp" />
+    <ClCompile Include="STRING.cpp" />
+    <ClCompile Include="TERMINATE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />
@@ -102,6 +102,7 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
     <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <CustomBuildBeforeTargets>Build</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
@@ -179,6 +180,9 @@
       <SubSystem>EFI Application</SubSystem>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Lib>
+    <PreBuildEvent>
+      <Command>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(SolutionDir)PreBuildTool.ps1" "$(ClCompilerPath)" "$(SolutionDir)CompilerIncludes"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

@@ -74,7 +74,7 @@ extern "C"
 			std::terminate();
 		}
 		_init_Ctors();
-		::initParameters = pInitParameters;// must be done after ctor calls as it would be overriden otherwise
+		::initParameters = pInitParameters;// must be done after ctor calls as it would be overriden otherwise // i love doing the same wrok twice (╯°□°）╯︵ ┻━┻
 
 		(void)registerAtExit();
 	}
