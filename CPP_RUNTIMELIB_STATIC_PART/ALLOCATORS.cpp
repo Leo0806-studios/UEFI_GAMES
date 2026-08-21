@@ -257,7 +257,7 @@ _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(size)
 	//DebugPrint(L"ALLOCATED MEMORY");
 	return ptr ? ptr->data : nullptr; // return the data pointer of the allocated node or nullptr if no suitable node was found
 }
-void free(void* _Block) {
+void free(_Pre_maybenull_ _Post_invalid_ void* _Block) {
 	if (!_Block) {
 		return;
 	}
