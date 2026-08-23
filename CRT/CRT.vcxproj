@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,36 +19,41 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ALLOCATORS.h" />
-    <ClInclude Include="COMPARE.h" />
-    <ClInclude Include="CPPRUNTIME.h" />
+    <ClInclude Include="assert.h" />
+    <ClInclude Include="complex.h" />
+    <ClInclude Include="CRT_CORE.h" />
     <ClInclude Include="CRT_MACROS.h" />
-    <ClInclude Include="EH_DATA.h" />
-    <ClInclude Include="INIT_RUNTIME.h" />
-    <ClInclude Include="GLOBAL_STATE.h" />
-    <ClInclude Include="LANGUAGE_EXTENSION.h" />
-    <ClInclude Include="RTTI_DATA.h" />
+    <ClInclude Include="CRT_STARTUP.h" />
+    <ClInclude Include="ctype.h" />
+    <ClInclude Include="errno.h" />
+    <ClInclude Include="fenv.h" />
+    <ClInclude Include="float.h" />
+    <ClInclude Include="inttypes.h" />
+    <ClInclude Include="iso646.h" />
+    <ClInclude Include="locale.h" />
+    <ClInclude Include="stdbool.h" />
+    <ClInclude Include="stdint.h" />
+    <ClInclude Include="stdlib.h" />
     <ClInclude Include="string.h" />
+    <ClInclude Include="ThreadingSharedSymbols.h" />
+    <ClInclude Include="wchar.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ALLOCATORS.cpp" />
-    <ClCompile Include="EXCEPTIONS.cpp" />
-    <ClCompile Include="FASTFAIL.cpp" />
-    <ClCompile Include="INIT_RUNTIME.cpp" />
-    <ClCompile Include="STRING.cpp" />
-    <ClCompile Include="TERMINATE.cpp" />
+    <ClCompile Include="stdlib.c.cpp" />
+    <ClCompile Include="string.c.cpp" />
+    <ClCompile Include="wassert.c.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".clang-tidy" />
-    <None Include="cpp.hint" />
-    <None Include="CPP_RUNTIMELIB_STATIC_PART.suppress" />
-    <None Include="SuppressionFile.suppress" />
+    <None Include="DependencyTracer.md">
+      <SubType>
+      </SubType>
+    </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>17.0</VCProjectVersion>
+    <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{433d88f9-0cf3-42da-9a57-d717557a5258}</ProjectGuid>
-    <RootNamespace>CPPRUNTIMELIBSTATICPART</RootNamespace>
+    <ProjectGuid>{99dcd9fc-9da9-4f7e-a6ef-7ad0a02194c5}</ProjectGuid>
+    <RootNamespace>CRT</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -67,7 +72,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -75,7 +80,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -96,30 +101,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
-    <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;$(PublicIncludeDirectories)</PublicIncludeDirectories>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
-    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
-    <CustomBuildBeforeTargets>Build</CustomBuildBeforeTargets>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
-    <PublicIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;$(PublicIncludeDirectories)</PublicIncludeDirectories>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>..\strict.ruleset</CodeAnalysisRuleSet>
-    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
-  </PropertyGroup>
-  <PropertyGroup Label="Vcpkg">
-    <VcpkgEnabled>false</VcpkgEnabled>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -128,6 +116,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,6 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -145,41 +137,43 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <SDLCheck>false</SDLCheck>
+      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)CompilerIncludes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <Optimization>MaxSpeed</Optimization>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <ExceptionHandling>false</ExceptionHandling>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <DisableSpecificWarnings>5247;5248;4711;4505;4514;5045;4710</DisableSpecificWarnings>
-      <EnablePREfast>true</EnablePREfast>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>$(SolutionDir)CompilerIncludes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard_C>stdclatest</LanguageStandard_C>
+      <CompileAs>Default</CompileAs>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
     <Lib>
       <SubSystem>EFI Application</SubSystem>
-      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Lib>
     <PreBuildEvent>
       <Command>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(SolutionDir)PreBuildTool.ps1" -CompilerPath "$(ClCompilerPath)" -UcrtPath "$(UCRTContentRoot)Include\$(TargetUniversalCRTVersion)\ucrt" -DestinationPath "$(SolutionDir)CompilerIncludes"</Command>
@@ -190,33 +184,36 @@
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>false</SDLCheck>
+      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART;C:\Users\leo08\source\repos\UEFI_GAMES\CPP_RUNTIMELIB_STATIC_PART\HEADER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ExceptionHandling>false</ExceptionHandling>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
-      <DisableSpecificWarnings>5247;5248;4711;4505;4514;5045;4710</DisableSpecificWarnings>
-      <EnablePREfast>true</EnablePREfast>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>$(SolutionDir)CompilerIncludes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard_C>stdclatest</LanguageStandard_C>
+      <CompileAs>Default</CompileAs>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
     <Lib>
       <SubSystem>EFI Application</SubSystem>
-      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Lib>
     <PreBuildEvent>
       <Command>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(SolutionDir)PreBuildTool.ps1" -CompilerPath "$(ClCompilerPath)" -UcrtPath "$(UCRTContentRoot)Include\$(TargetUniversalCRTVersion)\ucrt" -DestinationPath "$(SolutionDir)CompilerIncludes"</Command>

@@ -36,7 +36,9 @@ param (
         "corecrt.h",
         "corecrt_malloc.h",
         "zmmintrin.h",
-        "ammintrin.h"
+        "ammintrin.h",
+        "stdint.h",
+        "ehdata4_export.h"
     ),
 
     # Internal parameters retained for compatibility with any elevated

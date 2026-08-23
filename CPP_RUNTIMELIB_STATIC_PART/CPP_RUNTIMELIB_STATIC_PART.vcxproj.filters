@@ -13,37 +13,46 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\CORE">
+      <UniqueIdentifier>{de350eaf-0acc-440c-8101-07424e49ffec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CRT">
+      <UniqueIdentifier>{c56d042d-a1c9-436a-925c-41012765ac87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EARLY_STDXXLIB">
+      <UniqueIdentifier>{fdfe78b8-eba7-4a1e-9b7d-6dd81ff71930}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="INIT_RUNTIME.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CPPRUNTIME.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ALLOCATORS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLOBAL_STATE.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EH_DATA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RTTI_DATA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CRT_MACROS.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="RTTI_DATA.h">
+      <Filter>Header Files\CORE</Filter>
     </ClInclude>
-    <ClInclude Include="LANGUAGE_EXTENSION.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ALLOCATORS.h">
+      <Filter>Header Files\CORE</Filter>
     </ClInclude>
     <ClInclude Include="COMPARE.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\CORE</Filter>
+    </ClInclude>
+    <ClInclude Include="CPPRUNTIME.h">
+      <Filter>Header Files\CORE</Filter>
+    </ClInclude>
+    <ClInclude Include="CRT_MACROS.h">
+      <Filter>Header Files\CORE</Filter>
+    </ClInclude>
+    <ClInclude Include="EH_DATA.h">
+      <Filter>Header Files\CORE</Filter>
+    </ClInclude>
+    <ClInclude Include="GLOBAL_STATE.h">
+      <Filter>Header Files\CORE</Filter>
+    </ClInclude>
+    <ClInclude Include="INIT_RUNTIME.h">
+      <Filter>Header Files\CORE</Filter>
+    </ClInclude>
+    <ClInclude Include="LANGUAGE_EXTENSION.h">
+      <Filter>Header Files\CORE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
