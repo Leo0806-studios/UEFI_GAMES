@@ -75,15 +75,27 @@
     <ClInclude Include="locale.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MAIN_LOCALE.h">
+      <Filter>Header Files\INTERNALS</Filter>
+    </ClInclude>
+    <ClInclude Include="limits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="wassert.c.cpp">
+    <ClCompile Include="wassert.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="string.c.cpp">
+    <ClCompile Include="string.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stdlib.c.cpp">
+    <ClCompile Include="stdlib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="locale.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

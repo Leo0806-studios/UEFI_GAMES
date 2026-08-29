@@ -1,7 +1,11 @@
 #pragma once
 #ifndef __LOCALE__
 #define __LOCALE__
-#include <corecrt.h>
+
+#include "CRT_CORE.h"
+#include "CRT_MACROS.h"
+__CRT_START
+#pragma warning(disable: __DISABLE_CRT_WARNINGS)
 typedef struct IMPL_lconv {
 	char* decimal_point; // "."
 	char* thousands_sep; // ""
@@ -29,4 +33,7 @@ typedef struct IMPL_lconv {
 	char int_n_sign_posn; // CHAR_MAX
 } lconv;
 
+char* setlocale(int category, const char* locale);
+lconv* localeconv(void);
+__CRT_END
 #endif // !__LOCALE__

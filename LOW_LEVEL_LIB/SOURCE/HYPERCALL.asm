@@ -5,7 +5,7 @@ MakeHypercall:
     push r15;
     push r14
     mov r15, rcx    ;move hypercall number to r15
-    vmcall;actual hypercall
+    vmcall;actual hypercall; were exiting the matrix
     mov rax,r14
     pop r14
     pop r15

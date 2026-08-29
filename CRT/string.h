@@ -1,17 +1,14 @@
 #pragma once
 #ifndef __STRING__
 #define __STRING__
-#include <corecrt.h>
+#include "CRT_CORE.h"
 #include "CRT_MACROS.h"
 __CRT_START
 #pragma warning (push)
 #pragma warning(disable: __DISABLE_CRT_WARNINGS)
-#ifdef _M_AMD64
-typedef unsigned long long size_t;
-#else
-typedef unsigned int size_t;
-#endif
-#define NULL ((void*)0)
+
+
+
 
 char* strcpy(char* restrict dest, const char* restrict src);
 errno_t strcpy_s(char* restrict dest, rsize_t destsz, const char* restrict src);

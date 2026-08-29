@@ -1,7 +1,7 @@
 #pragma once
 #ifndef __FENV__
 #define __FENV__
-#include <corecrt.h>
+
 #include "CRT_CORE.h"
 #include "CRT_MACROS.h"
 __CRT_START

@@ -1,7 +1,7 @@
 #pragma once
 #ifndef __COMPLEX__
 #define __COMPLEX__
-#include <corecrt.h>
+
 #include "CRT_CORE.h"
 #include "CRT_MACROS.h"
 #error complex will be implemented in the future when i can be botherd to do it

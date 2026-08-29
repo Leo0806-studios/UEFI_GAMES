@@ -109,7 +109,7 @@ float strtof(const char* restrict nptr, char** restrict endptr)
 	while (e > 0) { a *= 10.0; e--; }
 	while (e < 0) { a *= 0.1; e++; }
 	*endptr = (char*)str;
-	return a * sign;;
+	return (float)(a * sign);
 }
 
 long double strtold(const char* restrict nptr, char** restrict endptr)

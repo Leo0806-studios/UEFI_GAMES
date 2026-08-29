@@ -2,10 +2,10 @@
 #ifndef __ERRNO__
 #define __ERRNO__
 
-#include <corecrt.h>
+
 #include "CRT_MACROS.h"
 __CRT_START
-_ACRTIMP int* __cdecl _errno(void);
+ int* __cdecl _errno(void);
 #define errno (*_errno())
 
 //the following list of macros is taken from the Microsoft C Runtime Library (CRT). i reserve no copyright for this

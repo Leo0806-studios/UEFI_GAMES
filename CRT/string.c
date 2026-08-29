@@ -54,10 +54,10 @@ char* strncat(char* restrict dest, const char* restrict src, size_t count)
 	{
 		dest[i] = '\0';
 	}
-
+	return dest;
 }
 
 char* strdup(const char* src)
 {
-	return nullptr;
+	return NULL;
 }

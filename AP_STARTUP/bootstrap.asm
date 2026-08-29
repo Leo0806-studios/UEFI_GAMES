@@ -2,12 +2,12 @@
 [org 0x7000]
 align   16
 realModeBootstrap:
-	cli
+	cli ; hello world
 	xor ax, ax
 	mov ds, ax
 	mov es, ax
 	mov ss, ax
-	mov ax, StackBottom
+	mov ax, StackBottom ;lol totaly uneccesary since this stack is technicaly shard between all cores and no stack is used anyways
 	add ax, 4096
 	mov sp, ax
 	lgdt [gdt_desc] 

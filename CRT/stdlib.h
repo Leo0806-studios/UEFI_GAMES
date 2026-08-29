@@ -1,7 +1,7 @@
 #pragma once
 #ifndef __STDLIB__
 #define __STDLIB__
-#include <corecrt.h>
+#
 #include "ThreadingSharedSymbols.h"
 #include "CRT_CORE.h"
 #include "CRT_MACROS.h"

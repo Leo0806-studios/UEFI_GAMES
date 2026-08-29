@@ -2,22 +2,23 @@
 #ifndef  __ASSERT__
 #define __ASSERT__
 
-#include  <corecrt.h>
+
 #include "stdbool.h"
 #include "wchar.h"
 
-#include  "CRT_MACROS.h"
 #include "CRT_CORE.h"
+#include  "CRT_MACROS.h"
+
 __CRT_START
 #ifndef __cplusplus
-#	if _CRT_HAS_C11
+#	if __CRT_HAS_C11
 #		define static_assert _Static_assert
 #	endif
 #endif // !__cplusplus
-_ACRTIMP void __cdecl __wassertImpl(
-	_In_z_ wchar_t const* _Message,
-	_In_z_ wchar_t const* _File,
-	_In_   unsigned       _Line
+__CRT_API void __CRT_CONV __wassertImpl(
+	wchar_t const* _Message,
+	wchar_t const* _File,
+	unsigned       _Line
 );
 
 
@@ -40,3 +41,5 @@ __CRT_END
 
 
 #endif // ! __ASSERT__
+
+
