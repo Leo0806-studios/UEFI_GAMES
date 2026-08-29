@@ -1,6 +1,8 @@
 # NEXT
 
-
+## NOTE
+most projects are currently in an inconsistent state since im rewriting most things from the bottom up.
+the only halfway accurate projects are currently CRT and BOOTLOADER
 ## What
 my personal OS dev project that will eventualy contain everything from bootloader, CRT/C++RT, kernel, drivers, and userland.
 additionaly it contains a few proof of concept projects build puerly on uefi
