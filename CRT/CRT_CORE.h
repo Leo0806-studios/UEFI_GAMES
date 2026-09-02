@@ -18,6 +18,11 @@ typedef unsigned short wchar_t;
 #	define _SIZE_T_DEFINED
 typedef unsigned long long size_t;
 #endif
+#ifndef _PTRDIFF_T_DEFINED
+#define _PTRDIFF_T_DEFINED
+typedef signed long long ptrdiff_t;
+#endif // !_PTRDIFF_T_DEFINED
+
 #define NULL ((void*)0)
 
 

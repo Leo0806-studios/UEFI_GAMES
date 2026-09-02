@@ -81,7 +81,31 @@
     <ClInclude Include="limits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MATH_SOFT_TRIG.h">
+      <Filter>Header Files\INTERNALS</Filter>
+    </ClInclude>
+    <ClInclude Include="MATH_X87_TRIG.h">
+      <Filter>Header Files\INTERNALS</Filter>
+    </ClInclude>
     <ClInclude Include="math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="setjmp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="signal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdalign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdarg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stddef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

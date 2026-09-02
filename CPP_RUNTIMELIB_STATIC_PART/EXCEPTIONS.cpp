@@ -210,7 +210,7 @@ extern "C" __declspec(noreturn) __declspec(noinline)  void __stdcall _CxxThrowEx
 		while (!found_) {
 			found_ = LookupFunctionEntry(static_cast<RVA>(ctx.Rip - reinterpret_cast<size_t>(initParameters.imageBaseAddress)), table, count);//TODO: fix logic error and update rva to return adress of caller if not found
 			if (!found_) {
-				ctx.Rsp += sizeof(Register);
+				ctx.Rsp += sizeof(__Register);
 				ctx.Rip = reinterpret_cast<uint64_t>(*reinterpret_cast<void**>(ctx.Rsp));//NOSONAR -NOCASTWARN
 			}
 		}

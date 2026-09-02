@@ -6,7 +6,9 @@
 #include "stdint.h"
 #include "wchar.h"
 __CRT_START
-
+typedef struct __CRT_OS_SIGNAL_TABLE {
+	__int64 SIGABRT, SIGFPE, SIGILL, SIGINT, SIGSEGV, SIGTERM;
+} __CRT_OS_SIGNAL_TABLE;
 typedef struct __CRT_OS_CALLBACKS
 {
 	

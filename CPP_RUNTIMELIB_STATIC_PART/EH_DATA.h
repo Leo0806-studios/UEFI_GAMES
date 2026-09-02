@@ -38,7 +38,7 @@ enum unwind_info_flags : unsigned char { //NOSONAR
 };
 
 using RVA = uint32_t;
-using Register = size_t;
+using __Register = size_t;
  struct _RUNTIME_FUNCTION {//NOSONAR
 	RVA BeginAddress;		// The address of the first instruction in the function
 	RVA EndAddress;		// The address of the first instruction after the function
@@ -86,8 +86,8 @@ namespace FH4 {
  };
  using PRUNTIME_FUNCTION = RUNTIME_FUNCTION*;
 struct CONTEXT64 {
-	Register Rip, Rsp, Rbp; //NOSONAR
-	Register Rbx, Rsi, Rdi, R12, R13, R14, R15; // non-volatiles //NOSONAR
+	__Register Rip, Rsp, Rbp; //NOSONAR
+	__Register Rbx, Rsi, Rdi, R12, R13, R14, R15; // non-volatiles //NOSONAR
 };
 
 
